@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>搭建eclipse+maven+scala-ide的scala web开发环境 | 不如</title>
+  <meta name="author" content="bruce">
+  
+  <meta name="description" content="基于eclipse+maven+scala-ide的scala web开发环境">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="搭建eclipse+maven+scala-ide的scala web开发环境"/>
+  <meta property="og:site_name" content="不如"/>
+
+  <link rel="alternate" href="/atom.xml" title="不如" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- 被墙 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <script src="//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46161632-1', 'ibruce.info');
+  ga('send', 'pageview');
+</script>
+
+  
+<!-- 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7034d648d7899a7a50561a179216abaa' type='text/javascript'%3E%3C/script%3E"));
+</script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7034d648d7899a7a50561a179216abaa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  <meta property="wb:webmaster" content="e9d0b5d9cad42cf4" />
+  <meta property="qc:admins" content="214253361253561667" />
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">不如</a></h1>
+  <p><a href="/">码农，程序猿，未来的昏析狮</a></p>
+</div>
+<!--
+<div>
+<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+ <input style="width:60px;background-color:transparent;text-align:center; border-width:0px;border-top-style: none; border-right-style: none; border-left-style: none; border-bottom-style: none; "  type="search" name="q" id="search" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="20" placeholder="s" />
+ <input type="hidden" name="q" value="site:ibruce.info">
+</form>
+</div>
+-->
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/reading">Reading</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-01-15T02:35:48.000Z"><a href="/2014/01/15/scala-web-environment-with-eclipse-maven-scala-ide/">Jan 15 2014</a></time>
+    
+    
+  
+    <h1 class="title">搭建eclipse+maven+scala-ide的scala web开发环境</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>江湖传闻，scala开发的最佳利器乃 <a href="http://www.jetbrains.com" target="_blank" rel="external">JetBrains</a> 的神作 <a href="http://www.jetbrains.com/idea" target="_blank" rel="external">IntelliJ IDEA</a>，外加构建工具 <a href="http://www.scala-sbt.org" target="_blank" rel="external">sbt</a> 是也。</p>
+<p>但因历史原因，项目组成员对 <a href="http://www.eclipse.org/downloads" target="_blank" rel="external">Eclipse</a>+<a href="http://maven.apache.org" target="_blank" rel="external">Maven</a>组合更为熟悉，为了快速实现项目原型，不增加不确定因素带来的风险，搭建一套 <a href="http://www.eclipse.org/downloads" target="_blank" rel="external">Eclipse</a>+<a href="http://maven.apache.org" target="_blank" rel="external">Maven</a>+<a href="http://scala-ide.org" target="_blank" rel="external">Scala-IDE</a> 的开发环境。</p>
+<p>基本原则是，必须完全满足但不限于以下几点内容：</p>
+<ul>
+<li>方便重构，方便调试，支持热部署。</li>
+<li>可直接使用已有maven的本地和私服仓库。</li>
+<li>可以无束缚的只用自己熟悉的语言编写代码。</li>
+<li>可以快速混合编译scala+java代码，包括交叉引用的文件。</li>
+</ul>
+<p>如果你有洁癖，可以自己下载<a href="http://www.eclipse.org/downloads" target="_blank" rel="external">Eclipse</a>，然后安装各种插件。但是可能会遇到插件依赖包版本冲突之类的问题，为了速度，我直接下载官方打包好的 <a href="http://scala-ide.org/download/sdk.html" target="_blank" rel="external">Scala-IDE</a>，有各种平台可供选择。</p>
+<p>使用 <a href="http://git-scm.com" target="_blank" rel="external">Git</a> 管理项目源代码，需要安装 <a href="http://www.eclipse.org/egit" target="_blank" rel="external">EGit</a> 插件，Eclipse插件更新地址 <a href="http://download.eclipse.org/egit/updates" target="_blank" rel="external">EGit Updates</a>。</p>
+<p>假设项目名称为 <strong>feeling</strong>，使用 JDK 1.7，Servlet 3.0，最终目录结构如下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; .settings                    #eclipse&#24037;&#31243;&#30446;&#24405;&#10;&#9500;&#9472;&#9472; .classpath                   #eclipse classpath&#25991;&#20214;&#10;&#9500;&#9472;&#9472; .project                     #eclipse project&#25991;&#20214;&#10;&#9500;&#9472;&#9472; src                          #&#28304;&#20195;&#30721;&#10;|   &#9500;&#9472;&#9472; main                     #&#28304;&#20195;&#30721;&#20027;&#30446;&#24405;&#10;|   |   &#9500;&#9472;&#9472; java                 #java&#20195;&#30721;&#10;|   |   &#9500;&#9472;&#9472; scala                #scala&#20195;&#30721;&#10;|   |   &#9500;&#9472;&#9472; resources            #&#36164;&#28304;&#25991;&#20214;&#10;|   |   &#9492;&#9472;&#9472; webapp               #web&#20027;&#30446;&#24405;&#10;|   |       &#9500;&#9472;&#9472; WEB-INF          #WEB-INF&#30446;&#24405;&#10;|   |       |   &#9492;&#9472;&#9472; web.xml      #web.xml&#25991;&#20214;&#10;|   |       &#9492;&#9472;&#9472; index.jsp        #&#20027;&#39029;&#38754;&#10;|   &#9492;&#9472;&#9472; test                     #&#27979;&#35797;&#20195;&#30721;&#10;|       &#9500;&#9472;&#9472; java                 #java&#27979;&#35797;&#20195;&#30721;&#10;|       &#9500;&#9472;&#9472; scala                #scala&#27979;&#35797;&#20195;&#30721;&#10;|       &#9492;&#9472;&#9472; resources            #&#27979;&#35797;&#36164;&#28304;&#25991;&#20214;&#10;&#9500;&#9472;&#9472; .gitignore                   #git&#24573;&#30053;&#37197;&#32622;&#10;&#9500;&#9472;&#9472; target                       #&#32534;&#35793;&#36755;&#20986;&#30446;&#24405;&#10;&#9500;&#9472;&#9472; README.md                    #markdown&#26684;&#24335;&#30340;&#35828;&#26126;&#25991;&#20214;&#10;&#9492;&#9472;&#9472; pom.xml                      #maven&#30340;pom&#25991;&#20214;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>pom.xml文件<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">project</span> <span class="attribute">xmlns</span>=<span class="value">"http://maven.apache.org/POM/4.0.0"</span> <span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">  <span class="attribute">xsi:schemaLocation</span>=<span class="value">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="title">modelVersion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>feeling<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>feeling<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">version</span>&gt;</span>0.0.1<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="title">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- &lt;name&gt;$&#123;project.artifactId&#125;&lt;/name&gt; --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">name</span>&gt;</span>feeling<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">description</span>&gt;</span>our wonderfully feeling application<span class="tag">&lt;/<span class="title">description</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">url</span>&gt;</span>http://feeling.com<span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">inceptionYear</span>&gt;</span>2014<span class="tag">&lt;/<span class="title">inceptionYear</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">organization</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">name</span>&gt;</span>feeling<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">url</span>&gt;</span>http://feeling.com<span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">organization</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">licenses</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">license</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">name</span>&gt;</span>The Apache Software License, Version 2.0<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">url</span>&gt;</span>http://www.apache.org/licenses/LICENSE-2.0.txt<span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">distribution</span>&gt;</span>repo<span class="tag">&lt;/<span class="title">distribution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">license</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">licenses</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">developers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">developer</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">id</span>&gt;</span>bruce<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">name</span>&gt;</span>bruce sha<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">url</span>&gt;</span>http://bruce-sha.github.io<span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">email</span>&gt;</span>bu.ru@qq.com<span class="tag">&lt;/<span class="title">email</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">developer</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">developers</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">scm</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="title">connection</span>&gt;</span>http://17.20.13.23/scm/git/feeling<span class="tag">&lt;/<span class="title">connection</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="title">developerConnection</span>&gt;</span>http://17.20.13.23/scm/git/feeling<span class="tag">&lt;/<span class="title">developerConnection</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="title">url</span>&gt;</span>http://17.20.13.23<span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">scm</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">scala.version</span>&gt;</span>2.10.3<span class="tag">&lt;/<span class="title">scala.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">maven.compiler.source</span>&gt;</span>1.7<span class="tag">&lt;/<span class="title">maven.compiler.source</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">maven.compiler.target</span>&gt;</span>1.7<span class="tag">&lt;/<span class="title">maven.compiler.target</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="title">encoding</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 个性化开发 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">profile</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="title">activeByDefault</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">activation</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">build.param</span>&gt;</span>this is dev<span class="tag">&lt;/<span class="title">build.param</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">profile</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">id</span>&gt;</span>release<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">activeByDefault</span>&gt;</span>false<span class="tag">&lt;/<span class="title">activeByDefault</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">activation</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">build.param</span>&gt;</span>this is relase<span class="tag">&lt;/<span class="title">build.param</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">profile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">profiles</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- google --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.google.guava<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>guava<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">version</span>&gt;</span>15.0<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.google.inject<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>guice<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">version</span>&gt;</span>3.0<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- servlet --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;version&gt;2.5&lt;/version&gt; --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">version</span>&gt;</span>3.0.1<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- &lt;dependency&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;groupId&gt;javax.servlet&lt;/groupId&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;artifactId&gt;jsp-api&lt;/artifactId&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;version&gt;2.0&lt;/version&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;scope&gt;provided&lt;/scope&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;/dependency&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- scala --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.scala-lang<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>scala-library<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">version</span>&gt;</span>$&#123;scala.version&#125;<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- test --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 其他包不再一一描述 --&gt;</span>    </span><br><span class="line">    <span class="comment">&lt;!-- log --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- json --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- mongodb --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- quartz --&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">finalName</span>&gt;</span>feeling<span class="tag">&lt;/<span class="title">finalName</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 必须要，资源文件中占位符被profile替换的关键配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">resources</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="title">directory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">includes</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">include</span>&gt;</span>*.*<span class="tag">&lt;/<span class="title">include</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="title">filtering</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 必须干掉，否则不编译src/main/java下的代码 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;sourceDirectory&gt;src/main/scala&lt;/sourceDirectory&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;testSourceDirectory&gt;src/test/scala&lt;/testSourceDirectory&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">plugins</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- see http://davidb.github.com/scala-maven-plugin --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>net.alchim31.maven<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>scala-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">version</span>&gt;</span>3.1.6<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 必须要，否则不能混合编译交叉引用文件 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">executions</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">id</span>&gt;</span>scala-compile-first<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">phase</span>&gt;</span>process-resources<span class="tag">&lt;/<span class="title">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">goals</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">goal</span>&gt;</span>add-source<span class="tag">&lt;/<span class="title">goal</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">goal</span>&gt;</span>compile<span class="tag">&lt;/<span class="title">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">goals</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="title">execution</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">id</span>&gt;</span>scala-test-compile<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">phase</span>&gt;</span>process-test-resources<span class="tag">&lt;/<span class="title">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">goals</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">goal</span>&gt;</span>testCompile<span class="tag">&lt;/<span class="title">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">goals</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="title">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">executions</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.13<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">configuration</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">useFile</span>&gt;</span>false<span class="tag">&lt;/<span class="title">useFile</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">disableXmlReport</span>&gt;</span>true<span class="tag">&lt;/<span class="title">disableXmlReport</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- If you have classpath issue like NoDefClassError,... --&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- useManifestOnlyJar&gt;false&lt;/useManifestOnlyJar --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">includes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">include</span>&gt;</span>**/*Test.*<span class="tag">&lt;/<span class="title">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">include</span>&gt;</span>**/*Suite.*<span class="tag">&lt;/<span class="title">include</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="title">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-war-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.4<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">configuration</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 移除web.xml的依赖，Servlet 3.0可以不要web.xml文件 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">failOnMissingWebXml</span>&gt;</span>false<span class="tag">&lt;/<span class="title">failOnMissingWebXml</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!-- jetty6，不支持servlet3 --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;plugin&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;version&gt;6.1.26&lt;/version&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;configuration&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;scanIntervalSeconds&gt;10&lt;/scanIntervalSeconds&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;stopKey&gt;foo&lt;/stopKey&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;stopPort&gt;9999&lt;/stopPort&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;/configuration&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;executions&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;execution&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;id&gt;start-jetty&lt;/id&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;phase&gt;pre-integration-test&lt;/phase&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;goals&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;goal&gt;run&lt;/goal&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;/goals&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;configuration&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;scanIntervalSeconds&gt;0&lt;/scanIntervalSeconds&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;daemon&gt;true&lt;/daemon&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;/configuration&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;/execution&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;execution&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;id&gt;stop-jetty&lt;/id&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;phase&gt;post-integration-test&lt;/phase&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;goals&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;goal&gt;stop&lt;/goal&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;/goals&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;/execution&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;/executions&gt; --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- &lt;/plugin&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!-- tomcat7:run 注意tomcat:run跑的是6，不支持servlet3 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- http://tomcat.apache.org/maven-plugin-2.0/tomcat7-maven-plugin --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.tomcat.maven<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>tomcat7-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">configuration</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">path</span>&gt;</span>/<span class="tag">&lt;/<span class="title">path</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">port</span>&gt;</span>80<span class="tag">&lt;/<span class="title">port</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!-- jetty:run --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.mortbay.jetty<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- &lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt; 这是jetty6 不支持servlet3 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>jetty-maven-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">version</span>&gt;</span>8.1.13.v20130916<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">configuration</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">stopPort</span>&gt;</span>9966<span class="tag">&lt;/<span class="title">stopPort</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">stopKey</span>&gt;</span>foo<span class="tag">&lt;/<span class="title">stopKey</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">scanIntervalSeconds</span>&gt;</span>0<span class="tag">&lt;/<span class="title">scanIntervalSeconds</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">connectors</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">connector</span> <span class="attribute">implementation</span>=<span class="value">"org.eclipse.jetty.server.nio.SelectChannelConnector"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">port</span>&gt;</span>80<span class="tag">&lt;/<span class="title">port</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="title">maxIdleTime</span>&gt;</span>60000<span class="tag">&lt;/<span class="title">maxIdleTime</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">connector</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="title">connectors</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">webAppConfig</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">contextPath</span>&gt;</span>/<span class="tag">&lt;/<span class="title">contextPath</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="title">webAppConfig</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">plugins</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">project</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>web.xml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&#62;&#10;&#60;!-- &#60;web-app --&#62;&#10;&#60;!-- xmlns=&#34;http://java.sun.com/xml/ns/javaee&#34; --&#62;&#10;&#60;!-- xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; --&#62;&#10;&#60;!-- xsi:schemaLocation=&#34;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&#34; --&#62;&#10;&#60;!-- version=&#34;2.5&#34; --&#62;&#10;&#60;!-- &#62; --&#62;&#10;&#60;web-app xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&#10;  xmlns=&#34;http://java.sun.com/xml/ns/javaee&#34;&#10;  xsi:schemaLocation=&#34;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&#34;&#10;  id=&#34;WebApp_ID&#34; version=&#34;3.0&#34;&#62;&#10;&#10;  &#60;display-name&#62;feeling&#60;/display-name&#62;&#10;&#10;  &#60;!--   &#60;servlet&#62; --&#62;&#10;  &#60;!--   &#60;servlet-name&#62;feeling&#60;/servlet-name&#62; --&#62;&#10;  &#60;!--   &#60;servlet-class&#62;feelings.service.FeelingService&#60;/servlet-class&#62; --&#62;&#10;  &#60;!--   &#60;/servlet&#62; --&#62;&#10;&#10;  &#60;!--   &#60;servlet-mapping&#62; --&#62;&#10;  &#60;!--   &#60;servlet-name&#62;feeling&#60;/servlet-name&#62; --&#62;&#10;  &#60;!--   &#60;url-pattern&#62;/feeling&#60;/url-pattern&#62; --&#62;&#10;  &#60;!--   &#60;/servlet-mapping&#62; --&#62;&#10;  &#10;  &#60;welcome-file-list&#62;&#10;    &#60;welcome-file&#62;index.html&#60;/welcome-file&#62;&#10;    &#60;welcome-file&#62;index.htm&#60;/welcome-file&#62;&#10;    &#60;welcome-file&#62;index.jsp&#60;/welcome-file&#62;&#10;    &#60;welcome-file&#62;default.html&#60;/welcome-file&#62;&#10;    &#60;welcome-file&#62;default.htm&#60;/welcome-file&#62;&#10;    &#60;welcome-file&#62;default.jsp&#60;/welcome-file&#62;&#10;  &#60;/welcome-file-list&#62;&#10;  &#10;&#60;/web-app&#62;</span><br></pre></td></tr></table></figure>
+<p>.project文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&#62;&#10;&#60;projectDescription&#62;&#10;  &#60;name&#62;feeling&#60;/name&#62;&#10;  &#60;comment&#62;&#60;/comment&#62;&#10;  &#60;projects&#62;&#10;  &#60;/projects&#62;&#10;  &#60;buildSpec&#62;&#10;    &#60;buildCommand&#62;&#10;      &#60;name&#62;org.scala-ide.sdt.core.scalabuilder&#60;/name&#62;&#10;      &#60;arguments&#62;&#10;      &#60;/arguments&#62;&#10;    &#60;/buildCommand&#62;&#10;    &#60;buildCommand&#62;&#10;      &#60;name&#62;org.eclipse.m2e.core.maven2Builder&#60;/name&#62;&#10;      &#60;arguments&#62;&#10;      &#60;/arguments&#62;&#10;    &#60;/buildCommand&#62;&#10;  &#60;/buildSpec&#62;&#10;  &#60;natures&#62;&#10;    &#60;nature&#62;org.scala-ide.sdt.core.scalanature&#60;/nature&#62;&#10;    &#60;nature&#62;org.eclipse.jdt.core.javanature&#60;/nature&#62;&#10;    &#60;nature&#62;org.eclipse.m2e.core.maven2Nature&#60;/nature&#62;&#10;  &#60;/natures&#62;&#10;&#60;/projectDescription&#62;</span><br></pre></td></tr></table></figure></p>
+<p>.classpath文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&#62;&#10;&#60;classpath&#62;&#10;  &#60;classpathentry kind=&#34;src&#34; output=&#34;target/classes&#34; path=&#34;src/main/java&#34;&#62;&#10;    &#60;attributes&#62;&#10;      &#60;attribute name=&#34;optional&#34; value=&#34;true&#34;/&#62;&#10;      &#60;attribute name=&#34;maven.pomderived&#34; value=&#34;true&#34;/&#62;&#10;    &#60;/attributes&#62;&#10;  &#60;/classpathentry&#62;&#10;  &#60;classpathentry kind=&#34;src&#34; output=&#34;target/classes&#34; path=&#34;src/main/scala&#34;&#62;&#10;    &#60;attributes&#62;&#10;      &#60;attribute name=&#34;optional&#34; value=&#34;true&#34;/&#62;&#10;      &#60;attribute name=&#34;maven.pomderived&#34; value=&#34;true&#34;/&#62;&#10;    &#60;/attributes&#62;&#10;  &#60;/classpathentry&#62;&#10;  &#60;classpathentry including=&#34;**/*.java&#34; kind=&#34;src&#34; path=&#34;src/main/resources&#34;/&#62;&#10;  &#60;classpathentry kind=&#34;src&#34; output=&#34;target/test-classes&#34; path=&#34;src/test/java&#34;&#62;&#10;    &#60;attributes&#62;&#10;      &#60;attribute name=&#34;optional&#34; value=&#34;true&#34;/&#62;&#10;      &#60;attribute name=&#34;maven.pomderived&#34; value=&#34;true&#34;/&#62;&#10;    &#60;/attributes&#62;&#10;  &#60;/classpathentry&#62;&#10;  &#60;classpathentry kind=&#34;src&#34; output=&#34;target/test-classes&#34; path=&#34;src/test/scala&#34;&#62;&#10;    &#60;attributes&#62;&#10;      &#60;attribute name=&#34;optional&#34; value=&#34;true&#34;/&#62;&#10;      &#60;attribute name=&#34;maven.pomderived&#34; value=&#34;true&#34;/&#62;&#10;    &#60;/attributes&#62;&#10;  &#60;/classpathentry&#62;&#10;  &#60;classpathentry including=&#34;**/*.java&#34; kind=&#34;src&#34; path=&#34;src/test/resources&#34;/&#62;&#10;  &#60;classpathentry kind=&#34;con&#34; path=&#34;org.scala-ide.sdt.launching.SCALA_CONTAINER&#34;/&#62;&#10;  &#60;classpathentry kind=&#34;con&#34; path=&#34;org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7&#34;&#62;&#10;    &#60;attributes&#62;&#10;      &#60;attribute name=&#34;maven.pomderived&#34; value=&#34;true&#34;/&#62;&#10;    &#60;/attributes&#62;&#10;  &#60;/classpathentry&#62;&#10;  &#60;classpathentry kind=&#34;con&#34; path=&#34;org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER&#34;&#62;&#10;    &#60;attributes&#62;&#10;      &#60;attribute name=&#34;maven.pomderived&#34; value=&#34;true&#34;/&#62;&#10;    &#60;/attributes&#62;&#10;  &#60;/classpathentry&#62;&#10;  &#60;classpathentry kind=&#34;output&#34; path=&#34;target/classes&#34;/&#62;&#10;&#60;/classpath&#62;</span><br></pre></td></tr></table></figure></p>
+
+    
+  </div>
+  <footer>
+    
+      
+  
+  <div class="categories">
+    <a href="/categories/scala/">scala</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/eclipse/">eclipse</a>, <a href="/tags/maven/">maven</a>, <a href="/tags/scala/">scala</a>, <a href="/tags/scala-ide/">scala-ide</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+<!-- wumii Button BEGIN -->
+<div style="margin:0px auto; padding-left:23px; text-align:center;">
+	
+	
+
+	<script type="text/javascript" id="wumiiRelatedItems"></script>
+	<script type="text/javascript">
+	    var wumiiPermaLink = "http://ibruce.info/2014/01/15/scala-web-environment-with-eclipse-maven-scala-ide/"; //请用代码生成文章永久的链接
+	    var wumiiTitle = "搭建eclipse+maven+scala-ide的scala web开发环境"; //请用代码生成文章标题
+	    var wumiiTags = "eclipse, maven, scala, scala-ide"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiCategories = ["scala"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+	    var wumiiSitePrefix = "http://ibruce.info/";
+	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+	</script>
+	<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+	<!--
+	<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+	    <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+	</a>
+	-->
+</div>
+<!-- wumii Button END -->
+
+<!-- UJian Button BEGIN -->
+	<div class="ujian-hook" style="padding-left: 17px;"></div>
+	<script type="text/javascript">var ujian_config = {num:6,picSize:83,textHeight:45};</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1893018"></script>
+<!-- UJian Button END -->
+
+<!-- baidu tuijian BEGIN -->
+<!-- <div id="hm_t_22763"></div> -->
+<!-- baidu tuijian BEGIN -->
+<!--	<div style="padding-left: 17px;"> -->
+<!--		<script src="http://wm.lrswl.com/page/s.php?s=103186&w=640&h=60"></script> -->
+<!--	</div> -->
+
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="搭建eclipse+maven+scala-ide的scala web开发环境">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget tag first">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/big-data/">big data</a><small>1</small></li>
+  
+    <li><a href="/categories/cloud/">cloud</a><small>1</small></li>
+  
+    <li><a href="/categories/default/">default</a><small>8</small></li>
+  
+    <li><a href="/categories/distribution/">distribution</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>10</small></li>
+  
+    <li><a href="/categories/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/olap/">olap</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+  <!-- 
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  -->
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/04/busuanzi/">不蒜子</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/03/mongodb3-auth/">mongoDB 3.0 安全权限访问控制</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/02/hello-colossus/">微服务框架 Colossus</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/23/zookeeper/">ZooKeeper 简介</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/20/hello-akka/">Akka 快速入门</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/16/a-small-point-of-interface-design/">对接口设计的一个小看法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/hello-spray/">通过 Spray 创建简单的 Restful Http Server</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/turning-point-2014/">转折点</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/14/caipus/">微菜谱</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="theme-copyright">
+ &copy; 2013 - 2016 <a href="/">bruce</a>
+ | 
+ produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
+ <font id="counter"></font>
+ <span id="busuanzi_container_site_pv"><a href="//busuanzi.ibruce.info" target="_blank"><span id="busuanzi_value_site_pv"></a></span></span>
+ </div>
+<!--
+<div class="copyright">
+ <font id="counter"></font>
+ 版权所有
+  
+  &copy; 2013-2016 <a href="/">bruce</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="http://heroicyang.com" target="_blank">Heroic Yang</a>
+   | 
+  Redesign by <a href="http://bruce-sha.github.io" target="_blank">Bruce Sha</a>
+</div>
+-->
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<script src="/js/counter.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'buru' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

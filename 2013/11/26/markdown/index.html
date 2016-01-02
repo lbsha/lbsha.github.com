@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>markdown简明语法 | 不如</title>
+  <meta name="author" content="bruce">
+  
+  <meta name="description" content="markdown语法，markdown教程，markdown编辑器，markdown table，markdown表格，markdown syntax，markdown图片，markdown超链接，markdown代码">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="markdown简明语法"/>
+  <meta property="og:site_name" content="不如"/>
+
+  <link rel="alternate" href="/atom.xml" title="不如" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- 被墙 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <script src="//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46161632-1', 'ibruce.info');
+  ga('send', 'pageview');
+</script>
+
+  
+<!-- 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7034d648d7899a7a50561a179216abaa' type='text/javascript'%3E%3C/script%3E"));
+</script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7034d648d7899a7a50561a179216abaa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  <meta property="wb:webmaster" content="e9d0b5d9cad42cf4" />
+  <meta property="qc:admins" content="214253361253561667" />
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">不如</a></h1>
+  <p><a href="/">码农，程序猿，未来的昏析狮</a></p>
+</div>
+<!--
+<div>
+<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+ <input style="width:60px;background-color:transparent;text-align:center; border-width:0px;border-top-style: none; border-right-style: none; border-left-style: none; border-bottom-style: none; "  type="search" name="q" id="search" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="20" placeholder="s" />
+ <input type="hidden" name="q" value="site:ibruce.info">
+</form>
+</div>
+-->
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/reading">Reading</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-11-26T08:33:33.000Z"><a href="/2013/11/26/markdown/">Nov 26 2013</a></time>
+    
+    
+  
+    <h1 class="title">markdown简明语法</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>Markdown是一种极简的『标记语言』，将文本转为HTML，通常为我大码农所用。其不追求大而全，简洁至上，正所谓不求最贵，只求最好！</p>
+<p>本文介绍Markdown基本语法，内容很少，一行语法一行示例，学会后可轻松写出高大上的文档，再也不需要各种编辑器去调文章格式。另外，网上有各平台下的Markdown工具可用，也有在线的，我直接使用sublime搞定，Markdown本来就是为了追求简洁，弄个工具岂不多此一举。</p>
+<h2 id="#强调">#强调</h2><figure class="highlight plain"><figcaption><span>星号与下划线都可以，单是斜体，双是粗体，符号可跨行，符号可加空格</span></figcaption><table><tr><td class="code"><pre><span class="line">**&#19968;&#20010;&#20154;&#26469;&#21040;&#30000;&#32435;&#35199;**&#10;&#10;__&#27627;&#26080;&#30097;&#38382;__&#10;*&#25105;&#20570;&#30340;&#39301;&#39292;&#10;&#26159;&#20840;&#22825;&#19979;*&#10;_&#26368;&#22909;&#21507;&#30340;_</span><br></pre></td></tr></table></figure>
+<p><strong>一个人来到田纳西</strong></p>
+<p><strong>毫无疑问</strong><br><em>我做的馅饼<br>是全天下</em><br><em>最好吃的</em></p>
+<a id="more"></a>
+<h2 id="#分割线">#分割线</h2><figure class="highlight plain"><figcaption><span>三个或更多-_*，必须单独一行，可含空格</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br></pre></td></tr></table></figure>
+<h2 id="#引用">#引用</h2><figure class="highlight plain"><figcaption><span>翻译成html就是&lt;blockquote&gt;&lt;/blockquote&gt;，符号后的空格可不要</span></figcaption><table><tr><td class="code"><pre><span class="line">&#62; &#24341;&#29992;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>引用</p>
+</blockquote>
+<figure class="highlight plain"><figcaption><span>内层符号前的空格必须要</span></figcaption><table><tr><td class="code"><pre><span class="line">&#62;&#24341;&#29992;&#10; &#62;&#62;&#24341;&#29992;&#20013;&#30340;&#24341;&#29992;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>引用</p>
+<blockquote>
+<p>引用中的引用</p>
+</blockquote>
+</blockquote>
+<h2 id="#标题：Setext方式">#标题：Setext方式</h2><figure class="highlight plain"><figcaption><span>三个或更多</span></figcaption><table><tr><td class="code"><pre><span class="line">&#22823;&#26631;&#39064;&#10;===&#10;&#23567;&#26631;&#39064;&#10;---</span><br></pre></td></tr></table></figure>
+<h1 id="大标题">大标题</h1><h2 id="小标题">小标题</h2><h2 id="#标题：Atx方式">#标题：Atx方式</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#&#19968;&#32423;&#26631;&#39064;&#10;##&#20108;&#32423;&#26631;&#39064;&#10;###&#19977;&#32423;&#26631;&#39064;&#10;####&#22235;&#32423;&#26631;&#39064;&#10;#####&#20116;&#32423;&#26631;&#39064;&#10;######&#20845;&#32423;&#26631;&#39064;</span><br></pre></td></tr></table></figure>
+<p>#一级标题</p>
+<p>##二级标题</p>
+<p>###三级标题</p>
+<p>####四级标题</p>
+<p>#####五级标题</p>
+<p>######六级标题</p>
+<h2 id="#无序列表">#无序列表</h2><figure class="highlight plain"><figcaption><span>符号之后的空格不能少，-+*效果一样，但不能混合使用，因混合是嵌套列表，内容可超长</span></figcaption><table><tr><td class="code"><pre><span class="line">- &#26080;&#24207;&#21015;&#34920;&#10;- &#26080;&#24207;&#21015;&#34920;&#10;- &#26080;&#24207;&#21015;&#34920;&#10;- &#26080;&#24207;&#21015;&#34920;&#65306;&#25105;&#24456;&#38271;&#12290;&#25105;&#20063;&#24456;&#38271;&#65281;&#37027;&#27604;&#19968;&#27604;&#21834;&#65311;&#27604;&#23601;&#27604;&#65281;&#25105;&#26377;&#36825;&#20040;&#38271;&#65292;&#20320;&#26377;&#25105;&#38271;&#21527;&#65311;&#25105;&#26377;&#36825;&#20040;&#36825;&#20040;&#38271;&#65281;&#22909;&#21543;&#65292;&#20320;&#36194;&#20102;&#65281;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表：我很长。我也很长！那比一比啊？比就比！我有这么长，你有我长吗？我有这么这么长！好吧，你赢了！</li>
+</ul>
+<figure class="highlight plain"><figcaption><span>符号之后的空格不能少，-+*效果一样，但不能混合使用，因混合是嵌套列表</span></figcaption><table><tr><td class="code"><pre><span class="line">+ &#26080;&#24207;&#21015;&#34920;&#10;+ &#26080;&#24207;&#21015;&#34920;&#10;+ &#26080;&#24207;&#21015;&#34920;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表</li>
+</ul>
+<figure class="highlight plain"><figcaption><span>符号之后的空格不能少，-+*效果一样，但不能混合使用，因混合是嵌套列表</span></figcaption><table><tr><td class="code"><pre><span class="line">* &#26080;&#24207;&#21015;&#34920;&#10;* &#26080;&#24207;&#21015;&#34920;&#10;* &#26080;&#24207;&#21015;&#34920;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表</li>
+</ul>
+<h2 id="#有序列表">#有序列表</h2><figure class="highlight plain"><figcaption><span>数字不能省略但可无序，点号之后的空格不能少</span></figcaption><table><tr><td class="code"><pre><span class="line">1. &#26377;&#24207;&#21015;&#34920;&#10;2. &#26377;&#24207;&#21015;&#34920;&#10;3. &#26377;&#24207;&#21015;&#34920;&#10;8. &#26377;&#24207;&#21015;&#34920;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
+</ol>
+<h2 id="#嵌套列表">#嵌套列表</h2><figure class="highlight plain"><figcaption><span>-+*可循环使用，但符号之后的空格不能少，符号之前的空格也不能少</span></figcaption><table><tr><td class="code"><pre><span class="line">- &#23884;&#22871;&#21015;&#34920;&#10; + &#23884;&#22871;&#21015;&#34920;&#10; + &#23884;&#22871;&#21015;&#34920;&#10;  - &#23884;&#22871;&#21015;&#34920;&#10;   * &#23884;&#22871;&#21015;&#34920;&#10;- &#23884;&#22871;&#21015;&#34920;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>嵌套列表<ul>
+<li>嵌套列表</li>
+<li>嵌套列表<ul>
+<li>嵌套列表<ul>
+<li>嵌套列表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>嵌套列表</li>
+</ul>
+<h2 id="#文字超链：Inline方式">#文字超链：Inline方式</h2><figure class="highlight plain"><figcaption><span>Tooltips可省略</span></figcaption><table><tr><td class="code"><pre><span class="line">[&#19981;&#22914;](http://bruce-sha.github.io &#34;&#19981;&#22914;&#30340;&#21338;&#23458;&#34;)</span><br></pre></td></tr></table></figure>
+<p><a href="http://bruce-sha.github.io" title="不如的博客" target="_blank" rel="external">不如</a></p>
+<h2 id="#图片超链">#图片超链</h2><figure class="highlight plain"><figcaption><span>多个感叹号，Tooltips可省略，要设置大小只能借助HTML标记<img></span></figcaption><table><tr><td class="code"><pre><span class="line">![GitHub Mark](http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png &#34;GitHub Mark&#34;)</span><br></pre></td></tr></table></figure>
+<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
+<h2 id="#索引超链：Reference方式">#索引超链：Reference方式</h2><figure class="highlight plain"><figcaption><span>索引，1 2可以是任意字符</span></figcaption><table><tr><td class="code"><pre><span class="line">[&#19981;&#22914;][1]&#10;![GitHub Octocat][2]&#10;&#10;[1]:http://bruce-sha.github.io&#10;[2]:http://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png</span><br></pre></td></tr></table></figure>
+<p><a href="http://bruce-sha.github.io" target="_blank" rel="external">不如</a><br><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png" alt="GitHub Octocat"></p>
+<h2 id="#自动链接">#自动链接</h2><figure class="highlight plain"><figcaption><span>尖括号</span></figcaption><table><tr><td class="code"><pre><span class="line">&#60;http://ibruce.info&#62;&#10;&#60;bu.ru@qq.com&#62;</span><br></pre></td></tr></table></figure>
+<p><a href="http://ibruce.info">http://ibruce.info</a></p>
+<a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#58;&#x62;&#117;&#46;&#114;&#117;&#64;&#x71;&#x71;&#x2e;&#99;&#x6f;&#109;">&#x62;&#117;&#46;&#114;&#117;&#64;&#x71;&#x71;&#x2e;&#99;&#x6f;&#109;</a>
+
+<hr>
+<h2 id="#代码：行内代码">#代码：行内代码</h2><figure class="highlight plain"><figcaption><span>在第一行后指定编程语言，也可以不指定</span></figcaption><table><tr><td class="code"><pre><span class="line">&#60;!--&#65532;0--&#62;</span><br></pre></td></tr></table></figure> 
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="keyword">val</span> s = <span class="string">"hello Markdown"</span></span><br><span class="line">println( s )</span><br></pre></td></tr></table></figure>
+<h2 id="#代码：段落代码">#代码：段落代码</h2><figure class="highlight plain"><figcaption><span>每行文字前加4个空格或者1个Tab</span></figcaption><table><tr><td class="code"><pre><span class="line">val s = &#34;hello Markdown&#34;&#10;println( s )</span><br></pre></td></tr></table></figure> 
+<pre><code>val s = <span class="string">"hello Markdown"</span>
+<span class="function"><span class="title">println</span><span class="params">( s )</span></span>
+</code></pre><h2 id="#代码：hexo">#代码：hexo</h2><figure class="highlight plain"><figcaption><span>可指定编程语言，『』代表左右大括号</span></figcaption><table><tr><td class="code"><pre><span class="line">&#12302;% codeblock [title] [lang:language] [url] [link text] %&#12303;&#10;&#9;code snippet&#10;&#12302;% endcodeblock %&#12303;</span><br></pre></td></tr></table></figure> 
+<h2 id="#注释">#注释</h2><figure class="highlight plain"><figcaption><span>用html的注释，好像只有这样？</span></figcaption><table><tr><td class="code"><pre><span class="line">&#60;!-- &#27880;&#37322; --&#62;</span><br></pre></td></tr></table></figure>
+<!-- 注释 -->
+<h2 id="#转义字符">#转义字符</h2><figure class="highlight plain"><figcaption><span>用html的注释，好像只有这样？</span></figcaption><table><tr><td class="code"><pre><span class="line">Markdown&#20013;&#30340;&#36716;&#20041;&#23383;&#31526;&#20026;\&#65292;&#36716;&#20041;&#30340;&#26377;&#65306;&#10;\\ &#21453;&#26012;&#26464;&#10;\` &#21453;&#24341;&#21495;&#10;\* &#26143;&#21495;&#10;\_ &#19979;&#21010;&#32447;&#10;\&#123;\&#125; &#22823;&#25324;&#21495;&#10;\[\] &#20013;&#25324;&#21495;&#10;\(\) &#23567;&#25324;&#21495;&#10;\# &#20117;&#21495;&#10;\+ &#21152;&#21495;&#10;\- &#20943;&#21495;&#10;\. &#33521;&#25991;&#21477;&#21495;&#10;\! &#24863;&#21497;&#21495;</span><br></pre></td></tr></table></figure>
+<h2 id="#其它">#其它</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#25991;&#26412;&#20013;&#21487;&#30452;&#25509;&#29992;html&#26631;&#31614;&#65292;&#20294;&#26159;&#35201;&#21069;&#21518;&#21152;&#19978;&#31354;&#34892;&#12290;</span><br></pre></td></tr></table></figure>
+<h2 id="#one_more_thing：表格">#one more thing：表格</h2><figure class="highlight plain"><figcaption><span>Markdown的扩展语法，hexo不支持</span></figcaption><table><tr><td class="code"><pre><span class="line">|| *Year* || *Temperature (low)* || *Temperature (high)* ||&#10;|| 1900 || -10 || 25 ||&#10;|| 1910 || -15 || 30 ||&#10;|| 1920 || -10 || 32 ||</span><br></pre></td></tr></table></figure>
+<h2 id="#结束语">#结束语</h2><p>以上基本够用，更详尽的请<a href="http://wowubuntu.com/markdown" target="_blank" rel="external">参考文献10</a>，另外Markdown+R可以干大事，请<a href="http://jianshu.io/p/PpDNMG" target="_blank" rel="external">参考文献7</a>。</p>
+<h2 id="#参考文献">#参考文献</h2><ol>
+<li><a href="http://lutaf.com/markdown-simple-usage.htm" target="_blank" rel="external">Markdown 简明语法</a></li>
+<li><a href="http://www.ituring.com.cn/article/3452" target="_blank" rel="external">Markdown之表格的处理</a></li>
+<li><a href="http://jianshu.io/p/q81RER" target="_blank" rel="external">献给写作者的 Markdown 新手指南</a></li>
+<li><a href="http://www.zybuluo.com/mdeditor" target="_blank" rel="external">Cmd Markdown 编辑阅读器</a></li>
+<li><a href="http://www.ituring.com.cn/article/504" target="_blank" rel="external">Markdown语法说明（详解版）</a></li>
+<li><a href="http://www.ituring.com.cn/article/23" target="_blank" rel="external">怎样使用Markdown</a></li>
+<li><strong><a href="http://jianshu.io/p/PpDNMG" target="_blank" rel="external">Markdown写作浅谈</a></strong></li>
+<li><a href="http://equation85.github.io/blog/markdown-examples" target="_blank" rel="external">Markdown语法示例</a></li>
+<li><a href="http://tool.oschina.net/commons?type=2" target="_blank" rel="external">HTML转义字符对照表</a></li>
+<li><strong><a href="http://wowubuntu.com/markdown" target="_blank" rel="external">Markdown 语法说明(简体中文版)</a></strong></li>
+</ol>
+
+    
+  </div>
+  <footer>
+    
+      
+  
+  <div class="categories">
+    <a href="/categories/default/">default</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>, <a href="/tags/markdown/">markdown</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+<!-- wumii Button BEGIN -->
+<div style="margin:0px auto; padding-left:23px; text-align:center;">
+	
+	
+
+	<script type="text/javascript" id="wumiiRelatedItems"></script>
+	<script type="text/javascript">
+	    var wumiiPermaLink = "http://ibruce.info/2013/11/26/markdown/"; //请用代码生成文章永久的链接
+	    var wumiiTitle = "markdown简明语法"; //请用代码生成文章标题
+	    var wumiiTags = "hexo, markdown"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiCategories = ["default"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+	    var wumiiSitePrefix = "http://ibruce.info/";
+	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+	</script>
+	<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+	<!--
+	<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+	    <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+	</a>
+	-->
+</div>
+<!-- wumii Button END -->
+
+<!-- UJian Button BEGIN -->
+	<div class="ujian-hook" style="padding-left: 17px;"></div>
+	<script type="text/javascript">var ujian_config = {num:6,picSize:83,textHeight:45};</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1893018"></script>
+<!-- UJian Button END -->
+
+<!-- baidu tuijian BEGIN -->
+<!-- <div id="hm_t_22763"></div> -->
+<!-- baidu tuijian BEGIN -->
+<!--	<div style="padding-left: 17px;"> -->
+<!--		<script src="http://wm.lrswl.com/page/s.php?s=103186&w=640&h=60"></script> -->
+<!--	</div> -->
+
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="markdown简明语法">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget tag first">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/big-data/">big data</a><small>1</small></li>
+  
+    <li><a href="/categories/cloud/">cloud</a><small>1</small></li>
+  
+    <li><a href="/categories/default/">default</a><small>8</small></li>
+  
+    <li><a href="/categories/distribution/">distribution</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>10</small></li>
+  
+    <li><a href="/categories/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/olap/">olap</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+  <!-- 
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  -->
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/04/busuanzi/">不蒜子</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/03/mongodb3-auth/">mongoDB 3.0 安全权限访问控制</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/02/hello-colossus/">微服务框架 Colossus</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/23/zookeeper/">ZooKeeper 简介</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/20/hello-akka/">Akka 快速入门</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/16/a-small-point-of-interface-design/">对接口设计的一个小看法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/hello-spray/">通过 Spray 创建简单的 Restful Http Server</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/turning-point-2014/">转折点</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/14/caipus/">微菜谱</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="theme-copyright">
+ &copy; 2013 - 2016 <a href="/">bruce</a>
+ | 
+ produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
+ <font id="counter"></font>
+ <span id="busuanzi_container_site_pv"><a href="//busuanzi.ibruce.info" target="_blank"><span id="busuanzi_value_site_pv"></a></span></span>
+ </div>
+<!--
+<div class="copyright">
+ <font id="counter"></font>
+ 版权所有
+  
+  &copy; 2013-2016 <a href="/">bruce</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="http://heroicyang.com" target="_blank">Heroic Yang</a>
+   | 
+  Redesign by <a href="http://bruce-sha.github.io" target="_blank">Bruce Sha</a>
+</div>
+-->
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<script src="/js/counter.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'buru' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

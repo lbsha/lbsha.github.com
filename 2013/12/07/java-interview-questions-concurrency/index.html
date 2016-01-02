@@ -1,0 +1,461 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Java并发编程经典题目 | 不如</title>
+  <meta name="author" content="bruce">
+  
+  <meta name="description" content="java concurrent programming 并发编程面试题目集锦">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="Java并发编程经典题目"/>
+  <meta property="og:site_name" content="不如"/>
+
+  <link rel="alternate" href="/atom.xml" title="不如" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- 被墙 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <script src="//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46161632-1', 'ibruce.info');
+  ga('send', 'pageview');
+</script>
+
+  
+<!-- 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7034d648d7899a7a50561a179216abaa' type='text/javascript'%3E%3C/script%3E"));
+</script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7034d648d7899a7a50561a179216abaa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  <meta property="wb:webmaster" content="e9d0b5d9cad42cf4" />
+  <meta property="qc:admins" content="214253361253561667" />
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">不如</a></h1>
+  <p><a href="/">码农，程序猿，未来的昏析狮</a></p>
+</div>
+<!--
+<div>
+<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+ <input style="width:60px;background-color:transparent;text-align:center; border-width:0px;border-top-style: none; border-right-style: none; border-left-style: none; border-bottom-style: none; "  type="search" name="q" id="search" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="20" placeholder="s" />
+ <input type="hidden" name="q" value="site:ibruce.info">
+</form>
+</div>
+-->
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/reading">Reading</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-12-07T15:07:45.000Z"><a href="/2013/12/07/java-interview-questions-concurrency/">Dec 7 2013</a></time>
+    
+    
+  
+    <h1 class="title">Java并发编程经典题目</h1>
+  
+
+  </header>
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      
+        <img src="http://bruce.u.qiniudn.com/2013/12/07/java-interview-questions-concurrency/concurrency.jpg">
+      
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="entry">
+    
+      <p><strong>本文尚未完成，请耐心等待。</strong></p>
+<a id="more"></a>
+<blockquote>
+<p>以下问题是网络搜集，答案则是我个人回答，由于本人水平非常有限，如有错误，恳请指出。</p>
+</blockquote>
+<hr>
+<h2 id="第一部分：理论篇">第一部分：理论篇</h2><hr>
+<p>#多线程</p>
+<hr>
+<p>###Q：java中有几种方法可以创建一个线程？</p>
+<p><strong><a href="http://bruce-sha.github.io/2013/12/17/how-many-ways-to-create-a-thread-in-java/" target="_blank" rel="external">how many ways to create a thread in java</a></strong></p>
+<p>###Q：如何停止一个正在运行的线程？</p>
+<p><strong><a href="http://bruce-sha.github.io/2013/12/19/how-to-stop-a-java-thread/" target="_blank" rel="external">how to stop a java thread</a></strong></p>
+<p>###Q：notify()和notifyAll()有什么区别？</p>
+<p>notify()是唤醒一个线程。只唤醒一个。</p>
+<p>notifyAll()是唤醒全部线程，但是注意是一个个唤醒，唤醒一个再唤下一个。</p>
+<p>随机唤醒和唤醒全部。</p>
+<p>###Q：sleep()和 wait()有什么区别？</p>
+<p>定时等待和在监视器上等待，不同范畴。</p>
+<p>###Q：什么是Daemon线程？它有什么意义？</p>
+<p>守护线程，不需要上层逻辑介入的后台线程 ，比如GC。</p>
+<p>###Q：java如何实现多线程之间的通讯和协作？</p>
+<p>中断和 直接或间接访问对方实例。</p>
+<p><a href="http://android.group.iteye.com/group/wiki/3083-java-sync-communication" target="_blank" rel="external">线程同步(使用了synchronized)和线程通讯(使用了wait,notify)</a></p>
+<p>#锁</p>
+<hr>
+<p>###Q：什么是可重入锁（ReentrantLock）？</p>
+<p>更高级的锁，附加更多特性。</p>
+<p>###Q：当一个线程进入某个对象的一个synchronized的实例方法后，其它线程是否可进入此对象的其它方法？<br>可进入非synchronized方法。</p>
+<p>###Q：synchronized和java.util.concurrent.locks.Lock的异同？</p>
+<p>后者具有更丰富的特性。</p>
+<p>ReentrantLock 相对于固有锁synchronized，同样是可重入的，在某些vm版本上提供了比固有锁更高的性能，提供了更丰富的锁特性，比如可中断的锁，可等待的锁，平等锁以及非块结构的加锁。从代码上尽量用固有锁，vm会对固有锁做一定的优化，并且代码可维护和稳定。只有在需要ReentrantLock的一些特性时，可以考虑用ReentrantLock实现。</p>
+<p>ReentrantLock 和synchronized比较：<br>性能上：<br>synchronized在Java5.0性能大胜synchronized，Java 6中synchronized 略有胜出—-摘自《java并发编程实战》（13.4）<br>当时我说synchronized在今后的JVM（JIT）优化的可能性比ReentrantLock大，回来后我翻翻资料，发现在ReentrantLock 和synchronized还真有一些需要了解的知识，所以特别整理下发给大家。<br>1.为什么JUC框架出现LOCK？<br>ReentrantLock并不是替代synchronized的方法，而是当内置锁不适用时，作为一种可选的高级功能。<br>2.那么Synchronized有哪些缺点？<br>①. 只有一个condition与锁相关联，这个condition是什么？就是synchronized对针对的对象锁。<br>②. synchronized无法中断一个正在等待获得锁的线程，也即多线程竞争一个锁时，其余未得到锁的线程只能不停的尝试获得锁，而不能中断。这种情况对于大量的竞争线程会造成性能的下降等后果。<br>可见ReentrantLock 是对synchronized补充。<br>3.我们面对ReentrantLock和synchronized改如何选择？<br>Synchronized相比Lock，为许多开发人员所熟悉，并且简洁紧凑，如果现有程序已经使用了内置锁，那么尽量保持代码风格统一，尽量不引入Lock，避免两种机制混用，容易令人困惑，也容易发生错误。<br>在Synchronized无法满足需求的情况下，Lock可以作为一种高级工具，这些功能包括“可定时的、可轮询的与可中断的锁获取操作，公平队列，以及非块结构的锁”否则还是优先使用Synchronized。<br>最后，未来更可能提升Synchronized而不是Lock的性能，因为Synchronized是JVM的内置属性，他能执行一些优化，例如对线程封闭的锁对象的锁消除优化，通过增加锁的粒度来消除内置锁的同步，而如果基于类库的锁来实现这些功能，则可能性不大。—以上建议摘自《java并发编程实战》（13.4）</p>
+<p>###Q：乐观锁和悲观锁的理解及如何实现，有哪些实现方式？<br>乐观锁是假设我已经拿到锁，悲观所是我必须拿到锁，前者用CAS，后者用mutex。</p>
+<p>#并发框架</p>
+<hr>
+<p>###Q：SynchronizedMap和ConcurrentHashMap有什么区别？<br>后者具有更高的并发。</p>
+<p>###Q：CopyOnWriteArrayList可以用于什么应用场景？</p>
+<p>多读少写。</p>
+<p>#线程安全</p>
+<hr>
+<p>###Q：什么叫线程安全？servlet是线程安全吗?<br>在多线程调用情况下，依然表现正常。</p>
+<p>###Q：同步有几种实现方法？<br>锁和volatile。</p>
+<p>###Q：volatile有什么用？能否用一句话说明下volatile的应用场景？<br>保持可见性，在1写N读的情况下比较适合。</p>
+<p>###Q：请说明下java的内存模型及其工作流程。</p>
+<p>JVM的内存模型可简单理解为，有一块整个JVM共享的主内存，每个线程有自己的变量复本，线程持有的复本与主内存之间使用内部的数据协议，再具体可参考一些blog和周志明的深入理解JVM12章</p>
+<p>###Q：为什么代码会重排序？</p>
+<p>编译器旨在提升性能。</p>
+<p>#并发容器和框架</p>
+<hr>
+<p>###Q：如何让一段程序并发的执行，并最终汇总结果？</p>
+<ol>
+<li>使用CyclicBarrier 和CountDownLatch都可以<br>使用CyclicBarrier 在多个关口处将多个线程执行结果汇总<br>CountDownLatch 在各线程执行完毕后向总线程汇报结果</li>
+</ol>
+<p>1 可以用join，或者条件变量</p>
+<p>1.CyclicBarrier CountDownLatch join</p>
+<p>a.切分问题。<br>b.每个线程执行的结果存入一个容器。<br>c.汇总结果，做进一步处理。</p>
+<p>看看FutureTask<br>Future这个只是一个线程池吧，特殊点是它可以获取到任务的一个返回结果。</p>
+<p>Fork/Join值得关注</p>
+<p>###Q：如何合理的配置java线程池？如CPU密集型的任务，基本线程池应该配置多大？IO密集型的任务，基本线程池应该配置多大？用有界队列好还是无界队列好？任务非常多的时候，使用什么阻塞队列能获取最好的吞吐量？</p>
+<ol>
+<li>配置线程池时CPU密集型任务可以少配置线程数，大概和机器的cpu核数相当，可以使得每个线程都在执行任务<br>IO密集型时，大部分线程都阻塞，故需要多配置线程数，2*cpu核数<br>有界队列和无界队列的配置需区分业务场景，一般情况下配置有界队列，在一些可能会有爆发性增长的情况下使用无界队列。<br>任务非常多时，使用非</li>
+</ol>
+<p>2 CPU密集型的CPU个数+1，IO密集型的需要调优，看特定环境，处理快的可以是无界，linkedBlockingQueue吧<br>阻塞队列使用cas操作替代锁可以获得好的吞吐量。</p>
+<ol>
+<li>配置线程池时CPU密集型任务可以少配置线程数，大概和机器的cpu核数相当，可以使得每个线程都在执行任务<br>IO密集型时，大部分线程都阻塞，故需要多配置线程数，2*cpu核数 有界队列好，无界队列不可控，有可能导致内存不够 synchronousQueue吞吐率最高</li>
+</ol>
+<p>###Q：如何使用阻塞队列实现一个生产者和消费者模型？请写代码。</p>
+<p>3 生产者负责notify，消费者需要wait，条件是有无元素</p>
+<p>3 BlockingQueue put take</p>
+<p>###Q：多读少写的场景应该使用哪个并发容器，为什么使用它？比如你做了一个搜索引擎，搜索引擎每次搜索前需要判断搜索关键词是否在黑名单里，黑名单每天更新一次。</p>
+<ol>
+<li>CopyOnWriteArrayList这个容器适用于多读少写…读写并不是在同一个对象上。在写时会大面积复制数组，所以写的性能差，在写完成后将读的引用改为执行写的对象</li>
+</ol>
+<p>4 Copyonwrite或者CAS型<br>4CopyOnWriteArrayList这个容器适用于多读少写 读的时候可以不用加锁</p>
+<p>#Java中的锁</p>
+<hr>
+<p>###Q：如何实现乐观锁（CAS）？如何避免ABA问题？</p>
+<ol>
+<li>读取内存值<br>比较内存值和期望值<br>替换内存值为要替换值</li>
+</ol>
+<p>带参数版本来避免aba问题，在读取和替换的时候进行判定版本是否一致</p>
+<p>1 利用CPU的cas命令，避免ABA需要使用类似于version，AtomicStampedReference也可以</p>
+<p>1 compareAndSet AtomicStampedReference</p>
+<p>###Q：读写锁可以用于什么应用场景？</p>
+<ol>
+<li>多读少写，读写锁支持多个读操作并发执行，写操作只能由一个线程来操作</li>
+</ol>
+<p>2 读多写少<br>2多读少写</p>
+<p>###Q：什么时候应该使用可重入锁？</p>
+<ol>
+<li>重入锁指的是在某一个线程中可以多次获得同一把锁，在线程中多次操作有锁的方法。</li>
+</ol>
+<p>3 需要使用除了内置锁以外的锁特性，比如可中断，可等待的锁，平等锁等</p>
+<p>3可轮询，可中断，定时，非块，公平队列等高级特性时候使用可重入锁</p>
+<p>###Q：什么场景下可以使用volatile替换synchronized？</p>
+<ol>
+<li>只需要保证共享资源的可见性的时候可以使用volatile替代，synchronized保证可操作的原子性一致性和可见性。<br>volatile适用于新值不依赖于就值的情形。</li>
+</ol>
+<p>4 1写N读</p>
+<p>4 单线程修改变量或不依赖当前值，且不与其他变量构成不变性条件时候使用volatile</p>
+<p>#并发工具</p>
+<hr>
+<p>###Q：如何实现一个流控程序，用于控制请求的调用次数？</p>
+<p>1 fixed的线程池</p>
+<hr>
+<h2 id="第二部分：实战篇">第二部分：实战篇</h2><hr>
+<p><a href="http://www.importnew.com/1428.html" target="_blank" rel="external">Java多线程面试问题集锦</a></p>
+<p>几个创建线程的写法：</p>
+<ul>
+<li>继承Thread类</li>
+<li>实现Runnable接口</li>
+<li>使用Executor framework (这会创建一个线程池)</li>
+</ul>
+<p>问题：列举几种不同的创建线程的方法.<br>问题：推荐通过哪种方式创建线程，为什么?<br>问题：简要的说明一下高级线程状态.<br>问题：yield和sleeping有何区别，sleep()和wait()有何区别？<br>问题：为什么为了线程安全而锁定一个方法或者一个代码块称为“同步”而不是“锁定”或者“被锁定”<br>问题：线程如何进行的同步处理？你可以列举出那些同步级别？同步方法和代码块如何区别？</p>
+<p><a href="http://www.jfox.info/tag/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%9D%A2%E8%AF%95" target="_blank" rel="external">Java多线程面试</a><br><a href="http://blog.sina.com.cn/s/blog_5f597b690101cfej.html" target="_blank" rel="external">java多线程面试题</a><br><a href="http://mouselearnjava.iteye.com/blog/1956682" target="_blank" rel="external">http://mouselearnjava.iteye.com/blog/1956682</a><br><a href="http://my.oschina.net/u/176507/blog/137880" target="_blank" rel="external">http://my.oschina.net/u/176507/blog/137880</a><br><a href="http://yueyemaitian.iteye.com/blog/1387901" target="_blank" rel="external">http://yueyemaitian.iteye.com/blog/1387901</a></p>
+<p><a href="http://tutorials.jenkov.com/java-concurrency/blocking-queues.html" target="_blank" rel="external">http://tutorials.jenkov.com/java-concurrency/blocking-queues.html</a></p>
+<p><strong>参考文献：</strong><br><a href="http://ifeve.com/javaconcurrency-interview-Q-base" target="_blank" rel="external">Java并发面试题(一)基础</a><br><a href="http://ifeve.com/javaconcurrency-interview-Q-combat" target="_blank" rel="external">Java并发面试题(二)实战</a></p>
+<p><a href="http://ifeve.com/java-threadpool/" target="_blank" rel="external">Java线程池的分析和使用</a><br><a href="http://ifeve.com/thread-pools/" target="_blank" rel="external">Java线程池</a>（第二题）<br><a href="http://ifeve.com/atomic-operation/" target="_blank" rel="external">原子操作的实现原理</a>  （锁 第一题）<br><a href="http://ifeve.com/read-write-locks/" target="_blank" rel="external">Java中的读写锁</a>（锁 第二题）<br><a href="http://ifeve.com/concurrency-practice-1/" target="_blank" rel="external">如何设计客户端流控程序</a> （并发工具 第一题）</p>
+
+    
+  </div>
+  <footer>
+    
+      
+  
+  <div class="categories">
+    <a href="/categories/java/">java</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/concurrency/">concurrency</a>, <a href="/tags/interview/">interview</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+<!-- wumii Button BEGIN -->
+<div style="margin:0px auto; padding-left:23px; text-align:center;">
+	
+	
+
+	<script type="text/javascript" id="wumiiRelatedItems"></script>
+	<script type="text/javascript">
+	    var wumiiPermaLink = "http://ibruce.info/2013/12/07/java-interview-questions-concurrency/"; //请用代码生成文章永久的链接
+	    var wumiiTitle = "Java并发编程经典题目"; //请用代码生成文章标题
+	    var wumiiTags = "concurrency, interview"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiCategories = ["java"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+	    var wumiiSitePrefix = "http://ibruce.info/";
+	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+	</script>
+	<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+	<!--
+	<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+	    <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+	</a>
+	-->
+</div>
+<!-- wumii Button END -->
+
+<!-- UJian Button BEGIN -->
+	<div class="ujian-hook" style="padding-left: 17px;"></div>
+	<script type="text/javascript">var ujian_config = {num:6,picSize:83,textHeight:45};</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1893018"></script>
+<!-- UJian Button END -->
+
+<!-- baidu tuijian BEGIN -->
+<!-- <div id="hm_t_22763"></div> -->
+<!-- baidu tuijian BEGIN -->
+<!--	<div style="padding-left: 17px;"> -->
+<!--		<script src="http://wm.lrswl.com/page/s.php?s=103186&w=640&h=60"></script> -->
+<!--	</div> -->
+
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="Java并发编程经典题目">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget tag first">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/big-data/">big data</a><small>1</small></li>
+  
+    <li><a href="/categories/cloud/">cloud</a><small>1</small></li>
+  
+    <li><a href="/categories/default/">default</a><small>8</small></li>
+  
+    <li><a href="/categories/distribution/">distribution</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>10</small></li>
+  
+    <li><a href="/categories/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/olap/">olap</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+  <!-- 
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  -->
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/04/busuanzi/">不蒜子</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/03/mongodb3-auth/">mongoDB 3.0 安全权限访问控制</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/02/hello-colossus/">微服务框架 Colossus</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/23/zookeeper/">ZooKeeper 简介</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/20/hello-akka/">Akka 快速入门</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/16/a-small-point-of-interface-design/">对接口设计的一个小看法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/hello-spray/">通过 Spray 创建简单的 Restful Http Server</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/turning-point-2014/">转折点</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/14/caipus/">微菜谱</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="theme-copyright">
+ &copy; 2013 - 2016 <a href="/">bruce</a>
+ | 
+ produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
+ <font id="counter"></font>
+ <span id="busuanzi_container_site_pv"><a href="//busuanzi.ibruce.info" target="_blank"><span id="busuanzi_value_site_pv"></a></span></span>
+ </div>
+<!--
+<div class="copyright">
+ <font id="counter"></font>
+ 版权所有
+  
+  &copy; 2013-2016 <a href="/">bruce</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="http://heroicyang.com" target="_blank">Heroic Yang</a>
+   | 
+  Redesign by <a href="http://bruce-sha.github.io" target="_blank">Bruce Sha</a>
+</div>
+-->
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<script src="/js/counter.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'buru' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

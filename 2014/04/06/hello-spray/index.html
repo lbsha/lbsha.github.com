@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>通过 Spray 创建简单的 Restful Http Server | 不如</title>
+  <meta name="author" content="bruce">
+  
+  <meta name="description" content="Spray Restful Http Server 例子，spray can，spray servlet，sbt">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="通过 Spray 创建简单的 Restful Http Server"/>
+  <meta property="og:site_name" content="不如"/>
+
+  <link rel="alternate" href="/atom.xml" title="不如" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- 被墙 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <script src="//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46161632-1', 'ibruce.info');
+  ga('send', 'pageview');
+</script>
+
+  
+<!-- 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7034d648d7899a7a50561a179216abaa' type='text/javascript'%3E%3C/script%3E"));
+</script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7034d648d7899a7a50561a179216abaa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  <meta property="wb:webmaster" content="e9d0b5d9cad42cf4" />
+  <meta property="qc:admins" content="214253361253561667" />
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">不如</a></h1>
+  <p><a href="/">码农，程序猿，未来的昏析狮</a></p>
+</div>
+<!--
+<div>
+<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+ <input style="width:60px;background-color:transparent;text-align:center; border-width:0px;border-top-style: none; border-right-style: none; border-left-style: none; border-bottom-style: none; "  type="search" name="q" id="search" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="20" placeholder="s" />
+ <input type="hidden" name="q" value="site:ibruce.info">
+</form>
+</div>
+-->
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/reading">Reading</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-04-06T09:35:19.000Z"><a href="/2014/04/06/hello-spray/">Apr 6 2014</a></time>
+    
+    
+  
+    <h1 class="title">通过 Spray 创建简单的 Restful Http Server</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>好久没写文章，实在太忙。最近我在项目中，搭建了很多小的零散的 Restful 服务，各个服务之间通过rest接口调用，相互协作。</p>
+<p>Java出身的码农，动辄就是Tomcat、Spring，RestEasy、Hibernate、JPA、Jackson、HttpClient… 这些巨无霸非常臃肿，其实我的项目就是一个简简单单的Rest服务，请求Json参数 → 调用资源接口 → 返回Json数据，还好有Spray！</p>
+<p>使用Scala系的工具，无论是体重上（包的大小）还是身高上（代码的长度），都能极大的减负，同时提升逼格和优雅度。下面介绍一个简单的Restful Http Server的开发示例。</p>
+<p>首先安装 <a href="http://www.scala-sbt.org" target="_blank" rel="external">SBT</a>（简单理解为scala下的maven），安装方法参考 <a href="http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html" target="_blank" rel="external">sbt documentation - setup</a>。</p>
+<p>win7环境下，直接下载 <a href="http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.1/sbt.zip" target="_blank" rel="external">0.13.1-zip包</a> 解压到c:\sbt，配置SBT_HOME到path，cmd中敲入sbt检查有无成功，%SBT_HOME%\conf\sbtconfig.txt中可以配置启动参数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Set the java args to high&#10;-Xmx1024M&#10;-XX:MaxPermSize=512m&#10;-XX:ReservedCodeCacheSize=256m&#10;&#10;# Set the extra SBT options&#10;-Dsbt.log.format=true&#10;-Dfile.encoding=ISO-8859-1&#10;-Dsbt.boot.directory=H:/sbt/boot/ &#10;-Dsbt.ivy.home=H:/sbt/</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>1、-Dfile.encoding 配置成 ISO-8859-1 而不是 UTF-8，是因为在 cmd 下按键盘的上下键，无法切换历史输入的sbt命令，显示全是乱码，这让我很不爽，只好忍痛ISO啦。<br>2、-Dsbt.boot.directory 和 -Dsbt.ivy.home 是为将sbt自动下载的jar放到非系统盘，以免统一管理，这个看个人爱好。</p>
+</blockquote>
+<p>下面跑一个官方的例子，从Spray的官方文档 <a href="http://spray.io/introduction/getting-started" target="_blank" rel="external">Getting Started</a> 上，找到 <a href="https://github.com/spray/spray-template" target="_blank" rel="external">spray-template</a>，在branch中下载1.3版的 <a href="http://github.com/spray/spray-template/tree/on_spray-can_1.3" target="_blank" rel="external">spray-can sample</a>。<br>解压，执行sbt命令。在浏览器运行 <a href="http://127.0.0.1:8080" target="_blank" rel="external">http://127.0.0.1:8080</a> 看结果。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sbt&#10;compile&#10;run</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>build.sbt 已配置 Revolver.settings，可使用命令：re-start和re-stop，详细参考 <a href="http://github.com/spray/sbt-revolver" target="_blank" rel="external">sbt-revolver</a>。</p>
+</blockquote>
+<p>瞄一下 <a href="https://github.com/spray/spray-template/blob/on_spray-can_1.3/src/main/scala/com/example/MyService.scala" target="_blank" rel="external">src/main/scala/com/example/MyService.scala</a>，可以看到只有简单的。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">trait MyService extends HttpService &#123;&#10;  val myRoute =&#10;    path(&#34;&#34;) &#123;&#10;      get &#123;&#10;        respondWithMediaType(`text/html`) &#123;&#10;          complete &#123;&#10;            &#60;html&#62;&#10;              &#60;body&#62;&#10;                &#60;h1&#62;Say hello to &#60;i&#62;spray-routing&#60;/i&#62; on &#60;i&#62;spray-can&#60;/i&#62;!&#60;/h1&#62;&#10;              &#60;/body&#62;&#10;            &#60;/html&#62;&#10;          &#125;&#10;        &#125;&#10;      &#125;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Boot方法启动一个Actor并绑定到8080端口。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">object Boot extends App &#123;&#10;  // we need an ActorSystem to host our application in&#10;  implicit val system = ActorSystem(&#34;on-spray-can&#34;)&#10;  // create and start our service actor&#10;  val service = system.actorOf(Props[MyServiceActor], &#34;demo-service&#34;)&#10;  implicit val timeout = Timeout(5.seconds)&#10;  // start a new HTTP server on port 8080 with our service actor as the handler&#10;  IO(Http) ? Http.Bind(service, interface = &#34;localhost&#34;, port = 8080)&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 <a href="http://github.com/spray/spray-template/tree/on_jetty_1.3" target="_blank" rel="external">spray-servlet on jetty</a> 分支下，有部署到servlet容器的工程模板代码。另外在 <a href="http://github.com/spray/spray" target="_blank" rel="external">Spray</a> 项目的源代码下，也有一些 <a href="http://github.com/spray/spray/tree/master/examples" target="_blank" rel="external">example</a>，找到 <a href="http://github.com/spray/spray/tree/master/examples/spray-can/simple-http-server" target="_blank" rel="external">spray-can/simple-http-server</a>,也可以试着跑一下，其中的 <a href="https://github.com/spray/spray/blob/master/examples/spray-can/simple-http-server/src/main/scala/spray/examples/DemoService.scala" target="_blank" rel="external">DemoService.scala</a> 例子内容比较多。</p>
+<blockquote>
+<p>更多玩法参考 <a href="http://github.com/spray/spray/wiki/Example-Projects" target="_blank" rel="external">wiki example-projects</a> 或 <a href="http://spray.io/documentation/1.2.1/spray-can/" target="_blank" rel="external">document spray-can</a>。</p>
+</blockquote>
+<p>又要忙项目，推荐两个文章吧，自己写 spray 工程可以参考一下：<a href="http://sysgears.com/articles/building-rest-service-with-scala" target="_blank" rel="external">Building REST Service with Scala</a>、<a href="http://www.cakesolutions.net/teamblogs/2012/07/29/api-first-rest-in-akka-and-spray" target="_blank" rel="external">API first REST in Akka and Spray</a>、<a href="https://github.com/mhamrah/stockman" target="_blank" rel="external">stockman</a>。</p>
+<!-- 
+参考文档
+* [用 Spray 建立一個簡單的 RESTful API Server](http://swind.code-life.info/posts/build-restful-api-server-by-spray.html)
+-->
+    
+  </div>
+  <footer>
+    
+      
+  
+  <div class="categories">
+    <a href="/categories/scala/">scala</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/akka/">akka</a>, <a href="/tags/sbt/">sbt</a>, <a href="/tags/scala/">scala</a>, <a href="/tags/spray/">spray</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+<!-- wumii Button BEGIN -->
+<div style="margin:0px auto; padding-left:23px; text-align:center;">
+	
+	
+
+	<script type="text/javascript" id="wumiiRelatedItems"></script>
+	<script type="text/javascript">
+	    var wumiiPermaLink = "http://ibruce.info/2014/04/06/hello-spray/"; //请用代码生成文章永久的链接
+	    var wumiiTitle = "通过 Spray 创建简单的 Restful Http Server"; //请用代码生成文章标题
+	    var wumiiTags = "akka, sbt, scala, spray"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiCategories = ["scala"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+	    var wumiiSitePrefix = "http://ibruce.info/";
+	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+	</script>
+	<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+	<!--
+	<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+	    <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+	</a>
+	-->
+</div>
+<!-- wumii Button END -->
+
+<!-- UJian Button BEGIN -->
+	<div class="ujian-hook" style="padding-left: 17px;"></div>
+	<script type="text/javascript">var ujian_config = {num:6,picSize:83,textHeight:45};</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1893018"></script>
+<!-- UJian Button END -->
+
+<!-- baidu tuijian BEGIN -->
+<!-- <div id="hm_t_22763"></div> -->
+<!-- baidu tuijian BEGIN -->
+<!--	<div style="padding-left: 17px;"> -->
+<!--		<script src="http://wm.lrswl.com/page/s.php?s=103186&w=640&h=60"></script> -->
+<!--	</div> -->
+
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="通过 Spray 创建简单的 Restful Http Server">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget tag first">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/big-data/">big data</a><small>1</small></li>
+  
+    <li><a href="/categories/cloud/">cloud</a><small>1</small></li>
+  
+    <li><a href="/categories/default/">default</a><small>8</small></li>
+  
+    <li><a href="/categories/distribution/">distribution</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>10</small></li>
+  
+    <li><a href="/categories/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/olap/">olap</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+  <!-- 
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  -->
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/04/busuanzi/">不蒜子</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/03/mongodb3-auth/">mongoDB 3.0 安全权限访问控制</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/02/hello-colossus/">微服务框架 Colossus</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/23/zookeeper/">ZooKeeper 简介</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/20/hello-akka/">Akka 快速入门</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/16/a-small-point-of-interface-design/">对接口设计的一个小看法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/hello-spray/">通过 Spray 创建简单的 Restful Http Server</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/turning-point-2014/">转折点</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/14/caipus/">微菜谱</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="theme-copyright">
+ &copy; 2013 - 2016 <a href="/">bruce</a>
+ | 
+ produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
+ <font id="counter"></font>
+ <span id="busuanzi_container_site_pv"><a href="//busuanzi.ibruce.info" target="_blank"><span id="busuanzi_value_site_pv"></a></span></span>
+ </div>
+<!--
+<div class="copyright">
+ <font id="counter"></font>
+ 版权所有
+  
+  &copy; 2013-2016 <a href="/">bruce</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="http://heroicyang.com" target="_blank">Heroic Yang</a>
+   | 
+  Redesign by <a href="http://bruce-sha.github.io" target="_blank">Bruce Sha</a>
+</div>
+-->
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<script src="/js/counter.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'buru' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

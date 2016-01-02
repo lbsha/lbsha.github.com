@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>对传统BI的思考和吐槽 | 不如</title>
+  <meta name="author" content="bruce">
+  
+  <meta name="description" content="bruce-sha&#39;s blog | ibruce.info | 不如 | buru | java | scala | 架构 高性能 高并发 高可用">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="对传统BI的思考和吐槽"/>
+  <meta property="og:site_name" content="不如"/>
+
+  <link rel="alternate" href="/atom.xml" title="不如" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- 被墙 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <script src="//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46161632-1', 'ibruce.info');
+  ga('send', 'pageview');
+</script>
+
+  
+<!-- 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7034d648d7899a7a50561a179216abaa' type='text/javascript'%3E%3C/script%3E"));
+</script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7034d648d7899a7a50561a179216abaa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  <meta property="wb:webmaster" content="e9d0b5d9cad42cf4" />
+  <meta property="qc:admins" content="214253361253561667" />
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">不如</a></h1>
+  <p><a href="/">码农，程序猿，未来的昏析狮</a></p>
+</div>
+<!--
+<div>
+<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+ <input style="width:60px;background-color:transparent;text-align:center; border-width:0px;border-top-style: none; border-right-style: none; border-left-style: none; border-bottom-style: none; "  type="search" name="q" id="search" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="20" placeholder="s" />
+ <input type="hidden" name="q" value="site:ibruce.info">
+</form>
+</div>
+-->
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/reading">Reading</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-12-31T05:12:52.000Z"><a href="/2013/12/31/thinking-of-bi/">Dec 31 2013</a></time>
+    
+    
+  
+    <h1 class="title">对传统BI的思考和吐槽</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <blockquote>
+<p>声明：本文是用 iPad 写于上班路上，所有观点解释权归本人 Bruce-Sha 所有。在大数据和移动互联网风起云涌的13年末，本文是对自己四年工作的总结，也是对未来的从业思考。</p>
+</blockquote>
+<p>在做了四年BI之后，我对中国式的BI有一些自己的看法。<strong>传统BI厂商早已黔驴技穷，注定穷途末路。</strong></p>
+<p>我在一个国内著名的企业软件厂商工作。其BI团队虽小，但是该做的事情一样都没落下，从静态报表工具到OLAP多维分析，从建模工具语义层到互动式仪表板，从嵌入式组件到独立门户，从桌面软件到移动应用。别人有的产品他基本都做过，虽然每个产品最后难逃不再继续研发不再继续销售的命运。而每到年底他们思考的都是明年再新做个什么？</p>
+<a id="more"></a>
+<p>不客气的说，领导水平不足，产品定位不清，导致浪费无数的资源，但从没有人对失败的产品负责，不知道这是谁的悲哀。一个真心想做好产品的人，即使再愚蠢，在行业近十年之久，不可能看不到一丁点趋势和前景。</p>
+<p>第一、BI都是低端的报表产品。</p>
+<p>目前的<strong>商业智能</strong>其实是<strong>商业弱智</strong>。BI厂商拿得出手的都是低端的静态报表工具，甚至就连静态报表也做不好。</p>
+<p>差在哪里？产品易用性和用户体验。难用到连研发人员自己都不会用，不想用。思考问题的唯一方式是：看看别家都在做什么呢？模仿别人，实在没得模仿就模仿Excel，我真心不明白，难道报表只能用Excel的方式做吗？BI业界典型的产品之一是IBM Cognos，强大的代表，也是难用的代表。去看看互联网产品的用户界面是多么的简单吧。</p>
+<p>其次对于性能，也就是报表打开的响应速度，根本没人关心。理由是数据量就有这么大，或者Java就应该慢。导致打开很慢，浏览器崩溃。有的产品过于灵活，这是不应该的，导致本来可以通过SQL转移给数据库的计算量，直接转到报表引擎内部，怎能不慢？</p>
+<p>还有一个现象很奇怪，所有人都把能做复杂报表作为卖点之一。我只能说这帮人你们已经被淘汰了，你们会随着复杂报表也就是所谓中国式报表一起淘汰。有人说客户需求是这样的，用户就是需要这个，我想说有能解决的办法就行，你的产品理念不应如此。报表是简单的才是美的。只要做到了体验好，不支持就不支持，微博支持排版吗？但是你可以放个链接，转移出去。</p>
+<p>第二、整个行业毫无创新。</p>
+<p>无论是国内的众多伪BI厂商，还是国际巨头BO、Cognos、BIEE，新秀QV，大家都毫无想像力。比如，移动BI这一方向。</p>
+<p>我把苹果App Store中的接近四十个BI产品安装研究了一天。其思路都异常狭窄，都是在把桌面BI，也就是各种报表和仪表板，用html5的方式从桌面直接搬到移动端。先不说性能，屏幕狭小，只有触摸点击动作，其用户体验是极差的。移动BI怎么能这么做。唯一的理由是别家都有了，我么也得做。这是传统软件企业落后的根本原因，不思考，不创新，一帮行业的老人在颤颤兢兢中等待互联网来革自己的命。</p>
+<p>移动端的特性是随身携带，特点是屏幕小。请不要说平板的屏幕不小，屏幕就像钱永远没有不缺的时候。曾经有个产品总监说，现在电脑屏幕都足够大了，你多加一行工具条怕什么呢，我为某司有这种产监深深的感到羞愧。</p>
+<p>我不敢妄言移动上无BI，或BI与移动无缘，至少可以说，到目前为止我还没有看到移动BI。移动上有BI，但不是目前市面上的产品。</p>
+<p>我的观点。</p>
+<p>BI是一个消化数据的行业，它从不产生数据。简单说，BI就是玩数据，不是被数据玩。BI可以玩财务数据，也可以玩行政数据，BI可以玩结构化数据，也可以玩非结构化数据，BI可以玩数值类型的数据，也可以玩文字类型数据，将来不排除玩图片玩视频。总之，BI是花花公子，什么数据都应该去玩，但只能玩别人绝不能被人玩。</p>
+<p>第一，当前市面上的报表产品已经足够解决一切复杂问题了，而恰恰需要一种超简单的报表，我称之为mini报表，或轻报表。迷你到只有一图一表的程度，图和表本身也是极简的。表可能只有一个或两三个数字，图只有一个条形图。</p>
+<p>第二个问题，传统的报表都是死的，我需要报表有生命。万事万物都是有生命的。何谓有生命？可以跟你聊天说话。可以记得自己之前的状态。报表有通知功能，自己知道自己变了，知道哪个部分不舒服，知道哪个部分好兴奋，完了通知你。他们可以作为传统死报表的守护神，引导你去打开。</p>
+<p>第三，传统报表表现形式过于单一。去看看互联网分析报告，生动的图文并茂，那才是将来的报表。至于严肃的财务报告，我还是那句话，有人有产品已经做得很好了，不需要你重新开发一套。</p>
+<p>第四，传统的东西从来都不是无用的，新兴的要去用好他们。我只是认为传统已经做的足够好了，没有必要再去思考如何重做。</p>
+<p>第五，BI的真正领域是预测。在这个领域里，传统的BI人一定会被淘汰，或者说只具备传统思维的BI人，他们是互联网思维人的天下。这里有各种预测算法，有大数据，有文本分析，这是只会做报表的人想都不用想的，他们也想不到。这里才是真正的BI。</p>
+<p>第六，我总是想，只有个人BI市场打开才是BI的春天，其实人人都有数据，人人都是分析师。</p>
+<p>最后，我想吐槽，一个团队的领导的眼光至关重要，好的方向+合适的人才可以解决一切。有的人你把自己的观点，要做的产品想法告诉他，他仅仅去执行都执行不好，做出来的东西还是跟现有的一样，这就像某人批评刘德华演什么都是刘德华。</p>
+<blockquote>
+<p>对于具体应该做什么产品，我有几个自己的想法，当然在这篇博文中略去。</p>
+</blockquote>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+<!-- wumii Button BEGIN -->
+<div style="margin:0px auto; padding-left:23px; text-align:center;">
+	
+	
+
+	<script type="text/javascript" id="wumiiRelatedItems"></script>
+	<script type="text/javascript">
+	    var wumiiPermaLink = "http://ibruce.info/2013/12/31/thinking-of-bi/"; //请用代码生成文章永久的链接
+	    var wumiiTitle = "对传统BI的思考和吐槽"; //请用代码生成文章标题
+	    var wumiiTags = ""; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiCategories = []; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+	    var wumiiSitePrefix = "http://ibruce.info/";
+	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+	</script>
+	<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+	<!--
+	<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+	    <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+	</a>
+	-->
+</div>
+<!-- wumii Button END -->
+
+<!-- UJian Button BEGIN -->
+	<div class="ujian-hook" style="padding-left: 17px;"></div>
+	<script type="text/javascript">var ujian_config = {num:6,picSize:83,textHeight:45};</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1893018"></script>
+<!-- UJian Button END -->
+
+<!-- baidu tuijian BEGIN -->
+<!-- <div id="hm_t_22763"></div> -->
+<!-- baidu tuijian BEGIN -->
+<!--	<div style="padding-left: 17px;"> -->
+<!--		<script src="http://wm.lrswl.com/page/s.php?s=103186&w=640&h=60"></script> -->
+<!--	</div> -->
+
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="对传统BI的思考和吐槽">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget tag first">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/big-data/">big data</a><small>1</small></li>
+  
+    <li><a href="/categories/cloud/">cloud</a><small>1</small></li>
+  
+    <li><a href="/categories/default/">default</a><small>8</small></li>
+  
+    <li><a href="/categories/distribution/">distribution</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>10</small></li>
+  
+    <li><a href="/categories/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/olap/">olap</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+  <!-- 
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  -->
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/04/busuanzi/">不蒜子</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/03/mongodb3-auth/">mongoDB 3.0 安全权限访问控制</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/02/hello-colossus/">微服务框架 Colossus</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/23/zookeeper/">ZooKeeper 简介</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/20/hello-akka/">Akka 快速入门</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/16/a-small-point-of-interface-design/">对接口设计的一个小看法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/hello-spray/">通过 Spray 创建简单的 Restful Http Server</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/turning-point-2014/">转折点</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/14/caipus/">微菜谱</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="theme-copyright">
+ &copy; 2013 - 2016 <a href="/">bruce</a>
+ | 
+ produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
+ <font id="counter"></font>
+ <span id="busuanzi_container_site_pv"><a href="//busuanzi.ibruce.info" target="_blank"><span id="busuanzi_value_site_pv"></a></span></span>
+ </div>
+<!--
+<div class="copyright">
+ <font id="counter"></font>
+ 版权所有
+  
+  &copy; 2013-2016 <a href="/">bruce</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="http://heroicyang.com" target="_blank">Heroic Yang</a>
+   | 
+  Redesign by <a href="http://bruce-sha.github.io" target="_blank">Bruce Sha</a>
+</div>
+-->
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<script src="/js/counter.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'buru' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

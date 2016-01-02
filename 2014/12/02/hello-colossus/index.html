@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>微服务框架 Colossus | 不如</title>
+  <meta name="author" content="bruce">
+  
+  <meta name="description" content="Colossus 基于 Scala Akka 的 microservice framework，Java 微服务框架DropWizard，Akka Actor ，微服务，高性能，高可扩展，简单易用">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="微服务框架 Colossus"/>
+  <meta property="og:site_name" content="不如"/>
+
+  <link rel="alternate" href="/atom.xml" title="不如" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- 被墙 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <script src="//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46161632-1', 'ibruce.info');
+  ga('send', 'pageview');
+</script>
+
+  
+<!-- 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7034d648d7899a7a50561a179216abaa' type='text/javascript'%3E%3C/script%3E"));
+</script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7034d648d7899a7a50561a179216abaa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  <meta property="wb:webmaster" content="e9d0b5d9cad42cf4" />
+  <meta property="qc:admins" content="214253361253561667" />
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">不如</a></h1>
+  <p><a href="/">码农，程序猿，未来的昏析狮</a></p>
+</div>
+<!--
+<div>
+<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+ <input style="width:60px;background-color:transparent;text-align:center; border-width:0px;border-top-style: none; border-right-style: none; border-left-style: none; border-bottom-style: none; "  type="search" name="q" id="search" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="20" placeholder="s" />
+ <input type="hidden" name="q" value="site:ibruce.info">
+</form>
+</div>
+-->
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/reading">Reading</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-12-02T02:54:28.000Z"><a href="/2014/12/02/hello-colossus/">Dec 2 2014</a></time>
+    
+    
+  
+    <h1 class="title">微服务框架 Colossus</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <blockquote>
+<p>一直认为 Akka 是 JVM 上实现微服务框架的最理想基础设施，现在 Colossus 终于来了！</p>
+</blockquote>
+<p>Tumblr 开源了其用 Scala 实现的微服务框架 Colossus。Colossus 是轻量级的 Scala 微服务 I/O 框架，基于 Akka Actor 实现，项目地址请戳 <a href="http://github.com/tumblr/colossus" target="_blank" rel="external">http://github.com/tumblr/colossus</a>。</p>
+<a id="more"></a>
+<p>Tumblr 面临的最大问题之一是如何架设及扩展不断持续增长的服务平台。这是病得治，微服务架构是药。它将小而专的应用封装成一个特性或组件，抛弃之前那种一个独立的大应用包含整站逻辑的做法。</p>
+<p>微服务框架提供清晰的职责分离，有助于促进建造良好的基础设施，更容易排查缺陷和性能瓶颈。微服务有如此多的优点，但同样也面临挑战，如微服务要易于构建、维护、部署和监控，最重要的是他们需要极高的性能和容错性。单个服务每秒必须响应数万或数十万请求，并且有严格的延迟时间和正常运行时间要求。</p>
+<p>Colossus 是 Tumblr 用来解决如上问题的新框架。他提供一个轻量级、简单的模型，来创建高性能的微服务。他用 scala 实现，基于 NIO 和 Akka Actor。该框架对 Tumblr 内部的服务搭建产生了极大的影响。</p>
+<p>微服务在 Tumblr 不是新鲜事物，过去旧的框架很难写出服务高性能、高稳定性、高可用的服务。构建一个服务，只有少数几个具有领域知识的工程师才能高效完成的。Colossus 的出现改变了这一局面，使得更容易开发快速的容错服务，大大降低了准入门槛。</p>
+<p>Colossus 主要有两个目标： </p>
+<p>###性能</p>
+<p>目前，最重要的目标就是 Colossus 的程序应该至少与直接使用NIO（不使用任何框架）写的程序一样快。Colossus 是设计用来封装那些直接使用 NIO 服务的 I/O 层，目前的已有框架都有性能问题。因此，我们要重新打造一个无损性能的框架。</p>
+<p>微服务架构用来并发处理来自各种客户端大量无状态小请求。Reactor 模型是一种实现方案，他使用单线程的事件循环去处理多元的客户端 TCP 连接。Colossus 提供一个干净的此种模型的实现，保证尽可能少的开销。在很多情况下，并发的代码不容易写，实际上使用Futures 和 Akka actors 是简单高效的，他是真正的并行。</p>
+<p>这种混合 Actor/Reactor 模型保证了所需的性能。我们基准测试达到了数百万QPS，一些生产系统已经处理数千亿的请求，其中 99.99% 延迟都在5毫秒以内。</p>
+<p>###简单</p>
+<p>Colossus 的另一个目标是小而聚焦，低的准入门槛。简单包含两个方面：框架自身简单和框架用起来简单。</p>
+<p>框架自身简单指的是 Colossus 只聚焦于微服务。为此 Colossus 的核心是一个广义的 NIO 包装，我们的大部分工作都在微服务用例，来保证代码的小而简单直接。</p>
+<p>框架用起来简单指的是API层面，这主要用到 Scala 语言的优势。Scala 的最大优点是极具表现力的代码和设计简单的DSL。此外，因为scala重视类型安全性和函数式编程，我们确保 Colossus 尽量集成这些优点。这导致程序猿写应用更简单，更聚焦于业务逻辑而不是代码自身。</p>
+<p>这些原则使得 Colossus 变成 Tumblr 基础设施的基本组成部分，并使 Tumblr 走向一个更加面向服务的体系结构。 Colossus 已经大大改善了 Tumblr 内部构造服务的方式，在生产系统系统中取得巨大的成功。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">libraryDependencies += &#34;com.tumblr&#34; % &#34;colossus_2.11&#34; % &#34;0.5.1-M1&#34;</span><br></pre></td></tr></table></figure>
+<p>a little http server</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> colossus._</span><br><span class="line"><span class="keyword">import</span> service._</span><br><span class="line"><span class="keyword">import</span> protocols.http._</span><br><span class="line"><span class="keyword">import</span> <span class="type">UrlParsing</span>._</span><br><span class="line"><span class="keyword">import</span> <span class="type">HttpMethod</span>._</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Main</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">App</span> &#123;</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">implicit</span> <span class="keyword">val</span> io_system = <span class="type">IOSystem</span>()</span><br><span class="line"></span><br><span class="line">  <span class="type">Service</span>.become[<span class="type">Http</span>](<span class="string">"http-echo"</span>, <span class="number">9000</span>)&#123;</span><br><span class="line">    <span class="keyword">case</span> request @ <span class="type">Get</span> on <span class="type">Root</span> =&gt; request.ok(<span class="string">"Hello world!"</span>)</span><br><span class="line">    <span class="keyword">case</span> request @ <span class="type">Get</span> on <span class="type">Root</span> / <span class="string">"echo"</span> / str =&gt; request.ok(str)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>KeyValExample</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KeyValDB</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Actor</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">import</span> <span class="type">KeyValDB</span>._</span><br><span class="line"></span><br><span class="line">  <span class="keyword">val</span> db = collection.mutable.<span class="type">Map</span>[<span class="type">ByteString</span>, <span class="type">ByteString</span>]()</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> =</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Get</span>(key, promise) =&gt; promise.success(db.get(key))</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Set</span>(key, value, promise) =&gt; &#123;</span><br><span class="line">      db(key) = value</span><br><span class="line">      promise.success(())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">KeyValDB</span> &#123;</span></span><br><span class="line">  <span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Get</span>(</span>key: <span class="type">ByteString</span>, promise: <span class="type">Promise</span>[<span class="type">Option</span>[<span class="type">ByteString</span>]] = <span class="type">Promise</span>())</span><br><span class="line">  <span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Set</span>(</span>key: <span class="type">ByteString</span>, value: <span class="type">ByteString</span>, promise: <span class="type">Promise</span>[<span class="type">Unit</span>] = <span class="type">Promise</span>())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">KeyValExample</span> &#123;</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">start</span>(</span>port: <span class="type">Int</span>)(<span class="keyword">implicit</span> io: <span class="type">IOSystem</span>): <span class="type">ServerRef</span> = &#123;</span><br><span class="line">    <span class="keyword">import</span> io.actorSystem.dispatcher</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> db = io.actorSystem.actorOf(<span class="type">Props</span>[<span class="type">KeyValDB</span>])</span><br><span class="line"></span><br><span class="line">    <span class="type">Service</span>.become[<span class="type">Redis</span>](<span class="string">"key-value-example"</span>, port)&#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="type">Command</span>(<span class="string">"GET"</span>, args) =&gt; &#123;</span><br><span class="line">        <span class="keyword">val</span> dbCmd = <span class="type">KeyValDB</span>.<span class="type">Get</span>(args(<span class="number">0</span>))</span><br><span class="line">        db ! dbCmd</span><br><span class="line">        dbCmd.promise.future.map&#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="type">Some</span>(value) =&gt; <span class="type">BulkReply</span>(value)</span><br><span class="line">          <span class="keyword">case</span> <span class="type">None</span> =&gt; <span class="type">NilReply</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">case</span> <span class="type">Command</span>(<span class="string">"SET"</span>, args) =&gt; &#123;</span><br><span class="line">        <span class="keyword">val</span> dbCmd = <span class="type">KeyValDB</span>.<span class="type">Set</span>(args(<span class="number">0</span>), args(<span class="number">1</span>))</span><br><span class="line">        db ! dbCmd</span><br><span class="line">        dbCmd.promise.future.map&#123;_ =&gt;</span><br><span class="line">          <span class="type">StatusReply</span>(<span class="string">"OK"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>HttpExample</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">HttpExample</span> &#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * Here we're demonstrating a common way of breaking out the business logic</span><br><span class="line">   * from the server setup, which makes functional testing easy</span><br><span class="line">   */</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">HttpRoutes</span>(</span>redis: <span class="type">LocalClient</span>[<span class="type">Command</span>, <span class="type">Reply</span>]) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">invalidReply</span>(</span>reply: <span class="type">Reply</span>) = s<span class="string">"Invalid reply from redis $reply"</span>    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> handler: <span class="type">PartialFunction</span>[<span class="type">HttpRequest</span>, <span class="type">Response</span>[<span class="type">HttpResponse</span>]] = &#123;</span><br><span class="line">      <span class="keyword">case</span> req @ <span class="type">Get</span> on <span class="type">Root</span> =&gt; req.ok(<span class="string">"Hello World!"</span>)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">case</span> req @ <span class="type">Get</span> on <span class="type">Root</span> / <span class="string">"get"</span>  / key =&gt; redis.send(<span class="type">Commands</span>.<span class="type">Get</span>(<span class="type">ByteString</span>(key))).map&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="type">BulkReply</span>(data) =&gt; req.ok(data.utf8String)</span><br><span class="line">        <span class="keyword">case</span> <span class="type">NilReply</span> =&gt; req.notFound(<span class="string">"(nil)"</span>)</span><br><span class="line">        <span class="keyword">case</span> other =&gt; req.error(invalidReply(other))</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">case</span> req @ <span class="type">Get</span> on <span class="type">Root</span> / <span class="string">"set"</span> / key / value =&gt; redis.send(<span class="type">Commands</span>.<span class="type">Set</span>(<span class="type">ByteString</span>(key), <span class="type">ByteString</span>(value))).map&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="type">StatusReply</span>(msg) =&gt; req.ok(msg)</span><br><span class="line">        <span class="keyword">case</span> other =&gt; req.error(invalidReply(other))</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">start</span>(</span>port: <span class="type">Int</span>, redisAddress: <span class="type">InetSocketAddress</span>)(<span class="keyword">implicit</span> system: <span class="type">IOSystem</span>): <span class="type">ServerRef</span> = &#123;</span><br><span class="line">    <span class="type">Service</span>.serve[<span class="type">Http</span>](<span class="string">"http-example"</span>, port)&#123;context =&gt;</span><br><span class="line">      <span class="keyword">val</span> redis = context.clientFor[<span class="type">Redis</span>](redisAddress.getHostName, redisAddress.getPort)</span><br><span class="line">      <span class="comment">//because our routes object has no internal state, we can share it among</span></span><br><span class="line">      <span class="comment">//connections.  If the class did have some per-connection internal state,</span></span><br><span class="line">      <span class="comment">//we'd just create one per connection</span></span><br><span class="line">      <span class="keyword">val</span> routes = <span class="keyword">new</span> <span class="type">HttpRoutes</span>(redis)</span><br><span class="line"></span><br><span class="line">      context.handle&#123;connection =&gt; </span><br><span class="line">        connection.become(routes.handler)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://static.tumblr.com/dbcxhwx/lQ7m5bev3/engineering.png" alt="tumblr colossus"></p>
+<p>参考文献：</p>
+<ol>
+<li><a href="http://engineering.tumblr.com/post/102906359034/colossus-a-new-service-framework-from-tumblr" target="_blank" rel="external">Colossus: A New Service Framework from Tumblr</a></li>
+<li><a href="http://www.jdon.com/46881" target="_blank" rel="external">Tumblr推出开源微服务框架Colossus</a></li>
+<li><a href="http://github.com/tumblr/colossus" target="_blank" rel="external">Github: tumblr colossus</a></li>
+<li><a href="http://tumblr.github.io/colossus/" target="_blank" rel="external">Colossus Page</a></li>
+<li><a href="http://tumblr.github.io/colossus/docs/" target="_blank" rel="external">Colossus Documentation</a> </li>
+</ol>
+
+    
+  </div>
+  <footer>
+    
+      
+  
+  <div class="categories">
+    <a href="/categories/scala/">scala</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/actor/">actor</a>, <a href="/tags/akka/">akka</a>, <a href="/tags/microservice/">microservice</a>, <a href="/tags/scala/">scala</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+<!-- wumii Button BEGIN -->
+<div style="margin:0px auto; padding-left:23px; text-align:center;">
+	
+	
+
+	<script type="text/javascript" id="wumiiRelatedItems"></script>
+	<script type="text/javascript">
+	    var wumiiPermaLink = "http://ibruce.info/2014/12/02/hello-colossus/"; //请用代码生成文章永久的链接
+	    var wumiiTitle = "微服务框架 Colossus"; //请用代码生成文章标题
+	    var wumiiTags = "actor, akka, microservice, scala"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiCategories = ["scala"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+	    var wumiiSitePrefix = "http://ibruce.info/";
+	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+	</script>
+	<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+	<!--
+	<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+	    <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+	</a>
+	-->
+</div>
+<!-- wumii Button END -->
+
+<!-- UJian Button BEGIN -->
+	<div class="ujian-hook" style="padding-left: 17px;"></div>
+	<script type="text/javascript">var ujian_config = {num:6,picSize:83,textHeight:45};</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1893018"></script>
+<!-- UJian Button END -->
+
+<!-- baidu tuijian BEGIN -->
+<!-- <div id="hm_t_22763"></div> -->
+<!-- baidu tuijian BEGIN -->
+<!--	<div style="padding-left: 17px;"> -->
+<!--		<script src="http://wm.lrswl.com/page/s.php?s=103186&w=640&h=60"></script> -->
+<!--	</div> -->
+
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="微服务框架 Colossus">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget tag first">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/big-data/">big data</a><small>1</small></li>
+  
+    <li><a href="/categories/cloud/">cloud</a><small>1</small></li>
+  
+    <li><a href="/categories/default/">default</a><small>8</small></li>
+  
+    <li><a href="/categories/distribution/">distribution</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>10</small></li>
+  
+    <li><a href="/categories/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/olap/">olap</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+  <!-- 
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  -->
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/04/busuanzi/">不蒜子</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/03/mongodb3-auth/">mongoDB 3.0 安全权限访问控制</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/02/hello-colossus/">微服务框架 Colossus</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/23/zookeeper/">ZooKeeper 简介</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/20/hello-akka/">Akka 快速入门</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/16/a-small-point-of-interface-design/">对接口设计的一个小看法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/hello-spray/">通过 Spray 创建简单的 Restful Http Server</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/turning-point-2014/">转折点</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/14/caipus/">微菜谱</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="theme-copyright">
+ &copy; 2013 - 2016 <a href="/">bruce</a>
+ | 
+ produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
+ <font id="counter"></font>
+ <span id="busuanzi_container_site_pv"><a href="//busuanzi.ibruce.info" target="_blank"><span id="busuanzi_value_site_pv"></a></span></span>
+ </div>
+<!--
+<div class="copyright">
+ <font id="counter"></font>
+ 版权所有
+  
+  &copy; 2013-2016 <a href="/">bruce</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="http://heroicyang.com" target="_blank">Heroic Yang</a>
+   | 
+  Redesign by <a href="http://bruce-sha.github.io" target="_blank">Bruce Sha</a>
+</div>
+-->
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<script src="/js/counter.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'buru' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

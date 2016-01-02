@@ -1,0 +1,602 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>hexo你的博客 | 不如</title>
+  <meta name="author" content="bruce">
+  
+  <meta name="description" content="hexo搭建博客，hexo 主题，hexo 七牛，hexo 多说，hexo 公益404，hexo theme，hexo github，hexo GoDaddy，hexo DNSPod，hexo 图片，hexo tags，hexo 代码高亮，hexo github pages，hexo 优化，hexo 技巧，hexo 建站，hexo 教程，hexo 太慢，hexo 加速，hexo 被墙，hexo 计数，hexo 访问统计，hexo firebase，hexo dropbox">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="hexo你的博客"/>
+  <meta property="og:site_name" content="不如"/>
+
+  <link rel="alternate" href="/atom.xml" title="不如" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- 被墙 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <script src="//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46161632-1', 'ibruce.info');
+  ga('send', 'pageview');
+</script>
+
+  
+<!-- 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7034d648d7899a7a50561a179216abaa' type='text/javascript'%3E%3C/script%3E"));
+</script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7034d648d7899a7a50561a179216abaa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  <meta property="wb:webmaster" content="e9d0b5d9cad42cf4" />
+  <meta property="qc:admins" content="214253361253561667" />
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">不如</a></h1>
+  <p><a href="/">码农，程序猿，未来的昏析狮</a></p>
+</div>
+<!--
+<div>
+<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+ <input style="width:60px;background-color:transparent;text-align:center; border-width:0px;border-top-style: none; border-right-style: none; border-left-style: none; border-bottom-style: none; "  type="search" name="q" id="search" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="20" placeholder="s" />
+ <input type="hidden" name="q" value="site:ibruce.info">
+</form>
+</div>
+-->
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/reading">Reading</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-11-22T09:11:54.000Z"><a href="/2013/11/22/hexo-your-blog/">Nov 22 2013</a></time>
+    
+    
+  
+    <h1 class="title">hexo你的博客</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <blockquote>
+<p><strong>号外号外：计数服务已开放，各种访问量统计仅两行代码：<a href="http://service.ibruce.info" target="_blank" rel="external">不蒜子</a>，任你发挥的算子。</strong></p>
+</blockquote>
+<p>一直纠结于哪里写博客，曾用过新浪博客，百度空间，JavaEye，LOFTER，OSChina，cnblogs，CSDN，自搭WordPress，都不满意。再后来也弄过Jekyll和Octopress，觉累不爱。</p>
+<p>直到多看了一眼hexo，这个逼格极高的程序猿写作方式，我喜欢。就连<em>hexo</em>的发音都像是<strong>黑客哦</strong>！如果你跟我一样纠结哪里写博，那就来到GitHub吧，让我们一起hexo！H人希绝对不会让你失望，相信很快hexo就会流行起来。</p>
+<p>hexo出自台湾大学生<a href="http://twitter.com/tommy351" target="_blank" rel="external">tommy351</a>之手，是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。hexo生成的静态网页可以直接放到GitHub Pages，BAE，SAE等平台上。先看看tommy是如何吐槽Octopress的 →＿→ <a href="http://zespia.tw/blog/2012/10/11/hexo-debut" target="_blank" rel="external">Hexo颯爽登場</a>。</p>
+<blockquote>
+<ul>
+<li>如果你对默认配置满意，只需几个命令便可秒搭一个hexo。</li>
+<li>如果你跟我一样喜欢折腾下，30分钟也足够个性化。</li>
+<li>如果你过于喜欢折腾，可以折腾个把星期，尽情的玩。</li>
+</ul>
+</blockquote>
+<p>搭建过程你或许觉得有那么点小繁琐，但一旦搭建完成，写文章是极简单，极舒服的。</p>
+<p>只需要几个简单命令，你就可以完成一切。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n <span class="comment">#写文章</span></span><br><span class="line">hexo g <span class="comment">#生成</span></span><br><span class="line">hexo d <span class="comment">#部署 # 可与hexo g合并为 hexo d -g</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<!--
+先领略一下几个符合我审美观的hexo站点。
+-->
+<p>下面逐步介绍，进入正题。</p>
+<hr>
+<p>#环境准备<br><strong>安装Node</strong><br>到<a href="http://nodejs.org" target="_blank" rel="external">Node.js</a>官网下载相应平台的<a href="http://nodejs.org/download" target="_blank" rel="external">最新版本</a>，一路安装即可。我用的是<a href="http://nodejs.org/dist/v0.10.22/node-v0.10.22-x86.msi" target="_blank" rel="external">node-v0.10.22-x86.msi</a></p>
+<p><strong>安装Git</strong><br>Git的客户端很多，我用的是<a href="http://code.google.com/p/msysgit" target="_blank" rel="external">msysgit</a>，喜欢用绿色版本<a href="http://code.google.com/p/msysgit/downloads/detail?name=PortableGit-1.8.4-preview20130916.7z" target="_blank" rel="external">Portable application for official Git for Windows 1.8.4</a>，下载下来设置一下环境变量即可，Git_HOME，%Git_HOME%\bin之类的，不多说。</p>
+<p><strong>安装Sublime（可选）</strong><br><a href="http://www.sublimetext.com" target="_blank" rel="external">Sublime Text 2</a>在这里仅仅作为一个文本编辑器使用，支持各种编程语言和文件格式，当然也支持Markdown语法，实在是个不可多得的练码奇才。喜欢追鲜的也可以尝试处于beta版本的<a href="http://www.sublimetext.com/3" target="_blank" rel="external">Sublime Text 3</a>。我用绿色版本<a href="http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.zip" target="_blank" rel="external">Portable Sublime Text 2.0.2.zip</a>。</p>
+<blockquote>
+<p>本屌是穷码畜，对于高大上的Mac码帅用户请移步：<a href="http://zespia.tw/hexo/docs/installation.html" target="_blank" rel="external">hexo installation</a><br><!-- [Mou Markdown editor](http://mouapp.com)--></p>
+</blockquote>
+<p>#GitHub</p>
+<blockquote>
+<p>GitHub账号和GitHub Pages 一般都应该有吧，已有的请自动无视这一部分。</p>
+</blockquote>
+<ul>
+<li>首先注册一个『GitHub』帐号，已有的默认默认请忽略</li>
+<li>建立与你用户名对应的仓库，仓库名必须为『your_user_name.github.com』</li>
+<li>添加SSH公钥到『Account settings -&gt; SSH Keys -&gt; Add SSH Key』</li>
+</ul>
+<p><img src="http://bruce.u.qiniudn.com/2013/11/22/hexo-your-blog/my-github-pages.jpg" alt="my GitHub Pages"></p>
+<p>前两步忽略，只说第三步，<strong>添加SSH-Key</strong>。</p>
+<p>首先设置你的用户名密码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">"bu.ru@qq.com"</span></span><br><span class="line">git config --global user.name <span class="string">"bruce-sha"</span></span><br></pre></td></tr></table></figure></p>
+<p>生成密钥：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"bu.ru@qq.com"</span></span><br></pre></td></tr></table></figure></p>
+<p>输入文件路径：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">H:\hexo\blog&gt;ssh-keygen -t rsa -C <span class="string">"bu.ru@qq.com"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (//.ssh/id_rsa): H:\git\myssh\ssh</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> H:\git\myssh\ssh.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> H:\git\myssh\ssh.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">b0:<span class="number">0</span>c:<span class="number">2</span>e:<span class="number">67</span>:<span class="number">33</span>:ab:c1:<span class="number">50</span>:<span class="number">10</span>:<span class="number">40</span>:<span class="number">0</span>a:ba:c1:<span class="number">80</span>:<span class="number">59</span>:<span class="number">22</span> bu.ru@qq.com</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>有个bug，文件路径中的盘符H必须大写，否则会报错。</p>
+</blockquote>
+<p>上述命令若执行成功，会在<em>H:\git\myssh</em>目录下生成两个文件<em>id_rsa</em>和<em>id_rsa.pub</em>，最后两步：</p>
+<ol>
+<li>用文本编辑器打开<em>ssh.pub</em>文件，拷贝其中的内容，将其添加到<a href="http://github.com/settings/ssh" target="_blank" rel="external">Add SSH Key</a></li>
+<li>将<em>id_rsa</em>和<em>id_rsa.pub</em>拷贝至你Git安装目录下的<em>.ssh</em>目录，如<em>H:\PortableGit-1.8.4\.ssh</em></li>
+</ol>
+<p><img src="http://bruce.u.qiniudn.com/2013/11/22/hexo-your-blog/add-ssh-keys.jpg" alt="Add SSH Keys"></p>
+<p>最后可以验证一下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+<p>若有问题，请重新设置。常见错误请参考：<br><a href="http://help.github.com/articles/generating-ssh-keys" target="_blank" rel="external">GitHub Help - Generating SSH Keys</a><br><a href="http://help.github.com/articles/error-permission-denied-publickey" target="_blank" rel="external">GitHub Help - Error Permission denied (publickey)</a></p>
+<p>#安装<br><em>Node</em>和<em>Git</em>都安装好后，可执行如下命令安装hexo：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure></p>
+<p>#初始化<br>然后，执行init命令初始化hexo到你指定的目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>也可以cd到目标目录，执行<em>hexo init</em>。</p>
+</blockquote>
+<p>好啦，至此，全部安装工作已经完成！</p>
+<p>#生成静态页面<br>cd 到你的init目录，执行如下命令，生成静态页面至<em>hexo\public\</em>目录。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>命令必须在init目录下执行，否则不成功，但是也不报错。<br>当你修改文章Tag或内容，不能正确重新生成内容，可以删除<em>hexo\db.json</em>后重试，还不行就到<em>public</em>目录删除对应的文件，重新生成。</p>
+</blockquote>
+<p>#本地启动<br>执行如下命令，启动本地服务，进行文章预览调试。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
+<p>浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>就可以看到效果。</p>
+<blockquote>
+<p>请使用高级浏览器，否则可能…你懂的！</p>
+</blockquote>
+<p>#写文章<br>执行new命令，生成指定名称的文章至<em>hexo\source\_posts\postName.md</em>。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &#34;postName&#34; #&#26032;&#24314;&#25991;&#31456;</span><br></pre></td></tr></table></figure></p>
+<p>其中layout是可选参数，默认值为post。有哪些layout呢，请到<em>scaffolds</em>目录下查看，这些文件名称就是layout名称。当然你可以添加自己的layout，方法就是添加一个文件即可，同时你也可以编辑现有的layout，比如post的layout默认是<em>hexo\scaffolds\post.md</em><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: &#123; &#123; title &#125; &#125;&#10;date: &#123; &#123; date &#125; &#125;&#10;tags:&#10;---</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>请注意，大括号与大括号之间我多加了个空格，否则会被转义，不能正常显示。</p>
+</blockquote>
+<p>我想添加categories，以免每次手工输入，只需要修改这个文件添加一行，如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: &#123; &#123; title &#125; &#125;&#10;date: &#123; &#123; date &#125; &#125;&#10;categories: &#10;tags: &#10;---</span><br></pre></td></tr></table></figure></p>
+<p>postName是md文件的名字，同时也出现在你文章的URL中，postName如果包含空格，必须用”将其包围，postName可以为中文。</p>
+<blockquote>
+<p>注意，所有文件：后面都必须有个空格，不然会报错。</p>
+</blockquote>
+<p>看一下刚才生成的文件<em>hexo\source\_posts\postName.md</em>，内容如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: postName #&#25991;&#31456;&#39029;&#38754;&#19978;&#30340;&#26174;&#31034;&#21517;&#31216;&#65292;&#21487;&#20197;&#20219;&#24847;&#20462;&#25913;&#65292;&#19981;&#20250;&#20986;&#29616;&#22312;URL&#20013;&#10;date: 2013-12-02 15:30:16 #&#25991;&#31456;&#29983;&#25104;&#26102;&#38388;&#65292;&#19968;&#33324;&#19981;&#25913;&#65292;&#24403;&#28982;&#20063;&#21487;&#20197;&#20219;&#24847;&#20462;&#25913;&#10;categories: #&#25991;&#31456;&#20998;&#31867;&#30446;&#24405;&#65292;&#21487;&#20197;&#20026;&#31354;&#65292;&#27880;&#24847;:&#21518;&#38754;&#26377;&#20010;&#31354;&#26684;&#10;tags: #&#25991;&#31456;&#26631;&#31614;&#65292;&#21487;&#31354;&#65292;&#22810;&#26631;&#31614;&#35831;&#29992;&#26684;&#24335;[tag1,tag2,tag3]&#65292;&#27880;&#24847;:&#21518;&#38754;&#26377;&#20010;&#31354;&#26684;&#10;---&#10;&#36825;&#37324;&#24320;&#22987;&#20351;&#29992;markdown&#26684;&#24335;&#36755;&#20837;&#20320;&#30340;&#27491;&#25991;&#12290;</span><br></pre></td></tr></table></figure></p>
+<p>接下来，你就可以用喜爱的编辑器尽情书写你的文章。关于markdown语法，可以参考我的文章<a href="http://bruce-sha.github.io/2013/11/26/markdown/" target="_blank" rel="external">Markdown简明语法</a>。</p>
+<p><strong>fancybox</strong><br>可能有人对这个<a href="http://bruce-sha.github.io/reading/" target="_blank" rel="external">Reading</a>页面中图片的<a href="http://fancyapps.com/fancybox/" target="_blank" rel="external">fancybox</a>效果感兴趣，这个是怎么做的呢。<br>很简单，只需要在你的文章*.md文件的头上添加<em>photos</em>项即可，然后一行行添加你要展示的照片：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">layout: photo&#10;title: &#25105;&#30340;&#38405;&#21382;&#10;date: 2085-01-16 07:33:44&#10;tags: [hexo]&#10;photos:&#10;- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg&#10;- http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>经过测试，文件头上的<em>layout: photo</em>可以省略。</p>
+</blockquote>
+<p>不想每次都手动添加怎么办？同样的，打开您的<em>hexo\scaffolds\photo.md</em><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">layout: &#123; &#123; layout &#125; &#125;&#10;title: &#123; &#123; title &#125; &#125;&#10;date: &#123; &#123; date &#125; &#125;&#10;tags: &#10;photos: &#10;- &#10;---</span><br></pre></td></tr></table></figure></p>
+<p>然后每次可以执行带layout的new命令生成照片文章：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new photo &#34;photoPostName&#34; #&#26032;&#24314;&#29031;&#29255;&#25991;&#31456;</span><br></pre></td></tr></table></figure></p>
+<p><strong>description</strong><br>markdown文件头中也可以添加description，以覆盖全局配置文件中的description内容，请参考下文<em>_config.yml</em>的介绍。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: hexo&#20320;&#30340;&#21338;&#23458;&#10;date: 2013-11-22 17:11:54&#10;categories: default&#10;tags: [hexo]&#10;description: &#20320;&#23545;&#26412;&#39029;&#30340;&#25551;&#36848;&#10;---</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>hexo默认会处理全部markdown和html文件，如果不想让hexo处理你的文件，可以在文件头中加入layout: false。</p>
+</blockquote>
+<p><strong>文章摘要</strong><br>在需要显示摘要的地方添加如下代码即可：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#20197;&#19978;&#26159;&#25688;&#35201;&#10;&#60;!--more--&#62;&#10;&#20197;&#19979;&#26159;&#20313;&#19979;&#20840;&#25991;</span><br></pre></td></tr></table></figure></p>
+<p>more以上内容即是文章摘要，在主页显示，more以下内容点击『&gt; Read More』链接打开全文才显示。</p>
+<blockquote>
+<p>hexo中所有文件的编码格式均是UTF-8。</p>
+</blockquote>
+<p>#主题安装<br>萝卜白菜各有所爱，玩博客换主题是必不可少的，hexo的主题列表<a href="http://github.com/tommy351/hexo/wiki/Themes" target="_blank" rel="external">Hexo Themes</a>。<br>我比较喜欢<a href="http://github.com/A-limon/pacman" target="_blank" rel="external">pacman</a>，<a href="http://github.com/heroicyang/hexo-theme-modernist" target="_blank" rel="external">modernist</a>、<a href="http://github.com/DavidKk/Hexo.ishgo" target="_blank" rel="external">ishgo</a>，<a href="http://github.com/raytaylorlin/hexo-theme-raytaylorism" target="_blank" rel="external">raytaylorism</a>。<em>Pacman</em>最为优秀，简洁大方小清新，同时移动版本支持的也很好，但作者并没有把很多参数分离出来给出可配置项，我最终选择了<em>modernist</em>。</p>
+<p>安装主题的方法就是一句git命令：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/heroicyang/hexo-theme-modernist.git themes/modernist</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>目录是否是modernist无所谓，只要与_config.yml文件一致即可。</p>
+</blockquote>
+<p>安装完成后，打开<em>hexo\_config.yml</em>，修改主题为<em>modernist</em><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: modernist</span><br></pre></td></tr></table></figure></p>
+<p>打开<em>hexo\themes\modernist</em>目录，编辑主题配置文件<em>_config.yml</em>：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu: #&#37197;&#32622;&#39029;&#22836;&#26174;&#31034;&#21738;&#20123;&#33756;&#21333;&#10;#  Home: /&#10;  Archives: /archives&#10;  Reading: /reading&#10;  About: /about&#10;#  Guestbook: /about&#10;&#10;excerpt_link: Read More #&#25688;&#35201;&#38142;&#25509;&#25991;&#23383;&#10;archive_yearly: false #&#25353;&#24180;&#23384;&#26723;&#10;&#10;widgets: #&#37197;&#32622;&#39029;&#33050;&#26174;&#31034;&#21738;&#20123;&#23567;&#25346;&#20214;&#10;  - category&#10;#  - tag&#10;  - tagcloud&#10;  - recent_posts&#10;#  - blogroll&#10;&#10;blogrolls: #&#21451;&#24773;&#38142;&#25509;&#10;  - bruce sha&#39;s duapp wordpress: http://ibruce.duapp.com&#10;  - bruce sha&#39;s javaeye: http://buru.iteye.com&#10;  - bruce sha&#39;s oschina blog: http://my.oschina.net/buru&#10;  - bruce sha&#39;s baidu space: http://hi.baidu.com/iburu&#10;&#10;fancybox: true #&#26159;&#21542;&#24320;&#21551;fancybox&#25928;&#26524;&#10;&#10;duoshuo_shortname: buru #&#22810;&#35828;&#36134;&#21495;&#10;&#10;google_analytics:&#10;rss:</span><br></pre></td></tr></table></figure></p>
+<p>更新主题<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd themes/modernist&#10;git pull</span><br></pre></td></tr></table></figure></p>
+<p>#评论框<br>静态博客要使用第三方评论系统，hexo默认集成的是<a href="http://disqus.com" target="_blank" rel="external">Disqus</a>，因为你懂的，所以国内的话还是建议用<a href="http://duoshuo.com" target="_blank" rel="external">多说</a>。<br>直接用你的微博/豆瓣/人人/百度/开心网帐号登录多说，做一下基本设置。如果使用modernist主题，在<em>modernist_config.yml</em>中配置duoshuo_shortname为多说的<strong>基本设置-&gt;域名</strong>中的shortname即可。你也可以在多说后台自定义一下多说评论框的格式，比如评论框的位置，对于css设置，可以<a href="http://dev.duoshuo.com/docs/4ff1cfd0397309552c000017" target="_blank" rel="external">参考这里</a>，我是在<a href="http://gist.github.com/heroicyang/5644407" target="_blank" rel="external">HeroicYang</a>的基础上修改的。</p>
+<p>如果你是有的其他第三方评论系统，将通用代码粘贴到<em>hexo\themes\modernist\layout\_partial\comment.ejs</em>里面，如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;% if (config.disqus_shortname &#38;&#38; page.comments)&#123; %&#62;&#10;&#60;section id=&#34;comment&#34;&#62;&#10;  #&#20320;&#30340;&#36890;&#29992;&#20195;&#30721;&#10;&#60;% &#125; %&#62;</span><br></pre></td></tr></table></figure></p>
+<p>#自定义页面<br>执行new page命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &#34;about&#34;</span><br></pre></td></tr></table></figure></p>
+<p>在<em>hexo\source\</em>下会生成<em>about</em>目录，里面有个index.md，直接编辑就可以了，然后在主题的<em>_config.yml</em>中将其配置显示出来。<br>上述步骤，也可以手工生成，在<em>hexo\source\</em>下手工新建<em>about</em>和<em>index.md</em>也是完全等价的。</p>
+<blockquote>
+<p>因为markdown对table的支持不好，我是在about中直接建立index.html，里面书写页面内容，hexo会帮你加上头和尾。</p>
+</blockquote>
+<p>#404页面<br>GitHub Pages <a href="http://help.github.com/articles/custom-404-pages" target="_blank" rel="external">自定义404页面</a>非常容易，直接在根目录下创建自己的<strong>404.html</strong>就可以。但是自定义404页面仅对绑定顶级域名的项目才起作用，GitHub默认分配的二级域名是不起作用的，使用<em>hexo server</em>在本机调试也是不起作用的。<br>其实，404页面可以做更多有意义的事，来做个404公益项目吧。现在，看下我的404页面<a href="http://ibruce.info/nothing">一个ibruce.info上不存在的页面</a>，做点有意义的事情，也对得起这个域名。<br>目前有如下几个公益404接入地址，我选择了腾讯的。404页面，每个人可以做的更多。</p>
+<ul>
+<li><a href="http://www.qq.com/404" target="_blank" rel="external">腾讯公益404</a></li>
+<li><a href="http://yibo.iyiyun.com/Index/web404" target="_blank" rel="external">404公益_益云(公益互联网)社会创新中心</a></li>
+<li><a href="http://404page.missingkids.org.tw" target="_blank" rel="external">失蹤兒童少年資料管理中心404</a></li>
+</ul>
+<p>#图床<br>考虑到博客的速度，同时也为了便于博客的迁移，图床是必须的。我墙裂推荐七牛，访问速度极快，支持日志、防盗链和水印。</p>
+<p>免费用户有每月10GB流量+总空间10GB+PUT/DELETE 10万次请求+GET 100万次请求，这对个人博客来说足够，不够的话点这个<a href="">活动页面</a>，也可通过邀请好友获得奖励，我也求一下<a href="http://portal.qiniu.com/signup?code=3lqr4z3p7clea" target="_blank" rel="external">七牛邀请</a>。有一点要说明的是，七牛没有目录的概念，但是文件名可以包含<em>/</em>，比如<em>2013/11/27/reading/photos-0.jpg</em>，参考这里<a href="http://kb.qiniu.com/key-value-system" target="_blank" rel="external">关于key-value存储系统</a>。</p>
+<p>七牛除了作为图床还可以作为其他静态文件存储空间，比如我的个人站点首页有个字库文件和JS文件下载较慢，有时间会把它弄到七牛上去，以提高首页打开速度。请看这篇<a href="http://linux.cn/thread/11986/1/1" target="_blank" rel="external">Linux中国采用七牛云存储支撑图片访问</a>。</p>
+<p>如果非要说不足的话，就是文件管理界面不是很友好，不支持CNAME到分配的永久链接，也不能绑定未备案的自有域名，必须备案才可以。</p>
+<blockquote>
+<p>如果你对七牛web版的文件管理界面不满意，可以用官方的<a href="http://docs.qiniu.com/tools/v6/index.html" target="_blank" rel="external">七牛云存储工具</a>。</p>
+</blockquote>
+<p>您还可以使用如下图床服务 <a href="http://www.farbox.com" target="_blank" rel="external">FarBox</a>，<a href="http://www.dropbox.com" target="_blank" rel="external">Dropbox</a>，<a href="http://www.upyun.com" target="_blank" rel="external">又拍云</a>。</p>
+<!--
+    参考这篇 利用dropbox免费网盘打造稳定外链图床 http://www.dengping.org/free-dropbox-share-links.html
+-->
+<p>#申请域名（可选）<br>GitHubPages默认为每个用户分配了一个二级域名『your_user_name.github.com』或『your_user_name.github.io』。<br>如果你对上述域名不满意，可以到<a href="http://www.godaddy.com" target="_blank" rel="external">狗爹</a>上申请一个自己的域名，然后绑定到GitHub Pages。绑定方法很简单，在repo根目录下建立一个CNAME文件，里面写上域名即可。</p>
+<p><strong>GoDaddy</strong><br>买域名首选狗爹，国内的服务商大家都懂的。<br>目前.info域名只要￥18.99，但据说续费比较贵，我是先玩下，一年后再换，至于搜索引擎重新索引之类的，无所谓。.me和.com域名稍微贵点，大约￥60-100，网上有很多优惠码可用，可惜有的优惠码有限制。比如有个.com域名优惠码只要$1.99，但只能用国外信用卡购买。更多优惠码可以自行谷歌或到<a href="http://www.dute.me" target="_blank" rel="external">独特优惠码</a>找。不着急的同学可以将中意的域名加入购物车先不付款，过几天，狗爹就会发优惠信息给你。狗爹不定期也会有活动，可以多关注。<br>付款后，需要稍微等一会你才会拿到域名，特别是支付宝付款的，要等大约半小时左右。此外域名要一年年的买，这样比较划算。</p>
+<blockquote>
+<p>建议大家申请.com或.me域名。据说.info因垃圾网站太多，被搜索引擎惩罚，而且续费较贵。</p>
+</blockquote>
+<p><strong>DNSPod</strong><br>GoDaddy的NameServers有时会被墙，因此墙裂推荐国内的<a href="http://www.dnspod.cn" target="_blank" rel="external">DNSPod</a>解析域名，免费服务真心不错。支持微信/邮件提醒，监控与报警，访问统计，健康诊断，搜索引擎推送，速度哇哇的，对于我来说足够。<br>两步设置就可以搞定，怎么操作参考<a href="http://support.dnspod.cn/Kb/showarticle/tsid/42" target="_blank" rel="external">Godaddy注册商域名修改DNS地址</a>。</p>
+<p>#命令<br><strong>常用命令：</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &#34;postName&#34; #&#26032;&#24314;&#25991;&#31456;&#10;hexo new page &#34;pageName&#34; #&#26032;&#24314;&#39029;&#38754;&#10;hexo generate #&#29983;&#25104;&#38745;&#24577;&#39029;&#38754;&#33267;public&#30446;&#24405;&#10;hexo server #&#24320;&#21551;&#39044;&#35272;&#35775;&#38382;&#31471;&#21475;&#65288;&#40664;&#35748;&#31471;&#21475;4000&#65292;&#39;ctrl + c&#39;&#20851;&#38381;server&#65289;&#10;hexo deploy #&#23558;.deploy&#30446;&#24405;&#37096;&#32626;&#21040;GitHub</span><br></pre></td></tr></table></figure></p>
+<p><strong>常用复合命令：</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy -g&#10;hexo server -g</span><br></pre></td></tr></table></figure></p>
+<p><strong>简写：</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo n == hexo new&#10;hexo g == hexo generate&#10;hexo s == hexo server&#10;hexo d == hexo deploy</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="##至此，基本操作介绍完毕，以下内容普通用户无需了解。">##至此，基本操作介绍完毕，以下内容普通用户无需了解。</h2><p>#目录介绍<br>默认目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; .deploy&#10;&#9500;&#9472;&#9472; public&#10;&#9500;&#9472;&#9472; scaffolds&#10;&#9500;&#9472;&#9472; scripts&#10;&#9500;&#9472;&#9472; source&#10;|   &#9500;&#9472;&#9472; _drafts&#10;|   &#9492;&#9472;&#9472; _posts&#10;&#9500;&#9472;&#9472; themes&#10;&#9500;&#9472;&#9472; _config.yml&#10;&#9492;&#9472;&#9472; package.json</span><br></pre></td></tr></table></figure>
+<ul>
+<li>.deploy：执行hexo deploy命令部署到GitHub上的内容目录</li>
+<li>public：执行hexo generate命令，输出的静态网页内容目录</li>
+<li>scaffolds：layout模板文件目录，其中的md文件可以添加编辑</li>
+<li>scripts：扩展脚本目录，这里可以自定义一些javascript脚本</li>
+<li>source：文章源码目录，该目录下的markdown和html文件均会被hexo处理。该页面对应repo的根目录，404文件、favicon.ico文件，CNAME文件等都应该放这里，该目录下可新建页面目录。<ul>
+<li>_drafts：草稿文章</li>
+<li>_posts：发布文章</li>
+</ul>
+</li>
+<li>themes：主题文件目录</li>
+<li>_config.yml：全局配置文件，大多数的设置都在这里</li>
+<li>package.json：应用程序数据，指明hexo的版本等信息，类似于一般软件中的<em>关于</em>按钮</li>
+</ul>
+<p>接下来是重头戏<em>_config.yml</em>，做个简单说明：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Hexo Configuration&#10;## Docs: http://zespia.tw/hexo/docs/configure.html&#10;## Source: https://github.com/tommy351/hexo/&#10;&#10;# Site #&#25972;&#31449;&#30340;&#22522;&#26412;&#20449;&#24687;&#10;title: &#19981;&#22914; #&#32593;&#31449;&#26631;&#39064;&#10;subtitle: &#30721;&#20892;&#65292;&#31243;&#24207;&#29503;&#65292;&#26410;&#26469;&#30340;&#26127;&#26512;&#24072; #&#32593;&#31449;&#21103;&#26631;&#39064;&#10;description: bruce sha&#39;s blog | java | scala | bi #&#32593;&#31449;&#25551;&#36848;&#65292;&#32473;&#25628;&#32034;&#24341;&#25806;&#29992;&#30340;&#65292;&#22312;&#29983;&#25104;html&#20013;&#30340;head-&#62;meta&#20013;&#21487;&#30475;&#21040;&#10;author: bruce #&#32593;&#31449;&#20316;&#32773;&#65292;&#22312;&#19979;&#26041;&#26174;&#31034;&#10;email: bu.ru@qq.com #&#32852;&#31995;&#37038;&#31665;&#10;language: zh-CN #&#35821;&#35328;&#10;&#10;# URL #&#22495;&#21517;&#21644;&#25991;&#20214;&#32467;&#26500;&#10;## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;&#10;url: http://ibruce.info #&#20320;&#30340;&#22495;&#21517;&#10;root: /&#10;permalink: :year/:month/:day/:title/&#10;tag_dir: tags&#10;archive_dir: archives&#10;category_dir: categories&#10;code_dir: downloads/code&#10;&#10;# Writing #&#20889;&#25991;&#31456;&#36873;&#39033;&#10;new_post_name: :title.md # File name of new posts&#10;default_layout: post #&#40664;&#35748;layout&#26041;&#24335;&#10;auto_spacing: false # Add spaces between asian characters and western characters&#10;titlecase: false # Transform title into titlecase&#10;external_link: true # Open external links in new tab&#10;max_open_file: 100&#10;multi_thread: true&#10;filename_case: 0&#10;render_drafts: false&#10;highlight: #&#20195;&#30721;&#39640;&#20142;&#10;  enable: true #&#26159;&#21542;&#21551;&#29992;&#10;  line_number: false #&#26159;&#21542;&#26174;&#31034;&#34892;&#21495;&#10;  tab_replace:&#10;&#10;# Category &#38; Tag #&#20998;&#31867;&#19982;&#26631;&#31614;&#10;default_category: uncategorized # default&#10;category_map:&#10;tag_map:&#10;&#10;# Archives #&#23384;&#26723;&#65292;&#36825;&#37324;&#30340;&#35828;&#26126;&#22909;&#20687;&#19981;&#23545;&#12290;&#20840;&#37096;&#36873;&#25321;1&#65292;&#36825;&#20010;&#36873;&#39033;&#19982;&#20027;&#39064;&#20013;&#30340;&#36873;&#39033;&#26377;&#26102;&#20505;&#20250;&#26377;&#20914;&#31361;&#10;## 2: Enable pagination&#10;## 1: Disable pagination&#10;## 0: Fully Disable&#10;archive: 1&#10;category: 1&#10;tag: 1&#10;&#10;# Server #&#26412;&#22320;&#26381;&#21153;&#21442;&#25968;&#10;## Hexo uses Connect as a server&#10;## You can customize the logger format as defined in&#10;## http://www.senchalabs.org/connect/logger.html&#10;port: 4000&#10;logger: true&#10;logger_format:&#10;&#10;# Date / Time format #&#26085;&#26399;&#26174;&#31034;&#26684;&#24335;&#10;## Hexo uses Moment.js to parse and display date&#10;## You can customize the date format as defined in&#10;## http://momentjs.com/docs/#/displaying/format/&#10;date_format: MMM D YYYY&#10;time_format: H:mm:ss&#10;&#10;# Pagination #&#20998;&#39029;&#35774;&#32622;&#10;## Set per_page to 0 to disable pagination&#10;per_page: 10 #&#27599;&#39029;10&#31687;&#25991;&#31456;&#10;pagination_dir: page&#10;&#10;# Disqus #&#31038;&#20250;&#21270;&#35780;&#35770;disqus&#65292;&#25105;&#20351;&#29992;&#22810;&#35828;&#65292;&#22312;&#20027;&#39064;&#20013;&#37197;&#32622;&#10;disqus_shortname:&#10;&#10;# Extensions #&#25554;&#20214;&#65292;&#26242;&#26102;&#26410;&#23433;&#35013;&#25554;&#20214;&#10;## Plugins: https://github.com/tommy351/hexo/wiki/Plugins&#10;## Themes: https://github.com/tommy351/hexo/wiki/Themes&#10;## &#20027;&#39064;&#10;theme: modernist # raytaylorism # pacman # modernist # light&#10;exclude_generator:&#10;&#10;# Deployment #&#37096;&#32626;&#10;## Docs: http://zespia.tw/hexo/docs/deploy.html&#10;deploy:&#10;  type: github&#10;  repository: git@github.com:bruce-sha/bruce-sha.github.com.git #&#20320;&#30340;GitHub Pages&#20179;&#24211;</span><br></pre></td></tr></table></figure>
+<p>#修改局部页面<br>页面展现的全部逻辑都在每个主题中控制，源代码在<em>hexo\themes\你使用的主题\</em>中，以<em>modernist</em>主题为例：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; languages          #&#22810;&#35821;&#35328;&#10;|   &#9500;&#9472;&#9472; default.yml    #&#40664;&#35748;&#35821;&#35328;&#10;|   &#9492;&#9472;&#9472; zh-CN.yml      #&#20013;&#25991;&#35821;&#35328;&#10;&#9500;&#9472;&#9472; layout             #&#24067;&#23616;&#65292;&#26681;&#30446;&#24405;&#19979;&#30340;*.ejs&#25991;&#20214;&#26159;&#23545;&#20027;&#39029;&#65292;&#20998;&#39029;&#65292;&#23384;&#26723;&#31561;&#30340;&#25511;&#21046;&#10;|   &#9500;&#9472;&#9472; _partial       #&#23616;&#37096;&#30340;&#24067;&#23616;&#65292;&#27492;&#30446;&#24405;&#19979;&#30340;*.ejs&#26159;&#23545;&#22836;&#23614;&#31561;&#23616;&#37096;&#30340;&#25511;&#21046;&#10;|   &#9492;&#9472;&#9472; _widget        #&#23567;&#25346;&#20214;&#30340;&#24067;&#23616;&#65292;&#39029;&#38754;&#19979;&#26041;&#23567;&#25346;&#20214;&#30340;&#25511;&#21046;&#10;&#9500;&#9472;&#9472; source             #&#28304;&#30721;&#10;|   &#9500;&#9472;&#9472; css            #css&#28304;&#30721; &#10;|   |   &#9500;&#9472;&#9472; _base      #*.styl&#22522;&#30784;css&#10;|   |   &#9500;&#9472;&#9472; _partial   #*.styl&#23616;&#37096;css&#10;|   |   &#9500;&#9472;&#9472; fonts      #&#23383;&#20307;&#10;|   |   &#9500;&#9472;&#9472; images     #&#22270;&#29255;&#10;|   |   &#9492;&#9472;&#9472; style.styl #*.styl&#24341;&#20837;&#38656;&#35201;&#30340;css&#28304;&#30721;&#10;|   &#9500;&#9472;&#9472; fancybox       #fancybox&#25928;&#26524;&#28304;&#30721;&#10;|   &#9492;&#9472;&#9472; js             #javascript&#28304;&#20195;&#30721;&#10;&#9500;&#9472;&#9472; _config.yml        #&#20027;&#39064;&#37197;&#32622;&#25991;&#20214;&#10;&#9492;&#9472;&#9472; README.md          #&#29992;GitHub&#30340;&#37117;&#30693;&#36947;</span><br></pre></td></tr></table></figure></p>
+<p>如果你需要修改头部，直接修改<em>hexo\themes\modernist\layout\_partial\header.ejs</em>，比如头上加个搜索框：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;div&#62;&#10;&#60;form class=&#34;search&#34; action=&#34;//google.com/search&#34; method=&#34;get&#34; accept-charset=&#34;utf-8&#34;&#62;&#10; &#60;input type=&#34;search&#34; name=&#34;q&#34; id=&#34;search&#34; autocomplete=&#34;off&#34; autocorrect=&#34;off&#34; autocapitalize=&#34;off&#34; maxlength=&#34;20&#34; placeholder=&#34;Search&#34; /&#62;&#10; &#60;input type=&#34;hidden&#34; name=&#34;q&#34; value=&#34;site:&#60;%- config.url.replace(/^https?:\/\//, &#39;&#39;) %&#62;&#34;&#62;&#10;&#60;/form&#62;&#10;&#60;/div&#62;</span><br></pre></td></tr></table></figure></p>
+<p>将如上代码加入即可，您需要修改css以便这个搜索框比较美观。</p>
+<p>再如，你要修改页脚版权信息，直接编辑<em>hexo\themes\modernist\layout\_partial\footer.ejs</em>。同理，你需要修改css，直接去修改对应位置的styl文件。</p>
+<p>#统计<br>因Google Analytics偶尔被墙，故用百度统计，以<em>modernist</em>主题为例，介绍如何添加。<br>编辑文件<em>hexo\themes\modernist\_config.yml</em>，增加配置选项：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure></p>
+<p>新建文件<em>hexo\themes\modernist\layout\_partial\baidu_tongji.ejs</em>，内容如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;% if (theme.baidu_tongji)&#123; %&#62;&#10;&#60;script type=&#34;text/javascript&#34;&#62;&#10;#&#20320;&#30340;&#30334;&#24230;&#32479;&#35745;&#20195;&#30721;&#10;&#60;/script&#62;&#10;&#60;% &#125; %&#62;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注册并登录百度统计获取你的统计代码。</p>
+</blockquote>
+<p>编辑文件<em>hexo\themes\modernist\layout\_partial\head.ejs</em>，在<em>『/head』</em>之前增加：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;%- partial(&#39;baidu_tongji&#39;) %&#62;</span><br></pre></td></tr></table></figure></p>
+<p>重新生成并部署你的站点。</p>
+<blockquote>
+<p>不出意外的话，在你的站点的每个页面的左上角都会看到一个恶心的百度LOGO。你只能在『百度统计首页-&gt;网站列表-&gt;获取代码-&gt;系统管理设置-&gt;统计图标设置-&gt;显示图标』，把那个勾去掉。百度真是恶心，我准备还是用Google Analytics。</p>
+</blockquote>
+<p>#分享<br>我没有添加分享，觉得这个不是很必要，导致页面看起来啰嗦。以加网为例介绍如何添加：</p>
+<ul>
+<li>在<em>hexo\themes\modernist\layout\_partial\post</em>下新建<em>jiathis.ejs</em>文件。</li>
+<li>注册加网获得你的分享代码，写入<em>jiathis.ejs</em>。</li>
+<li>在<em>hexo\themes\modernist\layout\_partial\article.ejs</em>中，添加<em>&lt;%-partial(‘post/jiathis’)%&gt;</em>。</li>
+</ul>
+<p>分享服务还可以使用如下企业提供的技术<a href="http://www.jiathis.com" target="_blank" rel="external">加网</a>，<a href="http://www.bshare.cn" target="_blank" rel="external">bShare</a>，<a href="http://share.baidu.com" target="_blank" rel="external">百度分享</a>。</p>
+<p>#网站图标<br>看一下<em>hexo\themes\modernist\layout\_partial\head.ejs</em>，找到这句：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;link rel=&#34;icon&#34; type=&#34;image/x-icon&#34; href=&#34;&#60;%- config.root %&#62;favicon.ico&#34;&#62;</span><br></pre></td></tr></table></figure></p>
+<p>你懂的，将你的<em>favicon.ico</em>放到工程根目录下即可，也就是<em>hexo\source</em>目录。可以在<a href="http://www.faviconer.com/" target="_blank" rel="external">Faviconer</a>制作你的ico图标，国内有<a href="http://www.bitbug.net/" target="_blank" rel="external">比特虫</a>。</p>
+<p>#自定义挂件<br>除了默认已提供的挂件外，你还可以自定义自己的小挂件，在<em>hexo\themes\modernist\layout\_widget\</em>下，新建自己的ejs文件，如<em>myWidget.ejs</em>，然后在配置文件<em>hexo\themes\modernist\_config.yml</em>中配置。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">widgets:&#10;  - myWidget</span><br></pre></td></tr></table></figure></p>
+<p>用上述方法可以添加新浪微博小挂件。</p>
+<ul>
+<li>生成自己的<a href="http://open.weibo.com/widgets?cat=wb" target="_blank" rel="external">微博组件</a>。</li>
+<li>添加<em>hexo\themes\modernist\layout\_widget\weibo.ejs</em>文件。</li>
+<li>配置<em>hexo\themes\modernist\_config.yml</em>。</li>
+</ul>
+<p>#插件<br>安装插件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install &#60;plugin-name&#62; --save</span><br></pre></td></tr></table></figure></p>
+<p>启用插件：在*hexo\_config.yml文件添加：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugins:&#10;- &#60;plugin-name&#62;  #&#25554;&#20214;&#21517;</span><br></pre></td></tr></table></figure></p>
+<p>升级插件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure></p>
+<p>卸载插件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm uninstall &#60;plugin-name&#62;</span><br></pre></td></tr></table></figure></p>
+<p><strong>RSS插件</strong><br>将上述命令中的<em>『plugin-name』</em>，替换为<em>hexo-generator-feed</em>。一旦安装完成，你可以在配置显示你站点的RSS，文件路径<em>\atom.xml</em>。</p>
+<p>你可以用rss作为迁移工具，用如下命令读取其他位置的rss：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo migrate rss &#60;source&#62;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><em>『source』</em>是本地或网络文件路径。</p>
+</blockquote>
+<p><strong>Sitemap插件</strong><br>将上述命令中的<em>『plugin-name』</em>，替换为<em>hexo-generator-sitemap</em>。你可以将你站点地图提交给搜索引擎，文件路径<em>\sitemap.xml</em>。</p>
+<p>更多插件的安装方法，请参考<a href="http://github.com/tommy351/hexo/wiki/Plugins" target="_blank" rel="external">官方Wiki</a>。</p>
+<blockquote>
+<p>如果你按照上述步骤做，但插件不起作用，没有生成atom.xml和sitemap.xml，也没有报错，那么你应该cd到你的hexo初始化目录，在该目录下重新安装插件，重试。</p>
+</blockquote>
+<p>#迁移<br>hexo支持从其他类型站点迁移，如通用RSS，Jekyll，Octopress，WordPress等，这一部分我没试过。请参考官方文档<a href="http://zespia.tw/hexo/docs/migration.html" target="_blank" rel="external">Hexo Migration</a>。</p>
+<p>#搜索引擎<br>你可以到<a href="http://www.sousuoyinqingtijiao.com" target="_blank" rel="external">屈站长</a>提交你的站点给搜索引擎。其他内容如添加站点或页面的description，提交Sitemap，添加百度统计，Google Analytics等等，参考本文其他章节的内容，不再一一阐述。</p>
+<p>#更新<br>更新hexo：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm update -g hexo</span><br></pre></td></tr></table></figure></p>
+<p>更新主题：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd themes/&#20320;&#30340;&#20027;&#39064;&#10;git pull</span><br></pre></td></tr></table></figure></p>
+<p>更新插件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure></p>
+<p>#干掉IE<br>Kill IE6 提示的javascript代码，请自行搜索。</p>
+<p>#换机器<br>你要保留好自己的博客源码。换机器写博客，就只能使用各种网盘的同步功能，或者你把你的站点源文件提交到某代码托管服务器。另外，貌似这篇很牛逼，<a href="http://lucifr.com/2013/06/02/hexo-on-cloud-with-dropbox-and-vps/" target="_blank" rel="external">Hexo 服务器端布署及 Dropbox 同步</a>。</p>
+<p>我的办法是这样的，先在一个目录下做好Node+Git+Hexo的绿色环境，写个<em>hexos.bat</em>可以一键启动hexo工作台，把整个目录用Dropbox同步，这样随便在办公室或家的任何笔记本台式机都可以写博客，也不用处理什么文件拷贝备份的事情，非常爽。</p>
+<p>#统计功能<br><a href="http://bruce-sha.github.io/2013/12/22/count-views-of-hexo" target="_blank" rel="external">为hexo博客添加访问次数统计功能</a></p>
+<p>#其它<br><strong>网站加速</strong><br><a href="http://www.webluker.com" target="_blank" rel="external">Webluker-CDN 网站加速 免费CDN DNS解析</a><br><a href="http://blog.webluker.com" target="_blank" rel="external">Webluker-FAQ索引</a></p>
+<p><strong>网站监控</strong><br><a href="http://www.jiankongbao.com" target="_blank" rel="external">监控宝-网站监控 网页监控 服务器监控</a><br><a href="http://www.jiankongbao.com/faq" target="_blank" rel="external">监控宝-常见问题</a></p>
+<blockquote>
+<p>DNSPod本身就有D监控可用。</p>
+</blockquote>
+<p><strong>站长工具</strong><br><a href="http://www.google.com/intl/zh-CN/webmasters" target="_blank" rel="external">谷歌站长工具</a><br><a href="http://zhanzhang.baidu.com" target="_blank" rel="external">百度站长工具</a><br><a href="http://tool.chinaz.com" target="_blank" rel="external">站长之家工具</a><br><a href="http://zhanzhang.so.com" target="_blank" rel="external">360搜索站长平台</a><br><a href="http://webscan.360.cn" target="_blank" rel="external">360网站安全检测</a><br><a href="http://ce.cloud.360.cn/index" target="_blank" rel="external">奇云测</a><br><a href="http://jk.cloud.360.cn" target="_blank" rel="external">360云监控</a></p>
+<p><strong>SEO</strong><br><a href="http://www.google.com/intl/zh-CN/webmasters/docs/search-engine-optimization-starter-guide-zh-cn.pdf" target="_blank" rel="external">谷歌搜索引擎优化初学者指南.PDF</a></p>
+<p><strong>数据统计</strong><br><a href="http://tongji.baidu.com" target="_blank" rel="external">百度统计</a><br><a href="http://www.google.com/analytics/web/?hl=zh-CN" target="_blank" rel="external">Google Analytics</a></p>
+<p><strong>企业邮箱</strong><br><a href="http://exmail.qq.com" target="_blank" rel="external">腾讯企业邮箱</a><br><a href="http://service.exmail.qq.com/cgi-bin/help?subtype=1&amp;&amp;id=20012&amp;&amp;no=1000931" target="_blank" rel="external">在DNSPod域名解析商处如何设置企业邮箱</a></p>
+<p><strong>图片生成</strong><br><a href="http://pic.sdodo.com/tool/mailpic" target="_blank" rel="external">邮箱地址生成图片</a><br><a href="http://www.makepic.com/email.php" target="_blank" rel="external">MakePic.com邮址图片生成</a></p>
+<p><strong>徽章生成</strong><br><a href="http://creatr.cc/creatr" target="_blank" rel="external">Logo Creatr</a><br><a href="http://www.simwebsol.com/imagetool" target="_blank" rel="external">Web 2.0 Logo Creator</a> <em>(可能需翻墙)</em><br><!--google search web 2.0 online logo --><br><!--
+**支付宝挂件**
+<a href='http://me.alipay.com/buru'> <img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png' /> </a>
+--></p>
+<p><strong>favicon制作</strong><br><a href="http://tool.lu/favicon" target="_blank" rel="external">Favicon制作</a></p>
+<p><strong>文章推荐/猜你喜欢</strong><br><a href="http://www.wumii.com/widget/relatedItems" target="_blank" rel="external">无觅关联推荐</a><br><a href="http://www.ujian.cc" target="_blank" rel="external">友荐</a><br><a href="http://www.lezhi.me" target="_blank" rel="external">乐知推荐</a><br><a href="http://tuijian.baidu.com" target="_blank" rel="external">百度推荐</a></p>
+<p><strong>广告</strong><br><a href="http://union.baidu.com" target="_blank" rel="external">百度联盟</a></p>
+<p>#不足</p>
+<ul>
+<li>配置文件缺少空格会报错</li>
+<li>报错不能得到精确定位，只能靠经验</li>
+<li>换台机器写文章不好处理</li>
+<li>如何统计总来访数和单页文章阅读次数，请参考<a href="http://bruce-sha.github.io/2013/12/22/count-views-of-hexo" target="_blank" rel="external">为hexo博客添加访问次数统计功能</a>。</li>
+</ul>
+<p>#结束<br>我的博客<a href="http://bruce-sha.github.io" target="_blank" rel="external">『ibruce.info』</a>基本算是免费做出来的，为报答开源社区，特写这篇文章，由于水平有限，错误之处在所难免，请诸位多多包涵，不吝指点。</p>
+<p>在此一并感谢<a href="http://github.com" target="_blank" rel="external">GitHub</a>，<a href="http://github.com/tommy351/hexo" target="_blank" rel="external">Hexo</a>，<a href="http://github.com/heroicyang/hexo-theme-modernist" target="_blank" rel="external">Modernist</a>，<a href="http://www.qiniu.com" target="_blank" rel="external">七牛</a>，<a href="http://duoshuo.com" target="_blank" rel="external">多说</a>，<a href="http://www.qq.com/404" target="_blank" rel="external">公益404</a>，<a href="http://www.godaddy.com" target="_blank" rel="external">GoDaddy</a>，<a href="http://www.dnspod.cn" target="_blank" rel="external">DNSPod</a>，<a href="http://tongji.baidu.com" target="_blank" rel="external">百度统计</a>，<a href="http://www.google.com/analytics/web/?hl=zh-CN" target="_blank" rel="external">Google Analytics</a>，以及<a href="http://nodejs.org" target="_blank" rel="external">Node.js</a>，<a href="https://code.google.com/p/msysgit" target="_blank" rel="external">MSYSGit</a>，<a href="http://www.sublimetext.com" target="_blank" rel="external">Sublime Text 2</a>，最后感谢<a href="http://xbeta.org/wiki/show/Markdown" target="_blank" rel="external">Markdown</a>。<!--，最后感谢我的老婆Jolene。--></p>
+<blockquote>
+<p>关于以上内容的任何问题，您都可以对 <a href="http://bruce-sha.github.io/2013/11/22/hexo-your-blog" target="_blank" rel="external">bruce</a> 留言或邮件 <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#98;&#117;&#x2e;&#x72;&#x75;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#98;&#117;&#x2e;&#x72;&#x75;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;</a>。</p>
+</blockquote>
+<p>#ps：（2014年12月 更新）</p>
+<ol>
+<li>当本地调试出现诡异现象时候，请先使用 <em>hexo clean</em> 清理已经生成的静态文件后重试。</li>
+<li>GitHub官方之前发邮件给用户，已经不建议使用A记录指向静态ip了，建议CNAME指向你的GitHub Pages URL。</li>
+<li>如果你申请了自己的域名，您可以使用 DNSPod+<a href="http://domain.mail.qq.com" target="_blank" rel="external">QQ域名邮箱</a> 打造自己的专属邮箱，比如我的 <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#109;&#101;&#x40;&#105;&#98;&#114;&#x75;&#99;&#x65;&#46;&#x69;&#110;&#x66;&#x6f;">&#109;&#101;&#x40;&#105;&#98;&#114;&#x75;&#99;&#x65;&#46;&#x69;&#110;&#x66;&#x6f;</a>，是不是逼格又提高了一丁点？</li>
+<li>添加 Fork me on Github 彩带，请戳 <a href="http://github.com/blog/273-github-ribbons" target="_blank" rel="external">http://github.com/blog/273-github-ribbons</a> 。</li>
+<li>注意看本页最下方的访问次数统计，这不是一个普通的计数器，这个计数器骨骼精奇天赋异禀，他是实时的！你打开两个浏览窗口，只刷新一个窗口另一个窗口的数字会自动实时变化的，有点意思吧？怎么做的呢，先上个图，当然，这张看板的全部内容也都是实时动态变化着的 ^_^</li>
+</ol>
+<p><img src="http://bruce.u.qiniudn.com/2014/12/firebase-counter.jpg" alt="counter"></p>
+<p>#ps：（2015年4月 更新）</p>
+<ol>
+<li>折腾了两天，终于搞定GitHub不间断被墙导致网站无法访问的问题。方法就是GitHub作为主站，GitCafe作为备份。因为我的hexo版本很低，不得不先升级到hexo3，各种坑，不建议升级，最后自己修改主题，又是各种坑，快累尿了。</li>
+<li><strong>号外号外：</strong>最新的统计服务已经开放，两行代码轻松搞定，你可以直接使用：<strong><a href="http://service.ibruce.info" target="_blank" rel="external">不蒜子</a> </strong> 微服务，本人墙裂推荐，只需要两行代码哦。各种用法实例和显示效果参考<a href="http://ibruce.info/2015/04/04/busuanzi">不蒜子文档</a>中的实例链接。不蒜子，极客的算子，极简的算子，任你发挥的算子。</li>
+</ol>
+<p>#参考文献</p>
+<ol>
+<li><a href="http://zespia.tw/hexo" target="_blank" rel="external">Hexo</a></li>
+<li><a href="http://www.7yeshu.com/2013/09/03/hexo" target="_blank" rel="external">使用Hexo在Github上搭建个人博客</a></li>
+<li><a href="http://sys.la/2013/09/07/hexo" target="_blank" rel="external">hexo教程</a></li>
+<li><a href="http://zipperary.com/2013/05/30/hexo-guide-4" target="_blank" rel="external">hexo系列教程：（四）hexo博客的优化技巧</a></li>
+<li><a href="http://zipperary.com/2013/06/02/hexo-guide-5" target="_blank" rel="external">hexo系列教程：（五）hexo博客的优化技巧续</a></li>
+<li><a href="http://heroicyang.com/2013/05/22/hexo-theme-modernist" target="_blank" rel="external">_折腾了个新主题</a></li>
+<li><a href="http://yangjian.me/workspace/building-blog-with-hexo" target="_blank" rel="external">使用hexo搭建博客</a></li>
+<li><a href="http://lucifr.com/2013/01/02/from-octopress-to-hexo" target="_blank" rel="external">从Octopress到Hexo</a></li>
+<li><a href="http://blog.archean.me/2013/10/20/fulfil-with-hexo-theme" target="_blank" rel="external">搞定Hexo</a></li>
+<li><a href="http://mekong.github.io/2013/06/hello-world" target="_blank" rel="external">Hello World by Hexo</a></li>
+<li><a href="http://popozhu.github.io/2013/06/15/hexo%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" target="_blank" rel="external">hexo的代码高亮 </a></li>
+<li><a href="http://blog.ishgo.cn/2013/09/15/ishgohexo%E5%9B%A2%E9%98%9F%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98" target="_blank" rel="external">用Hexo快速打造静态博客_</a></li>
+<li><a href="http://www.ituring.com.cn/article/6815" target="_blank" rel="external">使用Sublime Text 2 编辑Markdown</a></li>
+<li><a href="http://jiabin.tk/2013/07/01/add-page-404-for-my-blog" target="_blank" rel="external">给hexo添加一个404页面</a></li>
+<li><a href="http://www.worldhello.net/gotgithub/index.html" target="_blank" rel="external">GotGitHub</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html" target="_blank" rel="external">搭建一个免费的，无限流量的Blog — github Pages和Jekyll入门</a></li>
+<li><a href="https://support.dnspod.cn/Kb/showarticle/tsid/42" target="_blank" rel="external">Godaddy注册商域名修改DNS地址</a></li>
+<li><a href="http://devework.com/wordpress-qiniu.html" target="_blank" rel="external">WordPress中使用七牛云存储加速图片等静态文件访问速度</a></li>
+<li><a href="http://www.zhihu.com/question/19594033?group_id=121391355" target="_blank" rel="external">怎样搭建一个自有域名的WordPress博客</a></li>
+<li><a href="http://lucifr.com/2013/06/02/hexo-on-cloud-with-dropbox-and-vps" target="_blank" rel="external">Hexo服务器端布署及Dropbox同步</a></li>
+</ol>
+
+    
+  </div>
+  <footer>
+    
+      
+  
+  <div class="categories">
+    <a href="/categories/default/">default</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+<!-- wumii Button BEGIN -->
+<div style="margin:0px auto; padding-left:23px; text-align:center;">
+	
+	
+
+	<script type="text/javascript" id="wumiiRelatedItems"></script>
+	<script type="text/javascript">
+	    var wumiiPermaLink = "http://ibruce.info/2013/11/22/hexo-your-blog/"; //请用代码生成文章永久的链接
+	    var wumiiTitle = "hexo你的博客"; //请用代码生成文章标题
+	    var wumiiTags = "hexo"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiCategories = ["default"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+	    var wumiiSitePrefix = "http://ibruce.info/";
+	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+	</script>
+	<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+	<!--
+	<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+	    <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+	</a>
+	-->
+</div>
+<!-- wumii Button END -->
+
+<!-- UJian Button BEGIN -->
+	<div class="ujian-hook" style="padding-left: 17px;"></div>
+	<script type="text/javascript">var ujian_config = {num:6,picSize:83,textHeight:45};</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1893018"></script>
+<!-- UJian Button END -->
+
+<!-- baidu tuijian BEGIN -->
+<!-- <div id="hm_t_22763"></div> -->
+<!-- baidu tuijian BEGIN -->
+<!--	<div style="padding-left: 17px;"> -->
+<!--		<script src="http://wm.lrswl.com/page/s.php?s=103186&w=640&h=60"></script> -->
+<!--	</div> -->
+
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="hexo你的博客">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget tag first">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/big-data/">big data</a><small>1</small></li>
+  
+    <li><a href="/categories/cloud/">cloud</a><small>1</small></li>
+  
+    <li><a href="/categories/default/">default</a><small>8</small></li>
+  
+    <li><a href="/categories/distribution/">distribution</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>10</small></li>
+  
+    <li><a href="/categories/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/olap/">olap</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+  <!-- 
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  -->
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/04/busuanzi/">不蒜子</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/03/mongodb3-auth/">mongoDB 3.0 安全权限访问控制</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/02/hello-colossus/">微服务框架 Colossus</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/23/zookeeper/">ZooKeeper 简介</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/20/hello-akka/">Akka 快速入门</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/16/a-small-point-of-interface-design/">对接口设计的一个小看法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/hello-spray/">通过 Spray 创建简单的 Restful Http Server</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/turning-point-2014/">转折点</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/14/caipus/">微菜谱</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="theme-copyright">
+ &copy; 2013 - 2016 <a href="/">bruce</a>
+ | 
+ produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
+ <font id="counter"></font>
+ <span id="busuanzi_container_site_pv"><a href="//busuanzi.ibruce.info" target="_blank"><span id="busuanzi_value_site_pv"></a></span></span>
+ </div>
+<!--
+<div class="copyright">
+ <font id="counter"></font>
+ 版权所有
+  
+  &copy; 2013-2016 <a href="/">bruce</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="http://heroicyang.com" target="_blank">Heroic Yang</a>
+   | 
+  Redesign by <a href="http://bruce-sha.github.io" target="_blank">Bruce Sha</a>
+</div>
+-->
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<script src="/js/counter.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'buru' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

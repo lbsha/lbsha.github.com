@@ -1,0 +1,421 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>如何停止一个正在运行的java线程 | 不如</title>
+  <meta name="author" content="bruce">
+  
+  <meta name="description" content="java 线程 怎么停止">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="如何停止一个正在运行的java线程"/>
+  <meta property="og:site_name" content="不如"/>
+
+  <link rel="alternate" href="/atom.xml" title="不如" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- 被墙 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <script src="//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46161632-1', 'ibruce.info');
+  ga('send', 'pageview');
+</script>
+
+  
+<!-- 
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7034d648d7899a7a50561a179216abaa' type='text/javascript'%3E%3C/script%3E"));
+</script>
+-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7034d648d7899a7a50561a179216abaa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  <meta property="wb:webmaster" content="e9d0b5d9cad42cf4" />
+  <meta property="qc:admins" content="214253361253561667" />
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">不如</a></h1>
+  <p><a href="/">码农，程序猿，未来的昏析狮</a></p>
+</div>
+<!--
+<div>
+<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+ <input style="width:60px;background-color:transparent;text-align:center; border-width:0px;border-top-style: none; border-right-style: none; border-left-style: none; border-bottom-style: none; "  type="search" name="q" id="search" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="20" placeholder="s" />
+ <input type="hidden" name="q" value="site:ibruce.info">
+</form>
+</div>
+-->
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/reading">Reading</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-12-19T07:37:27.000Z"><a href="/2013/12/19/how-to-stop-a-java-thread/">Dec 19 2013</a></time>
+    
+    
+  
+    <h1 class="title">如何停止一个正在运行的java线程</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p><img src="http://bruce.u.qiniudn.com/2013/12/19/stop.jpg" alt="stop"></p>
+<p>与此问题相关的内容主要涉及三部分：已废弃的Thread.stop()、迷惑的thread.interrupt系列、最佳实践Shared Variable。</p>
+<a id="more"></a>
+<h2 id="##已废弃的Thread-stop()">##已废弃的Thread.stop()</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="annotation">@Deprecated</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    stop(<span class="keyword">new</span> ThreadDeath());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上是Hotspot JDK 7中的java.lang.Thread.stop()的代码，学习一下它的doc：</p>
+<blockquote>
+<p>该方法天生是不安全的。使用<em>thread.stop()</em>停止一个线程，导致释放（解锁）所有该线程已经锁定的监视器（因沿堆栈向上传播的未检查异常<em>ThreadDeath</em>而解锁）。如果之前受这些监视器保护的任何对象处于不一致状态，则不一致状态的对象（受损对象）将对其他线程可见，这可能导致任意的行为。</p>
+</blockquote>
+<p>是不是差点被这段话绕晕，俗点说：目标线程可能持有一个监视器，假设这个监视器控制着某两个值之间的逻辑关系，如var1必须小于var2，某一时刻var1等于var2，本来应该受保护的逻辑关系，不幸的是此时恰好收到一个stop命令，产生一个ThreadDeath错误，监视器被解锁。这就导致逻辑错误，当然这种情况也可能不会发生，是不可预料的。注意：ThreadDeath是何方神圣？是个java.lang.Error，不是java.lang.Exception。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadDeath</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">4417128565033088268L</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><em>thread.stop()</em>方法的许多应用应该由“只修改某些变量以指示目标线程应该停止”的代码取代。目标线程应周期性的检查该变量，当发现该变量指示其要停止运行，则退出<em>run</em>方法。如果目标线程等待很长时间，则应该使用<em>interrupt</em>方法中断该等待。</p>
+</blockquote>
+<p>其实这里已经暗示停止一个线程的最佳方法：<strong>条件变量</strong> 或 <strong>条件变量+中断</strong>。</p>
+<blockquote>
+<p>更多请查看：<br><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html" target="_blank" rel="external">Why are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a></p>
+</blockquote>
+<p>上文请参考我的翻译xxx。</p>
+<p>其它关于stop方法的doc：</p>
+<blockquote>
+<ol>
+<li>该方法强迫停止一个线程，并抛出一个新创建的ThreadDeath对象作为异常。</li>
+<li>停止一个尚未启动的线程是允许的，如果稍后启动该线程，它会立即终止。</li>
+<li>通常不应试图捕获ThreadDeath，除非它必须执行某些异常的清除操作。如果catch子句捕获了一个ThreadDeath对象，则必须重新抛出该对象，这样该线程才会真正终止。</li>
+</ol>
+</blockquote>
+<p><strong>小结：</strong><br>Thread.stop()不安全，已不再建议使用。</p>
+<h2 id="##令人迷惑的thread-interrupt()">##令人迷惑的thread.interrupt()</h2><p>Thread类中有三个方法会令新手迷惑，他们是：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> Thread.interrupt() <span class="comment">// 无返回值</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> Thread.isInterrupted() <span class="comment">// 有返回值</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> Thread.interrupted() <span class="comment">// 静态，有返回值</span></span><br></pre></td></tr></table></figure>
+<p>如果按照近几年流行的<a href="http://book.douban.com/subject/4262627" target="_blank" rel="external">重构</a>，<a href="http://book.douban.com/subject/4199741" target="_blank" rel="external">代码整洁之道</a>，<a href="http://book.douban.com/subject/1152111" target="_blank" rel="external">程序员修炼之道</a>等书的观点，这几个方法的命名相对于其实现的功能来说，不够直观明确，极易令人混淆，是低级程序猿的代码。逐个分析：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">interrupt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> != Thread.currentThread())</span><br><span class="line">        checkAccess();</span><br><span class="line">    <span class="keyword">synchronized</span> (blockerLock) &#123;</span><br><span class="line">        Interruptible b = blocker;</span><br><span class="line">        <span class="keyword">if</span> (b != <span class="keyword">null</span>) &#123;</span><br><span class="line">            interrupt0();        <span class="comment">// Just to set the interrupt flag</span></span><br><span class="line">            b.interrupt(<span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    interrupt0();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>中断本线程。无返回值。具体作用分以下几种情况：</p>
+<ul>
+<li>如果该线程正阻塞于<em>Object</em>类的<em>wait()</em>、<em>wait(long)</em>、<em>wait(long, int)</em>方法，或者<em>Thread</em>类的<em>join()</em>、<em>join(long)</em>、<em>join(long, int)</em>、<em>sleep(long)</em>、<em>sleep(long, int)</em>方法，则该线程的<strong>中断状态将被清除，并收到一个<em>java.lang.InterruptedException</em></strong>。</li>
+<li>如果该线程正阻塞于<em>interruptible channel</em>上的I/O操作，则该通道将被关闭，同时该线程的<strong>中断状态被设置，并收到一个<em>java.nio.channels.ClosedByInterruptException</em></strong>。</li>
+<li>如果该线程正阻塞于一个<em>java.nio.channels.Selector</em>操作，则该线程的<strong>中断状态被设置</strong>，它将立即从选择操作返回，并可能带有一个非零值，就好像调用<em>java.nio.channels.Selector.wakeup()</em>方法一样。</li>
+<li>如果上述条件都不成立，则该线程的<strong>中断状态将被设置</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>小结</strong>：第一种情况最为特殊，阻塞于wait/join/sleep的线程，中断状态会被清除掉，同时收到著名的InterruptedException；而其他情况中断状态都被设置，并不一定收到异常。</p>
+</blockquote>
+<p>中断一个不处于活动状态的线程不会有任何作用。如果是其他线程在中断该线程，则java.lang.Thread.checkAccess()方法就会被调用，这可能抛出java.lang.SecurityException。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">interrupted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> currentThread().isInterrupted(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检测当前线程是否已经中断，是则返回true，否则false，<strong>并清除中断状态</strong>。换言之，如果该方法被连续调用两次，第二次必将返回false，除非在第一次与第二次的瞬间线程再次被中断。如果中断调用时线程已经不处于活动状态，则返回false。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterrupted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isInterrupted(<span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检测当前线程是否已经中断，是则返回true，否则false。中断状态不受该方法的影响。如果中断调用时线程已经不处于活动状态，则返回false。</p>
+<blockquote>
+<p>interrupted()与isInterrupted()的唯一区别是，<strong>前者会读取并清除中断状态，后者仅读取状态。</strong></p>
+</blockquote>
+<p>在hotspot源码中，两者均通过调用的native方法isInterrupted(boolean)来实现，区别是参数值ClearInterrupted不同。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">boolean</span> <span class="title">isInterrupted</span><span class="params">(<span class="keyword">boolean</span> ClearInterrupted)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>经过上面的分析，三者之间的区别已经很明确，来看一个具体案例，是我在工作中看到某位架构师的代码，只给出最简单的概要结构：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(!Thread.currentThread().isInterrupted()) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">           Thread.sleep(<span class="number">10000L</span>);</span><br><span class="line">           ... <span class="comment">//为篇幅，省略其它io操作</span></span><br><span class="line">           ... <span class="comment">//为简单，省略其它interrupt操作</span></span><br><span class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123; <span class="keyword">break</span>; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我最初被这段代码直接绕晕，用thread.isInterrupted()方法作为循环中止条件可以吗？</p>
+<p>根据上文的分析，当该方法阻塞于wait/join/sleep时，中断状态会被清除掉，同时收到InterruptedException，也就是接收到的值为false。上述代码中，当sleep之后的调用otherDomain.xxx()，otherDomain中的代码包含wait/join/sleep并且InterruptedException被catch掉的时候，线程无法正确的中断。</p>
+<p>因此，在编写多线程代码的时候，<strong>任何时候捕获到InterruptedException，要么继续上抛，要么重置中断状态，这是最安全的做法</strong>，参考<a href="http://book.douban.com/subject/1888733" target="_blank" rel="external">『Java Concurrency in Practice』</a>。凡事没有绝对，如果你可以确保一定没有这种情况发生，这个代码也是可以的。</p>
+<blockquote>
+<p>下段内容引自：<strong><a href="http://book.douban.com/subject/10484692" target="_blank" rel="external">『Java并发编程实战』</a> 第5章 基础构建模块 5.4 阻塞方法与中断方法  p77</strong></p>
+</blockquote>
+<p>当某个方法抛出InterruptedException时，表示该方法是一个阻塞方法。当在代码中调用一个将抛出InterruptedException异常的方法时，你自己的方法也就变成了一个阻塞方法，并且必须要处理对中断的相应。对于库代码来说，有两种选择：</p>
+<ul>
+<li>传递InterruptedException。这是最明智的策略，将异常传递给方法的调用者。</li>
+<li>恢复中断。在不能上抛的情况下，如Runnable方法，必须捕获InterruptedException，并通过当前线程的interrupt()方法恢复中断状态，这样在调用栈中更高层的代码将看到引发了一个中断。如下代码是模板：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// ① 调用阻塞方法</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            Thread.currentThread().interrupt();    <span class="comment">// ② 恢复被中断的状态</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后再强调一遍，②处的 Thread.currentThread().interrupt() 非常非常重要。</p>
+<h2 id="##最佳实践：Shared_Variable">##最佳实践：Shared Variable</h2><p>不记得哪本书上曾曰过，最佳实践是个烂词。在这里这个词最能表达意思，停止一个线程最好的做法就是利用共享的条件变量。</p>
+<p>对于本问题，我认为准确的说法是：<strong>停止一个线程的最佳方法是让它执行完毕，没有办法立即停止一个线程，但你可以控制何时或什么条件下让他执行完毕。</strong></p>
+<p>通过条件变量控制线程的执行，线程内部检查变量状态，外部改变变量值可控制停止执行。为保证线程间的即时通信，需要使用使用volatile关键字或锁，确保读线程与写线程间变量状态一致。下面给一个最佳模板：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * <span class="doctag">@author</span> bruce_sha (bruce-sha.github.io)</span><br><span class="line"> * <span class="doctag">@version</span> 2013-12-23</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BestPractice</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> finished = <span class="keyword">false</span>;   <span class="comment">// ① volatile条件变量</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopMe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        finished = <span class="keyword">true</span>;    <span class="comment">// ② 发出停止信号</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (!finished) &#123;    <span class="comment">// ③ 检测条件变量</span></span><br><span class="line">            <span class="comment">// do dirty work   // ④业务代码</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>本文尚未完成，请耐心等待。</p>
+<hr>
+<p>当④处的代码阻塞于wait()或sleep()时，线程不能立刻检测到条件变量。因此②处的代码最好同时调用interrupt()方法。</p>
+<p>小结：<br><a href="http://forward.com.au/javaProgramming/HowToStopAThread.html" target="_blank" rel="external">How to Stop a Thread or a Task ?</a> 详细讨论了如何停止一个线程, 总结起来有三点：</p>
+<ol>
+<li>使用violate boolean变量来标识线程是否停止。</li>
+<li>停止线程时，需要调用停止线程的interrupt()方法，因为线程有可能在wait()或sleep(), 提高停止线程的即时性。</li>
+<li>对于blocking IO的处理，尽量使用InterruptibleChannel来代替blocking IO。</li>
+</ol>
+<h2 id="##总结：">##总结：</h2><blockquote>
+<p>要使任务和线程能安全、快速、可靠地停止下来，并不是一件容易的事。Java没有提供任何机制来安全地终止线程。但它提供了中断（Interruption），这是一种协作机制，能够使一个线程终止另一个线程的的工作。—— <a href="http://book.douban.com/subject/10484692" target="_blank" rel="external">『Java并发编程实战』</a> 第7章 取消与关闭 p111</p>
+<p>中断是一种协作机制。一个线程不能强制其它线程停止正在执行的操作而去执行其它的操作。当线程A中断B时，A仅仅是要求B在执行到某个可以暂停的地方停止正在执行的操作——前提是如果线程B愿意停下来。—— <a href="http://book.douban.com/subject/10484692" target="_blank" rel="external">『Java并发编程实战』</a> 第5章 基础构建模块 p77</p>
+</blockquote>
+<p>总之，中断只是一种协作机制，需要被中断的线程自己处理中断。停止一个线程最佳实践是 <strong>中断 + 条件变量</strong>。</p>
+<h2 id="##参考文献">##参考文献</h2><ol>
+<li><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html" target="_blank" rel="external">Why are Thread.stop, Thread.suspend and Thread.resume Deprecated ?</a></li>
+<li><a href="http://www.infoq.com/cn/articles/java-interrupt-mechanism" target="_blank" rel="external">详细分析Java中断机制</a></li>
+<li><a href="http://stackoverflow.com/questions/3194545/how-to-stop-a-java-thread-gracefully" target="_blank" rel="external">How to stop a java thread gracefully ?</a></li>
+<li><strong><a href="http://forward.com.au/javaProgramming/HowToStopAThread.html" target="_blank" rel="external">How to Stop a Thread or a Task ?</a></strong></li>
+<li><a href="http://yeziwang.iteye.com/blog/844649" target="_blank" rel="external">为什么不能使用Thread.stop()方法？</a></li>
+<li><a href="http://blog.csdn.net/dlite/article/details/4212915" target="_blank" rel="external">为什么 Thread.stop和Thread.suspend等被废弃了？</a></li>
+</ol>
+
+    
+  </div>
+  <footer>
+    
+      
+  
+  <div class="categories">
+    <a href="/categories/java/">java</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/concurrency/">concurrency</a>, <a href="/tags/java/">java</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+<!-- wumii Button BEGIN -->
+<div style="margin:0px auto; padding-left:23px; text-align:center;">
+	
+	
+
+	<script type="text/javascript" id="wumiiRelatedItems"></script>
+	<script type="text/javascript">
+	    var wumiiPermaLink = "http://ibruce.info/2013/12/19/how-to-stop-a-java-thread/"; //请用代码生成文章永久的链接
+	    var wumiiTitle = "如何停止一个正在运行的java线程"; //请用代码生成文章标题
+	    var wumiiTags = "concurrency, java"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiCategories = ["java"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+	    var wumiiSitePrefix = "http://ibruce.info/";
+	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
+	</script>
+	<script type="text/javascript" src="http://widget.wumii.cn/ext/relatedItemsWidget"></script>
+	<!--
+	<a href="http://www.wumii.com/widget/relatedItems" style="border:0;">
+	    <img src="http://static.wumii.cn/images/pixel.png" alt="无觅关联推荐，快速提升流量" style="border:0;padding:0;margin:0;" />
+	</a>
+	-->
+</div>
+<!-- wumii Button END -->
+
+<!-- UJian Button BEGIN -->
+	<div class="ujian-hook" style="padding-left: 17px;"></div>
+	<script type="text/javascript">var ujian_config = {num:6,picSize:83,textHeight:45};</script>
+	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=1893018"></script>
+<!-- UJian Button END -->
+
+<!-- baidu tuijian BEGIN -->
+<!-- <div id="hm_t_22763"></div> -->
+<!-- baidu tuijian BEGIN -->
+<!--	<div style="padding-left: 17px;"> -->
+<!--		<script src="http://wm.lrswl.com/page/s.php?s=103186&w=640&h=60"></script> -->
+<!--	</div> -->
+
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="如何停止一个正在运行的java线程">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget tag first">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/algorithm/">algorithm</a><small>1</small></li>
+  
+    <li><a href="/categories/big-data/">big data</a><small>1</small></li>
+  
+    <li><a href="/categories/cloud/">cloud</a><small>1</small></li>
+  
+    <li><a href="/categories/default/">default</a><small>8</small></li>
+  
+    <li><a href="/categories/distribution/">distribution</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>10</small></li>
+  
+    <li><a href="/categories/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/olap/">olap</a><small>1</small></li>
+  
+    <li><a href="/categories/scala/">scala</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+  <!-- 
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  -->
+  <a href="/tags/actor/" style="font-size: 10px;">actor</a> <a href="/tags/akka/" style="font-size: 14px;">akka</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/big-data/" style="font-size: 12px;">big data</a> <a href="/tags/concurrency/" style="font-size: 14px;">concurrency</a> <a href="/tags/cubes/" style="font-size: 10px;">cubes</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/ebs/" style="font-size: 10px;">ebs</a> <a href="/tags/ec2/" style="font-size: 10px;">ec2</a> <a href="/tags/eclipse/" style="font-size: 12px;">eclipse</a> <a href="/tags/event-bus/" style="font-size: 10px;">event bus</a> <a href="/tags/green/" style="font-size: 12px;">green</a> <a href="/tags/guava/" style="font-size: 12px;">guava</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/ipad/" style="font-size: 10px;">ipad</a> <a href="/tags/issue/" style="font-size: 10px;">issue</a> <a href="/tags/java/" style="font-size: 16px;">java</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/leb/" style="font-size: 10px;">leb</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/microservice/" style="font-size: 10px;">microservice</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/olap/" style="font-size: 10px;">olap</a> <a href="/tags/papa/" style="font-size: 10px;">papa</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/tags/scala/" style="font-size: 20px;">scala</a> <a href="/tags/scala-ide/" style="font-size: 10px;">scala-ide</a> <a href="/tags/spray/" style="font-size: 10px;">spray</a> <a href="/tags/weixin/" style="font-size: 10px;">weixin</a> <a href="/tags/word-cloud/" style="font-size: 10px;">word cloud</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/04/busuanzi/">不蒜子</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/03/mongodb3-auth/">mongoDB 3.0 安全权限访问控制</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/02/hello-colossus/">微服务框架 Colossus</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/23/zookeeper/">ZooKeeper 简介</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/20/hello-akka/">Akka 快速入门</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/16/a-small-point-of-interface-design/">对接口设计的一个小看法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/hello-spray/">通过 Spray 创建简单的 Restful Http Server</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/turning-point-2014/">转折点</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/14/caipus/">微菜谱</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="theme-copyright">
+ &copy; 2013 - 2016 <a href="/">bruce</a>
+ | 
+ produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
+ <font id="counter"></font>
+ <span id="busuanzi_container_site_pv"><a href="//busuanzi.ibruce.info" target="_blank"><span id="busuanzi_value_site_pv"></a></span></span>
+ </div>
+<!--
+<div class="copyright">
+ <font id="counter"></font>
+ 版权所有
+  
+  &copy; 2013-2016 <a href="/">bruce</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="http://heroicyang.com" target="_blank">Heroic Yang</a>
+   | 
+  Redesign by <a href="http://bruce-sha.github.io" target="_blank">Bruce Sha</a>
+</div>
+-->
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<script src="/js/counter.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'buru' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
