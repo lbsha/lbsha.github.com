@@ -101,9 +101,7 @@ var _hmt = _hmt || [];
 <p>下载当前稳定版的 <a href="http://zookeeper.apache.org/releases.html" target="_blank" rel="external">zookeeper</a>，解压并拷贝 conf/zoo_sample.cfg 为 zoo.cfg，配置所需要的项目。最少配是只指定其中的 dataDir 项，其他项则使用默认值。</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">tickTime=2000        # 心跳基本时间单位，毫秒级，zk基本上所有时间都是这个时间的整数倍</span><br><span class="line">clientPort=2181      # 监听客户端连接的端口</span><br><span class="line">dataDir=/zookeeper/server0/data         # 内存数据库快照存放地址</span><br><span class="line">dataLogDir=/zookeeper/server0/dataLog   # 事务日志存放地址，未指定则同dataDir项，建议分开</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>##主要配置项说明</p>
-<p>###最小配置</p>
-<p>最小配是保证zk正常运行必不可少的配置项。</p>
+<h2 id="主要配置项说明">主要配置项说明</h2><h3 id="最小配置">最小配置</h3><p>最小配是保证zk正常运行必不可少的配置项。</p>
 <ul>
 <li><strong>clientPort</strong>：监听客户端连接的服务端口</li>
 <li><strong>dataDir</strong>：内存数据库快照地址，事务日志地址（除非由 dataLogDir 另行指定）</li>
@@ -112,8 +110,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p> 建议另行指定 dataLogDir，以便将事务日志存储在单独的路径下，这很重要，因事物日志存储的设备效率直接影响zk的性能。</p>
 </blockquote>
-<p>###高级配置</p>
-<p>高级参数是可选的，可以通过这些参数调优zk性能。有些参数还可以通过 java system properties 动态指定，格式为 zookeeper.keyword 。</p>
+<h3 id="高级配置">高级配置</h3><p>高级参数是可选的，可以通过这些参数调优zk性能。有些参数还可以通过 java system properties 动态指定，格式为 zookeeper.keyword 。</p>
 <ul>
 <li><strong>dataLogDir</strong>：事务日志目录，可以使用专用的设备，以避免事务日志与快照之间的竞争。(No Java system property)</li>
 <li><strong>globalOutstandingLimit</strong>：zk接收的请求队列大小，默认1000，设置太大对导致内存溢出。(Java system property: zookeeper.globalOutstandingLimit)</li>
@@ -125,8 +122,7 @@ var _hmt = _hmt || [];
 <li><strong>autopurge.purgeInterval</strong>：清理频率，单位小时，默认0，表示不开启清理功能。</li>
 <li><strong>autopurge.snapRetainCount</strong>：需要保留的文件数目，默认是保留3个。</li>
 </ul>
-<p>###集群配置</p>
-<ul>
+<h3 id="集群配置">集群配置</h3><ul>
 <li><strong>electionAlg</strong>：领导选举算法，默认3。(No Java system property)</li>
 <li><strong>initLimit</strong>：tickTime的倍数，表示leader选举结束后，followers与leader同步需要的时间，leader的数据非常多时或followers比较多，则该值应该适当大一些。(No Java system property)</li>
 <li><strong>syncLimit</strong>：tickTime的倍数，表示follower和observer与leader交互时的最大等待时间，只不过是在与leader同步完毕之后，正常请求转发或ping等消息交互时的超时时间。(No Java system property)</li>
@@ -137,7 +133,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>更多参数参考 <a href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html" target="_blank" rel="external">ZK Administrator’s Guide</a>、<a href="http://blog.csdn.net/lovingprince/article/details/6853753" target="_blank" rel="external">ZK 配置项详解</a>、<a href="http://www.udpwork.com/item/2002.html" target="_blank" rel="external">ZK 配置文件</a> 或 <a href="http://nileader.blog.51cto.com/1381108/1032157" target="_blank" rel="external">ZK 管理员指南</a>。</p>
 </blockquote>
-<p>##Java API<br>zk 官方的Java API是非常难用的，建议使用第三方基于官方API封装的工具包。</p>
+<h2 id="Java_API">Java API</h2><p>zk 官方的Java API是非常难用的，建议使用第三方基于官方API封装的工具包。</p>
 <ul>
 <li>Netflix curator：<a href="http://github.com/Netflix/curator" target="_blank" rel="external">http://github.com/Netflix/curator</a>（强大）</li>
 <li>sgroschupf zkclient：<a href="http://github.com/sgroschupf/zkclient" target="_blank" rel="external">http://github.com/sgroschupf/zkclient</a>（简单）</li>
@@ -177,10 +173,9 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>getChildren， getData， exists 方法可指定是否监听相应的事件；而create，delete，setData 方法则会触发相应的事件。</p>
 </blockquote>
-<p>##权限设置</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// new一个acl</span></span><br><span class="line">List&lt;ACL&gt; acls = <span class="keyword">new</span> ArrayList&lt;ACL&gt;();</span><br><span class="line"><span class="comment">// 添加第一个id，采用用户名密码形式</span></span><br><span class="line">Id id1 = <span class="keyword">new</span> Id(<span class="string">"digest"</span>, DigestAuthenticationProvider.generateDigest(<span class="string">"admin:admin"</span>));</span><br><span class="line">ACL acl1 = <span class="keyword">new</span> ACL(ZooDefs.Perms.ALL, id1);</span><br><span class="line">acls.add(acl1);</span><br><span class="line"><span class="comment">// 添加第二个id，所有用户可读权限</span></span><br><span class="line">Id id2 = <span class="keyword">new</span> Id(<span class="string">"world"</span>, <span class="string">"anyone"</span>);</span><br><span class="line">ACL acl2 = <span class="keyword">new</span> ACL(ZooDefs.Perms.READ, id2);</span><br><span class="line">acls.add(acl2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// zk用admin认证，创建/buru ZNode。</span></span><br><span class="line"><span class="keyword">final</span> ZooKeeper zk = <span class="keyword">new</span> ZooKeeper(<span class="string">"localhost:2181,127.0.0.1:2181"</span>, <span class="number">2000</span>, <span class="keyword">null</span>);</span><br><span class="line">zk.addAuthInfo(<span class="string">"digest"</span>, <span class="string">"admin:admin"</span>.getBytes());</span><br><span class="line"></span><br><span class="line">Stat exists = zk.exists(<span class="string">"/buru"</span>, <span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">if</span> (exists != <span class="keyword">null</span>)</span><br><span class="line">   zk.setData(<span class="string">"/buru"</span>, <span class="string">"2323"</span>.getBytes(), -<span class="number">1</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   zk.create(<span class="string">"/buru"</span>, <span class="string">"data112"</span>.getBytes(), acls, CreateMode.PERSISTENT);</span><br></pre></td></tr></table></figure>
+<h2 id="权限设置">权限设置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// new一个acl</span></span><br><span class="line">List&lt;ACL&gt; acls = <span class="keyword">new</span> ArrayList&lt;ACL&gt;();</span><br><span class="line"><span class="comment">// 添加第一个id，采用用户名密码形式</span></span><br><span class="line">Id id1 = <span class="keyword">new</span> Id(<span class="string">"digest"</span>, DigestAuthenticationProvider.generateDigest(<span class="string">"admin:admin"</span>));</span><br><span class="line">ACL acl1 = <span class="keyword">new</span> ACL(ZooDefs.Perms.ALL, id1);</span><br><span class="line">acls.add(acl1);</span><br><span class="line"><span class="comment">// 添加第二个id，所有用户可读权限</span></span><br><span class="line">Id id2 = <span class="keyword">new</span> Id(<span class="string">"world"</span>, <span class="string">"anyone"</span>);</span><br><span class="line">ACL acl2 = <span class="keyword">new</span> ACL(ZooDefs.Perms.READ, id2);</span><br><span class="line">acls.add(acl2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// zk用admin认证，创建/buru ZNode。</span></span><br><span class="line"><span class="keyword">final</span> ZooKeeper zk = <span class="keyword">new</span> ZooKeeper(<span class="string">"localhost:2181,127.0.0.1:2181"</span>, <span class="number">2000</span>, <span class="keyword">null</span>);</span><br><span class="line">zk.addAuthInfo(<span class="string">"digest"</span>, <span class="string">"admin:admin"</span>.getBytes());</span><br><span class="line"></span><br><span class="line">Stat exists = zk.exists(<span class="string">"/buru"</span>, <span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">if</span> (exists != <span class="keyword">null</span>)</span><br><span class="line">   zk.setData(<span class="string">"/buru"</span>, <span class="string">"2323"</span>.getBytes(), -<span class="number">1</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   zk.create(<span class="string">"/buru"</span>, <span class="string">"data112"</span>.getBytes(), acls, CreateMode.PERSISTENT);</span><br></pre></td></tr></table></figure>
 <p>更多内容参考文章， <a href="http://nettm.iteye.com/blog/1721778" target="_blank" rel="external">ZK 权限配置</a>、<a href="http://www.cnblogs.com/wangxiaowei/p/3315137.html" target="_blank" rel="external">ZK ACL使用</a>、<a href="http://nileader.blog.51cto.com/1381108/795525" target="_blank" rel="external">ZK 权限控制</a> 或 <a href="http://www.wuzesheng.com/?p=2438" target="_blank" rel="external">说说Zookeeper中的ACL</a>。</p>
-<p>##管理工具<br>很可惜，没有顺手的，试试下面几个吧！</p>
+<h2 id="管理工具">管理工具</h2><p>很可惜，没有顺手的，试试下面几个吧！</p>
 <ul>
 <li><a href="http://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip" target="_blank" rel="external">ZooInspector</a> </li>
 <li><a href="http://github.com/nettm/ZooInspector" target="_blank" rel="external">ZooInspector 改进版</a></li>

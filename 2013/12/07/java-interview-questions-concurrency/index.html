@@ -118,51 +118,34 @@ var _hmt = _hmt || [];
 </blockquote>
 <hr>
 <h2 id="第一部分：理论篇">第一部分：理论篇</h2><hr>
-<p>#多线程</p>
-<hr>
-<p>###Q：java中有几种方法可以创建一个线程？</p>
-<p><strong><a href="http://bruce-sha.github.io/2013/12/17/how-many-ways-to-create-a-thread-in-java/" target="_blank" rel="external">how many ways to create a thread in java</a></strong></p>
-<p>###Q：如何停止一个正在运行的线程？</p>
-<p><strong><a href="http://bruce-sha.github.io/2013/12/19/how-to-stop-a-java-thread/" target="_blank" rel="external">how to stop a java thread</a></strong></p>
-<p>###Q：notify()和notifyAll()有什么区别？</p>
-<p>notify()是唤醒一个线程。只唤醒一个。</p>
+<h1 id="多线程">多线程</h1><hr>
+<h3 id="Q：java中有几种方法可以创建一个线程？">Q：java中有几种方法可以创建一个线程？</h3><p><strong><a href="http://bruce-sha.github.io/2013/12/17/how-many-ways-to-create-a-thread-in-java/" target="_blank" rel="external">how many ways to create a thread in java</a></strong></p>
+<h3 id="Q：如何停止一个正在运行的线程？">Q：如何停止一个正在运行的线程？</h3><p><strong><a href="http://bruce-sha.github.io/2013/12/19/how-to-stop-a-java-thread/" target="_blank" rel="external">how to stop a java thread</a></strong></p>
+<h3 id="Q：notify()和notifyAll()有什么区别？">Q：notify()和notifyAll()有什么区别？</h3><p>notify()是唤醒一个线程。只唤醒一个。</p>
 <p>notifyAll()是唤醒全部线程，但是注意是一个个唤醒，唤醒一个再唤下一个。</p>
 <p>随机唤醒和唤醒全部。</p>
-<p>###Q：sleep()和 wait()有什么区别？</p>
-<p>定时等待和在监视器上等待，不同范畴。</p>
-<p>###Q：什么是Daemon线程？它有什么意义？</p>
-<p>守护线程，不需要上层逻辑介入的后台线程 ，比如GC。</p>
-<p>###Q：java如何实现多线程之间的通讯和协作？</p>
-<p>中断和 直接或间接访问对方实例。</p>
+<h3 id="Q：sleep()和_wait()有什么区别？">Q：sleep()和 wait()有什么区别？</h3><p>定时等待和在监视器上等待，不同范畴。</p>
+<h3 id="Q：什么是Daemon线程？它有什么意义？">Q：什么是Daemon线程？它有什么意义？</h3><p>守护线程，不需要上层逻辑介入的后台线程 ，比如GC。</p>
+<h3 id="Q：java如何实现多线程之间的通讯和协作？">Q：java如何实现多线程之间的通讯和协作？</h3><p>中断和 直接或间接访问对方实例。</p>
 <p><a href="http://android.group.iteye.com/group/wiki/3083-java-sync-communication" target="_blank" rel="external">线程同步(使用了synchronized)和线程通讯(使用了wait,notify)</a></p>
-<p>#锁</p>
-<hr>
-<p>###Q：什么是可重入锁（ReentrantLock）？</p>
-<p>更高级的锁，附加更多特性。</p>
-<p>###Q：当一个线程进入某个对象的一个synchronized的实例方法后，其它线程是否可进入此对象的其它方法？<br>可进入非synchronized方法。</p>
-<p>###Q：synchronized和java.util.concurrent.locks.Lock的异同？</p>
-<p>后者具有更丰富的特性。</p>
+<h1 id="锁">锁</h1><hr>
+<h3 id="Q：什么是可重入锁（ReentrantLock）？">Q：什么是可重入锁（ReentrantLock）？</h3><p>更高级的锁，附加更多特性。</p>
+<h3 id="Q：当一个线程进入某个对象的一个synchronized的实例方法后，其它线程是否可进入此对象的其它方法？">Q：当一个线程进入某个对象的一个synchronized的实例方法后，其它线程是否可进入此对象的其它方法？</h3><p>可进入非synchronized方法。</p>
+<h3 id="Q：synchronized和java-util-concurrent-locks-Lock的异同？">Q：synchronized和java.util.concurrent.locks.Lock的异同？</h3><p>后者具有更丰富的特性。</p>
 <p>ReentrantLock 相对于固有锁synchronized，同样是可重入的，在某些vm版本上提供了比固有锁更高的性能，提供了更丰富的锁特性，比如可中断的锁，可等待的锁，平等锁以及非块结构的加锁。从代码上尽量用固有锁，vm会对固有锁做一定的优化，并且代码可维护和稳定。只有在需要ReentrantLock的一些特性时，可以考虑用ReentrantLock实现。</p>
 <p>ReentrantLock 和synchronized比较：<br>性能上：<br>synchronized在Java5.0性能大胜synchronized，Java 6中synchronized 略有胜出—-摘自《java并发编程实战》（13.4）<br>当时我说synchronized在今后的JVM（JIT）优化的可能性比ReentrantLock大，回来后我翻翻资料，发现在ReentrantLock 和synchronized还真有一些需要了解的知识，所以特别整理下发给大家。<br>1.为什么JUC框架出现LOCK？<br>ReentrantLock并不是替代synchronized的方法，而是当内置锁不适用时，作为一种可选的高级功能。<br>2.那么Synchronized有哪些缺点？<br>①. 只有一个condition与锁相关联，这个condition是什么？就是synchronized对针对的对象锁。<br>②. synchronized无法中断一个正在等待获得锁的线程，也即多线程竞争一个锁时，其余未得到锁的线程只能不停的尝试获得锁，而不能中断。这种情况对于大量的竞争线程会造成性能的下降等后果。<br>可见ReentrantLock 是对synchronized补充。<br>3.我们面对ReentrantLock和synchronized改如何选择？<br>Synchronized相比Lock，为许多开发人员所熟悉，并且简洁紧凑，如果现有程序已经使用了内置锁，那么尽量保持代码风格统一，尽量不引入Lock，避免两种机制混用，容易令人困惑，也容易发生错误。<br>在Synchronized无法满足需求的情况下，Lock可以作为一种高级工具，这些功能包括“可定时的、可轮询的与可中断的锁获取操作，公平队列，以及非块结构的锁”否则还是优先使用Synchronized。<br>最后，未来更可能提升Synchronized而不是Lock的性能，因为Synchronized是JVM的内置属性，他能执行一些优化，例如对线程封闭的锁对象的锁消除优化，通过增加锁的粒度来消除内置锁的同步，而如果基于类库的锁来实现这些功能，则可能性不大。—以上建议摘自《java并发编程实战》（13.4）</p>
-<p>###Q：乐观锁和悲观锁的理解及如何实现，有哪些实现方式？<br>乐观锁是假设我已经拿到锁，悲观所是我必须拿到锁，前者用CAS，后者用mutex。</p>
-<p>#并发框架</p>
-<hr>
-<p>###Q：SynchronizedMap和ConcurrentHashMap有什么区别？<br>后者具有更高的并发。</p>
-<p>###Q：CopyOnWriteArrayList可以用于什么应用场景？</p>
-<p>多读少写。</p>
-<p>#线程安全</p>
-<hr>
-<p>###Q：什么叫线程安全？servlet是线程安全吗?<br>在多线程调用情况下，依然表现正常。</p>
-<p>###Q：同步有几种实现方法？<br>锁和volatile。</p>
-<p>###Q：volatile有什么用？能否用一句话说明下volatile的应用场景？<br>保持可见性，在1写N读的情况下比较适合。</p>
-<p>###Q：请说明下java的内存模型及其工作流程。</p>
-<p>JVM的内存模型可简单理解为，有一块整个JVM共享的主内存，每个线程有自己的变量复本，线程持有的复本与主内存之间使用内部的数据协议，再具体可参考一些blog和周志明的深入理解JVM12章</p>
-<p>###Q：为什么代码会重排序？</p>
-<p>编译器旨在提升性能。</p>
-<p>#并发容器和框架</p>
-<hr>
-<p>###Q：如何让一段程序并发的执行，并最终汇总结果？</p>
-<ol>
+<h3 id="Q：乐观锁和悲观锁的理解及如何实现，有哪些实现方式？">Q：乐观锁和悲观锁的理解及如何实现，有哪些实现方式？</h3><p>乐观锁是假设我已经拿到锁，悲观所是我必须拿到锁，前者用CAS，后者用mutex。</p>
+<h1 id="并发框架">并发框架</h1><hr>
+<h3 id="Q：SynchronizedMap和ConcurrentHashMap有什么区别？">Q：SynchronizedMap和ConcurrentHashMap有什么区别？</h3><p>后者具有更高的并发。</p>
+<h3 id="Q：CopyOnWriteArrayList可以用于什么应用场景？">Q：CopyOnWriteArrayList可以用于什么应用场景？</h3><p>多读少写。</p>
+<h1 id="线程安全">线程安全</h1><hr>
+<h3 id="Q：什么叫线程安全？servlet是线程安全吗?">Q：什么叫线程安全？servlet是线程安全吗?</h3><p>在多线程调用情况下，依然表现正常。</p>
+<h3 id="Q：同步有几种实现方法？">Q：同步有几种实现方法？</h3><p>锁和volatile。</p>
+<h3 id="Q：volatile有什么用？能否用一句话说明下volatile的应用场景？">Q：volatile有什么用？能否用一句话说明下volatile的应用场景？</h3><p>保持可见性，在1写N读的情况下比较适合。</p>
+<h3 id="Q：请说明下java的内存模型及其工作流程。">Q：请说明下java的内存模型及其工作流程。</h3><p>JVM的内存模型可简单理解为，有一块整个JVM共享的主内存，每个线程有自己的变量复本，线程持有的复本与主内存之间使用内部的数据协议，再具体可参考一些blog和周志明的深入理解JVM12章</p>
+<h3 id="Q：为什么代码会重排序？">Q：为什么代码会重排序？</h3><p>编译器旨在提升性能。</p>
+<h1 id="并发容器和框架">并发容器和框架</h1><hr>
+<h3 id="Q：如何让一段程序并发的执行，并最终汇总结果？">Q：如何让一段程序并发的执行，并最终汇总结果？</h3><ol>
 <li>使用CyclicBarrier 和CountDownLatch都可以<br>使用CyclicBarrier 在多个关口处将多个线程执行结果汇总<br>CountDownLatch 在各线程执行完毕后向总线程汇报结果</li>
 </ol>
 <p>1 可以用join，或者条件变量</p>
@@ -170,52 +153,42 @@ var _hmt = _hmt || [];
 <p>a.切分问题。<br>b.每个线程执行的结果存入一个容器。<br>c.汇总结果，做进一步处理。</p>
 <p>看看FutureTask<br>Future这个只是一个线程池吧，特殊点是它可以获取到任务的一个返回结果。</p>
 <p>Fork/Join值得关注</p>
-<p>###Q：如何合理的配置java线程池？如CPU密集型的任务，基本线程池应该配置多大？IO密集型的任务，基本线程池应该配置多大？用有界队列好还是无界队列好？任务非常多的时候，使用什么阻塞队列能获取最好的吞吐量？</p>
-<ol>
+<h3 id="Q：如何合理的配置java线程池？如CPU密集型的任务，基本线程池应该配置多大？IO密集型的任务，基本线程池应该配置多大？用有界队列好还是无界队列好？任务非常多的时候，使用什么阻塞队列能获取最好的吞吐量？">Q：如何合理的配置java线程池？如CPU密集型的任务，基本线程池应该配置多大？IO密集型的任务，基本线程池应该配置多大？用有界队列好还是无界队列好？任务非常多的时候，使用什么阻塞队列能获取最好的吞吐量？</h3><ol>
 <li>配置线程池时CPU密集型任务可以少配置线程数，大概和机器的cpu核数相当，可以使得每个线程都在执行任务<br>IO密集型时，大部分线程都阻塞，故需要多配置线程数，2*cpu核数<br>有界队列和无界队列的配置需区分业务场景，一般情况下配置有界队列，在一些可能会有爆发性增长的情况下使用无界队列。<br>任务非常多时，使用非</li>
 </ol>
 <p>2 CPU密集型的CPU个数+1，IO密集型的需要调优，看特定环境，处理快的可以是无界，linkedBlockingQueue吧<br>阻塞队列使用cas操作替代锁可以获得好的吞吐量。</p>
 <ol>
 <li>配置线程池时CPU密集型任务可以少配置线程数，大概和机器的cpu核数相当，可以使得每个线程都在执行任务<br>IO密集型时，大部分线程都阻塞，故需要多配置线程数，2*cpu核数 有界队列好，无界队列不可控，有可能导致内存不够 synchronousQueue吞吐率最高</li>
 </ol>
-<p>###Q：如何使用阻塞队列实现一个生产者和消费者模型？请写代码。</p>
-<p>3 生产者负责notify，消费者需要wait，条件是有无元素</p>
+<h3 id="Q：如何使用阻塞队列实现一个生产者和消费者模型？请写代码。">Q：如何使用阻塞队列实现一个生产者和消费者模型？请写代码。</h3><p>3 生产者负责notify，消费者需要wait，条件是有无元素</p>
 <p>3 BlockingQueue put take</p>
-<p>###Q：多读少写的场景应该使用哪个并发容器，为什么使用它？比如你做了一个搜索引擎，搜索引擎每次搜索前需要判断搜索关键词是否在黑名单里，黑名单每天更新一次。</p>
-<ol>
+<h3 id="Q：多读少写的场景应该使用哪个并发容器，为什么使用它？比如你做了一个搜索引擎，搜索引擎每次搜索前需要判断搜索关键词是否在黑名单里，黑名单每天更新一次。">Q：多读少写的场景应该使用哪个并发容器，为什么使用它？比如你做了一个搜索引擎，搜索引擎每次搜索前需要判断搜索关键词是否在黑名单里，黑名单每天更新一次。</h3><ol>
 <li>CopyOnWriteArrayList这个容器适用于多读少写…读写并不是在同一个对象上。在写时会大面积复制数组，所以写的性能差，在写完成后将读的引用改为执行写的对象</li>
 </ol>
 <p>4 Copyonwrite或者CAS型<br>4CopyOnWriteArrayList这个容器适用于多读少写 读的时候可以不用加锁</p>
-<p>#Java中的锁</p>
-<hr>
-<p>###Q：如何实现乐观锁（CAS）？如何避免ABA问题？</p>
-<ol>
+<h1 id="Java中的锁">Java中的锁</h1><hr>
+<h3 id="Q：如何实现乐观锁（CAS）？如何避免ABA问题？">Q：如何实现乐观锁（CAS）？如何避免ABA问题？</h3><ol>
 <li>读取内存值<br>比较内存值和期望值<br>替换内存值为要替换值</li>
 </ol>
 <p>带参数版本来避免aba问题，在读取和替换的时候进行判定版本是否一致</p>
 <p>1 利用CPU的cas命令，避免ABA需要使用类似于version，AtomicStampedReference也可以</p>
 <p>1 compareAndSet AtomicStampedReference</p>
-<p>###Q：读写锁可以用于什么应用场景？</p>
-<ol>
+<h3 id="Q：读写锁可以用于什么应用场景？">Q：读写锁可以用于什么应用场景？</h3><ol>
 <li>多读少写，读写锁支持多个读操作并发执行，写操作只能由一个线程来操作</li>
 </ol>
 <p>2 读多写少<br>2多读少写</p>
-<p>###Q：什么时候应该使用可重入锁？</p>
-<ol>
+<h3 id="Q：什么时候应该使用可重入锁？">Q：什么时候应该使用可重入锁？</h3><ol>
 <li>重入锁指的是在某一个线程中可以多次获得同一把锁，在线程中多次操作有锁的方法。</li>
 </ol>
 <p>3 需要使用除了内置锁以外的锁特性，比如可中断，可等待的锁，平等锁等</p>
 <p>3可轮询，可中断，定时，非块，公平队列等高级特性时候使用可重入锁</p>
-<p>###Q：什么场景下可以使用volatile替换synchronized？</p>
-<ol>
+<h3 id="Q：什么场景下可以使用volatile替换synchronized？">Q：什么场景下可以使用volatile替换synchronized？</h3><ol>
 <li>只需要保证共享资源的可见性的时候可以使用volatile替代，synchronized保证可操作的原子性一致性和可见性。<br>volatile适用于新值不依赖于就值的情形。</li>
 </ol>
 <p>4 1写N读</p>
 <p>4 单线程修改变量或不依赖当前值，且不与其他变量构成不变性条件时候使用volatile</p>
-<p>#并发工具</p>
-<hr>
-<p>###Q：如何实现一个流控程序，用于控制请求的调用次数？</p>
-<p>1 fixed的线程池</p>
+<h1 id="并发工具">并发工具</h1><hr>
+<h3 id="Q：如何实现一个流控程序，用于控制请求的调用次数？">Q：如何实现一个流控程序，用于控制请求的调用次数？</h3><p>1 fixed的线程池</p>
 <hr>
 <h2 id="第二部分：实战篇">第二部分：实战篇</h2><hr>
 <p><a href="http://www.importnew.com/1428.html" target="_blank" rel="external">Java多线程面试问题集锦</a></p>

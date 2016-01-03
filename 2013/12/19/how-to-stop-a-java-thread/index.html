@@ -100,7 +100,8 @@ var _hmt = _hmt || [];
       <p><img src="http://bruce.u.qiniudn.com/2013/12/19/stop.jpg" alt="stop"></p>
 <p>与此问题相关的内容主要涉及三部分：已废弃的Thread.stop()、迷惑的thread.interrupt系列、最佳实践Shared Variable。</p>
 <a id="more"></a>
-<h2 id="##已废弃的Thread-stop()">##已废弃的Thread.stop()</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="annotation">@Deprecated</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    stop(<span class="keyword">new</span> ThreadDeath());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="已废弃的Thread-stop()">已废弃的Thread.stop()</h2><hr>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="annotation">@Deprecated</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    stop(<span class="keyword">new</span> ThreadDeath());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如上是Hotspot JDK 7中的java.lang.Thread.stop()的代码，学习一下它的doc：</p>
 <blockquote>
 <p>该方法天生是不安全的。使用<em>thread.stop()</em>停止一个线程，导致释放（解锁）所有该线程已经锁定的监视器（因沿堆栈向上传播的未检查异常<em>ThreadDeath</em>而解锁）。如果之前受这些监视器保护的任何对象处于不一致状态，则不一致状态的对象（受损对象）将对其他线程可见，这可能导致任意的行为。</p>
@@ -124,7 +125,8 @@ var _hmt = _hmt || [];
 </ol>
 </blockquote>
 <p><strong>小结：</strong><br>Thread.stop()不安全，已不再建议使用。</p>
-<h2 id="##令人迷惑的thread-interrupt()">##令人迷惑的thread.interrupt()</h2><p>Thread类中有三个方法会令新手迷惑，他们是：</p>
+<h2 id="令人迷惑的thread-interrupt()">令人迷惑的thread.interrupt()</h2><hr>
+<p>Thread类中有三个方法会令新手迷惑，他们是：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> Thread.interrupt() <span class="comment">// 无返回值</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> Thread.isInterrupted() <span class="comment">// 有返回值</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> Thread.interrupted() <span class="comment">// 静态，有返回值</span></span><br></pre></td></tr></table></figure>
 <p>如果按照近几年流行的<a href="http://book.douban.com/subject/4262627" target="_blank" rel="external">重构</a>，<a href="http://book.douban.com/subject/4199741" target="_blank" rel="external">代码整洁之道</a>，<a href="http://book.douban.com/subject/1152111" target="_blank" rel="external">程序员修炼之道</a>等书的观点，这几个方法的命名相对于其实现的功能来说，不够直观明确，极易令人混淆，是低级程序猿的代码。逐个分析：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">interrupt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> != Thread.currentThread())</span><br><span class="line">        checkAccess();</span><br><span class="line">    <span class="keyword">synchronized</span> (blockerLock) &#123;</span><br><span class="line">        Interruptible b = blocker;</span><br><span class="line">        <span class="keyword">if</span> (b != <span class="keyword">null</span>) &#123;</span><br><span class="line">            interrupt0();        <span class="comment">// Just to set the interrupt flag</span></span><br><span class="line">            b.interrupt(<span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    interrupt0();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -163,7 +165,8 @@ var _hmt = _hmt || [];
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// ① 调用阻塞方法</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            Thread.currentThread().interrupt();    <span class="comment">// ② 恢复被中断的状态</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后再强调一遍，②处的 Thread.currentThread().interrupt() 非常非常重要。</p>
-<h2 id="##最佳实践：Shared_Variable">##最佳实践：Shared Variable</h2><p>不记得哪本书上曾曰过，最佳实践是个烂词。在这里这个词最能表达意思，停止一个线程最好的做法就是利用共享的条件变量。</p>
+<h2 id="最佳实践：Shared_Variable">最佳实践：Shared Variable</h2><hr>
+<p>不记得哪本书上曾曰过，最佳实践是个烂词。在这里这个词最能表达意思，停止一个线程最好的做法就是利用共享的条件变量。</p>
 <p>对于本问题，我认为准确的说法是：<strong>停止一个线程的最佳方法是让它执行完毕，没有办法立即停止一个线程，但你可以控制何时或什么条件下让他执行完毕。</strong></p>
 <p>通过条件变量控制线程的执行，线程内部检查变量状态，外部改变变量值可控制停止执行。为保证线程间的即时通信，需要使用使用volatile关键字或锁，确保读线程与写线程间变量状态一致。下面给一个最佳模板：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * <span class="doctag">@author</span> bruce_sha (bruce-sha.github.io)</span><br><span class="line"> * <span class="doctag">@version</span> 2013-12-23</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BestPractice</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> finished = <span class="keyword">false</span>;   <span class="comment">// ① volatile条件变量</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopMe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        finished = <span class="keyword">true</span>;    <span class="comment">// ② 发出停止信号</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (!finished) &#123;    <span class="comment">// ③ 检测条件变量</span></span><br><span class="line">            <span class="comment">// do dirty work   // ④业务代码</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -177,12 +180,14 @@ var _hmt = _hmt || [];
 <li>停止线程时，需要调用停止线程的interrupt()方法，因为线程有可能在wait()或sleep(), 提高停止线程的即时性。</li>
 <li>对于blocking IO的处理，尽量使用InterruptibleChannel来代替blocking IO。</li>
 </ol>
-<h2 id="##总结：">##总结：</h2><blockquote>
+<h2 id="总结：">总结：</h2><hr>
+<blockquote>
 <p>要使任务和线程能安全、快速、可靠地停止下来，并不是一件容易的事。Java没有提供任何机制来安全地终止线程。但它提供了中断（Interruption），这是一种协作机制，能够使一个线程终止另一个线程的的工作。—— <a href="http://book.douban.com/subject/10484692" target="_blank" rel="external">『Java并发编程实战』</a> 第7章 取消与关闭 p111</p>
 <p>中断是一种协作机制。一个线程不能强制其它线程停止正在执行的操作而去执行其它的操作。当线程A中断B时，A仅仅是要求B在执行到某个可以暂停的地方停止正在执行的操作——前提是如果线程B愿意停下来。—— <a href="http://book.douban.com/subject/10484692" target="_blank" rel="external">『Java并发编程实战』</a> 第5章 基础构建模块 p77</p>
 </blockquote>
 <p>总之，中断只是一种协作机制，需要被中断的线程自己处理中断。停止一个线程最佳实践是 <strong>中断 + 条件变量</strong>。</p>
-<h2 id="##参考文献">##参考文献</h2><ol>
+<h2 id="参考文献">参考文献</h2><hr>
+<ol>
 <li><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html" target="_blank" rel="external">Why are Thread.stop, Thread.suspend and Thread.resume Deprecated ?</a></li>
 <li><a href="http://www.infoq.com/cn/articles/java-interrupt-mechanism" target="_blank" rel="external">详细分析Java中断机制</a></li>
 <li><a href="http://stackoverflow.com/questions/3194545/how-to-stop-a-java-thread-gracefully" target="_blank" rel="external">How to stop a java thread gracefully ?</a></li>
