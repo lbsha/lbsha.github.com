@@ -87,6 +87,41 @@ var _hmt = _hmt || [];
   <header>
     
       <div class="icon"></div>
+      <time datetime="2013-12-15T03:19:32.000Z"><a href="/2013/12/15/ipad-air-ipad-mini-with-retina-screen-problem/">Dec 15 2013</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2013/12/15/ipad-air-ipad-mini-with-retina-screen-problem/">iPhone、iPad mini、iPad Air 屏幕在线检测</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p><img src="http://bruce.u.qiniudn.com/2013/12/15/screen-problem.jpg" alt="屏幕测试"></p>
+<p>昨天去香港九龙塘又一城 <a href="http://www.apple.com/hk/retail/festivalwalk">Apple Retail Store</a>，买到心仪已久的iPad mini with Retina display，视网膜屏幕就是爽啊。网友们说夏普屏问题较多，可用如下方法测试，很幸运，我的是完美屏。</p>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2013/12/15/ipad-air-ipad-mini-with-retina-screen-problem/#more" class="more-link">Read More</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+
+  <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <time datetime="2013-12-12T09:01:20.000Z"><a href="/2013/12/12/aix-nohup-awt-x11-error/">Dec 12 2013</a></time>
     
     
@@ -470,42 +505,6 @@ var _hmt = _hmt || [];
 
 
 
-  <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2013-05-19T10:51:33.000Z"><a href="/2013/05/19/leb-eventbus/">May 19 2013</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2013/05/19/leb-eventbus/">开源事件总线框架Leb event bus</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p>软件产品的终极目标是松耦合，很多技术的出现都是为解决耦合问题，比如IoC，AOP，<!--SOA，-->观察者模式，面向接口编程，MVC等，事件驱动架构EDA（Event-Driven Architecture）也是。 事件总线（event bus）的本质是观察者模式。其优点有：解耦，依赖反转，反转控制，好莱坞原则；高性能，天生多线程；易维护，随时增加修改；符合自然思维，一件事情发生引发另一件事。 </p>
-<p>Leb是一个极其轻量级的event bus框架，简单易用，下面的这个HelloWorld基本概括了leb的全部用法，够简单吧。 </p>
-<figure class="highlight java"><figcaption><span>Say.java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Say</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Observe</span>(hint = <span class="string">"say"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Logs.p(<span class="string">"hello leb"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Observe</span>(hint = <span class="string">"say"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayTo</span><span class="params">(String who)</span> </span>&#123;</span><br><span class="line">        Logs.p(<span class="string">"hello "</span> + who);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Observe</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bye</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Logs.p(<span class="string">"bye leb"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Observe</span>(hint = <span class="string">"say"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayTime</span><span class="params">(Date date)</span> </span>&#123;</span><br><span class="line">        Logs.p(Times.format(date));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2013/05/19/leb-eventbus/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
@@ -577,6 +576,10 @@ var _hmt = _hmt || [];
   <ul class="entry">
     
       <li>
+        <a href="/2016/08/06/hello/">hello</a>
+      </li>
+    
+      <li>
         <a href="/2015/04/04/busuanzi/">不蒜子</a>
       </li>
     
@@ -610,10 +613,6 @@ var _hmt = _hmt || [];
     
       <li>
         <a href="/2014/02/14/caipus/">微菜谱</a>
-      </li>
-    
-      <li>
-        <a href="/2014/02/10/the-most-beautiful-word-cloud/">简单美观的文字标签云组件</a>
       </li>
     
   </ul>
