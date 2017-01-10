@@ -98,7 +98,7 @@ var _hmt = _hmt || [];
   <div class="entry">
     
       <p>如何在Amazon AWS上申请EC2不再多说，很多前辈给出了教程，本文只说如何挂载那免费的30G EBS。我申请的一年的免费的32位Red Hat Enterprise Linux，详细参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Red Hat Enterprise Linux 6.4 - ami-80bbf3d2 (64-bit) / ami-9cbbf3ce (32-bit)&#10;Red Hat Enterprise Linux version 6.4, EBS-boot.&#10;Root device type: ebs Virtualization type: paravirtual</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Red Hat Enterprise Linux 6.4 - ami-80bbf3d2 (64-bit) / ami-9cbbf3ce (32-bit)</div><div class="line">Red Hat Enterprise Linux version 6.4, EBS-boot.</div><div class="line">Root device type: ebs Virtualization type: paravirtual</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>首先登陆<a href="http://console.aws.amazon.com/console/home" target="_blank" rel="external">『AWS管理控制台』</a>，进入<a href="http://console.aws.amazon.com/ec2/v2/home" target="_blank" rel="external">『EC2』</a>。</p>
 <p>左侧树依次点击『ELASTIC BLOCK STORE』-『Volumes』，点击『Create Volume』创建一个新的volume。</p>
@@ -110,17 +110,17 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>创建完毕后，在左侧列表中选中右键Attach Volume，在Instances列表中选中你的Instance。在Device中输入设备名，如：<strong>/dev/sdf</strong>。</p>
 <p>接下来用putty登陆进你的云主机，不会不知道怎么做吧。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">login as: ec2-user&#10;Authenticating with public key &#34;imported-openssh-key&#34;&#10;Last login: Thu Jan  2 21:10:51 2014 from 219.133.173.33&#10;&#10;[ec2-user@ip-172-32-11-222 ~]$ df -h&#10;Filesystem            Size  Used Avail Use% Mounted on&#10;/dev/xvde1            6.0G  1.7G  4.2G  29% /&#10;none                  298M     0  298M   0% /dev/shm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">login as: ec2-user</div><div class="line">Authenticating with public key &quot;imported-openssh-key&quot;</div><div class="line">Last login: Thu Jan  2 21:10:51 2014 from 219.133.173.33</div><div class="line"></div><div class="line">[ec2-user@ip-172-32-11-222 ~]$ df -h</div><div class="line">Filesystem            Size  Used Avail Use% Mounted on</div><div class="line">/dev/xvde1            6.0G  1.7G  4.2G  29% /</div><div class="line">none                  298M     0  298M   0% /dev/shm</div></pre></td></tr></table></figure>
 <p>使用<em>df -h</em>看到确实没有新建的volume，这是正常的，因尚未挂载。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ec2-user@ip-172-32-11-222 /]$ df -T&#10;Filesystem    Type   1K-blocks      Used Available Use% Mounted on&#10;/dev/xvde1    ext4     6193088   1892740   4237736  31% /&#10;none         tmpfs      305112         0    305112   0% /dev/shm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$ df -T</div><div class="line">Filesystem    Type   1K-blocks      Used Available Use% Mounted on</div><div class="line">/dev/xvde1    ext4     6193088   1892740   4237736  31% /</div><div class="line">none         tmpfs      305112         0    305112   0% /dev/shm</div></pre></td></tr></table></figure>
 <p>用<em>df -T</em>查看当前系统的文件格式，为ext4。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ec2-user@ip-172-32-11-222 /]$  mkfs.ext4 /dev/sdf&#10;mke2fs 1.41.12 (17-May-2010)&#10;Could not stat /dev/sdf --- No such file or directory&#10;&#10;The device apparently does not exist; did you specify it correctly?</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$  mkfs.ext4 /dev/sdf</div><div class="line">mke2fs 1.41.12 (17-May-2010)</div><div class="line">Could not stat /dev/sdf --- No such file or directory</div><div class="line"></div><div class="line">The device apparently does not exist; did you specify it correctly?</div></pre></td></tr></table></figure>
 <p>尝试根据当前文件系统来格式化新加的volume，报错没有文件，找不到设备？<br>可是我新创建的volume明明就是/dev/sdf啊，这是为什么？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ec2-user@ip-172-32-11-222 /]$ sudo fdisk -l&#10;&#10;Disk /dev/xvde1: 6442 MB, 6442450944 bytes&#10;255 heads, 63 sectors/track, 783 cylinders&#10;Units = cylinders of 16065 * 512 = 8225280 bytes&#10;Sector size (logical/physical): 512 bytes / 512 bytes&#10;I/O size (minimum/optimal): 512 bytes / 512 bytes&#10;Disk identifier: 0x00000000&#10;&#10;Disk /dev/xvdj: 10.7 GB, 10737418240 bytes&#10;255 heads, 63 sectors/track, 1305 cylinders&#10;Units = cylinders of 16065 * 512 = 8225280 bytes&#10;Sector size (logical/physical): 512 bytes / 512 bytes&#10;I/O size (minimum/optimal): 512 bytes / 512 bytes&#10;Disk identifier: 0x00000000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$ sudo fdisk -l</div><div class="line"></div><div class="line">Disk /dev/xvde1: 6442 MB, 6442450944 bytes</div><div class="line">255 heads, 63 sectors/track, 783 cylinders</div><div class="line">Units = cylinders of 16065 * 512 = 8225280 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk identifier: 0x00000000</div><div class="line"></div><div class="line">Disk /dev/xvdj: 10.7 GB, 10737418240 bytes</div><div class="line">255 heads, 63 sectors/track, 1305 cylinders</div><div class="line">Units = cylinders of 16065 * 512 = 8225280 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk identifier: 0x00000000</div></pre></td></tr></table></figure>
 <p>用<em>fdisk -l</em>命令看下设备名，居然名字是<strong>/dev/xvdj</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ec2-user@ip-172-32-11-222 /]$ sudo  mkfs.ext4 /dev/xvdj&#10;mke2fs 1.41.12 (17-May-2010)&#10;Filesystem label=&#10;OS type: Linux&#10;Block size=4096 (log=2)&#10;Fragment size=4096 (log=2)&#10;Stride=0 blocks, Stripe width=0 blocks&#10;655360 inodes, 2621440 blocks&#10;131072 blocks (5.00%) reserved for the super user&#10;First data block=0&#10;Maximum filesystem blocks=2684354560&#10;80 block groups&#10;32768 blocks per group, 32768 fragments per group&#10;8192 inodes per group&#10;Superblock backups stored on blocks:&#10;        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632&#10;&#10;Writing inode tables: done&#10;Creating journal (32768 blocks): done&#10;Writing superblocks and filesystem accounting information: done&#10;&#10;This filesystem will be automatically checked every 21 mounts or&#10;180 days, whichever comes first.  Use tune2fs -c or -i to override.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$ sudo  mkfs.ext4 /dev/xvdj</div><div class="line">mke2fs 1.41.12 (17-May-2010)</div><div class="line">Filesystem label=</div><div class="line">OS type: Linux</div><div class="line">Block size=4096 (log=2)</div><div class="line">Fragment size=4096 (log=2)</div><div class="line">Stride=0 blocks, Stripe width=0 blocks</div><div class="line">655360 inodes, 2621440 blocks</div><div class="line">131072 blocks (5.00%) reserved for the super user</div><div class="line">First data block=0</div><div class="line">Maximum filesystem blocks=2684354560</div><div class="line">80 block groups</div><div class="line">32768 blocks per group, 32768 fragments per group</div><div class="line">8192 inodes per group</div><div class="line">Superblock backups stored on blocks:</div><div class="line">        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632</div><div class="line"></div><div class="line">Writing inode tables: done</div><div class="line">Creating journal (32768 blocks): done</div><div class="line">Writing superblocks and filesystem accounting information: done</div><div class="line"></div><div class="line">This filesystem will be automatically checked every 21 mounts or</div><div class="line">180 days, whichever comes first.  Use tune2fs -c or -i to override.</div></pre></td></tr></table></figure>
 <p>格式化。下面创建挂载点，将新增的volumn挂在上。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ec2-user@ip-172-32-11-222 /]$ sudo mkdir /mnt/ebs&#10;[ec2-user@ip-172-32-11-222 /]$ sudo mount /dev/xvdj  /mnt/ebs&#10;[ec2-user@ip-172-32-11-222 /]$ df -h&#10;Filesystem            Size  Used Avail Use% Mounted on&#10;/dev/xvde1            6.0G  1.9G  4.1G  31% /&#10;none                  298M     0  298M   0% /dev/shm&#10;/dev/xvdj             9.9G  151M  9.2G   2% /mnt/ebs</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$ sudo mkdir /mnt/ebs</div><div class="line">[ec2-user@ip-172-32-11-222 /]$ sudo mount /dev/xvdj  /mnt/ebs</div><div class="line">[ec2-user@ip-172-32-11-222 /]$ df -h</div><div class="line">Filesystem            Size  Used Avail Use% Mounted on</div><div class="line">/dev/xvde1            6.0G  1.9G  4.1G  31% /</div><div class="line">none                  298M     0  298M   0% /dev/shm</div><div class="line">/dev/xvdj             9.9G  151M  9.2G   2% /mnt/ebs</div></pre></td></tr></table></figure>
 <h1 id="参考文献">参考文献</h1><p><a href="http://stackoverflow.com/questions/13788619/boto-and-attaching-a-ebs-to-ec2-now-what" target="_blank" rel="external">amazon ec2 - boto and attaching a ebs to ec2</a><br><a href="http://blog.sina.com.cn/s/blog_3d4a28be0101jc0h.html" target="_blank" rel="external">How to convert Amazon instance store EC2 to EBS based EC2</a><br><a href="http://blog.sina.com.cn/s/blog_704836f40101anhf.html" target="_blank" rel="external">调整amazon EC2云主机的EBS启动磁盘大小 </a><br><a href="http://www.storyday.com/html/y2011/2959_in-ec2-using-ebs-as-a-permanent-storage.html" target="_blank" rel="external">在EC2中使用EBS作为永久存储</a><br><a href="http://www.vmzj.com/212.html" target="_blank" rel="external">在EC2中使用EBS作为永久存储</a><br><a href="http://www.cnblogs.com/hopeworld/archive/2009/05/25/1488617.html" target="_blank" rel="external">linux查看硬盘使用情况命令</a></p>
 
     
@@ -136,7 +136,7 @@ var _hmt = _hmt || [];
       
   
   <div class="tags">
-    <a href="/tags/ebs/">ebs</a>, <a href="/tags/ec2/">ec2</a>
+    <a href="/tags/ec2/">ec2</a>, <a href="/tags/ebs/">ebs</a>
   </div>
 
     
@@ -155,7 +155,7 @@ var _hmt = _hmt || [];
 	<script type="text/javascript">
 	    var wumiiPermaLink = "http://ibruce.info/2014/01/06/attach-ebs-volume-to-amazon-ec2/"; //请用代码生成文章永久的链接
 	    var wumiiTitle = "如何在Amazon EC2中挂载EBS作为永久存储"; //请用代码生成文章标题
-	    var wumiiTags = "ebs, ec2"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiTags = "ec2, ebs"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
 	    var wumiiCategories = ["cloud"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
 	    var wumiiSitePrefix = "http://ibruce.info/";
 	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
@@ -297,7 +297,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2016 <a href="/">bruce</a>
+ &copy; 2013 - 2017 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -311,7 +311,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2016 <a href="/">bruce</a>
+  &copy; 2013-2017 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

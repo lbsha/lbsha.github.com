@@ -99,13 +99,13 @@ var _hmt = _hmt || [];
     
       <p>Singleton是最常用的设计模式，其结构非常简单，但是用Java完成一个优美的单例并不是那么容易的事，如多线程下有Double-Checked Lock等问题。在Scala中一切都是那么的自然，object就是singleton！</p>
 <p>单例代码：</p>
-<figure class="highlight scala"><figcaption><span>Singleton.scala</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Singleton</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say</span>(</span>) = print(<span class="string">"hello scala"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><figcaption><span>Singleton.scala</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say</span></span>() = print(<span class="string">"hello scala"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>测试代码：</p>
-<figure class="highlight scala"><figcaption><span>Test.scala</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Test</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">App</span> &#123;</span></span><br><span class="line">  <span class="type">Singleton</span>.say() <span class="comment">//输出：hello scala</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><figcaption><span>Test.scala</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">App</span> </span>&#123;</div><div class="line">  <span class="type">Singleton</span>.say() <span class="comment">//输出：hello scala</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>OK，简单到令人发指的地步。</p>
 <p>接下来，我们用Java Decompiler反编译（直接javap也可以）看下Scala编译器编译后的class文件指令，看看原理如何：<br>从输出目录中可以看到Scala编译器将Singleton.scala编译生成了两个文件Singleton.class和Singleton$.class。</p>
-<figure class="highlight scala"><figcaption><span>Singleton.java & Singleton$.java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">/// Singleton.java</span></span><br><span class="line">public <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span><br><span class="line"></span>&#123;</span><br><span class="line">  public static void say()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="type">Singleton</span>$.<span class="type">MODULE</span>$.say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/// Singleton$.java</span></span><br><span class="line">public <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton$</span></span><br><span class="line"></span>&#123;</span><br><span class="line">  public static <span class="keyword">final</span>  <span class="type">MODULE</span>$;</span><br><span class="line">  static</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">new</span> ();</span><br><span class="line">  &#125;</span><br><span class="line">  public void say()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="type">Predef</span>$.<span class="type">MODULE</span>$.print(<span class="string">"hello scala"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">Singleton</span>$()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="type">MODULE</span>$ = <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><figcaption><span>Singleton.java & Singleton$.java</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="comment">/// Singleton.java</span></div><div class="line">public <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span></div><div class="line">&#123;</div><div class="line">  public static void say()</div><div class="line">  &#123;</div><div class="line">    <span class="type">Singleton</span>$.<span class="type">MODULE</span>$.say();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/// Singleton$.java</span></div><div class="line">public <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton$</span></span></div><div class="line">&#123;</div><div class="line">  public static <span class="keyword">final</span>  <span class="type">MODULE</span>$;</div><div class="line">  static</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">new</span> ();</div><div class="line">  &#125;</div><div class="line">  public void say()</div><div class="line">  &#123;</div><div class="line">    <span class="type">Predef</span>$.<span class="type">MODULE</span>$.print(<span class="string">"hello scala"</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">private</span> <span class="type">Singleton</span>$()</div><div class="line">  &#123;</div><div class="line">    <span class="type">MODULE</span>$ = <span class="keyword">this</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>懒汉模式的单例。内行的看代码，不必多说。</p>
 
     
@@ -282,7 +282,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2016 <a href="/">bruce</a>
+ &copy; 2013 - 2017 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -296,7 +296,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2016 <a href="/">bruce</a>
+  &copy; 2013-2017 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

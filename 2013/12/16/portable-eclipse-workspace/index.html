@@ -97,10 +97,10 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>为便于在各种机器和工作地点之间方便的迁移，我喜欢打造自己的绿色工作台，可谓有绿癖。<br>我的eclipse空间一般弄成如下目录结构（其它开发工具我也喜欢这么弄）：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; eclipse.bat                   #&#19968;&#38190;&#21551;&#21160;&#10;&#9500;&#9472;&#9472; workspace                     #&#24037;&#20316;&#31354;&#38388;&#10;&#9500;&#9472;&#9472; ...                           #&#20854;&#20182;&#24517;&#35201;&#25991;&#20214;&#65292;&#22914;jdk&#65292;maven&#31561;&#10;&#9492;&#9472;&#9472; eclipse-jee-kepler-SR1-win32  #eclipse&#30446;&#24405;&#10;    &#9492;&#9472;&#9472; eclipse.exe               #eclipse&#21551;&#21160;&#25991;&#20214;</span><br></pre></td></tr></table></figure></p>
+      <p>为便于在各种机器和工作地点之间方便的迁移，我喜欢打造自己的绿色工作台，可谓有绿癖。<br>我的eclipse空间一般弄成如下目录结构（其它开发工具我也喜欢这么弄）：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── eclipse.bat                   #一键启动</div><div class="line">├── workspace                     #工作空间</div><div class="line">├── ...                           #其他必要文件，如jdk，maven等</div><div class="line">└── eclipse-jee-kepler-SR1-win32  #eclipse目录</div><div class="line">    └── eclipse.exe               #eclipse启动文件</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>eclipse.bat采用相对路径启动eclipse.exe：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@echo off&#10;start ./eclipse-jee-kepler-SR1-win32/eclipse.exe</span><br></pre></td></tr></table></figure></p>
-<p>eclipse的workspace也要设置成相对路径：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./workspace</span><br></pre></td></tr></table></figure></p>
+<p>eclipse.bat采用相对路径启动eclipse.exe：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@echo off</div><div class="line">start ./eclipse-jee-kepler-SR1-win32/eclipse.exe</div></pre></td></tr></table></figure></p>
+<p>eclipse的workspace也要设置成相对路径：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">./workspace</div></pre></td></tr></table></figure></p>
 <p><img src="http://bruce.u.qiniudn.com/2013/12/16/eclipse-workspace-relative-path.jpg" alt="相对路径"></p>
 <blockquote>
 <p>win7下『<em>./</em>』代表当前目录，『<em>../</em>』代表当前目录父目录，『<em>/</em>』代表盘符根目录。</p>
@@ -280,7 +280,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2016 <a href="/">bruce</a>
+ &copy; 2013 - 2017 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -294,7 +294,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2016 <a href="/">bruce</a>
+  &copy; 2013-2017 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

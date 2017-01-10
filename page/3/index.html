@@ -205,7 +205,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ol>
-<p>最终得到文件目录结构H:\nodejs\：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; node.exe&#10;&#9500;&#9472;&#9472; npm.cmd&#10;&#9492;&#9472;&#9472; node_modules&#10;    &#9492;&#9472;&#9472; npm</span><br></pre></td></tr></table></figure></p>
+<p>最终得到文件目录结构H:\nodejs\：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── node.exe</div><div class="line">├── npm.cmd</div><div class="line">└── node_modules</div><div class="line">    └── npm</div></pre></td></tr></table></figure></p>
     
   </div>
   <footer class="end-sep">
@@ -241,7 +241,7 @@ var _hmt = _hmt || [];
     
       <p>这几天不停地调试折腾hexo，发现页面偶尔加载巨慢，用HttpWatch监控了下。</p>
 <p><img src="http://bruce.u.qiniudn.com/2013/12/03/fonts-googleapis-lead-to-slow/google-fonts-time-consuming.jpg" alt="google-fonts-time-consuming"></p>
-<p>找到了这句：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://fonts.googleapis.com/css?family=Droid+Serif:400italic,700italic,400,700</span><br></pre></td></tr></table></figure></p>
+<p>找到了这句：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://fonts.googleapis.com/css?family=Droid+Serif:400italic,700italic,400,700</div></pre></td></tr></table></figure></p>
     
   </div>
   <footer class="end-sep">
@@ -278,7 +278,7 @@ var _hmt = _hmt || [];
       <p>Markdown是一种极简的『标记语言』，将文本转为HTML，通常为我大码农所用。其不追求大而全，简洁至上，正所谓不求最贵，只求最好！</p>
 <p>本文介绍Markdown基本语法，内容很少，一行语法一行示例，学会后可轻松写出高大上的文档，再也不需要各种编辑器去调文章格式。另外，网上有各平台下的Markdown工具可用，也有在线的，我直接使用sublime搞定，Markdown本来就是为了追求简洁，弄个工具岂不多此一举。</p>
 <h1 id="强调">强调</h1><hr>
-<figure class="highlight plain"><figcaption><span>星号与下划线都可以，单是斜体，双是粗体，符号可跨行，符号可加空格</span></figcaption><table><tr><td class="code"><pre><span class="line">**&#19968;&#20010;&#20154;&#26469;&#21040;&#30000;&#32435;&#35199;**&#10;&#10;__&#27627;&#26080;&#30097;&#38382;__&#10;*&#25105;&#20570;&#30340;&#39301;&#39292;&#10;&#26159;&#20840;&#22825;&#19979;*&#10;_&#26368;&#22909;&#21507;&#30340;_</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>星号与下划线都可以，单是斜体，双是粗体，符号可跨行，符号可加空格</span></figcaption><table><tr><td class="code"><pre><div class="line">**一个人来到田纳西**</div><div class="line"></div><div class="line">__毫无疑问__</div><div class="line">*我做的馅饼</div><div class="line">是全天下*</div><div class="line">_最好吃的_</div></pre></td></tr></table></figure>
 <p><strong>一个人来到田纳西</strong></p>
 <p><strong>毫无疑问</strong><br><em>我做的馅饼<br>是全天下</em><br><em>最好吃的</em></p>
     
@@ -328,7 +328,7 @@ var _hmt = _hmt || [];
 </ul>
 </blockquote>
 <p>搭建过程你或许觉得有那么点小繁琐，但一旦搭建完成，写文章是极简单，极舒服的。</p>
-<p>只需要几个简单命令，你就可以完成一切。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n <span class="comment">#写文章</span></span><br><span class="line">hexo g <span class="comment">#生成</span></span><br><span class="line">hexo d <span class="comment">#部署 # 可与hexo g合并为 hexo d -g</span></span><br></pre></td></tr></table></figure></p>
+<p>只需要几个简单命令，你就可以完成一切。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">hexo n <span class="comment">#写文章</span></div><div class="line">hexo g <span class="comment">#生成</span></div><div class="line">hexo d <span class="comment">#部署 # 可与hexo g合并为 hexo d -g</span></div></pre></td></tr></table></figure></p>
     
   </div>
   <footer class="end-sep">
@@ -363,8 +363,8 @@ var _hmt = _hmt || [];
   <div class="entry">
     
       <p>一旦参与实际项目，无论大小都一定会接触到工厂模式，Scala中如何阐释工厂模式呢。</p>
-<p>Vehicle接口：<br><figure class="highlight scala"><figcaption><span>Vehicle.scala</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Vehicle</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">drive</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>各种Vehicle实现：<br><figure class="highlight scala"><figcaption><span>Car.scala/Bus.scala/Truck.scala</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Vehicle</span> &#123;</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">drive</span> &#123;</span></span><br><span class="line">    printf(<span class="string">"car bibi~"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bus</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Vehicle</span> &#123;</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">drive</span> &#123;</span></span><br><span class="line">    printf(<span class="string">"bus didi~"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Truck</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Vehicle</span> &#123;</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">drive</span> &#123;</span></span><br><span class="line">    printf(<span class="string">"truck wowo~"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> </p>
+<p>Vehicle接口：<br><figure class="highlight scala"><figcaption><span>Vehicle.scala</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">drive</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>各种Vehicle实现：<br><figure class="highlight scala"><figcaption><span>Car.scala/Bus.scala/Truck.scala</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">extends</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">drive</span> </span>&#123;</div><div class="line">    printf(<span class="string">"car bibi~"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bus</span> <span class="keyword">extends</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">drive</span> </span>&#123;</div><div class="line">    printf(<span class="string">"bus didi~"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Truck</span> <span class="keyword">extends</span> <span class="title">Vehicle</span> </span>&#123;</div><div class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">drive</span> </span>&#123;</div><div class="line">    printf(<span class="string">"truck wowo~"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure> </p>
     
   </div>
   <footer class="end-sep">
@@ -400,7 +400,7 @@ var _hmt = _hmt || [];
     
       <p>Singleton是最常用的设计模式，其结构非常简单，但是用Java完成一个优美的单例并不是那么容易的事，如多线程下有Double-Checked Lock等问题。在Scala中一切都是那么的自然，object就是singleton！</p>
 <p>单例代码：</p>
-<figure class="highlight scala"><figcaption><span>Singleton.scala</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Singleton</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say</span>(</span>) = print(<span class="string">"hello scala"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><figcaption><span>Singleton.scala</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say</span></span>() = print(<span class="string">"hello scala"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
     
   </div>
   <footer class="end-sep">
@@ -487,7 +487,7 @@ var _hmt = _hmt || [];
     
       <p>软件产品的终极目标是松耦合，很多技术的出现都是为解决耦合问题，比如IoC，AOP，<!--SOA，-->观察者模式，面向接口编程，MVC等，事件驱动架构EDA（Event-Driven Architecture）也是。 事件总线（event bus）的本质是观察者模式。其优点有：解耦，依赖反转，反转控制，好莱坞原则；高性能，天生多线程；易维护，随时增加修改；符合自然思维，一件事情发生引发另一件事。 </p>
 <p>Leb是一个极其轻量级的event bus框架，简单易用，下面的这个HelloWorld基本概括了leb的全部用法，够简单吧。 </p>
-<figure class="highlight java"><figcaption><span>Say.java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Say</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Observe</span>(hint = <span class="string">"say"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Logs.p(<span class="string">"hello leb"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Observe</span>(hint = <span class="string">"say"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayTo</span><span class="params">(String who)</span> </span>&#123;</span><br><span class="line">        Logs.p(<span class="string">"hello "</span> + who);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Observe</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bye</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Logs.p(<span class="string">"bye leb"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Observe</span>(hint = <span class="string">"say"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayTime</span><span class="params">(Date date)</span> </span>&#123;</span><br><span class="line">        Logs.p(Times.format(date));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>Say.java</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Say</span> </span>&#123;</div><div class="line">    <span class="meta">@Observe</span>(hint = <span class="string">"say"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</div><div class="line">        Logs.p(<span class="string">"hello leb"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Observe</span>(hint = <span class="string">"say"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayTo</span><span class="params">(String who)</span> </span>&#123;</div><div class="line">        Logs.p(<span class="string">"hello "</span> + who);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Observe</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bye</span><span class="params">()</span> </span>&#123;</div><div class="line">        Logs.p(<span class="string">"bye leb"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Observe</span>(hint = <span class="string">"say"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayTime</span><span class="params">(Date date)</span> </span>&#123;</div><div class="line">        Logs.p(Times.format(date));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
     
   </div>
   <footer class="end-sep">
@@ -625,7 +625,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2016 <a href="/">bruce</a>
+ &copy; 2013 - 2017 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -639,7 +639,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2016 <a href="/">bruce</a>
+  &copy; 2013-2017 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

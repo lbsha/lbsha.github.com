@@ -101,18 +101,18 @@ var _hmt = _hmt || [];
 <p>而这之前，首先缺少的就是，可以让普通开发人员使用的大数据时代的可视化图表组件，比如标签云图，所幸，业界已经有<a href="http://github.com/ecomfe/echarts" target="_blank" rel="external">ECharts</a>和<a href="http://github.com/timdream/wordcloud" target="_blank" rel="external">WordCloud</a>这两大利器，本文只介绍后者。</p>
 <p><img src="http://bruce.u.qiniudn.com/2014/02/10/wordcloud-cn.jpg" alt="中文"></p>
 <a id="more"></a>
-<p>首先页面必须是html5编写。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;!DOCTYPE html&#62;&#10;&#60;html&#62;&#10; &#60;head&#62;&#10;  &#60;meta charset=&#34;UTF-8&#34;&#62;&#10;  &#60;title&#62;&#60;/title&#62;&#10; &#60;/head&#62;&#10; &#60;body&#62;&#9;&#10; &#60;/body&#62;&#10;&#60;/html&#62;</span><br></pre></td></tr></table></figure></p>
+<p>首先页面必须是html5编写。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"> &lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;title&gt;&lt;/title&gt;</div><div class="line"> &lt;/head&gt;</div><div class="line"> &lt;body&gt;	</div><div class="line"> &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <p>引入<a href="http://jquery.com/" target="_blank" rel="external">jQuery</a>和<a href="http://github.com/timdream/wordcloud2.js" target="_blank" rel="external">WordCloud2.js</a>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;script src=&#34;src/wordcloud2.js&#34;&#62;&#60;/script&#62;&#10;&#60;script src=&#34;//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&#34;&#62;&#60;/script&#62;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script src=&quot;src/wordcloud2.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p>定义canvas容器。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;div id=&#34;canvas-container&#34; align=&#34;center&#34;&#62;&#10; &#60;canvas id=&#34;canvas&#34; width=&#34;800px&#34; height=&#34;600px&#34;&#62;&#60;/canvas&#62;&#10;&#60;/div&#62;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;div id=&quot;canvas-container&quot; align=&quot;center&quot;&gt;</div><div class="line"> &lt;canvas id=&quot;canvas&quot; width=&quot;800px&quot; height=&quot;600px&quot;&gt;&lt;/canvas&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>绘图。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;script&#62; &#10;var options = eval(&#123;&#10;  &#34;list&#34;: [[&#39;&#20667;&#29454;&#35961;&#39;, 10], [&#39;&#19981;&#22914;&#39;, 9], [&#39;&#40635;&#33457;&#30140;&#39;, 7], [&#39;&#40635;&#20113;&#39;, 6],[&#39;&#26446;&#30524;&#32418;&#39;, 4], [&#39;&#38647;&#24067;&#26031;&#39;, 5],[&#39;&#21608;&#32418;&#34915;&#39;, 4],[&#39;&#21016;&#22681;&#27934;&#39;, 3],[&#39;&#26446;&#22269;&#24773;&#39;, 3]],&#10;  &#34;gridSize&#34;: 8,&#10;  &#34;weightFactor&#34;: 16,&#10;  &#34;fontFamily&#34;: &#39;Hiragino Mincho Pro, serif&#39;,&#10;  &#34;color&#34;: &#39;random-dark&#39;,&#10;  &#34;backgroundColor&#34;: &#39;#f0f0f0&#39;,&#10;  &#34;rotateRatio&#34;: 0&#10;&#125;);&#10;&#10;var canvas = document.getElementById(&#39;canvas&#39;);&#10;&#10;WordCloud(canvas, options);&#10;&#60;/script&#62;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script&gt; </div><div class="line">var options = eval(&#123;</div><div class="line">  &quot;list&quot;: [[&apos;傻猎豹&apos;, 10], [&apos;不如&apos;, 9], [&apos;麻花疼&apos;, 7], [&apos;麻云&apos;, 6],[&apos;李眼红&apos;, 4], [&apos;雷布斯&apos;, 5],[&apos;周红衣&apos;, 4],[&apos;刘墙洞&apos;, 3],[&apos;李国情&apos;, 3]],</div><div class="line">  &quot;gridSize&quot;: 8,</div><div class="line">  &quot;weightFactor&quot;: 16,</div><div class="line">  &quot;fontFamily&quot;: &apos;Hiragino Mincho Pro, serif&apos;,</div><div class="line">  &quot;color&quot;: &apos;random-dark&apos;,</div><div class="line">  &quot;backgroundColor&quot;: &apos;#f0f0f0&apos;,</div><div class="line">  &quot;rotateRatio&quot;: 0</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var canvas = document.getElementById(&apos;canvas&apos;);</div><div class="line"></div><div class="line">WordCloud(canvas, options);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>至此，全部完毕。执行页面，美丽的云图便展现在你面前，具体的API可以参考<a href="http://github.com/timdream/wordcloud2.js/blob/master/API.md" target="_blank" rel="external">这里</a>。</p>
 </blockquote>
 <p>下面举个英文的例子，为了美观稍微改变一下参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#34;list&#34;: [[&#39;bruce-sha&#39;, 10], [&#39;buru&#39;, 9], [&#39;tencent&#39;, 7], [&#39;alibaba&#39;, 6], [&#39;baidu&#39;, 4], [&#39;xiaomi&#39;, 5],[&#39;360&#39;, 4],[&#39;jingdong&#39;, 3],[&#39;dangdang&#39;, 3],[&#39;ibruce.info&#39;, 1]],&#10;&#34;gridSize&#34;: 16,&#10;&#34;weightFactor&#34;: 16,&#10;&#34;fontFamily&#34;: &#39;Times, serif&#39;,&#10;&#34;color&#34;: &#39;random-light&#39;,&#10;&#34;backgroundColor&#34;: &#39;#333&#39;,&#10;&#34;rotateRatio&#34;: 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&quot;list&quot;: [[&apos;bruce-sha&apos;, 10], [&apos;buru&apos;, 9], [&apos;tencent&apos;, 7], [&apos;alibaba&apos;, 6], [&apos;baidu&apos;, 4], [&apos;xiaomi&apos;, 5],[&apos;360&apos;, 4],[&apos;jingdong&apos;, 3],[&apos;dangdang&apos;, 3],[&apos;ibruce.info&apos;, 1]],</div><div class="line">&quot;gridSize&quot;: 16,</div><div class="line">&quot;weightFactor&quot;: 16,</div><div class="line">&quot;fontFamily&quot;: &apos;Times, serif&apos;,</div><div class="line">&quot;color&quot;: &apos;random-light&apos;,</div><div class="line">&quot;backgroundColor&quot;: &apos;#333&apos;,</div><div class="line">&quot;rotateRatio&quot;: 0</div></pre></td></tr></table></figure>
 <p><img src="http://bruce.u.qiniudn.com/2014/02/10/wordcloud-en.jpg" alt="英文"></p>
 
     
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
       
   
   <div class="tags">
-    <a href="/tags/big-data/">big data</a>, <a href="/tags/javascript/">javascript</a>, <a href="/tags/word-cloud/">word cloud</a>
+    <a href="/tags/big-data/">big data</a>, <a href="/tags/word-cloud/">word cloud</a>, <a href="/tags/javascript/">javascript</a>
   </div>
 
     
@@ -147,7 +147,7 @@ var _hmt = _hmt || [];
 	<script type="text/javascript">
 	    var wumiiPermaLink = "http://ibruce.info/2014/02/10/the-most-beautiful-word-cloud/"; //请用代码生成文章永久的链接
 	    var wumiiTitle = "简单美观的文字标签云组件"; //请用代码生成文章标题
-	    var wumiiTags = "big data, javascript, word cloud"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiTags = "big data, word cloud, javascript"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
 	    var wumiiCategories = ["big data"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
 	    var wumiiSitePrefix = "http://ibruce.info/";
 	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
@@ -289,7 +289,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2016 <a href="/">bruce</a>
+ &copy; 2013 - 2017 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -303,7 +303,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2016 <a href="/">bruce</a>
+  &copy; 2013-2017 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

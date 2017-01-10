@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>不如</title>
+  <subtitle>码农，程序猿，未来的昏析狮</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://ibruce.info/"/>
+  <updated>2016-10-08T02:28:26.000Z</updated>
+  <id>http://ibruce.info/</id>
+  
+  <author>
+    <name>bruce</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>不蒜子</title>
+    <link href="http://ibruce.info/2015/04/04/busuanzi/"/>
+    <id>http://ibruce.info/2015/04/04/busuanzi/</id>
+    <published>2015-04-04T01:12:45.000Z</published>
+    <updated>2016-10-08T02:28:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>静态网站建站现在有很多快速的技术和平台，但静态是优点也有缺点，由于是静态的，一些动态的内容如评论、计数等等模块就需要借助外来平台，评论有<a href="http://duoshuo.com" target="_blank" rel="external">“多说”</a>，计数有<a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜”</a>！</p>
+<blockquote>
+<p><strong><a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜子”</a>与百度统计谷歌分析等有区别：<a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜子”</a>可直接将访问次数显示在您在网页上（也可不显示）；对于已经上线一段时间的网站，<a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜子”</a>允许您初始化首次数据。。</strong></p>
+</blockquote>
+<p>普通用户只需两步走：<strong>一行脚本+一行标签</strong>，搞定一切。追求极致的用户可以进行任意DIY。</p>
+<a id="more"></a>
+<h1 id="一、安装脚本（必选）">一、安装脚本（必选）</h1><hr>
+
+<p>要使用不蒜子必须在页面中引入busuanzi.js，目前最新版如下。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不蒜子可以给任何类型的个人站点使用，如果你是用的hexo，打开<strong>themes/你的主题/layout/_partial/footer.ejs</strong>添加上述脚本即可，当然你也可以添加到 header 中。</p>
+</blockquote>
+<h1 id="二、安装标签（可选）">二、安装标签（可选）</h1><hr>
+
+<p>只需要复制相应的html标签到你的网站要显示访问量的位置即可。您可以随意更改不蒜子标签为自己喜欢的显示效果，内容参考第三部分<strong>扩展开发</strong>。根据你要显示内容的不同，这分几种情况。</p>
+<h2 id="1、显示站点总访问量">1、显示站点总访问量</h2><p>要显示站点总访问量，复制以下代码添加到你需要显示的位置。有两种算法可选：</p>
+<p>算法a：pv的方式，单个用户连续点击n篇文章，记录n次访问量。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;</div><div class="line">    本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<p>算法b：uv的方式，单个用户连续点击n篇文章，只记录1次访客数。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;</div><div class="line">  本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>如果你是用的hexo，打开<strong>themes/你的主题/layout/_partial/footer.ejs</strong>添加即可。</p>
+</blockquote>
+<p><strong>实例效果参考：</strong></p>
+<ul>
+<li><a href="http://liam0205.me" target="_blank" rel="external">http://liam0205.me</a></li>
+<li><a href="http://gameknife.github.io" target="_blank" rel="external">http://gameknife.github.io</a></li>
+<li><a href="http://read.mobi" target="_blank" rel="external">http://read.mobi</a></li>
+<li><a href="http://pgqlife.info" target="_blank" rel="external">http://pgqlife.info</a></li>
+<li><a href="http://sdxy0506.github.io" target="_blank" rel="external">http://sdxy0506.github.io</a></li>
+<li><a href="http://www.gcrimson.com" target="_blank" rel="external">http://www.gcrimson.com</a></li>
+<li><a href="http://libk.net" target="_blank" rel="external">http://libk.net</a></li>
+<li><a href="http://ztyoung.me" target="_blank" rel="external">http://ztyoung.me</a></li>
+<li><a href="http://blog.itmyhome.com" target="_blank" rel="external">http://blog.itmyhome.com</a></li>
+</ul>
+<h2 id="2、显示单页面访问量">2、显示单页面访问量</h2><p>要显示每篇文章的访问量，复制以下代码添加到你需要显示的位置。</p>
+<p>算法：pv的方式，单个用户点击1篇文章，本篇文章记录1次阅读量。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_container_page_pv&quot;&gt;</div><div class="line">  本文总阅读量&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>代码中文字是可以修改的，只要保留id正确即可。</p>
+</blockquote>
+<p><strong>实例效果参考：</strong></p>
+<ul>
+<li><a href="http://dbarobin.com/2015/04/14/operation-and-maintenance-engineer-tips" target="_blank" rel="external">http://dbarobin.com/2015/04/14/operation-and-maintenance-engineer-tips</a></li>
+<li><a href="http://blog.jamespan.me/2015/05/06/mvn-incremental-compilation" target="_blank" rel="external">http://blog.jamespan.me/2015/05/06/mvn-incremental-compilation</a></li>
+<li><a href="http://cubernet.cn/blog/optimization-3" target="_blank" rel="external">http://cubernet.cn/blog/optimization-3</a></li>
+</ul>
+<blockquote>
+<p>注意：不蒜子为保持极简，暂不支持在站点文章摘要列表中（如首页）逐个显示每篇文章的阅读次数，如果您非常需要这一功能，可以留言。根据需要程度再考虑开发相应的功能。</p>
+</blockquote>
+<h2 id="3、显示站点总访问量和单页面访问量">3、显示站点总访问量和单页面访问量</h2><p>你懂的吧，上面两种标签代码都安装。</p>
+<p><strong>实例效果参考：</strong></p>
+<ul>
+<li><a href="http://cubernet.cn/blog/swift-1" target="_blank" rel="external">http://cubernet.cn/blog/swift-1</a></li>
+<li><a href="http://lvzejun.cn/2015/03/31/ubuntu-software" target="_blank" rel="external">http://lvzejun.cn/2015/03/31/ubuntu-software</a></li>
+<li><a href="http://www.lvzejun.cn/2015/04/13/libvirt1md" target="_blank" rel="external">http://www.lvzejun.cn/2015/04/13/libvirt1md</a></li>
+</ul>
+<h2 id="4、只计数不显示">4、只计数不显示</h2><p>只安装脚本代码，不安装标签代码。</p>
+<blockquote>
+<p><strong>至此，不蒜子已经可以正常运行，如果你还要自定义一些内容或有疑问，请继续阅读。</strong></p>
+</blockquote>
+<h1 id="附录：扩展开发（自定义）">附录：扩展开发（自定义）</h1><hr>
+
+<p>不蒜子之所以称为极客的算子，正是因为不蒜子自身只提供<strong>标签+数字</strong>，至于显示的style和css动画效果，任你发挥。</p>
+<ul>
+<li><strong>busuanzi_value_site_pv</strong> 的作用是异步回填访问数，这个id一定要正确。</li>
+<li><strong>busuanzi_container_site_pv</strong>的作用是为防止计数服务访问出错或超时（3秒）的情况下，使整个标签自动隐藏显示，带来更好的体验。这个id可以省略。</li>
+</ul>
+<p>因此，你也可以使用极简模式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</div><div class="line">本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次</div><div class="line">本文总阅读量&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次</div></pre></td></tr></table></figure>
+<p>或者个性化一下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Total &lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt; views.</div><div class="line">您是xxx的第&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;个小伙伴</div><div class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt; Hits</div></pre></td></tr></table></figure>
+<p>1、我只要统计不显示？<br>只引入busuanzi.js，不引入显示标签即可。</p>
+<p>2、你的标签太丑了，我想美化一下可以么？<br>可以的，您可以用自己站点的css进行控制，只要内层span的id正确以便回填访问次数即可，甚至标签都可以不是span。</p>
+<p>3、中文字体太丑了，我的主题不适合？<br>您可以将<strong>本站总访问量xxx次</strong>改成<strong>view xxx times</strong>等英文以获得更和谐的显示效果。</p>
+<p>4、在访问量数据未取回来之前，我不想让页面显示为诸如“本站总访问量 次”，显得太low，怎么办？<br>只需要如下css，不蒜子执行完毕会自动将标签显示出来，其他以此类推：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_container_site_pv&quot; style=&apos;display:none&apos;&gt;</div><div class="line">    本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<p>上面的做法还是很low？！欣赏一下这位小伙伴的做法，请戳看效果：<a href="http://blog.jamespan.me/2015/05/13/the-jump-guide" target="_blank" rel="external">http://blog.jamespan.me/2015/05/13/the-jump-guide</a><br>右键看下源码，没加载出来前就显示个菊花转转转:<br>首先，你要引入<strong>font-awesome</strong>字体：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;&gt;</div><div class="line">或</div><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>其次，修改不蒜子标签：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;i class=&quot;fa fa-spinner&quot;&gt;&lt;/i&gt;&lt;/span&gt; Hits</div><div class="line">或（旋转效果）</div><div class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;i class=&quot;fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt;&lt;/span&gt; Hits</div></pre></td></tr></table></figure></p>
+<p>和谐多了！</p>
+<p>5、我的网站已经运行一段时间了，想初始化访问次数怎么办？<br>请先注册登录，自行修改阅读次数。</p>
+<p>有任何其他问题或疑问可以留言。</p>
+<p>更新日志：</p>
+<blockquote>
+<p>1). 2015-04-04：不蒜子1.0 正式发布，极简的网站计数器服务。<br>2). 2015-04-24：不蒜子2.0 正式发布，区分pv/uv的统计方式，统计更精准，满足更多需求。<br>3). 2015-05-18：不蒜子2.3 正式发布，去掉对jQuery的依赖，异步化执行，速度更快。<br>4). 2016-01-01：不蒜子2.4 正式发布，同时支持http和https访问，启用 <a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“新主页”</a> 。</p>
+</blockquote>
+<p><img src="http://dn-bruce.qbox.me/pay.jpg" alt="微信扫码打赏：不蒜子的服务器是收费的，感谢您的捐助。"></p>
+<blockquote>
+<p>如果您愿意捐助其他金额请戳 <a href="http://ibruce.info/about">http://ibruce.info/about</a>，扫描支付宝/微信二维码。</p>
+</blockquote>
+<p><strong>声明</strong>：下一个版本的不蒜子已在开发测试中，即将与大家见面。－－ 不如，2015年12月5日夜</p>
+]]></content>
+    
+    <summary type="html">
+    
+      Hexo博客计数，Jekyll博客计数器，Octopress访问统计，GitHub Pages博客访问量统计，静态网站计数，静态博客计数，网站计数器，网站计数插件，博客计数器，WordPress计数插件, DedeCMS计数插件, Z-Blog计数器插件, Joomla计数器, emlog计数器, MediaWiki计数器
+    
+    </summary>
+    
+      <category term="default" scheme="http://ibruce.info/categories/default/"/>
+    
+    
+      <category term="hexo" scheme="http://ibruce.info/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mongoDB 3.0 安全权限访问控制</title>
+    <link href="http://ibruce.info/2015/03/03/mongodb3-auth/"/>
+    <id>http://ibruce.info/2015/03/03/mongodb3-auth/</id>
+    <published>2015-03-03T01:25:11.000Z</published>
+    <updated>2015-12-03T14:02:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>MongoDB3.0权限，啥都不说了，谷歌百度出来的全是错的。先安装好盲沟，简单的没法说。</p>
+<p>首先，不使用 <em>–auth</em> 参数，启动 mongoDB：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mongodb-linux-i686-3.0.0/bin/mongod -f mongodb-linux-i686-3.0.0/mongodb.conf</div></pre></td></tr></table></figure>
+<blockquote>
+<p>此时你 <em>show dbs</em> 会看到只有一个local数据库，那个所谓的admin是不存在的。</p>
+</blockquote>
+<p>mongoDB 没有炒鸡无敌用户root，只有能管理用户的用户 <a href="http://docs.mongodb.org/manual/reference/built-in-roles/#userAdminAnyDatabase" target="_blank" rel="external">userAdminAnyDatabase</a>。</p>
+<p>打开 <strong>mongo shell</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mongodb-linux-i686-3.0.0/bin/mongo</div></pre></td></tr></table></figure>
+<p>添加管理用户：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">use admin</div><div class="line">db.createUser(</div><div class="line">  &#123;</div><div class="line">    user: &quot;buru&quot;,</div><div class="line">    pwd: &quot;12345678&quot;,</div><div class="line">    roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</div><div class="line">  &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>roles 中的 db 参数是必须的，不然会报错：<em>Error: couldn’t add user: Missing expected field “db”</em>。另外，有很多文章记录的是使用 <a href="http://docs.mongodb.org/v2.2/reference/method/db.addUser" target="_blank" rel="external">db.addUser(…)</a> 方法，这个方法是旧版的，3.0中已经不存在，详见：<a href="http://docs.mongodb.org/manual/reference/method/js-user-management" target="_blank" rel="external">http://docs.mongodb.org/manual/reference/method/js-user-management</a>。</p>
+</blockquote>
+<p>切换到admin下，查看刚才创建的用户：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show users</div><div class="line">或</div><div class="line">db.system.users.find()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123; &quot;_id&quot; : &quot;admin.buru&quot;, &quot;user&quot; : &quot;buru&quot;, &quot;db&quot; : &quot;admin&quot;, &quot;credentials&quot; : &#123; &quot;SCRAM-SHA-1&quot; : &#123; &quot;iterationCount&quot; : 10000, &quot;salt&quot; : &quot;gwVwuA/dXvxgSHavEnlyvA==&quot;, &quot;storedKey&quot; : &quot;l2QEVTEujpkCuqDEKqfIWbSv4ms=&quot;, &quot;serverKey&quot; : &quot;M1ofNKXg2sNCsFrBJbX4pXbSgvg=&quot; &#125; &#125;, &quot;roles&quot; : [ &#123; &quot;role&quot; : &quot;userAdminAnyDatabase&quot;, &quot;db&quot; : &quot;admin&quot; &#125; ] &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>怎么关闭 mongoDB？千万不要 kill -9 pid，可以 kill -2 pid 或 db.shutdownServer()</p>
+</blockquote>
+<p>下面使用 <em>–auth</em> 参 数，重新启动 mongoDB：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mongodb-linux-i686-3.0.0/bin/mongod --auth -f mongodb-linux-i686-3.0.0/mongodb.conf</div></pre></td></tr></table></figure>
+<p>再次打开 <strong>mongo shell</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mongodb-linux-i686-3.0.0/bin/mongo</div><div class="line">use admin</div><div class="line">db.auth(&quot;buru&quot;,&quot;12345678&quot;) #认证，返回1表示成功</div><div class="line">或</div><div class="line">mongodb-linux-i686-3.0.0/bin/mongo -u buru -p 12345678 --authenticationDatabase admin</div></pre></td></tr></table></figure>
+<p>此时</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show collections</div></pre></td></tr></table></figure>
+<p>报错<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">2015-03-17T10:15:56.011+0800 E QUERY    Error: listCollections failed: &#123;</div><div class="line">  &quot;ok&quot; : 0,</div><div class="line">  &quot;errmsg&quot; : &quot;not authorized on admin to execute command &#123; listCollections: 1.0 &#125;&quot;,</div><div class="line">  &quot;code&quot; : 13</div><div class="line">&#125;</div><div class="line">  at Error (&lt;anonymous&gt;)</div><div class="line">  at DB._getCollectionInfosCommand (src/mongo/shell/db.js:643:15)</div><div class="line">  at DB.getCollectionInfos (src/mongo/shell/db.js:655:20)</div><div class="line">  at DB.getCollectionNames (src/mongo/shell/db.js:666:17)</div><div class="line">  at shellHelper.show (src/mongo/shell/utils.js:625:12)</div><div class="line">  at shellHelper (src/mongo/shell/utils.js:524:36)</div><div class="line">  at (shellhelp2):1:1 at src/mongo/shell/db.js:643</div></pre></td></tr></table></figure></p>
+<p>因为，用户buru只有用户管理的权限。</p>
+<p>下面创建用户，用户都跟着库走，创建的用户都是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">use tianhe</div><div class="line">db.createUser(</div><div class="line"> &#123;</div><div class="line">   user: &quot;bao&quot;,</div><div class="line">   pwd: &quot;12345678&quot;,</div><div class="line">   roles: [</div><div class="line">      &#123; role: &quot;readWrite&quot;, db: &quot;tianhe&quot; &#125;,</div><div class="line">      &#123; role: &quot;read&quot;, db: &quot;tianhe2&quot; &#125;</div><div class="line">   ]</div><div class="line"> &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>查看刚刚创建的用户。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">show users</div><div class="line"></div><div class="line">&#123;</div><div class="line">  &quot;_id&quot; : &quot;tianhe.bao&quot;,</div><div class="line">  &quot;user&quot; : &quot;bao&quot;,</div><div class="line">  &quot;db&quot; : &quot;tianhe&quot;,</div><div class="line">  &quot;roles&quot; : [</div><div class="line">    &#123;</div><div class="line">      &quot;role&quot; : &quot;readWrite&quot;,</div><div class="line">      &quot;db&quot; : &quot;tianhe&quot;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;role&quot; : &quot;read&quot;,</div><div class="line">      &quot;db&quot; : &quot;tianhe2&quot;</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>查看整个mongoDB全部的用户：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">use admin</div><div class="line">db.system.users.find()</div><div class="line"></div><div class="line">&#123; &quot;_id&quot; : &quot;admin.buru&quot;, &quot;user&quot; : &quot;buru&quot;, &quot;db&quot; : &quot;admin&quot;, &quot;credentials&quot; : &#123; &quot;SCRAM-SHA-1&quot; : &#123; &quot;iterationCount&quot; : 10000, &quot;salt&quot; : &quot;gwVwuA/dXvxgSHavEnlyvA==&quot;, &quot;storedKey&quot; : &quot;l2QEVTEujpkCuqDEKqfIWbSv4ms=&quot;, &quot;serverKey&quot; : &quot;M1ofNKXg2sNCsFrBJbX4pXbSgvg=&quot; &#125; &#125;, &quot;roles&quot; : [ &#123; &quot;role&quot; : &quot;userAdminAnyDatabase&quot;, &quot;db&quot; : &quot;admin&quot; &#125; ] &#125;</div><div class="line">&#123; &quot;_id&quot; : &quot;tianhe.bao&quot;, &quot;user&quot; : &quot;bao&quot;, &quot;db&quot; : &quot;tianhe&quot;, &quot;credentials&quot; : &#123; &quot;SCRAM-SHA-1&quot; : &#123; &quot;iterationCount&quot; : 10000, &quot;salt&quot; : &quot;//xy1V1fbqEHC1gzQqZHGQ==&quot;, &quot;storedKey&quot; : &quot;ZS/o54zzl/FdcXLQJ98KdAVTfF0=&quot;, &quot;serverKey&quot; : &quot;iIpNYz2Gk8KhyK3zgz6muBt0PI4=&quot; &#125; &#125;, &quot;roles&quot; : [ &#123; &quot;role&quot; : &quot;readWrite&quot;, &quot;db&quot; : &quot;tianhe&quot; &#125;, &#123; &quot;role&quot; : &quot;read&quot;, &quot;db&quot; : &quot;tianhe2&quot; &#125; ] &#125;</div></pre></td></tr></table></figure>
+<p>创建完毕，验证一下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">use buru</div><div class="line">show collections</div><div class="line"></div><div class="line">2015-03-17T10:30:06.461+0800 E QUERY    Error: listCollections failed: &#123;</div><div class="line">  &quot;ok&quot; : 0,</div><div class="line">  &quot;errmsg&quot; : &quot;not authorized on buru to execute command &#123; listCollections: 1.0 &#125;&quot;,</div><div class="line">  &quot;code&quot; : 13</div><div class="line">&#125;</div><div class="line">  at Error (&lt;anonymous&gt;)</div><div class="line">  at DB._getCollectionInfosCommand (src/mongo/shell/db.js:643:15)</div><div class="line">  at DB.getCollectionInfos (src/mongo/shell/db.js:655:20)</div><div class="line">  at DB.getCollectionNames (src/mongo/shell/db.js:666:17)</div><div class="line">  at shellHelper.show (src/mongo/shell/utils.js:625:12)</div><div class="line">  at shellHelper (src/mongo/shell/utils.js:524:36)</div><div class="line">  at (shellhelp2):1:1 at src/mongo/shell/db.js:643</div><div class="line">`</div></pre></td></tr></table></figure></p>
+<p>显然没权限，先auth：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">db.auth(&quot;bao&quot;,&quot;12345678&quot;)</div><div class="line">1</div><div class="line">show collections</div><div class="line">news</div><div class="line">system.indexes</div><div class="line">wahaha</div></pre></td></tr></table></figure>
+<p>完毕！</p>
+<p><strong>参考：</strong><br>Mongo Shell：<a href="http://docs.mongodb.org/v2.2/tutorial/getting-started-with-the-mongo-shell" target="_blank" rel="external">http://docs.mongodb.org/v2.2/tutorial/getting-started-with-the-mongo-shell</a><br>Enable Access Control：<a href="http://docs.mongodb.org/manual/tutorial/enable-authentication" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/enable-authentication</a><br>Add a User to a Database：<a href="http://docs.mongodb.org/manual/tutorial/add-user-to-database" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/add-user-to-database</a><br>User Methods：<a href="http://docs.mongodb.org/manual/reference/method/js-user-management" target="_blank" rel="external">http://docs.mongodb.org/manual/reference/method/js-user-management</a><br>Role Methods：<a href="http://docs.mongodb.org/manual/reference/method/js-role-management" target="_blank" rel="external">http://docs.mongodb.org/manual/reference/method/js-role-management</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      mongoDB 3.0 权限控制 用户权限 创建用户 adduser auth 访问控制 安全控制 security
+    
+    </summary>
+    
+      <category term="mongodb" scheme="http://ibruce.info/categories/mongodb/"/>
+    
+    
+      <category term="mongodb" scheme="http://ibruce.info/tags/mongodb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务框架 Colossus</title>
+    <link href="http://ibruce.info/2014/12/02/hello-colossus/"/>
+    <id>http://ibruce.info/2014/12/02/hello-colossus/</id>
+    <published>2014-12-02T02:54:28.000Z</published>
+    <updated>2016-01-03T09:30:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>一直认为 Akka 是 JVM 上实现微服务框架的最理想基础设施，现在 Colossus 终于来了！</p>
+</blockquote>
+<p>Tumblr 开源了其用 Scala 实现的微服务框架 Colossus。Colossus 是轻量级的 Scala 微服务 I/O 框架，基于 Akka Actor 实现，项目地址请戳 <a href="http://github.com/tumblr/colossus" target="_blank" rel="external">http://github.com/tumblr/colossus</a>。</p>
+<a id="more"></a>
+<p>Tumblr 面临的最大问题之一是如何架设及扩展不断持续增长的服务平台。这是病得治，微服务架构是药。它将小而专的应用封装成一个特性或组件，抛弃之前那种一个独立的大应用包含整站逻辑的做法。</p>
+<p>微服务框架提供清晰的职责分离，有助于促进建造良好的基础设施，更容易排查缺陷和性能瓶颈。微服务有如此多的优点，但同样也面临挑战，如微服务要易于构建、维护、部署和监控，最重要的是他们需要极高的性能和容错性。单个服务每秒必须响应数万或数十万请求，并且有严格的延迟时间和正常运行时间要求。</p>
+<p>Colossus 是 Tumblr 用来解决如上问题的新框架。他提供一个轻量级、简单的模型，来创建高性能的微服务。他用 scala 实现，基于 NIO 和 Akka Actor。该框架对 Tumblr 内部的服务搭建产生了极大的影响。</p>
+<p>微服务在 Tumblr 不是新鲜事物，过去旧的框架很难写出服务高性能、高稳定性、高可用的服务。构建一个服务，只有少数几个具有领域知识的工程师才能高效完成的。Colossus 的出现改变了这一局面，使得更容易开发快速的容错服务，大大降低了准入门槛。</p>
+<p>Colossus 主要有两个目标： </p>
+<h3 id="性能">性能</h3><p>目前，最重要的目标就是 Colossus 的程序应该至少与直接使用NIO（不使用任何框架）写的程序一样快。Colossus 是设计用来封装那些直接使用 NIO 服务的 I/O 层，目前的已有框架都有性能问题。因此，我们要重新打造一个无损性能的框架。</p>
+<p>微服务架构用来并发处理来自各种客户端大量无状态小请求。Reactor 模型是一种实现方案，他使用单线程的事件循环去处理多元的客户端 TCP 连接。Colossus 提供一个干净的此种模型的实现，保证尽可能少的开销。在很多情况下，并发的代码不容易写，实际上使用Futures 和 Akka actors 是简单高效的，他是真正的并行。</p>
+<p>这种混合 Actor/Reactor 模型保证了所需的性能。我们基准测试达到了数百万QPS，一些生产系统已经处理数千亿的请求，其中 99.99% 延迟都在5毫秒以内。</p>
+<h3 id="简单">简单</h3><p>Colossus 的另一个目标是小而聚焦，低的准入门槛。简单包含两个方面：框架自身简单和框架用起来简单。</p>
+<p>框架自身简单指的是 Colossus 只聚焦于微服务。为此 Colossus 的核心是一个广义的 NIO 包装，我们的大部分工作都在微服务用例，来保证代码的小而简单直接。</p>
+<p>框架用起来简单指的是API层面，这主要用到 Scala 语言的优势。Scala 的最大优点是极具表现力的代码和设计简单的DSL。此外，因为scala重视类型安全性和函数式编程，我们确保 Colossus 尽量集成这些优点。这导致程序猿写应用更简单，更聚焦于业务逻辑而不是代码自身。</p>
+<p>这些原则使得 Colossus 变成 Tumblr 基础设施的基本组成部分，并使 Tumblr 走向一个更加面向服务的体系结构。 Colossus 已经大大改善了 Tumblr 内部构造服务的方式，在生产系统系统中取得巨大的成功。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">libraryDependencies += &quot;com.tumblr&quot; % &quot;colossus_2.11&quot; % &quot;0.5.1-M1&quot;</div></pre></td></tr></table></figure>
+<p>a little http server</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> colossus._</div><div class="line"><span class="keyword">import</span> service._</div><div class="line"><span class="keyword">import</span> protocols.http._</div><div class="line"><span class="keyword">import</span> <span class="type">UrlParsing</span>._</div><div class="line"><span class="keyword">import</span> <span class="type">HttpMethod</span>._</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">App</span> </span>&#123;</div><div class="line">  </div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">val</span> io_system = <span class="type">IOSystem</span>()</div><div class="line"></div><div class="line">  <span class="type">Service</span>.become[<span class="type">Http</span>](<span class="string">"http-echo"</span>, <span class="number">9000</span>)&#123;</div><div class="line">    <span class="keyword">case</span> request @ <span class="type">Get</span> on <span class="type">Root</span> =&gt; request.ok(<span class="string">"Hello world!"</span>)</div><div class="line">    <span class="keyword">case</span> request @ <span class="type">Get</span> on <span class="type">Root</span> / <span class="string">"echo"</span> / str =&gt; request.ok(str)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>KeyValExample</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">KeyValDB</span> <span class="keyword">extends</span> <span class="title">Actor</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">import</span> <span class="type">KeyValDB</span>._</div><div class="line"></div><div class="line">  <span class="keyword">val</span> db = collection.mutable.<span class="type">Map</span>[<span class="type">ByteString</span>, <span class="type">ByteString</span>]()</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">Get</span>(key, promise) =&gt; promise.success(db.get(key))</div><div class="line">    <span class="keyword">case</span> <span class="type">Set</span>(key, value, promise) =&gt; &#123;</div><div class="line">      db(key) = value</div><div class="line">      promise.success(())</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">KeyValDB</span> </span>&#123;</div><div class="line">  <span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Get</span>(<span class="params">key: <span class="type">ByteString</span>, promise: <span class="type">Promise</span>[<span class="type">Option</span>[<span class="type">ByteString</span>]] = <span class="type">Promise</span>(</span>))</span></div><div class="line">  <span class="keyword">case</span> <span class="class"><span class="keyword">class</span> <span class="title">Set</span>(<span class="params">key: <span class="type">ByteString</span>, value: <span class="type">ByteString</span>, promise: <span class="type">Promise</span>[<span class="type">Unit</span>] = <span class="type">Promise</span>(</span>))</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">KeyValExample</span> </span>&#123;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">start</span></span>(port: <span class="type">Int</span>)(<span class="keyword">implicit</span> io: <span class="type">IOSystem</span>): <span class="type">ServerRef</span> = &#123;</div><div class="line">    <span class="keyword">import</span> io.actorSystem.dispatcher</div><div class="line"></div><div class="line">    <span class="keyword">val</span> db = io.actorSystem.actorOf(<span class="type">Props</span>[<span class="type">KeyValDB</span>])</div><div class="line"></div><div class="line">    <span class="type">Service</span>.become[<span class="type">Redis</span>](<span class="string">"key-value-example"</span>, port)&#123;</div><div class="line">      <span class="keyword">case</span> <span class="type">Command</span>(<span class="string">"GET"</span>, args) =&gt; &#123;</div><div class="line">        <span class="keyword">val</span> dbCmd = <span class="type">KeyValDB</span>.<span class="type">Get</span>(args(<span class="number">0</span>))</div><div class="line">        db ! dbCmd</div><div class="line">        dbCmd.promise.future.map&#123;</div><div class="line">          <span class="keyword">case</span> <span class="type">Some</span>(value) =&gt; <span class="type">BulkReply</span>(value)</div><div class="line">          <span class="keyword">case</span> <span class="type">None</span> =&gt; <span class="type">NilReply</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">case</span> <span class="type">Command</span>(<span class="string">"SET"</span>, args) =&gt; &#123;</div><div class="line">        <span class="keyword">val</span> dbCmd = <span class="type">KeyValDB</span>.<span class="type">Set</span>(args(<span class="number">0</span>), args(<span class="number">1</span>))</div><div class="line">        db ! dbCmd</div><div class="line">        dbCmd.promise.future.map&#123;_ =&gt;</div><div class="line">          <span class="type">StatusReply</span>(<span class="string">"OK"</span>)</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HttpExample</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">HttpExample</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Here we're demonstrating a common way of breaking out the business logic</div><div class="line">   * from the server setup, which makes functional testing easy</div><div class="line">   */</div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">HttpRoutes</span>(<span class="params">redis: <span class="type">LocalClient</span>[<span class="type">Command</span>, <span class="type">Reply</span>]</span>) </span>&#123;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">invalidReply</span></span>(reply: <span class="type">Reply</span>) = <span class="string">s"Invalid reply from redis <span class="subst">$reply</span>"</span>    </div><div class="line"></div><div class="line">    <span class="keyword">val</span> handler: <span class="type">PartialFunction</span>[<span class="type">HttpRequest</span>, <span class="type">Response</span>[<span class="type">HttpResponse</span>]] = &#123;</div><div class="line">      <span class="keyword">case</span> req @ <span class="type">Get</span> on <span class="type">Root</span> =&gt; req.ok(<span class="string">"Hello World!"</span>)</div><div class="line"></div><div class="line">      <span class="keyword">case</span> req @ <span class="type">Get</span> on <span class="type">Root</span> / <span class="string">"get"</span>  / key =&gt; redis.send(<span class="type">Commands</span>.<span class="type">Get</span>(<span class="type">ByteString</span>(key))).map&#123;</div><div class="line">        <span class="keyword">case</span> <span class="type">BulkReply</span>(data) =&gt; req.ok(data.utf8String)</div><div class="line">        <span class="keyword">case</span> <span class="type">NilReply</span> =&gt; req.notFound(<span class="string">"(nil)"</span>)</div><div class="line">        <span class="keyword">case</span> other =&gt; req.error(invalidReply(other))</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="keyword">case</span> req @ <span class="type">Get</span> on <span class="type">Root</span> / <span class="string">"set"</span> / key / value =&gt; redis.send(<span class="type">Commands</span>.<span class="type">Set</span>(<span class="type">ByteString</span>(key), <span class="type">ByteString</span>(value))).map&#123;</div><div class="line">        <span class="keyword">case</span> <span class="type">StatusReply</span>(msg) =&gt; req.ok(msg)</div><div class="line">        <span class="keyword">case</span> other =&gt; req.error(invalidReply(other))</div><div class="line">      &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">start</span></span>(port: <span class="type">Int</span>, redisAddress: <span class="type">InetSocketAddress</span>)(<span class="keyword">implicit</span> system: <span class="type">IOSystem</span>): <span class="type">ServerRef</span> = &#123;</div><div class="line">    <span class="type">Service</span>.serve[<span class="type">Http</span>](<span class="string">"http-example"</span>, port)&#123;context =&gt;</div><div class="line">      <span class="keyword">val</span> redis = context.clientFor[<span class="type">Redis</span>](redisAddress.getHostName, redisAddress.getPort)</div><div class="line">      <span class="comment">//because our routes object has no internal state, we can share it among</span></div><div class="line">      <span class="comment">//connections.  If the class did have some per-connection internal state,</span></div><div class="line">      <span class="comment">//we'd just create one per connection</span></div><div class="line">      <span class="keyword">val</span> routes = <span class="keyword">new</span> <span class="type">HttpRoutes</span>(redis)</div><div class="line"></div><div class="line">      context.handle&#123;connection =&gt; </div><div class="line">        connection.become(routes.handler)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://static.tumblr.com/dbcxhwx/lQ7m5bev3/engineering.png" alt="tumblr colossus"></p>
+<h1 id="参考文献：">参考文献：</h1><ol>
+<li><a href="http://engineering.tumblr.com/post/102906359034/colossus-a-new-service-framework-from-tumblr" target="_blank" rel="external">Colossus: A New Service Framework from Tumblr</a></li>
+<li><a href="http://www.jdon.com/46881" target="_blank" rel="external">Tumblr推出开源微服务框架Colossus</a></li>
+<li><a href="http://github.com/tumblr/colossus" target="_blank" rel="external">Github: tumblr colossus</a></li>
+<li><a href="http://tumblr.github.io/colossus/" target="_blank" rel="external">Colossus Page</a></li>
+<li><a href="http://tumblr.github.io/colossus/docs/" target="_blank" rel="external">Colossus Documentation</a> </li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      Colossus 基于 Scala Akka 的 microservice framework，Java 微服务框架DropWizard，Akka Actor ，微服务，高性能，高可扩展，简单易用
+    
+    </summary>
+    
+      <category term="scala" scheme="http://ibruce.info/categories/scala/"/>
+    
+    
+      <category term="scala" scheme="http://ibruce.info/tags/scala/"/>
+    
+      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
+    
+      <category term="microservice" scheme="http://ibruce.info/tags/microservice/"/>
+    
+      <category term="actor" scheme="http://ibruce.info/tags/actor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ZooKeeper 简介</title>
+    <link href="http://ibruce.info/2014/10/23/zookeeper/"/>
+    <id>http://ibruce.info/2014/10/23/zookeeper/</id>
+    <published>2014-10-23T01:32:17.000Z</published>
+    <updated>2016-01-03T09:42:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>系统越来越大后切分出的模块越来越多，一些模块还部署了双机。配置文件混乱，更新部署极易出错，准备上 <a href="http://zookeeper.apache.org" target="_blank" rel="external">zookeeper</a>。</p>
+<p>下载当前稳定版的 <a href="http://zookeeper.apache.org/releases.html" target="_blank" rel="external">zookeeper</a>，解压并拷贝 conf/zoo_sample.cfg 为 zoo.cfg，配置所需要的项目。最少配是只指定其中的 dataDir 项，其他项则使用默认值。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">tickTime=2000        # 心跳基本时间单位，毫秒级，zk基本上所有时间都是这个时间的整数倍</div><div class="line">clientPort=2181      # 监听客户端连接的端口</div><div class="line">dataDir=/zookeeper/server0/data         # 内存数据库快照存放地址</div><div class="line">dataLogDir=/zookeeper/server0/dataLog   # 事务日志存放地址，未指定则同dataDir项，建议分开</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="主要配置项说明">主要配置项说明</h2><h3 id="最小配置">最小配置</h3><p>最小配是保证zk正常运行必不可少的配置项。</p>
+<ul>
+<li><strong>clientPort</strong>：监听客户端连接的服务端口</li>
+<li><strong>dataDir</strong>：内存数据库快照地址，事务日志地址（除非由 dataLogDir 另行指定）</li>
+<li><strong>tickTime</strong>：毫秒级的基本时间单位，其他时间如心跳/超时等都为该单位时间的整数倍</li>
+</ul>
+<blockquote>
+<p> 建议另行指定 dataLogDir，以便将事务日志存储在单独的路径下，这很重要，因事物日志存储的设备效率直接影响zk的性能。</p>
+</blockquote>
+<h3 id="高级配置">高级配置</h3><p>高级参数是可选的，可以通过这些参数调优zk性能。有些参数还可以通过 java system properties 动态指定，格式为 zookeeper.keyword 。</p>
+<ul>
+<li><strong>dataLogDir</strong>：事务日志目录，可以使用专用的设备，以避免事务日志与快照之间的竞争。(No Java system property)</li>
+<li><strong>globalOutstandingLimit</strong>：zk接收的请求队列大小，默认1000，设置太大对导致内存溢出。(Java system property: zookeeper.globalOutstandingLimit)</li>
+<li><strong>preAllocSize</strong>：预先分配事务日志空间块，单位kb，默认64M。如果快照写入很频繁，减少这个值，参考 snapCount。 (Java system property: zookeeper.preAllocSize)</li>
+<li><strong>snapCount</strong>：每当 snapCount 个事物日志写入时，快照被创建，同时创建新的事务日志文件，默认值100,000。(Java system property: zookeeper.snapCount)</li>
+</ul>
+<p>垃圾清理参数</p>
+<ul>
+<li><strong>autopurge.purgeInterval</strong>：清理频率，单位小时，默认0，表示不开启清理功能。</li>
+<li><strong>autopurge.snapRetainCount</strong>：需要保留的文件数目，默认是保留3个。</li>
+</ul>
+<h3 id="集群配置">集群配置</h3><ul>
+<li><strong>electionAlg</strong>：领导选举算法，默认3。(No Java system property)</li>
+<li><strong>initLimit</strong>：tickTime的倍数，表示leader选举结束后，followers与leader同步需要的时间，leader的数据非常多时或followers比较多，则该值应该适当大一些。(No Java system property)</li>
+<li><strong>syncLimit</strong>：tickTime的倍数，表示follower和observer与leader交互时的最大等待时间，只不过是在与leader同步完毕之后，正常请求转发或ping等消息交互时的超时时间。(No Java system property)</li>
+<li><strong>server.x</strong>=[hostname]:nnnnn[:nnnnn], etc<br>集群配置中，在dataDir目录下必须有一个myid文件，其中的值就是数字x，范围是1-255。第一个nnnnn是与leader通讯使用，第二个nnnnn是选举leader使用，electionAlg等于0时不需要此参数。(No Java system property)</li>
+</ul>
+<p>集群配置的例子<br>conf下的zoo.cfg文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">server.1=127.0.0.1:12888:13888</div><div class="line">server.2=127.0.0.1:22888:23888</div><div class="line">server.3=127.0.0.1:32888:33888</div></pre></td></tr></table></figure></p>
+<p>dataDir下的myid文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">1</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>更多参数参考 <a href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html" target="_blank" rel="external">ZK Administrator’s Guide</a>、<a href="http://blog.csdn.net/lovingprince/article/details/6853753" target="_blank" rel="external">ZK 配置项详解</a>、<a href="http://www.udpwork.com/item/2002.html" target="_blank" rel="external">ZK 配置文件</a> 或 <a href="http://nileader.blog.51cto.com/1381108/1032157" target="_blank" rel="external">ZK 管理员指南</a>。</p>
+</blockquote>
+<h2 id="Java_API">Java API</h2><p>zk 官方的Java API是非常难用的，建议使用第三方基于官方API封装的工具包。</p>
+<ul>
+<li>Netflix curator：<a href="http://github.com/Netflix/curator" target="_blank" rel="external">http://github.com/Netflix/curator</a>（强大）</li>
+<li>sgroschupf zkclient：<a href="http://github.com/sgroschupf/zkclient" target="_blank" rel="external">http://github.com/sgroschupf/zkclient</a>（简单）</li>
+<li>adyliu zkclient：<a href="http://github.com/adyliu/zkclient" target="_blank" rel="external">http://github.com/adyliu/zkclient</a>（极简）</li>
+</ul>
+<p>看一下官方API的主要接口：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ZooKeeper</span><span class="params">(String connectString, <span class="keyword">int</span> sessionTimeout, Watcher watcher)</span> </span></div><div class="line">   <span class="keyword">throws</span> IOException</div></pre></td></tr></table></figure></p>
+<ul>
+<li>connectString：逗号分隔，如localhost:2181,127.0.0.1:2181，zk会选出一个建立连接</li>
+<li>sessionTimeout：session超时时间</li>
+<li>watcher：回调函数</li>
+</ul>
+<blockquote>
+<p>该方法是非阻塞的，如果需要阻塞，可以在Watcher中自己处理。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">create</span><span class="params">(String path, <span class="keyword">byte</span> data[], List&lt;ACL&gt; acl, CreateMode createMode)</span></span></div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div><div class="line">```        </div><div class="line">- path：znode路径</div><div class="line">- data：znode上的数据</div><div class="line">- acl：权限信息, 如果不想指定权限, 可传入org.*.ZooDefs.Ids.OPEN_ACL_UNSAFE。</div><div class="line">- createMode：枚举类CreateMode，PERSISTENT / PERSISTENT_SEQUENTIAL / EPHEMERAL / EPHEMERAL_SEQUENTIAL</div><div class="line"></div><div class="line">```java</div><div class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getChildren</span><span class="params">(<span class="keyword">final</span> String path, Watcher watcher)</span></div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div></pre></td></tr></table></figure>
+<ul>
+<li>path：znode路径</li>
+<li>watcher：回调函数</li>
+</ul>
+<blockquote>
+<p>监听 path node 自身的删除事件，以及 children nodes 的创建/删除事件。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Stat <span class="title">exists</span><span class="params">(<span class="keyword">final</span> String path, Watcher watcher)</span></span></div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div></pre></td></tr></table></figure>
+<blockquote>
+<p>监听 path node 自身的创建/删除/数据更新事件，path 不存在返回 null。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">byte</span>[] getData(<span class="keyword">final</span> String path, Watcher watcher, Stat stat)</div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div></pre></td></tr></table></figure>
+<blockquote>
+<p>监听 path node 的删除/数据更新事件, 注意, 不监听 path node 的创建事件。stat 是传出参数，返回当前节点状态。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Stat <span class="title">setData</span><span class="params">(<span class="keyword">final</span> String path, <span class="keyword">byte</span> data[], <span class="keyword">int</span> version)</span></span></div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div></pre></td></tr></table></figure>
+<blockquote>
+<p>version 参数指定要更新数据的当前版本, 就是stats中的 version 值，如果和现有版本不匹配, 更新操作将失败。指定 version 为-1则忽略版本检查。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">final</span> String path, <span class="keyword">int</span> version)</span></span></div><div class="line">   <span class="keyword">throws</span> InterruptedException, KeeperException</div></pre></td></tr></table></figure>
+<p>总结：</p>
+<blockquote>
+<p>getChildren， getData， exists 方法可指定是否监听相应的事件；而create，delete，setData 方法则会触发相应的事件。</p>
+</blockquote>
+<h2 id="权限设置">权限设置</h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// new一个acl</span></div><div class="line">List&lt;ACL&gt; acls = <span class="keyword">new</span> ArrayList&lt;ACL&gt;();</div><div class="line"><span class="comment">// 添加第一个id，采用用户名密码形式</span></div><div class="line">Id id1 = <span class="keyword">new</span> Id(<span class="string">"digest"</span>, DigestAuthenticationProvider.generateDigest(<span class="string">"admin:admin"</span>));</div><div class="line">ACL acl1 = <span class="keyword">new</span> ACL(ZooDefs.Perms.ALL, id1);</div><div class="line">acls.add(acl1);</div><div class="line"><span class="comment">// 添加第二个id，所有用户可读权限</span></div><div class="line">Id id2 = <span class="keyword">new</span> Id(<span class="string">"world"</span>, <span class="string">"anyone"</span>);</div><div class="line">ACL acl2 = <span class="keyword">new</span> ACL(ZooDefs.Perms.READ, id2);</div><div class="line">acls.add(acl2);</div><div class="line"></div><div class="line"><span class="comment">// zk用admin认证，创建/buru ZNode。</span></div><div class="line"><span class="keyword">final</span> ZooKeeper zk = <span class="keyword">new</span> ZooKeeper(<span class="string">"localhost:2181,127.0.0.1:2181"</span>, <span class="number">2000</span>, <span class="keyword">null</span>);</div><div class="line">zk.addAuthInfo(<span class="string">"digest"</span>, <span class="string">"admin:admin"</span>.getBytes());</div><div class="line"></div><div class="line">Stat exists = zk.exists(<span class="string">"/buru"</span>, <span class="keyword">true</span>);</div><div class="line"><span class="keyword">if</span> (exists != <span class="keyword">null</span>)</div><div class="line">   zk.setData(<span class="string">"/buru"</span>, <span class="string">"2323"</span>.getBytes(), -<span class="number">1</span>);</div><div class="line"><span class="keyword">else</span></div><div class="line">   zk.create(<span class="string">"/buru"</span>, <span class="string">"data112"</span>.getBytes(), acls, CreateMode.PERSISTENT);</div></pre></td></tr></table></figure>
+<p>更多内容参考文章， <a href="http://nettm.iteye.com/blog/1721778" target="_blank" rel="external">ZK 权限配置</a>、<a href="http://www.cnblogs.com/wangxiaowei/p/3315137.html" target="_blank" rel="external">ZK ACL使用</a>、<a href="http://nileader.blog.51cto.com/1381108/795525" target="_blank" rel="external">ZK 权限控制</a> 或 <a href="http://www.wuzesheng.com/?p=2438" target="_blank" rel="external">说说Zookeeper中的ACL</a>。</p>
+<h2 id="管理工具">管理工具</h2><p>很可惜，没有顺手的，试试下面几个吧！</p>
+<ul>
+<li><a href="http://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip" target="_blank" rel="external">ZooInspector</a> </li>
+<li><a href="http://github.com/nettm/ZooInspector" target="_blank" rel="external">ZooInspector 改进版</a></li>
+<li><a href="http://github.com/killme2008/node-zk-browser" target="_blank" rel="external">node-zk-browser</a></li>
+<li><a href="http://git.oschina.net/gznofeng/Node_Zookeeper_Admin" target="_blank" rel="external">Node_Zookeeper_Admin</a></li>
+<li><a href="http://jm-blog.aliapp.com/?p=1450" target="_blank" rel="external">taokeeper</a></li>
+<li><a href="http://github.com/ryuubaishi/zookeepercontroller" target="_blank" rel="external">zookeepercontroller</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      zookeeper 简介，zookeeper helloworld
+    
+    </summary>
+    
+      <category term="distribution" scheme="http://ibruce.info/categories/distribution/"/>
+    
+    
+      <category term="java" scheme="http://ibruce.info/tags/java/"/>
+    
+      <category term="zookeeper" scheme="http://ibruce.info/tags/zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Akka 快速入门</title>
+    <link href="http://ibruce.info/2014/05/20/hello-akka/"/>
+    <id>http://ibruce.info/2014/05/20/hello-akka/</id>
+    <published>2014-05-20T02:22:18.000Z</published>
+    <updated>2016-01-03T09:29:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Akka的优点太多，高性能、高可靠、高并发、分布式、可容错、可扩展、事件驱动，不一一叙述。不同版本的API差异很大，本文代码运行在 <a href="http://www.scala-lang.org" target="_blank" rel="external">Scala 2.10.3</a> 和 <a href="http://akka.io" target="_blank" rel="external">Akka 2.3.2</a> 之上。<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.typesafe.akka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>akka-actor_2.10<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.scala-lang<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>scala-library<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="定义">定义</h1><p>定义Actor很简单，继承 akka.actor.Actor ，实现receive方法即可。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> <span class="keyword">extends</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> msg: <span class="type">String</span> =&gt; println(<span class="string">"hello "</span> + msg)</div><div class="line">    <span class="keyword">case</span> _ =&gt; println(<span class="string">"unexpected message."</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="启动">启动</h1><p>创建Actor实例需要通过 ActorSystem 。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="keyword">val</span> system = <span class="type">ActorSystem</span>(<span class="string">"HelloSystem"</span>)</div><div class="line"><span class="keyword">val</span> hello = system.actorOf(<span class="type">Props</span>[<span class="type">Hello</span>], name = <span class="string">"hello"</span>)</div><div class="line"><span class="keyword">val</span> hello1 = system.actorOf(<span class="type">Props</span>[<span class="type">Hello</span>])</div><div class="line"><span class="keyword">val</span> hello2 = system.actorOf(<span class="type">Props</span>(<span class="keyword">new</span> <span class="type">Hello</span>()))</div></pre></td></tr></table></figure>
+<p>如果要在 Actor 中继续创建子 Actor，需要使用内置的 ActorContext 对象。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line">context.actorOf(<span class="type">Props</span>[children], name = <span class="string">"children"</span>)</div></pre></td></tr></table></figure>
+<p>如果要创建远程 Actor，需要通过 actorSelection 方法，原 actorFor 方法不再使用。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line">context.actorSelection(<span class="string">"akka.tcp://HelloRemoteSystem@127.0.0.1:5150/user/RemoteActor"</span>)</div></pre></td></tr></table></figure>
+<h1 id="发消息">发消息</h1><p>巨简单，就是一个!，可以发送任意类型的消息，此消息是异步的。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line">hello ! <span class="string">"bruce"</span></div><div class="line">hello ! <span class="number">10086</span></div></pre></td></tr></table></figure>
+<p>同步消息的发送需要使用 Future 对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">implicit val timeout = Timeout(5 seconds)</div><div class="line">val future = hello ? &quot;sha&quot;</div><div class="line">val result = Await.result(future, timeout.duration).asInstanceOf[String]</div></pre></td></tr></table></figure>
+<h1 id="停止">停止</h1><p>有两种方式停止一个Actor。</p>
+<p>一种是通过内部 ActorContext.stop() 方法，该方法会将 children actor 逐层杀掉后，再自刎。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"stop"</span> =&gt; context.stop(self)</div><div class="line">    ...</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>另一种是外部喂毒药，通过 ActorRef.tell() 方法实现。后一个参数是向谁reply，这里显然不需要，传空。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line">hello.tell(<span class="type">PoisonPill</span>.getInstance, <span class="type">ActorRef</span>.noSender);</div></pre></td></tr></table></figure>
+<h1 id="哼哈示例">哼哈示例</h1><blockquote>
+<p>哼哈二将本是两位佛寺的门神俗称，是执金刚神的一种。明代小说《封神演义》作者陈仲琳据此附会两员神将，形象威武凶猛。一名郑伦，能鼻哼白气制敌；一名陈奇，能口哈黄气擒将。</p>
+</blockquote>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">HengHa</span> <span class="keyword">extends</span> <span class="title">App</span> </span>&#123;</div><div class="line">  <span class="keyword">val</span> system = <span class="type">ActorSystem</span>(<span class="string">"HengHaSystem"</span>)</div><div class="line">  <span class="keyword">val</span> ha = system.actorOf(<span class="type">Props</span>[<span class="type">Ha</span>], name = <span class="string">"ha"</span>)</div><div class="line">  <span class="keyword">val</span> heng = system.actorOf(<span class="type">Props</span>(<span class="keyword">new</span> <span class="type">Heng</span>(ha)), name = <span class="string">"heng"</span>)</div><div class="line"></div><div class="line">  heng ! <span class="string">"start"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Heng</span>(<span class="params">ha: <span class="type">ActorRef</span></span>) <span class="keyword">extends</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"start"</span> =&gt; ha ! <span class="string">"heng"</span></div><div class="line">    <span class="keyword">case</span> <span class="string">"ha"</span> =&gt; </div><div class="line">      println(<span class="string">"哈"</span>)</div><div class="line">      ha ! <span class="string">"heng"</span></div><div class="line">    <span class="keyword">case</span> _ =&gt; println(<span class="string">"heng what?"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ha</span> <span class="keyword">extends</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"heng"</span> =&gt; </div><div class="line">      println(<span class="string">"哼"</span>)</div><div class="line">      sender ! <span class="string">"ha"</span></div><div class="line">    <span class="keyword">case</span> _ =&gt; println(<span class="string">"ha what?"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Run 起来，结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">哼</div><div class="line">哈</div><div class="line">哼</div><div class="line">哈</div><div class="line">哼</div><div class="line">...</div></pre></td></tr></table></figure>
+<h1 id="远程示例">远程示例</h1><h3 id="local工程">local工程</h3><p>application.conf<br><figure class="highlight"><table><tr><td class="code"><pre><div class="line">akka &#123;</div><div class="line">  loglevel = "DEBUG"</div><div class="line">  actor &#123;</div><div class="line">    provider = "akka.remote.RemoteActorRefProvider"</div><div class="line">  &#125;</div><div class="line">  remote &#123;</div><div class="line">    enabled-transports = ["akka.remote.netty.tcp"]</div><div class="line">    netty.tcp &#123;</div><div class="line">      hostname = "127.0.0.1"</div><div class="line">      port = 5155</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">object Local extends App &#123;</div><div class="line">  val system = ActorSystem(&quot;LocalSystem&quot;)</div><div class="line">  val localActor = system.actorOf(Props[LocalActor], name = &quot;LocalActor&quot;) // the local actor</div><div class="line">  localActor ! &quot;START&quot; // start the action</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalActor</span> <span class="keyword">extends</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">  <span class="comment">// create the remote actor</span></div><div class="line">  <span class="keyword">val</span> remote = context.actorSelection(<span class="string">"akka.tcp://HelloRemoteSystem@127.0.0.1:5150/user/RemoteActor"</span>)</div><div class="line">  <span class="keyword">var</span> counter = <span class="number">0</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"START"</span> =&gt;</div><div class="line">      remote ! <span class="string">"Hello from the LocalActor"</span></div><div class="line">    <span class="keyword">case</span> msg: <span class="type">String</span> =&gt;</div><div class="line">      println(<span class="string">s"LocalActor received message: '<span class="subst">$msg</span>'"</span>)</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (counter &lt; <span class="number">5</span>) &#123;</div><div class="line">        sender ! <span class="string">"Hello back to you"</span></div><div class="line">        counter += <span class="number">1</span></div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="remote工程">remote工程</h3><p>application.conf<br><figure class="highlight"><table><tr><td class="code"><pre><div class="line">akka &#123;</div><div class="line">  loglevel = "DEBUG"</div><div class="line">  actor &#123;</div><div class="line">    provider = "akka.remote.RemoteActorRefProvider"</div><div class="line">  &#125;</div><div class="line">  remote &#123;</div><div class="line">    enabled-transports = ["akka.remote.netty.tcp"]</div><div class="line">    netty.tcp &#123;</div><div class="line">      hostname = "127.0.0.1"</div><div class="line">      port = 5150</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">HelloRemote</span> <span class="keyword">extends</span> <span class="title">App</span> </span>&#123;</div><div class="line">  <span class="keyword">val</span> system = <span class="type">ActorSystem</span>(<span class="string">"HelloRemoteSystem"</span>)</div><div class="line">  <span class="keyword">val</span> remoteActor = system.actorOf(<span class="type">Props</span>[<span class="type">RemoteActor</span>], name = <span class="string">"RemoteActor"</span>)</div><div class="line"></div><div class="line">  remoteActor ! <span class="string">"The RemoteActor is alive"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RemoteActor</span> <span class="keyword">extends</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> msg: <span class="type">String</span> =&gt;</div><div class="line">      println(<span class="string">s"RemoteActor received message '<span class="subst">$msg</span>'"</span>)</div><div class="line">      sender ! <span class="string">"Hello from the RemoteActor"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<!-- 
+ swind.code-life.info/categories/akka.html
+-->]]></content>
+    
+    <summary type="html">
+    
+      akka示例，akka例子，akka入门，hello akka，akka快速入门，远程actor，remote actor，akka example，akka sample，akka demo
+    
+    </summary>
+    
+      <category term="scala" scheme="http://ibruce.info/categories/scala/"/>
+    
+    
+      <category term="scala" scheme="http://ibruce.info/tags/scala/"/>
+    
+      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>对接口设计的一个小看法</title>
+    <link href="http://ibruce.info/2014/04/16/a-small-point-of-interface-design/"/>
+    <id>http://ibruce.info/2014/04/16/a-small-point-of-interface-design/</id>
+    <published>2014-04-16T08:33:56.000Z</published>
+    <updated>2015-12-03T14:02:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>与另一产品线的同事们讨论对接接口，对一些领导和架构师的某观点十分不认可。内容如下：</p>
+<blockquote>
+<ul>
+<li>接口中的数据类型全部是String，不要出现Int等其他类型，理由是统一好处理。</li>
+<li>接口中Array类型请用String替代，值用逗号分割，理由是接口中不应该出现数据结构。</li>
+</ul>
+</blockquote>
+<p>我强烈反对上述观点。我粗浅的认为设计的基本原则是<strong>世界是什么样子，你的设计就是什么样子</strong>，这是好设计的前提。设计原本很简单，就是对真实世界的合理抽象，不是人为扭曲。</p>
+<a id="more"></a>
+<p>接口设计的第一原则是，让使用者易懂易用，如果必须看文档看注释才能使用，那这个设计是失败的，是对码农代码的侮辱，还做个什么架构师？</p>
+<p>对于第一条：</p>
+<ol>
+<li>调用者和接收者都将进行类型转换，不可避免的必须对转换异常进行处理，代码臃肿丑陋。</li>
+<li>Null值如何处理，对于本该是Int的值，不传可以默认0，这造成接口中所有参数必须都传值。</li>
+<li>给后来读代码的人造成极大的困惑，有些明显是Boolean类型的值。</li>
+</ol>
+<p>对于第二条：</p>
+<ol>
+<li>分隔符怎么通知使用方，必须写文档或注释吧？</li>
+<li>不但没有避免双方人为沟通，反而增加沟通成本。如果接口中是Array，双方仅通过接口就已经明白对方的意思；如果是个拼接的字符串，实际上这个沟通成本后退到双方各自更深层次的代码中，换句话说，在更深层次中双方耦合了，而不是只在接口上耦合。</li>
+<li>全部同上。</li>
+</ol>
+<p>举个例子，其中有一个接口是这样的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> List&lt;Map&lt;String, Object&gt;&gt; jsonPersonGetAll(String eid, String begin, String count) <span class="keyword">throws</span> Exception;</div></pre></td></tr></table></figure>
+<p>这个接口毛病很多，我吐槽一下。</p>
+<ol>
+<li>方法名不能传达准确的意思，json 在哪里？输入 json 还是输出 json ？</li>
+<li>返回值是集合套集合，不应该是对象吗？想取一下 Map 中的 photoUrl 值，key 大小写不能错，取回后还得强转成 String！</li>
+<li>begin/count 这两个变量可以看出，该方法是分页查询某 eid 下全部 person ，那么 begin/count 用 Int 更合理吧？</li>
+<li>抛出Exception，咋不抛的更大呢，为什么不抛出具体的异常，这让上层如何处理？</li>
+</ol>
+<blockquote>
+<p>上文中所谓的 ‘接口设计原则’ 、 ‘基本原则’ ，全是我个人的观点，水平有限，欢迎拍砖。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;与另一产品线的同事们讨论对接接口，对一些领导和架构师的某观点十分不认可。内容如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;接口中的数据类型全部是String，不要出现Int等其他类型，理由是统一好处理。&lt;/li&gt;
+&lt;li&gt;接口中Array类型请用String替代，值用逗号分割，理由是接口中不应该出现数据结构。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我强烈反对上述观点。我粗浅的认为设计的基本原则是&lt;strong&gt;世界是什么样子，你的设计就是什么样子&lt;/strong&gt;，这是好设计的前提。设计原本很简单，就是对真实世界的合理抽象，不是人为扭曲。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://ibruce.info/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://ibruce.info/tags/java/"/>
+    
+      <category term="design" scheme="http://ibruce.info/tags/design/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过 Spray 创建简单的 Restful Http Server</title>
+    <link href="http://ibruce.info/2014/04/06/hello-spray/"/>
+    <id>http://ibruce.info/2014/04/06/hello-spray/</id>
+    <published>2014-04-06T09:35:19.000Z</published>
+    <updated>2015-12-03T14:02:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>好久没写文章，实在太忙。最近我在项目中，搭建了很多小的零散的 Restful 服务，各个服务之间通过rest接口调用，相互协作。</p>
+<p>Java出身的码农，动辄就是Tomcat、Spring，RestEasy、Hibernate、JPA、Jackson、HttpClient… 这些巨无霸非常臃肿，其实我的项目就是一个简简单单的Rest服务，请求Json参数 → 调用资源接口 → 返回Json数据，还好有Spray！</p>
+<p>使用Scala系的工具，无论是体重上（包的大小）还是身高上（代码的长度），都能极大的减负，同时提升逼格和优雅度。下面介绍一个简单的Restful Http Server的开发示例。</p>
+<p>首先安装 <a href="http://www.scala-sbt.org" target="_blank" rel="external">SBT</a>（简单理解为scala下的maven），安装方法参考 <a href="http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html" target="_blank" rel="external">sbt documentation - setup</a>。</p>
+<p>win7环境下，直接下载 <a href="http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.1/sbt.zip" target="_blank" rel="external">0.13.1-zip包</a> 解压到c:\sbt，配置SBT_HOME到path，cmd中敲入sbt检查有无成功，%SBT_HOME%\conf\sbtconfig.txt中可以配置启动参数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># Set the java args to high</div><div class="line">-Xmx1024M</div><div class="line">-XX:MaxPermSize=512m</div><div class="line">-XX:ReservedCodeCacheSize=256m</div><div class="line"></div><div class="line"># Set the extra SBT options</div><div class="line">-Dsbt.log.format=true</div><div class="line">-Dfile.encoding=ISO-8859-1</div><div class="line">-Dsbt.boot.directory=H:/sbt/boot/ </div><div class="line">-Dsbt.ivy.home=H:/sbt/</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>1、-Dfile.encoding 配置成 ISO-8859-1 而不是 UTF-8，是因为在 cmd 下按键盘的上下键，无法切换历史输入的sbt命令，显示全是乱码，这让我很不爽，只好忍痛ISO啦。<br>2、-Dsbt.boot.directory 和 -Dsbt.ivy.home 是为将sbt自动下载的jar放到非系统盘，以免统一管理，这个看个人爱好。</p>
+</blockquote>
+<p>下面跑一个官方的例子，从Spray的官方文档 <a href="http://spray.io/introduction/getting-started" target="_blank" rel="external">Getting Started</a> 上，找到 <a href="https://github.com/spray/spray-template" target="_blank" rel="external">spray-template</a>，在branch中下载1.3版的 <a href="http://github.com/spray/spray-template/tree/on_spray-can_1.3" target="_blank" rel="external">spray-can sample</a>。<br>解压，执行sbt命令。在浏览器运行 <a href="http://127.0.0.1:8080" target="_blank" rel="external">http://127.0.0.1:8080</a> 看结果。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sbt</div><div class="line">compile</div><div class="line">run</div></pre></td></tr></table></figure>
+<blockquote>
+<p>build.sbt 已配置 Revolver.settings，可使用命令：re-start和re-stop，详细参考 <a href="http://github.com/spray/sbt-revolver" target="_blank" rel="external">sbt-revolver</a>。</p>
+</blockquote>
+<p>瞄一下 <a href="https://github.com/spray/spray-template/blob/on_spray-can_1.3/src/main/scala/com/example/MyService.scala" target="_blank" rel="external">src/main/scala/com/example/MyService.scala</a>，可以看到只有简单的。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">trait MyService extends HttpService &#123;</div><div class="line">  val myRoute =</div><div class="line">    path(&quot;&quot;) &#123;</div><div class="line">      get &#123;</div><div class="line">        respondWithMediaType(`text/html`) &#123;</div><div class="line">          complete &#123;</div><div class="line">            &lt;html&gt;</div><div class="line">              &lt;body&gt;</div><div class="line">                &lt;h1&gt;Say hello to &lt;i&gt;spray-routing&lt;/i&gt; on &lt;i&gt;spray-can&lt;/i&gt;!&lt;/h1&gt;</div><div class="line">              &lt;/body&gt;</div><div class="line">            &lt;/html&gt;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Boot方法启动一个Actor并绑定到8080端口。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">object Boot extends App &#123;</div><div class="line">  // we need an ActorSystem to host our application in</div><div class="line">  implicit val system = ActorSystem(&quot;on-spray-can&quot;)</div><div class="line">  // create and start our service actor</div><div class="line">  val service = system.actorOf(Props[MyServiceActor], &quot;demo-service&quot;)</div><div class="line">  implicit val timeout = Timeout(5.seconds)</div><div class="line">  // start a new HTTP server on port 8080 with our service actor as the handler</div><div class="line">  IO(Http) ? Http.Bind(service, interface = &quot;localhost&quot;, port = 8080)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在 <a href="http://github.com/spray/spray-template/tree/on_jetty_1.3" target="_blank" rel="external">spray-servlet on jetty</a> 分支下，有部署到servlet容器的工程模板代码。另外在 <a href="http://github.com/spray/spray" target="_blank" rel="external">Spray</a> 项目的源代码下，也有一些 <a href="http://github.com/spray/spray/tree/master/examples" target="_blank" rel="external">example</a>，找到 <a href="http://github.com/spray/spray/tree/master/examples/spray-can/simple-http-server" target="_blank" rel="external">spray-can/simple-http-server</a>,也可以试着跑一下，其中的 <a href="https://github.com/spray/spray/blob/master/examples/spray-can/simple-http-server/src/main/scala/spray/examples/DemoService.scala" target="_blank" rel="external">DemoService.scala</a> 例子内容比较多。</p>
+<blockquote>
+<p>更多玩法参考 <a href="http://github.com/spray/spray/wiki/Example-Projects" target="_blank" rel="external">wiki example-projects</a> 或 <a href="http://spray.io/documentation/1.2.1/spray-can/" target="_blank" rel="external">document spray-can</a>。</p>
+</blockquote>
+<p>又要忙项目，推荐两个文章吧，自己写 spray 工程可以参考一下：<a href="http://sysgears.com/articles/building-rest-service-with-scala" target="_blank" rel="external">Building REST Service with Scala</a>、<a href="http://www.cakesolutions.net/teamblogs/2012/07/29/api-first-rest-in-akka-and-spray" target="_blank" rel="external">API first REST in Akka and Spray</a>、<a href="https://github.com/mhamrah/stockman" target="_blank" rel="external">stockman</a>。</p>
+<!-- 
+参考文档
+* [用 Spray 建立一個簡單的 RESTful API Server](http://swind.code-life.info/posts/build-restful-api-server-by-spray.html)
+-->]]></content>
+    
+    <summary type="html">
+    
+      Spray Restful Http Server 例子，spray can，spray servlet，sbt
+    
+    </summary>
+    
+      <category term="scala" scheme="http://ibruce.info/categories/scala/"/>
+    
+    
+      <category term="scala" scheme="http://ibruce.info/tags/scala/"/>
+    
+      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
+    
+      <category term="spray" scheme="http://ibruce.info/tags/spray/"/>
+    
+      <category term="sbt" scheme="http://ibruce.info/tags/sbt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>转折点</title>
+    <link href="http://ibruce.info/2014/02/28/turning-point-2014/"/>
+    <id>http://ibruce.info/2014/02/28/turning-point-2014/</id>
+    <published>2014-02-28T08:37:49.000Z</published>
+    <updated>2015-12-03T14:02:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>二月的最后一天，新的三月，重要转折点之一。离开落后愚昧，大踏步，走向互联网的节奏。<br><a id="more"></a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;二月的最后一天，新的三月，重要转折点之一。离开落后愚昧，大踏步，走向互联网的节奏。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>微菜谱</title>
+    <link href="http://ibruce.info/2014/02/14/caipus/"/>
+    <id>http://ibruce.info/2014/02/14/caipus/</id>
+    <published>2014-02-14T06:51:16.000Z</published>
+    <updated>2016-01-03T09:49:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://bruce.u.qiniudn.com/2014/02/14/caipu-qrcode-1280.jpg" alt="QRCode"></p>
+<a id="more"></a>
+<p>花一天时间，做了这个微信应用 <strong><a href="http://bruce.u.qiniudn.com/2014/02/14/caipu-qrcode-258.jpg" target="_blank" rel="external">微菜谱</a></strong>，目前测试阶段，欢迎提出意见和建议，感谢推荐！</p>
+<ul>
+<li>名称：微菜谱</li>
+<li>微信号：caipus</li>
+<li>功能介绍：微菜谱，菜谱大全，菜谱查询，家常菜做法。只需输入菜名，小菜君即可告诉您具体的主料，配料及制作步骤。</li>
+<li>我们的口号：没有难做的菜！</li>
+</ul>
+<blockquote>
+<p>本司承接各种微信公众号申请、开发工作，物美价廉，童叟无欺，请联系<strong>bu.ru@qq.com</strong>。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      微菜谱，微信菜谱，菜谱大全，菜谱查询，家常菜做法。
+    
+    </summary>
+    
+      <category term="default" scheme="http://ibruce.info/categories/default/"/>
+    
+    
+      <category term="weixin" scheme="http://ibruce.info/tags/weixin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单美观的文字标签云组件</title>
+    <link href="http://ibruce.info/2014/02/10/the-most-beautiful-word-cloud/"/>
+    <id>http://ibruce.info/2014/02/10/the-most-beautiful-word-cloud/</id>
+    <published>2014-02-10T09:35:20.000Z</published>
+    <updated>2015-12-03T14:02:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>经常在微博或微信的文章中看到漂亮的分析图。我认为在大数据的时代，目前最关键的就是如何让非专业人员轻松的进行数据分析，比如可以象使用office一样制作信息图（infographic），而不是用专业的制图工具。这一步跨过去，看到的将是欣欣向荣的真正大数据时代。</p>
+<p>而这之前，首先缺少的就是，可以让普通开发人员使用的大数据时代的可视化图表组件，比如标签云图，所幸，业界已经有<a href="http://github.com/ecomfe/echarts" target="_blank" rel="external">ECharts</a>和<a href="http://github.com/timdream/wordcloud" target="_blank" rel="external">WordCloud</a>这两大利器，本文只介绍后者。</p>
+<p><img src="http://bruce.u.qiniudn.com/2014/02/10/wordcloud-cn.jpg" alt="中文"></p>
+<a id="more"></a>
+<p>首先页面必须是html5编写。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"> &lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;title&gt;&lt;/title&gt;</div><div class="line"> &lt;/head&gt;</div><div class="line"> &lt;body&gt;	</div><div class="line"> &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>引入<a href="http://jquery.com/" target="_blank" rel="external">jQuery</a>和<a href="http://github.com/timdream/wordcloud2.js" target="_blank" rel="external">WordCloud2.js</a>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script src=&quot;src/wordcloud2.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>定义canvas容器。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;div id=&quot;canvas-container&quot; align=&quot;center&quot;&gt;</div><div class="line"> &lt;canvas id=&quot;canvas&quot; width=&quot;800px&quot; height=&quot;600px&quot;&gt;&lt;/canvas&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>绘图。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script&gt; </div><div class="line">var options = eval(&#123;</div><div class="line">  &quot;list&quot;: [[&apos;傻猎豹&apos;, 10], [&apos;不如&apos;, 9], [&apos;麻花疼&apos;, 7], [&apos;麻云&apos;, 6],[&apos;李眼红&apos;, 4], [&apos;雷布斯&apos;, 5],[&apos;周红衣&apos;, 4],[&apos;刘墙洞&apos;, 3],[&apos;李国情&apos;, 3]],</div><div class="line">  &quot;gridSize&quot;: 8,</div><div class="line">  &quot;weightFactor&quot;: 16,</div><div class="line">  &quot;fontFamily&quot;: &apos;Hiragino Mincho Pro, serif&apos;,</div><div class="line">  &quot;color&quot;: &apos;random-dark&apos;,</div><div class="line">  &quot;backgroundColor&quot;: &apos;#f0f0f0&apos;,</div><div class="line">  &quot;rotateRatio&quot;: 0</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var canvas = document.getElementById(&apos;canvas&apos;);</div><div class="line"></div><div class="line">WordCloud(canvas, options);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>至此，全部完毕。执行页面，美丽的云图便展现在你面前，具体的API可以参考<a href="http://github.com/timdream/wordcloud2.js/blob/master/API.md" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<p>下面举个英文的例子，为了美观稍微改变一下参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&quot;list&quot;: [[&apos;bruce-sha&apos;, 10], [&apos;buru&apos;, 9], [&apos;tencent&apos;, 7], [&apos;alibaba&apos;, 6], [&apos;baidu&apos;, 4], [&apos;xiaomi&apos;, 5],[&apos;360&apos;, 4],[&apos;jingdong&apos;, 3],[&apos;dangdang&apos;, 3],[&apos;ibruce.info&apos;, 1]],</div><div class="line">&quot;gridSize&quot;: 16,</div><div class="line">&quot;weightFactor&quot;: 16,</div><div class="line">&quot;fontFamily&quot;: &apos;Times, serif&apos;,</div><div class="line">&quot;color&quot;: &apos;random-light&apos;,</div><div class="line">&quot;backgroundColor&quot;: &apos;#333&apos;,</div><div class="line">&quot;rotateRatio&quot;: 0</div></pre></td></tr></table></figure>
+<p><img src="http://bruce.u.qiniudn.com/2014/02/10/wordcloud-en.jpg" alt="英文"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      标签云 关键字云 词汇云 文字云 词云 超级简单的绘图组件 javascript html5 canvas api
+    
+    </summary>
+    
+      <category term="big data" scheme="http://ibruce.info/categories/big-data/"/>
+    
+    
+      <category term="big data" scheme="http://ibruce.info/tags/big-data/"/>
+    
+      <category term="word cloud" scheme="http://ibruce.info/tags/word-cloud/"/>
+    
+      <category term="javascript" scheme="http://ibruce.info/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>爬爬网</title>
+    <link href="http://ibruce.info/2014/01/27/pa-pa-wang/"/>
+    <id>http://ibruce.info/2014/01/27/pa-pa-wang/</id>
+    <published>2014-01-27T09:39:53.000Z</published>
+    <updated>2015-12-03T14:02:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>放鞭放炮，赶在201314交替之际，爬爬网的alpha版，终于千呼万唤终于始出来啦。</p>
+<p><img src="http://bruce.u.qiniudn.com/2014/01/papawang.jpg" alt="爬爬网"></p>
+<p>本人是爬爬科技的ceo，我们爬爬科技的口号是：爬你，爬我，爬他全家。。。</p>
+<a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      爬爬网 爬爬科技 PaPaWang papawang.com papaTech
+    
+    </summary>
+    
+      <category term="default" scheme="http://ibruce.info/categories/default/"/>
+    
+    
+      <category term="papa" scheme="http://ibruce.info/tags/papa/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建eclipse+maven+scala-ide的scala web开发环境</title>
+    <link href="http://ibruce.info/2014/01/15/scala-web-environment-with-eclipse-maven-scala-ide/"/>
+    <id>http://ibruce.info/2014/01/15/scala-web-environment-with-eclipse-maven-scala-ide/</id>
+    <published>2014-01-15T02:35:48.000Z</published>
+    <updated>2015-12-03T14:02:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>江湖传闻，scala开发的最佳利器乃 <a href="http://www.jetbrains.com" target="_blank" rel="external">JetBrains</a> 的神作 <a href="http://www.jetbrains.com/idea" target="_blank" rel="external">IntelliJ IDEA</a>，外加构建工具 <a href="http://www.scala-sbt.org" target="_blank" rel="external">sbt</a> 是也。</p>
+<p>但因历史原因，项目组成员对 <a href="http://www.eclipse.org/downloads" target="_blank" rel="external">Eclipse</a>+<a href="http://maven.apache.org" target="_blank" rel="external">Maven</a>组合更为熟悉，为了快速实现项目原型，不增加不确定因素带来的风险，搭建一套 <a href="http://www.eclipse.org/downloads" target="_blank" rel="external">Eclipse</a>+<a href="http://maven.apache.org" target="_blank" rel="external">Maven</a>+<a href="http://scala-ide.org" target="_blank" rel="external">Scala-IDE</a> 的开发环境。</p>
+<p>基本原则是，必须完全满足但不限于以下几点内容：</p>
+<ul>
+<li>方便重构，方便调试，支持热部署。</li>
+<li>可直接使用已有maven的本地和私服仓库。</li>
+<li>可以无束缚的只用自己熟悉的语言编写代码。</li>
+<li>可以快速混合编译scala+java代码，包括交叉引用的文件。</li>
+</ul>
+<p>如果你有洁癖，可以自己下载<a href="http://www.eclipse.org/downloads" target="_blank" rel="external">Eclipse</a>，然后安装各种插件。但是可能会遇到插件依赖包版本冲突之类的问题，为了速度，我直接下载官方打包好的 <a href="http://scala-ide.org/download/sdk.html" target="_blank" rel="external">Scala-IDE</a>，有各种平台可供选择。</p>
+<p>使用 <a href="http://git-scm.com" target="_blank" rel="external">Git</a> 管理项目源代码，需要安装 <a href="http://www.eclipse.org/egit" target="_blank" rel="external">EGit</a> 插件，Eclipse插件更新地址 <a href="http://download.eclipse.org/egit/updates" target="_blank" rel="external">EGit Updates</a>。</p>
+<p>假设项目名称为 <strong>feeling</strong>，使用 JDK 1.7，Servlet 3.0，最终目录结构如下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── .settings                    #eclipse工程目录</div><div class="line">├── .classpath                   #eclipse classpath文件</div><div class="line">├── .project                     #eclipse project文件</div><div class="line">├── src                          #源代码</div><div class="line">|   ├── main                     #源代码主目录</div><div class="line">|   |   ├── java                 #java代码</div><div class="line">|   |   ├── scala                #scala代码</div><div class="line">|   |   ├── resources            #资源文件</div><div class="line">|   |   └── webapp               #web主目录</div><div class="line">|   |       ├── WEB-INF          #WEB-INF目录</div><div class="line">|   |       |   └── web.xml      #web.xml文件</div><div class="line">|   |       └── index.jsp        #主页面</div><div class="line">|   └── test                     #测试代码</div><div class="line">|       ├── java                 #java测试代码</div><div class="line">|       ├── scala                #scala测试代码</div><div class="line">|       └── resources            #测试资源文件</div><div class="line">├── .gitignore                   #git忽略配置</div><div class="line">├── target                       #编译输出目录</div><div class="line">├── README.md                    #markdown格式的说明文件</div><div class="line">└── pom.xml                      #maven的pom文件</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>pom.xml文件<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></div><div class="line">  <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>feeling<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>feeling<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="comment">&lt;!-- &lt;name&gt;$&#123;project.artifactId&#125;&lt;/name&gt; --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>feeling<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>our wonderfully feeling application<span class="tag">&lt;/<span class="name">description</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://feeling.com<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">inceptionYear</span>&gt;</span>2014<span class="tag">&lt;/<span class="name">inceptionYear</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">organization</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>feeling<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://feeling.com<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">organization</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">licenses</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">license</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>The Apache Software License, Version 2.0<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.apache.org/licenses/LICENSE-2.0.txt<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">distribution</span>&gt;</span>repo<span class="tag">&lt;/<span class="name">distribution</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">license</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">licenses</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">developers</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">developer</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>bruce<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>bruce sha<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://bruce-sha.github.io<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">email</span>&gt;</span>bu.ru@qq.com<span class="tag">&lt;/<span class="name">email</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">developer</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">developers</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">scm</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">connection</span>&gt;</span>http://17.20.13.23/scm/git/feeling<span class="tag">&lt;/<span class="name">connection</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">developerConnection</span>&gt;</span>http://17.20.13.23/scm/git/feeling<span class="tag">&lt;/<span class="name">developerConnection</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">url</span>&gt;</span>http://17.20.13.23<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">scm</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scala.version</span>&gt;</span>2.10.3<span class="tag">&lt;/<span class="name">scala.version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>1.7<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>1.7<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">encoding</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="comment">&lt;!-- 个性化开发 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">activation</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">build.param</span>&gt;</span>this is dev<span class="tag">&lt;/<span class="name">build.param</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>release<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">activation</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>false<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">build.param</span>&gt;</span>this is relase<span class="tag">&lt;/<span class="name">build.param</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- google --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.guava<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>guava<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>15.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.inject<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>guice<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- servlet --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;version&gt;2.5&lt;/version&gt; --&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- &lt;dependency&gt; --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &lt;groupId&gt;javax.servlet&lt;/groupId&gt; --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &lt;artifactId&gt;jsp-api&lt;/artifactId&gt; --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &lt;version&gt;2.0&lt;/version&gt; --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &lt;scope&gt;provided&lt;/scope&gt; --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &lt;/dependency&gt; --&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- scala --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.scala-lang<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>scala-library<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;scala.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- test --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 其他包不再一一描述 --&gt;</span>    </div><div class="line">    <span class="comment">&lt;!-- log --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- json --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- mongodb --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- quartz --&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>feeling<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 必须要，资源文件中占位符被profile替换的关键配置 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">includes</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">include</span>&gt;</span>*.*<span class="tag">&lt;/<span class="name">include</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 必须干掉，否则不编译src/main/java下的代码 --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &lt;sourceDirectory&gt;src/main/scala&lt;/sourceDirectory&gt; --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &lt;testSourceDirectory&gt;src/test/scala&lt;/testSourceDirectory&gt; --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- see http://davidb.github.com/scala-maven-plugin --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>net.alchim31.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>scala-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 必须要，否则不能混合编译交叉引用文件 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">executions</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">execution</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>scala-compile-first<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-resources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">goal</span>&gt;</span>add-source<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">goal</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">execution</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>scala-test-compile<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-test-resources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">goal</span>&gt;</span>testCompile<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">useFile</span>&gt;</span>false<span class="tag">&lt;/<span class="name">useFile</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">disableXmlReport</span>&gt;</span>true<span class="tag">&lt;/<span class="name">disableXmlReport</span>&gt;</span></div><div class="line">          <span class="comment">&lt;!-- If you have classpath issue like NoDefClassError,... --&gt;</span></div><div class="line">          <span class="comment">&lt;!-- useManifestOnlyJar&gt;false&lt;/useManifestOnlyJar --&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">includes</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*Test.*<span class="tag">&lt;/<span class="name">include</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*Suite.*<span class="tag">&lt;/<span class="name">include</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-war-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">          <span class="comment">&lt;!-- 移除web.xml的依赖，Servlet 3.0可以不要web.xml文件 --&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">failOnMissingWebXml</span>&gt;</span>false<span class="tag">&lt;/<span class="name">failOnMissingWebXml</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="comment">&lt;!-- jetty6，不支持servlet3 --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;plugin&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;version&gt;6.1.26&lt;/version&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;configuration&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;scanIntervalSeconds&gt;10&lt;/scanIntervalSeconds&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;stopKey&gt;foo&lt;/stopKey&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;stopPort&gt;9999&lt;/stopPort&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;/configuration&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;executions&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;execution&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;id&gt;start-jetty&lt;/id&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;phase&gt;pre-integration-test&lt;/phase&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;goals&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;goal&gt;run&lt;/goal&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;/goals&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;configuration&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;scanIntervalSeconds&gt;0&lt;/scanIntervalSeconds&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;daemon&gt;true&lt;/daemon&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;/configuration&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;/execution&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;execution&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;id&gt;stop-jetty&lt;/id&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;phase&gt;post-integration-test&lt;/phase&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;goals&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;goal&gt;stop&lt;/goal&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;/goals&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;/execution&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;/executions&gt; --&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &lt;/plugin&gt; --&gt;</span></div><div class="line"></div><div class="line">      <span class="comment">&lt;!-- tomcat7:run 注意tomcat:run跑的是6，不支持servlet3 --&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- http://tomcat.apache.org/maven-plugin-2.0/tomcat7-maven-plugin --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat7-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">path</span>&gt;</span>/<span class="tag">&lt;/<span class="name">path</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">port</span>&gt;</span>80<span class="tag">&lt;/<span class="name">port</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="comment">&lt;!-- jetty:run --&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mortbay.jetty<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- &lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt; 这是jetty6 不支持servlet3 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jetty-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.1.13.v20130916<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">stopPort</span>&gt;</span>9966<span class="tag">&lt;/<span class="name">stopPort</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">stopKey</span>&gt;</span>foo<span class="tag">&lt;/<span class="name">stopKey</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">scanIntervalSeconds</span>&gt;</span>0<span class="tag">&lt;/<span class="name">scanIntervalSeconds</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">connectors</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">connector</span> <span class="attr">implementation</span>=<span class="string">"org.eclipse.jetty.server.nio.SelectChannelConnector"</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">port</span>&gt;</span>80<span class="tag">&lt;/<span class="name">port</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">maxIdleTime</span>&gt;</span>60000<span class="tag">&lt;/<span class="name">maxIdleTime</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">connector</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">connectors</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">webAppConfig</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">contextPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">contextPath</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">webAppConfig</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">build</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>web.xml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;!-- &lt;web-app --&gt;</div><div class="line">&lt;!-- xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; --&gt;</div><div class="line">&lt;!-- xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; --&gt;</div><div class="line">&lt;!-- xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot; --&gt;</div><div class="line">&lt;!-- version=&quot;2.5&quot; --&gt;</div><div class="line">&lt;!-- &gt; --&gt;</div><div class="line">&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">  xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;</div><div class="line">  xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;</div><div class="line">  id=&quot;WebApp_ID&quot; version=&quot;3.0&quot;&gt;</div><div class="line"></div><div class="line">  &lt;display-name&gt;feeling&lt;/display-name&gt;</div><div class="line"></div><div class="line">  &lt;!--   &lt;servlet&gt; --&gt;</div><div class="line">  &lt;!--   &lt;servlet-name&gt;feeling&lt;/servlet-name&gt; --&gt;</div><div class="line">  &lt;!--   &lt;servlet-class&gt;feelings.service.FeelingService&lt;/servlet-class&gt; --&gt;</div><div class="line">  &lt;!--   &lt;/servlet&gt; --&gt;</div><div class="line"></div><div class="line">  &lt;!--   &lt;servlet-mapping&gt; --&gt;</div><div class="line">  &lt;!--   &lt;servlet-name&gt;feeling&lt;/servlet-name&gt; --&gt;</div><div class="line">  &lt;!--   &lt;url-pattern&gt;/feeling&lt;/url-pattern&gt; --&gt;</div><div class="line">  &lt;!--   &lt;/servlet-mapping&gt; --&gt;</div><div class="line">  </div><div class="line">  &lt;welcome-file-list&gt;</div><div class="line">    &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;</div><div class="line">    &lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;</div><div class="line">    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;</div><div class="line">    &lt;welcome-file&gt;default.html&lt;/welcome-file&gt;</div><div class="line">    &lt;welcome-file&gt;default.htm&lt;/welcome-file&gt;</div><div class="line">    &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;</div><div class="line">  &lt;/welcome-file-list&gt;</div><div class="line">  </div><div class="line">&lt;/web-app&gt;</div></pre></td></tr></table></figure>
+<p>.project文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;projectDescription&gt;</div><div class="line">  &lt;name&gt;feeling&lt;/name&gt;</div><div class="line">  &lt;comment&gt;&lt;/comment&gt;</div><div class="line">  &lt;projects&gt;</div><div class="line">  &lt;/projects&gt;</div><div class="line">  &lt;buildSpec&gt;</div><div class="line">    &lt;buildCommand&gt;</div><div class="line">      &lt;name&gt;org.scala-ide.sdt.core.scalabuilder&lt;/name&gt;</div><div class="line">      &lt;arguments&gt;</div><div class="line">      &lt;/arguments&gt;</div><div class="line">    &lt;/buildCommand&gt;</div><div class="line">    &lt;buildCommand&gt;</div><div class="line">      &lt;name&gt;org.eclipse.m2e.core.maven2Builder&lt;/name&gt;</div><div class="line">      &lt;arguments&gt;</div><div class="line">      &lt;/arguments&gt;</div><div class="line">    &lt;/buildCommand&gt;</div><div class="line">  &lt;/buildSpec&gt;</div><div class="line">  &lt;natures&gt;</div><div class="line">    &lt;nature&gt;org.scala-ide.sdt.core.scalanature&lt;/nature&gt;</div><div class="line">    &lt;nature&gt;org.eclipse.jdt.core.javanature&lt;/nature&gt;</div><div class="line">    &lt;nature&gt;org.eclipse.m2e.core.maven2Nature&lt;/nature&gt;</div><div class="line">  &lt;/natures&gt;</div><div class="line">&lt;/projectDescription&gt;</div></pre></td></tr></table></figure></p>
+<p>.classpath文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;classpath&gt;</div><div class="line">  &lt;classpathentry kind=&quot;src&quot; output=&quot;target/classes&quot; path=&quot;src/main/java&quot;&gt;</div><div class="line">    &lt;attributes&gt;</div><div class="line">      &lt;attribute name=&quot;optional&quot; value=&quot;true&quot;/&gt;</div><div class="line">      &lt;attribute name=&quot;maven.pomderived&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;/attributes&gt;</div><div class="line">  &lt;/classpathentry&gt;</div><div class="line">  &lt;classpathentry kind=&quot;src&quot; output=&quot;target/classes&quot; path=&quot;src/main/scala&quot;&gt;</div><div class="line">    &lt;attributes&gt;</div><div class="line">      &lt;attribute name=&quot;optional&quot; value=&quot;true&quot;/&gt;</div><div class="line">      &lt;attribute name=&quot;maven.pomderived&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;/attributes&gt;</div><div class="line">  &lt;/classpathentry&gt;</div><div class="line">  &lt;classpathentry including=&quot;**/*.java&quot; kind=&quot;src&quot; path=&quot;src/main/resources&quot;/&gt;</div><div class="line">  &lt;classpathentry kind=&quot;src&quot; output=&quot;target/test-classes&quot; path=&quot;src/test/java&quot;&gt;</div><div class="line">    &lt;attributes&gt;</div><div class="line">      &lt;attribute name=&quot;optional&quot; value=&quot;true&quot;/&gt;</div><div class="line">      &lt;attribute name=&quot;maven.pomderived&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;/attributes&gt;</div><div class="line">  &lt;/classpathentry&gt;</div><div class="line">  &lt;classpathentry kind=&quot;src&quot; output=&quot;target/test-classes&quot; path=&quot;src/test/scala&quot;&gt;</div><div class="line">    &lt;attributes&gt;</div><div class="line">      &lt;attribute name=&quot;optional&quot; value=&quot;true&quot;/&gt;</div><div class="line">      &lt;attribute name=&quot;maven.pomderived&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;/attributes&gt;</div><div class="line">  &lt;/classpathentry&gt;</div><div class="line">  &lt;classpathentry including=&quot;**/*.java&quot; kind=&quot;src&quot; path=&quot;src/test/resources&quot;/&gt;</div><div class="line">  &lt;classpathentry kind=&quot;con&quot; path=&quot;org.scala-ide.sdt.launching.SCALA_CONTAINER&quot;/&gt;</div><div class="line">  &lt;classpathentry kind=&quot;con&quot; path=&quot;org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7&quot;&gt;</div><div class="line">    &lt;attributes&gt;</div><div class="line">      &lt;attribute name=&quot;maven.pomderived&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;/attributes&gt;</div><div class="line">  &lt;/classpathentry&gt;</div><div class="line">  &lt;classpathentry kind=&quot;con&quot; path=&quot;org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER&quot;&gt;</div><div class="line">    &lt;attributes&gt;</div><div class="line">      &lt;attribute name=&quot;maven.pomderived&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;/attributes&gt;</div><div class="line">  &lt;/classpathentry&gt;</div><div class="line">  &lt;classpathentry kind=&quot;output&quot; path=&quot;target/classes&quot;/&gt;</div><div class="line">&lt;/classpath&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      基于eclipse+maven+scala-ide的scala web开发环境
+    
+    </summary>
+    
+      <category term="scala" scheme="http://ibruce.info/categories/scala/"/>
+    
+    
+      <category term="scala" scheme="http://ibruce.info/tags/scala/"/>
+    
+      <category term="maven" scheme="http://ibruce.info/tags/maven/"/>
+    
+      <category term="eclipse" scheme="http://ibruce.info/tags/eclipse/"/>
+    
+      <category term="scala-ide" scheme="http://ibruce.info/tags/scala-ide/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在Amazon EC2中挂载EBS作为永久存储</title>
+    <link href="http://ibruce.info/2014/01/06/attach-ebs-volume-to-amazon-ec2/"/>
+    <id>http://ibruce.info/2014/01/06/attach-ebs-volume-to-amazon-ec2/</id>
+    <published>2014-01-06T02:02:56.000Z</published>
+    <updated>2016-01-03T09:26:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>如何在Amazon AWS上申请EC2不再多说，很多前辈给出了教程，本文只说如何挂载那免费的30G EBS。我申请的一年的免费的32位Red Hat Enterprise Linux，详细参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Red Hat Enterprise Linux 6.4 - ami-80bbf3d2 (64-bit) / ami-9cbbf3ce (32-bit)</div><div class="line">Red Hat Enterprise Linux version 6.4, EBS-boot.</div><div class="line">Root device type: ebs Virtualization type: paravirtual</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>首先登陆<a href="http://console.aws.amazon.com/console/home" target="_blank" rel="external">『AWS管理控制台』</a>，进入<a href="http://console.aws.amazon.com/ec2/v2/home" target="_blank" rel="external">『EC2』</a>。</p>
+<p>左侧树依次点击『ELASTIC BLOCK STORE』-『Volumes』，点击『Create Volume』创建一个新的volume。</p>
+<blockquote>
+<ul>
+<li>按照<a href="http://aws.amazon.com/cn/free" target="_blank" rel="external">AWS 免费套餐条款</a>，每月有30 GB 的 EBS 可用。但也没必要最大额，够用即可。</li>
+<li>Availability Zone要与你的主机实例在同一个区域，查看『INSTANCES』-『instances』列表中的Availability Zone选项。</li>
+</ul>
+</blockquote>
+<p>创建完毕后，在左侧列表中选中右键Attach Volume，在Instances列表中选中你的Instance。在Device中输入设备名，如：<strong>/dev/sdf</strong>。</p>
+<p>接下来用putty登陆进你的云主机，不会不知道怎么做吧。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">login as: ec2-user</div><div class="line">Authenticating with public key &quot;imported-openssh-key&quot;</div><div class="line">Last login: Thu Jan  2 21:10:51 2014 from 219.133.173.33</div><div class="line"></div><div class="line">[ec2-user@ip-172-32-11-222 ~]$ df -h</div><div class="line">Filesystem            Size  Used Avail Use% Mounted on</div><div class="line">/dev/xvde1            6.0G  1.7G  4.2G  29% /</div><div class="line">none                  298M     0  298M   0% /dev/shm</div></pre></td></tr></table></figure>
+<p>使用<em>df -h</em>看到确实没有新建的volume，这是正常的，因尚未挂载。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$ df -T</div><div class="line">Filesystem    Type   1K-blocks      Used Available Use% Mounted on</div><div class="line">/dev/xvde1    ext4     6193088   1892740   4237736  31% /</div><div class="line">none         tmpfs      305112         0    305112   0% /dev/shm</div></pre></td></tr></table></figure>
+<p>用<em>df -T</em>查看当前系统的文件格式，为ext4。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$  mkfs.ext4 /dev/sdf</div><div class="line">mke2fs 1.41.12 (17-May-2010)</div><div class="line">Could not stat /dev/sdf --- No such file or directory</div><div class="line"></div><div class="line">The device apparently does not exist; did you specify it correctly?</div></pre></td></tr></table></figure>
+<p>尝试根据当前文件系统来格式化新加的volume，报错没有文件，找不到设备？<br>可是我新创建的volume明明就是/dev/sdf啊，这是为什么？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$ sudo fdisk -l</div><div class="line"></div><div class="line">Disk /dev/xvde1: 6442 MB, 6442450944 bytes</div><div class="line">255 heads, 63 sectors/track, 783 cylinders</div><div class="line">Units = cylinders of 16065 * 512 = 8225280 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk identifier: 0x00000000</div><div class="line"></div><div class="line">Disk /dev/xvdj: 10.7 GB, 10737418240 bytes</div><div class="line">255 heads, 63 sectors/track, 1305 cylinders</div><div class="line">Units = cylinders of 16065 * 512 = 8225280 bytes</div><div class="line">Sector size (logical/physical): 512 bytes / 512 bytes</div><div class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</div><div class="line">Disk identifier: 0x00000000</div></pre></td></tr></table></figure>
+<p>用<em>fdisk -l</em>命令看下设备名，居然名字是<strong>/dev/xvdj</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$ sudo  mkfs.ext4 /dev/xvdj</div><div class="line">mke2fs 1.41.12 (17-May-2010)</div><div class="line">Filesystem label=</div><div class="line">OS type: Linux</div><div class="line">Block size=4096 (log=2)</div><div class="line">Fragment size=4096 (log=2)</div><div class="line">Stride=0 blocks, Stripe width=0 blocks</div><div class="line">655360 inodes, 2621440 blocks</div><div class="line">131072 blocks (5.00%) reserved for the super user</div><div class="line">First data block=0</div><div class="line">Maximum filesystem blocks=2684354560</div><div class="line">80 block groups</div><div class="line">32768 blocks per group, 32768 fragments per group</div><div class="line">8192 inodes per group</div><div class="line">Superblock backups stored on blocks:</div><div class="line">        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632</div><div class="line"></div><div class="line">Writing inode tables: done</div><div class="line">Creating journal (32768 blocks): done</div><div class="line">Writing superblocks and filesystem accounting information: done</div><div class="line"></div><div class="line">This filesystem will be automatically checked every 21 mounts or</div><div class="line">180 days, whichever comes first.  Use tune2fs -c or -i to override.</div></pre></td></tr></table></figure>
+<p>格式化。下面创建挂载点，将新增的volumn挂在上。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ec2-user@ip-172-32-11-222 /]$ sudo mkdir /mnt/ebs</div><div class="line">[ec2-user@ip-172-32-11-222 /]$ sudo mount /dev/xvdj  /mnt/ebs</div><div class="line">[ec2-user@ip-172-32-11-222 /]$ df -h</div><div class="line">Filesystem            Size  Used Avail Use% Mounted on</div><div class="line">/dev/xvde1            6.0G  1.9G  4.1G  31% /</div><div class="line">none                  298M     0  298M   0% /dev/shm</div><div class="line">/dev/xvdj             9.9G  151M  9.2G   2% /mnt/ebs</div></pre></td></tr></table></figure>
+<h1 id="参考文献">参考文献</h1><p><a href="http://stackoverflow.com/questions/13788619/boto-and-attaching-a-ebs-to-ec2-now-what" target="_blank" rel="external">amazon ec2 - boto and attaching a ebs to ec2</a><br><a href="http://blog.sina.com.cn/s/blog_3d4a28be0101jc0h.html" target="_blank" rel="external">How to convert Amazon instance store EC2 to EBS based EC2</a><br><a href="http://blog.sina.com.cn/s/blog_704836f40101anhf.html" target="_blank" rel="external">调整amazon EC2云主机的EBS启动磁盘大小 </a><br><a href="http://www.storyday.com/html/y2011/2959_in-ec2-using-ebs-as-a-permanent-storage.html" target="_blank" rel="external">在EC2中使用EBS作为永久存储</a><br><a href="http://www.vmzj.com/212.html" target="_blank" rel="external">在EC2中使用EBS作为永久存储</a><br><a href="http://www.cnblogs.com/hopeworld/archive/2009/05/25/1488617.html" target="_blank" rel="external">linux查看硬盘使用情况命令</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      在Amazon EC2中挂载EBS作为永久存储 报错Could not stat /dev/sdf - No such file or directory
+    
+    </summary>
+    
+      <category term="cloud" scheme="http://ibruce.info/categories/cloud/"/>
+    
+    
+      <category term="ec2" scheme="http://ibruce.info/tags/ec2/"/>
+    
+      <category term="ebs" scheme="http://ibruce.info/tags/ebs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>对传统BI的思考和吐槽</title>
+    <link href="http://ibruce.info/2013/12/31/thinking-of-bi/"/>
+    <id>http://ibruce.info/2013/12/31/thinking-of-bi/</id>
+    <published>2013-12-31T05:12:52.000Z</published>
+    <updated>2015-12-03T14:02:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>声明：本文是用 iPad 写于上班路上，所有观点解释权归本人 Bruce-Sha 所有。在大数据和移动互联网风起云涌的13年末，本文是对自己四年工作的总结，也是对未来的从业思考。</p>
+</blockquote>
+<p>在做了四年BI之后，我对中国式的BI有一些自己的看法。<strong>传统BI厂商早已黔驴技穷，注定穷途末路。</strong></p>
+<p>我在一个国内著名的企业软件厂商工作。其BI团队虽小，但是该做的事情一样都没落下，从静态报表工具到OLAP多维分析，从建模工具语义层到互动式仪表板，从嵌入式组件到独立门户，从桌面软件到移动应用。别人有的产品他基本都做过，虽然每个产品最后难逃不再继续研发不再继续销售的命运。而每到年底他们思考的都是明年再新做个什么？</p>
+<a id="more"></a>
+<p>不客气的说，领导水平不足，产品定位不清，导致浪费无数的资源，但从没有人对失败的产品负责，不知道这是谁的悲哀。一个真心想做好产品的人，即使再愚蠢，在行业近十年之久，不可能看不到一丁点趋势和前景。</p>
+<p>第一、BI都是低端的报表产品。</p>
+<p>目前的<strong>商业智能</strong>其实是<strong>商业弱智</strong>。BI厂商拿得出手的都是低端的静态报表工具，甚至就连静态报表也做不好。</p>
+<p>差在哪里？产品易用性和用户体验。难用到连研发人员自己都不会用，不想用。思考问题的唯一方式是：看看别家都在做什么呢？模仿别人，实在没得模仿就模仿Excel，我真心不明白，难道报表只能用Excel的方式做吗？BI业界典型的产品之一是IBM Cognos，强大的代表，也是难用的代表。去看看互联网产品的用户界面是多么的简单吧。</p>
+<p>其次对于性能，也就是报表打开的响应速度，根本没人关心。理由是数据量就有这么大，或者Java就应该慢。导致打开很慢，浏览器崩溃。有的产品过于灵活，这是不应该的，导致本来可以通过SQL转移给数据库的计算量，直接转到报表引擎内部，怎能不慢？</p>
+<p>还有一个现象很奇怪，所有人都把能做复杂报表作为卖点之一。我只能说这帮人你们已经被淘汰了，你们会随着复杂报表也就是所谓中国式报表一起淘汰。有人说客户需求是这样的，用户就是需要这个，我想说有能解决的办法就行，你的产品理念不应如此。报表是简单的才是美的。只要做到了体验好，不支持就不支持，微博支持排版吗？但是你可以放个链接，转移出去。</p>
+<p>第二、整个行业毫无创新。</p>
+<p>无论是国内的众多伪BI厂商，还是国际巨头BO、Cognos、BIEE，新秀QV，大家都毫无想像力。比如，移动BI这一方向。</p>
+<p>我把苹果App Store中的接近四十个BI产品安装研究了一天。其思路都异常狭窄，都是在把桌面BI，也就是各种报表和仪表板，用html5的方式从桌面直接搬到移动端。先不说性能，屏幕狭小，只有触摸点击动作，其用户体验是极差的。移动BI怎么能这么做。唯一的理由是别家都有了，我么也得做。这是传统软件企业落后的根本原因，不思考，不创新，一帮行业的老人在颤颤兢兢中等待互联网来革自己的命。</p>
+<p>移动端的特性是随身携带，特点是屏幕小。请不要说平板的屏幕不小，屏幕就像钱永远没有不缺的时候。曾经有个产品总监说，现在电脑屏幕都足够大了，你多加一行工具条怕什么呢，我为某司有这种产监深深的感到羞愧。</p>
+<p>我不敢妄言移动上无BI，或BI与移动无缘，至少可以说，到目前为止我还没有看到移动BI。移动上有BI，但不是目前市面上的产品。</p>
+<p>我的观点。</p>
+<p>BI是一个消化数据的行业，它从不产生数据。简单说，BI就是玩数据，不是被数据玩。BI可以玩财务数据，也可以玩行政数据，BI可以玩结构化数据，也可以玩非结构化数据，BI可以玩数值类型的数据，也可以玩文字类型数据，将来不排除玩图片玩视频。总之，BI是花花公子，什么数据都应该去玩，但只能玩别人绝不能被人玩。</p>
+<p>第一，当前市面上的报表产品已经足够解决一切复杂问题了，而恰恰需要一种超简单的报表，我称之为mini报表，或轻报表。迷你到只有一图一表的程度，图和表本身也是极简的。表可能只有一个或两三个数字，图只有一个条形图。</p>
+<p>第二个问题，传统的报表都是死的，我需要报表有生命。万事万物都是有生命的。何谓有生命？可以跟你聊天说话。可以记得自己之前的状态。报表有通知功能，自己知道自己变了，知道哪个部分不舒服，知道哪个部分好兴奋，完了通知你。他们可以作为传统死报表的守护神，引导你去打开。</p>
+<p>第三，传统报表表现形式过于单一。去看看互联网分析报告，生动的图文并茂，那才是将来的报表。至于严肃的财务报告，我还是那句话，有人有产品已经做得很好了，不需要你重新开发一套。</p>
+<p>第四，传统的东西从来都不是无用的，新兴的要去用好他们。我只是认为传统已经做的足够好了，没有必要再去思考如何重做。</p>
+<p>第五，BI的真正领域是预测。在这个领域里，传统的BI人一定会被淘汰，或者说只具备传统思维的BI人，他们是互联网思维人的天下。这里有各种预测算法，有大数据，有文本分析，这是只会做报表的人想都不用想的，他们也想不到。这里才是真正的BI。</p>
+<p>第六，我总是想，只有个人BI市场打开才是BI的春天，其实人人都有数据，人人都是分析师。</p>
+<p>最后，我想吐槽，一个团队的领导的眼光至关重要，好的方向+合适的人才可以解决一切。有的人你把自己的观点，要做的产品想法告诉他，他仅仅去执行都执行不好，做出来的东西还是跟现有的一样，这就像某人批评刘德华演什么都是刘德华。</p>
+<blockquote>
+<p>对于具体应该做什么产品，我有几个自己的想法，当然在这篇博文中略去。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;声明：本文是用 iPad 写于上班路上，所有观点解释权归本人 Bruce-Sha 所有。在大数据和移动互联网风起云涌的13年末，本文是对自己四年工作的总结，也是对未来的从业思考。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在做了四年BI之后，我对中国式的BI有一些自己的看法。&lt;strong&gt;传统BI厂商早已黔驴技穷，注定穷途末路。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我在一个国内著名的企业软件厂商工作。其BI团队虽小，但是该做的事情一样都没落下，从静态报表工具到OLAP多维分析，从建模工具语义层到互动式仪表板，从嵌入式组件到独立门户，从桌面软件到移动应用。别人有的产品他基本都做过，虽然每个产品最后难逃不再继续研发不再继续销售的命运。而每到年底他们思考的都是明年再新做个什么？&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用Dropbox建立Git私有仓库</title>
+    <link href="http://ibruce.info/2013/12/30/git-with-dropbox/"/>
+    <id>http://ibruce.info/2013/12/30/git-with-dropbox/</id>
+    <published>2013-12-30T05:47:21.000Z</published>
+    <updated>2016-01-03T09:28:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>无论是小型的团队或是个人都有协同开发的需要，<a href="http://github.com" target="_blank" rel="external">GitHub</a>上提供了仓库但是必须是public的，对于暂不公开的代码，或自己的小实验室，怎么玩呢？<br>用 <a href="http://www.dropbox.com" target="_blank" rel="external">Dropbox</a> 是个很好的选择，我之前是直接同步workspace，但是换台机器直接打开经常会报错。还是用 <a href="http://git-scm.com" target="_blank" rel="external">Git</a> 管理吧，满足个人多台机器工作，同时也满足多人协同办公。</p>
+<blockquote>
+<p>本文主要介绍 <a href="http://www.dropbox.com" target="_blank" rel="external">Dropbox</a> 作为 <a href="http://git-scm.com/book/zh" target="_blank" rel="external">Git</a> 私有仓库。你也可以使用其它云存储工具，如 <a href="http://skydrive.live.com" target="_blank" rel="external">SkyDrive</a>， <a href="http://drive.google.com" target="_blank" rel="external">Google Drive</a>等，或国内的<a href="http://www.kuaipan.cn/" target="_blank" rel="external">金山快盘</a>，<a href="http://pan.baidu.com" target="_blank" rel="external">百度云盘</a>，<a href="http://yunpan.360.cn" target="_blank" rel="external">360云盘</a>。对于源代码这些重要资料，我强烈推荐大家使用国外的云产品，百度云曾经丢过我的文件，实在信不过，只作为电影备份盘。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="环境准备">环境准备</h3><ul>
+<li>安装 <a href="http://git-scm.com/book/zh/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git" target="_blank" rel="external">Git客户端</a> </li>
+<li><a href="https://db.tt/ALifTz8G" target="_blank" rel="external">注册</a>并安装 <a href="http://www.dropbox.com/downloading?src=index" target="_blank" rel="external">Dropbox客户端</a></li>
+</ul>
+<h3 id="建立_Git_Server">建立 Git Server</h3><p>到你Dropbox中私有仓库的目标目录repository下，执行git init命令，注意加上bare参数，bare参数不会生成.git目录，而是把.git中的内容开放出来，你不会直接看到项目的源代码。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd ~/Dropbox         #切换到Dropbox目录</div><div class="line">nkdir repository     #建立仓库根目录</div><div class="line">cd repository        #切换到仓库目录</div><div class="line">mkdir $&#123;PROJECT&#125;.git #建立项目仓库，$&#123;PROJECT&#125;替换为你的项目名称</div><div class="line">cd $&#123;PROJECT&#125;.git    #切换到项目目录</div><div class="line">git init --bare      #初始化为git repository，即git server端的资料</div></pre></td></tr></table></figure></p>
+<p>至此，仓库建立完毕。你可以使用eclipse连接git仓库，share你的project，进行代码开发。下面介绍通过命令行如何使用：</p>
+<h3 id="建立本地仓库">建立本地仓库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd ~/workspace    #切换到工作空间</div><div class="line">mkdir &#123;PROJECT&#125;   #建立项目目录</div><div class="line">cd $&#123;PROJECT&#125;     #切换到项目目录</div><div class="line">git init          #初始化</div></pre></td></tr></table></figure>
+<h3 id="链接到Git_Server">链接到Git Server</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git add</div><div class="line">touch READM.md</div><div class="line">git commit --all -m &quot;Initial commit&quot;</div><div class="line">git remote add origin ~/Dropbox/repository/$&#123;PROJECT&#125;.git/</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p>OK。提交本地代码，执行：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
+<p>需要获取原创更新，执行：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git pull origin master</div></pre></td></tr></table></figure></p>
+<p>另外，如果在push时中遇到如下错误，是因为Git默认http post的缓存为1M，具体可以<a href="http://blog.chengyunfeng.com/?p=488" target="_blank" rel="external">参考</a>。</p>
+<blockquote>
+<p>Error writing request body to server</p>
+</blockquote>
+<h1 id="参考文献">参考文献</h1><p><a href="http://weizhifeng.net/git-with-dropbox.html" target="_blank" rel="external">把Dropbox改造为Git私有仓库</a><br><a href="http://kenlai.logdown.com/posts/52372--git-dropbox-sourcetree-source-code-management" target="_blank" rel="external">使用 Git + Dropbox + SourceTree 做 Source Code Management</a><br><a href="http://blog.jimu.in/?p=11" target="_blank" rel="external">使用 Dropbox 作为 Git 私有仓库</a><br><a href="http://www.mrmu.com.tw/2011/05/06/git-using-dropbox-as-server" target="_blank" rel="external">Git教學：Git的遠端操作及利用Dropbox建立Server進行協同開發(Windows)</a><br><a href="http://blog.csdn.net/feizxiang3/article/details/8065506" target="_blank" rel="external">远端仓库初始化成裸仓库 git init –bare</a><br><a href="http://hi.baidu.com/aatfjctoytaefkr/item/00c693450a5b36af60d7b93f" target="_blank" rel="external">GIT初始化–bare参数：git init &amp; git init –bare</a><br><a href="http://www.cnblogs.com/bamanzi/archive/2012/08/15/git-hg-bare-repo.html" target="_blank" rel="external">什么叫做bare repo?</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;无论是小型的团队或是个人都有协同开发的需要，&lt;a href=&quot;http://github.com&quot;&gt;GitHub&lt;/a&gt;上提供了仓库但是必须是public的，对于暂不公开的代码，或自己的小实验室，怎么玩呢？&lt;br&gt;用 &lt;a href=&quot;http://www.dropbox.com&quot;&gt;Dropbox&lt;/a&gt; 是个很好的选择，我之前是直接同步workspace，但是换台机器直接打开经常会报错。还是用 &lt;a href=&quot;http://git-scm.com&quot;&gt;Git&lt;/a&gt; 管理吧，满足个人多台机器工作，同时也满足多人协同办公。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文主要介绍 &lt;a href=&quot;http://www.dropbox.com&quot;&gt;Dropbox&lt;/a&gt; 作为 &lt;a href=&quot;http://git-scm.com/book/zh&quot;&gt;Git&lt;/a&gt; 私有仓库。你也可以使用其它云存储工具，如 &lt;a href=&quot;http://skydrive.live.com&quot;&gt;SkyDrive&lt;/a&gt;， &lt;a href=&quot;http://drive.google.com&quot;&gt;Google Drive&lt;/a&gt;等，或国内的&lt;a href=&quot;http://www.kuaipan.cn/&quot;&gt;金山快盘&lt;/a&gt;，&lt;a href=&quot;http://pan.baidu.com&quot;&gt;百度云盘&lt;/a&gt;，&lt;a href=&quot;http://yunpan.360.cn&quot;&gt;360云盘&lt;/a&gt;。对于源代码这些重要资料，我强烈推荐大家使用国外的云产品，百度云曾经丢过我的文件，实在信不过，只作为电影备份盘。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>为hexo博客添加访问次数统计功能</title>
+    <link href="http://ibruce.info/2013/12/22/count-views-of-hexo/"/>
+    <id>http://ibruce.info/2013/12/22/count-views-of-hexo/</id>
+    <published>2013-12-22T06:53:13.000Z</published>
+    <updated>2016-01-03T09:28:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>最新的统计服务已经开放，两行代码轻松搞定，你可以直接使用：<a href="http://ibruce.info/2015/04/04/busuanzi">不蒜子</a> 微服务。</p>
+</blockquote>
+<h1 id="方法一：自搭服务">方法一：自搭服务</h1><p>hexo是静态博客，虽有速度快的优点，但无法存储动态数据是不可否认的劣势之一。没有出路就要思考出路，没人阻止你借助第三方系统实现动态数据处理，比如评论功能借助<a href="http://disqus.com" target="_blank" rel="external">Disqus</a>或<a href="http://duoshuo.com" target="_blank" rel="external">多说</a>。统计功能也可以这样处理，我们借助<a href="http://developer.baidu.com/bae" target="_blank" rel="external">BAE</a>或<a href="http://sae.sina.com.cn" target="_blank" rel="external">SAE</a>平台搭建自己的统计服务。</p>
+<blockquote>
+<p><a href="http://sae.sina.com.cn" target="_blank" rel="external">SAE</a>已经提供<a href="http://sae.sina.com.cn/?m=devcenter&amp;catId=194" target="_blank" rel="external">Counter</a>服务，但是貌似只支持php语言，这里是<a href="http://static.sae.sina.com.cn/flash/video/counter" target="_blank" rel="external">SAE计数器服务示例</a>。在<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/rt" target="_blank" rel="external">BAE2.0</a>中也有专门的<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/rt/counter" target="_blank" rel="external">Counter（计数器）</a>服务，但是BAE3.0中尚未提供，应该是还未迁移过来。</p>
+</blockquote>
+<a id="more"></a>
+<p>这里以新版<a href="http://developer.baidu.com/cloud/rt" target="_blank" rel="external">BAE</a>，即<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/bae" target="_blank" rel="external">BAE3.0</a>为例介绍整个流程。难度不大，只简单说下。</p>
+<h3 id="创建bae应用">创建bae应用</h3><p>到<a href="http://developer.baidu.com/console" target="_blank" rel="external">管理控制台</a>，点击『创建应用』，创建你的应用。请参考<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/bae/start" target="_blank" rel="external">新手入门</a>。</p>
+<h3 id="添加Redis服务">添加Redis服务</h3><p>点击刚刚创建的应用，进入应用『基本信息』页面，点击『应用引擎』-『扩展服务』-『扩展新服务』-『Redis』，填写基本信息即可。请参考<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/bae/redis" target="_blank" rel="external">Redis（数据库）</a>。</p>
+<blockquote>
+<p>也可以使用MySQL或MongoDB服务，我选择Redis的原因之一是其有原子自增操作incr。</p>
+</blockquote>
+<h3 id="jsonp跨域访问">jsonp跨域访问</h3><p>以本文为例，hexo博客地址为<a href="http://ibruce.info">http://ibruce.info</a>，而bae应用地址为<a href="http://lbservice.duapp.com" target="_blank" rel="external">http://lbservice.duapp.com</a>。两个不同的域之间，是不能直接访问数据的，此时就要借助<a href="http://baike.baidu.com/view/2131174.htm" target="_blank" rel="external">jsonp</a>，请参考<a href="http://www.clanfei.com/2012/08/1637.html" target="_blank" rel="external">JQuery中利用JSONP解决AJAX跨域问题</a>和<a href="http://www.iteye.com/topic/1130452" target="_blank" rel="external">JQuery+AJAX+JSONP跨域访问</a>。</p>
+<h3 id="修改hexo页面">修改hexo页面</h3><p>打开footer.ejs编辑，增加代码。<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">id</span>=<span class="string">"counter"</span>&gt;</span></div><div class="line">    本站共到访 <span class="tag">&lt;<span class="name">font</span> <span class="attr">id</span>=<span class="string">"counterValue"</span> <span class="attr">style</span>=<span class="string">"color:white"</span>&gt;</span>?<span class="tag">&lt;/<span class="name">font</span>&gt;</span> 次</div><div class="line"><span class="tag">&lt;/<span class="name">font</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $.ajax(&#123;</div><div class="line">        <span class="attr">type</span>     : <span class="string">"GET"</span>,</div><div class="line">        <span class="attr">url</span>      : <span class="string">'http://lbservice.duapp.com/xxx'</span>,</div><div class="line">        <span class="attr">dataType</span> : <span class="string">"jsonp"</span>,</div><div class="line">        <span class="attr">jsonp</span>    : <span class="string">"jsonpCallback"</span>,</div><div class="line">        <span class="attr">success</span>  : <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">                    $(<span class="string">"#counterValue"</span>).text(data);</div><div class="line">                   &#125;,</div><div class="line">        <span class="attr">error</span>    : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">                    $(<span class="string">"#counter"</span>).html(<span class="string">""</span>); </div><div class="line">                   &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<h3 id="修改应用代码">修改应用代码</h3><p>进入应用『基本信息』页面，点击『应用引擎』-『点击复制』SVN/GIT地址，获取源码到你喜欢的工具。<br>添加必要的Redis代码，关键内容如下。<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 配置相关信息</span></div><div class="line"><span class="keyword">final</span> String databaseName = <span class="string">"yBeHeL"</span>;</div><div class="line"><span class="keyword">final</span> String host = <span class="string">"redis.duapp.com"</span>;</div><div class="line"><span class="keyword">final</span> <span class="keyword">int</span> port = <span class="number">80</span>;</div><div class="line"><span class="keyword">final</span> String username = <span class="string">"8TAbwkckuyxq"</span>;<span class="comment">// 用户名(api key);</span></div><div class="line"><span class="keyword">final</span> String password = <span class="string">"HszPIhnaG9d"</span>;<span class="comment">// 密码(secret key)</span></div><div class="line"><span class="comment">// 创建连接</span></div><div class="line">Jedis jedis = <span class="keyword">new</span> Jedis(host, port);</div><div class="line">jedis.connect();</div><div class="line">jedis.auth(username + <span class="string">"-"</span> + password + <span class="string">"-"</span> + databaseName);</div><div class="line"><span class="comment">// 操作数据库</span></div><div class="line">jedis.set(<span class="string">"ibruce.info"</span>, <span class="string">"0"</span>);</div><div class="line"><span class="keyword">long</span> counter = jedis.incr(<span class="string">"ibruce.info"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 准备输出</span></div><div class="line">String jsonpCallback = request.getParameter(<span class="string">"jsonpCallback"</span>);</div><div class="line">PrintWriter out = response.getWriter();</div><div class="line">out.println(String.format(<span class="string">"try&#123;%s(%s);&#125;catch(e)&#123;&#125;"</span>, jsonpCallback, counter));</div><div class="line">out.flush();</div><div class="line">out.close();</div></pre></td></tr></table></figure></p>
+<h3 id="部署bae和hexo">部署bae和hexo</h3><p>通过SVN/GIT提交代码部署bae应用，然后在同一页面点击『快捷发布』完成发布。通过hexo d -g命令部署hexo代码。</p>
+<h3 id="小结">小结</h3><p>本文目的并不仅是添加统计功能，而是想抛砖引玉，介绍一种添加动态数据的通用方法，其他类似的需求都可以如此处理。如果你想为自己的hexo博客添加访问次数统计功能，又觉得太麻烦，我可以在我的bae应用下帮你统计，有需要的请留言。</p>
+<blockquote>
+<p>上文所述的这种方法已经废弃，现在有更高大上的做法了,参考 <a href="http://ibruce.info/2013/11/22/hexo-your-blog">hexo你的博客</a> 补充部分。</p>
+</blockquote>
+<h1 id="方法二：使用firebase">方法二：使用firebase</h1><p>在你的站点需要显示的位置添加标签：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;font id=&quot;counter&quot;&gt;&lt;/font&gt;</div></pre></td></tr></table></figure></p>
+<p>引入firebase：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script src=&quot;//buru.u.qiniudn.com/firebase-2.0.5.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>你也可以添加firebase官网的链接，但我测试速度较慢。</p>
+</blockquote>
+<p>引入计数：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script src=&quot;//ibruce.info/js/counter.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>具体参考本人博客。</p>
+<h1 id="方法三：使用不蒜子">方法三：使用不蒜子</h1><p>最新的统计服务，仅两行代码就搞定，你可以直接使用：<a href="http://ibruce.info/2015/04/04/busuanzi">不蒜子</a>微服务，墙裂推荐。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      hexo 站点访问次数 文章阅读次数 统计hexo博客
+    
+    </summary>
+    
+      <category term="default" scheme="http://ibruce.info/categories/default/"/>
+    
+    
+      <category term="javascript" scheme="http://ibruce.info/tags/javascript/"/>
+    
+      <category term="hexo" scheme="http://ibruce.info/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何停止一个正在运行的java线程</title>
+    <link href="http://ibruce.info/2013/12/19/how-to-stop-a-java-thread/"/>
+    <id>http://ibruce.info/2013/12/19/how-to-stop-a-java-thread/</id>
+    <published>2013-12-19T07:37:27.000Z</published>
+    <updated>2016-01-03T09:36:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://bruce.u.qiniudn.com/2013/12/19/stop.jpg" alt="stop"></p>
+<p>与此问题相关的内容主要涉及三部分：已废弃的Thread.stop()、迷惑的thread.interrupt系列、最佳实践Shared Variable。</p>
+<a id="more"></a>
+<h2 id="已废弃的Thread-stop()">已废弃的Thread.stop()</h2><hr>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Deprecated</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</div><div class="line">    stop(<span class="keyword">new</span> ThreadDeath());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上是Hotspot JDK 7中的java.lang.Thread.stop()的代码，学习一下它的doc：</p>
+<blockquote>
+<p>该方法天生是不安全的。使用<em>thread.stop()</em>停止一个线程，导致释放（解锁）所有该线程已经锁定的监视器（因沿堆栈向上传播的未检查异常<em>ThreadDeath</em>而解锁）。如果之前受这些监视器保护的任何对象处于不一致状态，则不一致状态的对象（受损对象）将对其他线程可见，这可能导致任意的行为。</p>
+</blockquote>
+<p>是不是差点被这段话绕晕，俗点说：目标线程可能持有一个监视器，假设这个监视器控制着某两个值之间的逻辑关系，如var1必须小于var2，某一时刻var1等于var2，本来应该受保护的逻辑关系，不幸的是此时恰好收到一个stop命令，产生一个ThreadDeath错误，监视器被解锁。这就导致逻辑错误，当然这种情况也可能不会发生，是不可预料的。注意：ThreadDeath是何方神圣？是个java.lang.Error，不是java.lang.Exception。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadDeath</span> <span class="keyword">extends</span> <span class="title">Error</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">4417128565033088268L</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><em>thread.stop()</em>方法的许多应用应该由“只修改某些变量以指示目标线程应该停止”的代码取代。目标线程应周期性的检查该变量，当发现该变量指示其要停止运行，则退出<em>run</em>方法。如果目标线程等待很长时间，则应该使用<em>interrupt</em>方法中断该等待。</p>
+</blockquote>
+<p>其实这里已经暗示停止一个线程的最佳方法：<strong>条件变量</strong> 或 <strong>条件变量+中断</strong>。</p>
+<blockquote>
+<p>更多请查看：<br><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html" target="_blank" rel="external">Why are Thread.stop, Thread.suspend and Thread.resume Deprecated?</a></p>
+</blockquote>
+<p>上文请参考我的翻译xxx。</p>
+<p>其它关于stop方法的doc：</p>
+<blockquote>
+<ol>
+<li>该方法强迫停止一个线程，并抛出一个新创建的ThreadDeath对象作为异常。</li>
+<li>停止一个尚未启动的线程是允许的，如果稍后启动该线程，它会立即终止。</li>
+<li>通常不应试图捕获ThreadDeath，除非它必须执行某些异常的清除操作。如果catch子句捕获了一个ThreadDeath对象，则必须重新抛出该对象，这样该线程才会真正终止。</li>
+</ol>
+</blockquote>
+<p><strong>小结：</strong><br>Thread.stop()不安全，已不再建议使用。</p>
+<h2 id="令人迷惑的thread-interrupt()">令人迷惑的thread.interrupt()</h2><hr>
+<p>Thread类中有三个方法会令新手迷惑，他们是：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> Thread.interrupt() <span class="comment">// 无返回值</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> Thread.isInterrupted() <span class="comment">// 有返回值</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> Thread.interrupted() <span class="comment">// 静态，有返回值</span></div></pre></td></tr></table></figure>
+<p>如果按照近几年流行的<a href="http://book.douban.com/subject/4262627" target="_blank" rel="external">重构</a>，<a href="http://book.douban.com/subject/4199741" target="_blank" rel="external">代码整洁之道</a>，<a href="http://book.douban.com/subject/1152111" target="_blank" rel="external">程序员修炼之道</a>等书的观点，这几个方法的命名相对于其实现的功能来说，不够直观明确，极易令人混淆，是低级程序猿的代码。逐个分析：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">interrupt</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> != Thread.currentThread())</div><div class="line">        checkAccess();</div><div class="line">    <span class="keyword">synchronized</span> (blockerLock) &#123;</div><div class="line">        Interruptible b = blocker;</div><div class="line">        <span class="keyword">if</span> (b != <span class="keyword">null</span>) &#123;</div><div class="line">            interrupt0();        <span class="comment">// Just to set the interrupt flag</span></div><div class="line">            b.interrupt(<span class="keyword">this</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    interrupt0();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>中断本线程。无返回值。具体作用分以下几种情况：</p>
+<ul>
+<li>如果该线程正阻塞于<em>Object</em>类的<em>wait()</em>、<em>wait(long)</em>、<em>wait(long, int)</em>方法，或者<em>Thread</em>类的<em>join()</em>、<em>join(long)</em>、<em>join(long, int)</em>、<em>sleep(long)</em>、<em>sleep(long, int)</em>方法，则该线程的<strong>中断状态将被清除，并收到一个<em>java.lang.InterruptedException</em></strong>。</li>
+<li>如果该线程正阻塞于<em>interruptible channel</em>上的I/O操作，则该通道将被关闭，同时该线程的<strong>中断状态被设置，并收到一个<em>java.nio.channels.ClosedByInterruptException</em></strong>。</li>
+<li>如果该线程正阻塞于一个<em>java.nio.channels.Selector</em>操作，则该线程的<strong>中断状态被设置</strong>，它将立即从选择操作返回，并可能带有一个非零值，就好像调用<em>java.nio.channels.Selector.wakeup()</em>方法一样。</li>
+<li>如果上述条件都不成立，则该线程的<strong>中断状态将被设置</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>小结</strong>：第一种情况最为特殊，阻塞于wait/join/sleep的线程，中断状态会被清除掉，同时收到著名的InterruptedException；而其他情况中断状态都被设置，并不一定收到异常。</p>
+</blockquote>
+<p>中断一个不处于活动状态的线程不会有任何作用。如果是其他线程在中断该线程，则java.lang.Thread.checkAccess()方法就会被调用，这可能抛出java.lang.SecurityException。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">interrupted</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> currentThread().isInterrupted(<span class="keyword">true</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检测当前线程是否已经中断，是则返回true，否则false，<strong>并清除中断状态</strong>。换言之，如果该方法被连续调用两次，第二次必将返回false，除非在第一次与第二次的瞬间线程再次被中断。如果中断调用时线程已经不处于活动状态，则返回false。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterrupted</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> isInterrupted(<span class="keyword">false</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检测当前线程是否已经中断，是则返回true，否则false。中断状态不受该方法的影响。如果中断调用时线程已经不处于活动状态，则返回false。</p>
+<blockquote>
+<p>interrupted()与isInterrupted()的唯一区别是，<strong>前者会读取并清除中断状态，后者仅读取状态。</strong></p>
+</blockquote>
+<p>在hotspot源码中，两者均通过调用的native方法isInterrupted(boolean)来实现，区别是参数值ClearInterrupted不同。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">boolean</span> <span class="title">isInterrupted</span><span class="params">(<span class="keyword">boolean</span> ClearInterrupted)</span></span>;</div></pre></td></tr></table></figure>
+<p>经过上面的分析，三者之间的区别已经很明确，来看一个具体案例，是我在工作中看到某位架构师的代码，只给出最简单的概要结构：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">while</span>(!Thread.currentThread().isInterrupted()) &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">           Thread.sleep(<span class="number">10000L</span>);</div><div class="line">           ... <span class="comment">//为篇幅，省略其它io操作</span></div><div class="line">           ... <span class="comment">//为简单，省略其它interrupt操作</span></div><div class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123; <span class="keyword">break</span>; &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我最初被这段代码直接绕晕，用thread.isInterrupted()方法作为循环中止条件可以吗？</p>
+<p>根据上文的分析，当该方法阻塞于wait/join/sleep时，中断状态会被清除掉，同时收到InterruptedException，也就是接收到的值为false。上述代码中，当sleep之后的调用otherDomain.xxx()，otherDomain中的代码包含wait/join/sleep并且InterruptedException被catch掉的时候，线程无法正确的中断。</p>
+<p>因此，在编写多线程代码的时候，<strong>任何时候捕获到InterruptedException，要么继续上抛，要么重置中断状态，这是最安全的做法</strong>，参考<a href="http://book.douban.com/subject/1888733" target="_blank" rel="external">『Java Concurrency in Practice』</a>。凡事没有绝对，如果你可以确保一定没有这种情况发生，这个代码也是可以的。</p>
+<blockquote>
+<p>下段内容引自：<strong><a href="http://book.douban.com/subject/10484692" target="_blank" rel="external">『Java并发编程实战』</a> 第5章 基础构建模块 5.4 阻塞方法与中断方法  p77</strong></p>
+</blockquote>
+<p>当某个方法抛出InterruptedException时，表示该方法是一个阻塞方法。当在代码中调用一个将抛出InterruptedException异常的方法时，你自己的方法也就变成了一个阻塞方法，并且必须要处理对中断的相应。对于库代码来说，有两种选择：</p>
+<ul>
+<li>传递InterruptedException。这是最明智的策略，将异常传递给方法的调用者。</li>
+<li>恢复中断。在不能上抛的情况下，如Runnable方法，必须捕获InterruptedException，并通过当前线程的interrupt()方法恢复中断状态，这样在调用栈中更高层的代码将看到引发了一个中断。如下代码是模板：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">          <span class="comment">// ① 调用阻塞方法</span></div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            Thread.currentThread().interrupt();    <span class="comment">// ② 恢复被中断的状态</span></div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后再强调一遍，②处的 Thread.currentThread().interrupt() 非常非常重要。</p>
+<h2 id="最佳实践：Shared_Variable">最佳实践：Shared Variable</h2><hr>
+<p>不记得哪本书上曾曰过，最佳实践是个烂词。在这里这个词最能表达意思，停止一个线程最好的做法就是利用共享的条件变量。</p>
+<p>对于本问题，我认为准确的说法是：<strong>停止一个线程的最佳方法是让它执行完毕，没有办法立即停止一个线程，但你可以控制何时或什么条件下让他执行完毕。</strong></p>
+<p>通过条件变量控制线程的执行，线程内部检查变量状态，外部改变变量值可控制停止执行。为保证线程间的即时通信，需要使用使用volatile关键字或锁，确保读线程与写线程间变量状态一致。下面给一个最佳模板：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> bruce_sha (bruce-sha.github.io)</div><div class="line"> * <span class="doctag">@version</span> 2013-12-23</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BestPractice</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> finished = <span class="keyword">false</span>;   <span class="comment">// ① volatile条件变量</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopMe</span><span class="params">()</span> </span>&#123;</div><div class="line">        finished = <span class="keyword">true</span>;    <span class="comment">// ② 发出停止信号</span></div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (!finished) &#123;    <span class="comment">// ③ 检测条件变量</span></div><div class="line">            <span class="comment">// do dirty work   // ④业务代码</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>本文尚未完成，请耐心等待。</p>
+<hr>
+<p>当④处的代码阻塞于wait()或sleep()时，线程不能立刻检测到条件变量。因此②处的代码最好同时调用interrupt()方法。</p>
+<p>小结：<br><a href="http://forward.com.au/javaProgramming/HowToStopAThread.html" target="_blank" rel="external">How to Stop a Thread or a Task ?</a> 详细讨论了如何停止一个线程, 总结起来有三点：</p>
+<ol>
+<li>使用violate boolean变量来标识线程是否停止。</li>
+<li>停止线程时，需要调用停止线程的interrupt()方法，因为线程有可能在wait()或sleep(), 提高停止线程的即时性。</li>
+<li>对于blocking IO的处理，尽量使用InterruptibleChannel来代替blocking IO。</li>
+</ol>
+<h2 id="总结：">总结：</h2><hr>
+<blockquote>
+<p>要使任务和线程能安全、快速、可靠地停止下来，并不是一件容易的事。Java没有提供任何机制来安全地终止线程。但它提供了中断（Interruption），这是一种协作机制，能够使一个线程终止另一个线程的的工作。—— <a href="http://book.douban.com/subject/10484692" target="_blank" rel="external">『Java并发编程实战』</a> 第7章 取消与关闭 p111</p>
+<p>中断是一种协作机制。一个线程不能强制其它线程停止正在执行的操作而去执行其它的操作。当线程A中断B时，A仅仅是要求B在执行到某个可以暂停的地方停止正在执行的操作——前提是如果线程B愿意停下来。—— <a href="http://book.douban.com/subject/10484692" target="_blank" rel="external">『Java并发编程实战』</a> 第5章 基础构建模块 p77</p>
+</blockquote>
+<p>总之，中断只是一种协作机制，需要被中断的线程自己处理中断。停止一个线程最佳实践是 <strong>中断 + 条件变量</strong>。</p>
+<h2 id="参考文献">参考文献</h2><hr>
+<ol>
+<li><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html" target="_blank" rel="external">Why are Thread.stop, Thread.suspend and Thread.resume Deprecated ?</a></li>
+<li><a href="http://www.infoq.com/cn/articles/java-interrupt-mechanism" target="_blank" rel="external">详细分析Java中断机制</a></li>
+<li><a href="http://stackoverflow.com/questions/3194545/how-to-stop-a-java-thread-gracefully" target="_blank" rel="external">How to stop a java thread gracefully ?</a></li>
+<li><strong><a href="http://forward.com.au/javaProgramming/HowToStopAThread.html" target="_blank" rel="external">How to Stop a Thread or a Task ?</a></strong></li>
+<li><a href="http://yeziwang.iteye.com/blog/844649" target="_blank" rel="external">为什么不能使用Thread.stop()方法？</a></li>
+<li><a href="http://blog.csdn.net/dlite/article/details/4212915" target="_blank" rel="external">为什么 Thread.stop和Thread.suspend等被废弃了？</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      java 线程 怎么停止
+    
+    </summary>
+    
+      <category term="java" scheme="http://ibruce.info/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://ibruce.info/tags/java/"/>
+    
+      <category term="concurrency" scheme="http://ibruce.info/tags/concurrency/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java中有几种方法创建一个线程</title>
+    <link href="http://ibruce.info/2013/12/17/how-many-ways-to-create-a-thread-in-java/"/>
+    <id>http://ibruce.info/2013/12/17/how-many-ways-to-create-a-thread-in-java/</id>
+    <published>2013-12-17T07:33:52.000Z</published>
+    <updated>2015-12-03T14:02:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>此乃经典一问，如果非要给出回答的话，我认为最准确的说法是：<strong>有且只有一种方法</strong>。</p>
+<p>理由听我慢慢道来。官方权威文档『<a href="http://docs.oracle.com/javase/specs/" target="_blank" rel="external">The Java Language Specification</a>』，<a href="http://docs.oracle.com/javase/specs/jls/se7/jls7.pdf" target="_blank" rel="external">JLS7</a>，Chapter 17 Threads and Locks （p563），开篇第二段明确指出：</p>
+<blockquote>
+<p>Threads are represented by the <em>Thread.class</em>. <strong>The only way for a user to create a thread is to create an object of this class</strong>; each thread is associated with such an object. A thread will start when the start() method is invoked on the corresponding Thread object.</p>
+</blockquote>
+<a id="more"></a>
+<p>因此，创建一个线程的唯一方法是实例化<em>java.lang.Thread</em>类(或其子类)，并调用其<em>start()</em>方法，这是权威回答。</p>
+<p>下面看下其它三本比较流行的书籍是怎么说的。</p>
+<p><strong>第一本：『<a href="http://book.douban.com/subject/5980062/" target="_blank" rel="external">Java Performance</a>』</strong>，Chapter 3 JVM Overview，HotSpot VM Runtime，Thread Creation and Destruction (p73) 指出。</p>
+<blockquote>
+<p>There are two ways for a thread to be introduced in the HotSpot VM; either by exe-cuting Java code that calls the <em>start()</em> method on a <em>java.lang.Thread</em> object, or by attaching an existing native thread to the HotSpot VM using JNI. </p>
+</blockquote>
+<p>文中说，创建一个HotSpot VM（注意其它VM不一定适用）线程有两种方法：</p>
+<ol>
+<li>创建一个java.lang.Thread对象，并调用其start()方法</li>
+<li>通过本地方法（如JNI）创建本地线程并加入的HotSpot VM中</li>
+</ol>
+<p><strong>第二本：『<a href="http://book.douban.com/subject/20142617/" target="_blank" rel="external">Java 7 Concurrency Cookbook</a>』</strong>，Chapter 1 Thread Management，Creating and running a thread 则这么说。</p>
+<blockquote>
+<p>As with every element in the Java language, threads are objects. We have two ways of creating a thread in Java:</p>
+<ul>
+<li>Extending the <em>Thread</em> class and overriding the <em>run()</em> method</li>
+<li>Building a class that implements the <em>Runnable</em> interface and then creating an object of the Thread class passing the Runnable object as a parameter</li>
+</ul>
+</blockquote>
+<p><strong>第三本：『<a href="http://docs.oracle.com/javase/tutorial/" target="_blank" rel="external">The Java Tutorials</a>』</strong>，<a href="http://docs.oracle.com/javase/tutorial/essential/index.html" target="_blank" rel="external">Essential Java Classes</a>，<a href="http://docs.oracle.com/javase/tutorial/essential/concurrency/index.html" target="_blank" rel="external">Concurrency</a>，<a href="http://docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html" target="_blank" rel="external">Defining and Starting a Thread</a>中。</p>
+<blockquote>
+<p>An application that creates an instance of Thread must provide the code that will run in that thread. There are two ways to do this:</p>
+<ul>
+<li><p>Provide a Runnable object. The Runnable interface defines a single method, run, meant to contain the code executed in the thread. The Runnable object is passed to the Thread constructor, as in the HelloRunnable example:</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello from a thread!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">        (<span class="keyword">new</span> Thread(<span class="keyword">new</span> HelloRunnable())).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Subclass Thread. The Thread class itself implements Runnable, though its run method does nothing. An application can subclass Thread, providing its own implementation of run, as in the HelloThread example:</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello from a thread!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">        (<span class="keyword">new</span> HelloThread()).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Notice that both examples invoke Thread.start in order to start the new thread.</p>
+<p>Which of these idioms should you use? <strong>The first idiom, which employs a Runnable object, is more general, because the Runnable object can subclass a class other than Thread. The second idiom is easier to use in simple applications, but is limited by the fact that your task class must be a descendant of Thread. </strong></p>
+</blockquote>
+<p>如上两本书的说法应该是大多说人一致认为的正确答案：继承Thread类或实现Runnable接口。同时The Java Tutorials还指出了使用哪种方式创建线程更好。</p>
+<p><strong>总结：</strong><br>我认为后两本书的说法只能算是创建线程的两种写法，归根结底都必须create Thread object。我更认可JLS的说法，它是无可争辩的权威。另外还有一些更乱七八糟的说法如executor framework也算一种方法，这样算起来就太多了。在目前的Hotspot JDK 7中，<em>java.lang.Thread</em>有8个public构造函数：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread()</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(Runnable)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(String)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, String)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(Runnable, String)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable, String)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable, String, <span class="keyword">long</span>)</div></pre></td></tr></table></figure>
+<p>此外，还有一个非public的构造函数：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">java.lang.Thread.Thread(Runnable, AccessControlContext)</div></pre></td></tr></table></figure>
+<!--
+bruce.u.qiniudn.com/2013/12/17/thread.jpg
+-->]]></content>
+    
+    <summary type="html">
+    
+      Java 创建线程 方法
+    
+    </summary>
+    
+      <category term="java" scheme="http://ibruce.info/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://ibruce.info/tags/java/"/>
+    
+      <category term="concurrency" scheme="http://ibruce.info/tags/concurrency/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>建造可迁移的eclipse工作空间</title>
+    <link href="http://ibruce.info/2013/12/16/portable-eclipse-workspace/"/>
+    <id>http://ibruce.info/2013/12/16/portable-eclipse-workspace/</id>
+    <published>2013-12-16T06:02:50.000Z</published>
+    <updated>2015-12-03T14:02:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>为便于在各种机器和工作地点之间方便的迁移，我喜欢打造自己的绿色工作台，可谓有绿癖。<br>我的eclipse空间一般弄成如下目录结构（其它开发工具我也喜欢这么弄）：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── eclipse.bat                   #一键启动</div><div class="line">├── workspace                     #工作空间</div><div class="line">├── ...                           #其他必要文件，如jdk，maven等</div><div class="line">└── eclipse-jee-kepler-SR1-win32  #eclipse目录</div><div class="line">    └── eclipse.exe               #eclipse启动文件</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>eclipse.bat采用相对路径启动eclipse.exe：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@echo off</div><div class="line">start ./eclipse-jee-kepler-SR1-win32/eclipse.exe</div></pre></td></tr></table></figure></p>
+<p>eclipse的workspace也要设置成相对路径：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">./workspace</div></pre></td></tr></table></figure></p>
+<p><img src="http://bruce.u.qiniudn.com/2013/12/16/eclipse-workspace-relative-path.jpg" alt="相对路径"></p>
+<blockquote>
+<p>win7下『<em>./</em>』代表当前目录，『<em>../</em>』代表当前目录父目录，『<em>/</em>』代表盘符根目录。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      绿色eclipse工作空间，eclipse设置workspace的相对路径，bat启动eclipse，windows win7 bat相对路径启动exe文件
+    
+    </summary>
+    
+      <category term="java" scheme="http://ibruce.info/categories/java/"/>
+    
+    
+      <category term="eclipse" scheme="http://ibruce.info/tags/eclipse/"/>
+    
+      <category term="green" scheme="http://ibruce.info/tags/green/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iPhone、iPad mini、iPad Air 屏幕在线检测</title>
+    <link href="http://ibruce.info/2013/12/15/ipad-air-ipad-mini-with-retina-screen-problem/"/>
+    <id>http://ibruce.info/2013/12/15/ipad-air-ipad-mini-with-retina-screen-problem/</id>
+    <published>2013-12-15T03:19:32.000Z</published>
+    <updated>2016-01-03T09:37:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://bruce.u.qiniudn.com/2013/12/15/screen-problem.jpg" alt="屏幕测试"></p>
+<p>昨天去香港九龙塘又一城 <a href="http://www.apple.com/hk/retail/festivalwalk" target="_blank" rel="external">Apple Retail Store</a>，买到心仪已久的iPad mini with Retina display，视网膜屏幕就是爽啊。网友们说夏普屏问题较多，可用如下方法测试，很幸运，我的是完美屏。</p>
+<a id="more"></a>
+<h3 id="点击进入屏幕亮点测试"><a href="/standby/screen/screen.html">点击进入屏幕亮点测试</a></h3><h3 id="点击进入屏幕残影测试"><a href="/standby/screen/screen-ghost.html">点击进入屏幕残影测试</a></h3><h3 id="点击进入屏幕竖纹测试"><a href="/standby/screen/screen-line.html">点击进入屏幕竖纹测试</a></h3><h3 id="点击进入屏幕显示能力"><a href="/standby/screen/screen-display.html">点击进入屏幕显示能力</a></h3><!--
+参考文献
+www.bbgxzx.com/screentest.html
+-->
+<!--
+序列号查询
+
+序列号查询方法：设置-通用-关于本机-序列号
+selfsolve.apple.com/agreementWarrantyDynamic.do
+ipadx.in
+act.weiphone.com/wetools/index.php
+-->]]></content>
+    
+    <summary type="html">
+    
+      iPhone，iPhone6，iPhone 6 plus，iPad，iPad Air，iPad Air 2，iPad mini2，iPad mini3，iPad mini with Retina display，手机，平板，屏幕，阴阳屏，冷暖屏，坏点，亮点，残影，屏幕测试，在线测试，在线检测页面，屏幕问题，阴阳屏怎么检测，陰陽屏
+    
+    </summary>
+    
+      <category term="default" scheme="http://ibruce.info/categories/default/"/>
+    
+    
+      <category term="ipad" scheme="http://ibruce.info/tags/ipad/"/>
+    
+  </entry>
+  
+</feed>

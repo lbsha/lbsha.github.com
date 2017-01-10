@@ -152,15 +152,15 @@ var _hmt = _hmt || [];
     
       <p>MongoDB3.0权限，啥都不说了，谷歌百度出来的全是错的。先安装好盲沟，简单的没法说。</p>
 <p>首先，不使用 <em>–auth</em> 参数，启动 mongoDB：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mongodb-linux-i686-3.0.0/bin/mongod -f mongodb-linux-i686-3.0.0/mongodb.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mongodb-linux-i686-3.0.0/bin/mongod -f mongodb-linux-i686-3.0.0/mongodb.conf</div></pre></td></tr></table></figure>
 <blockquote>
 <p>此时你 <em>show dbs</em> 会看到只有一个local数据库，那个所谓的admin是不存在的。</p>
 </blockquote>
 <p>mongoDB 没有炒鸡无敌用户root，只有能管理用户的用户 <a href="http://docs.mongodb.org/manual/reference/built-in-roles/#userAdminAnyDatabase">userAdminAnyDatabase</a>。</p>
 <p>打开 <strong>mongo shell</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mongodb-linux-i686-3.0.0/bin/mongo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mongodb-linux-i686-3.0.0/bin/mongo</div></pre></td></tr></table></figure>
 <p>添加管理用户：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use admin&#10;db.createUser(&#10;  &#123;&#10;    user: &#34;buru&#34;,&#10;    pwd: &#34;12345678&#34;,&#10;    roles: [ &#123; role: &#34;userAdminAnyDatabase&#34;, db: &#34;admin&#34; &#125; ]&#10;  &#125;&#10;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">use admin</div><div class="line">db.createUser(</div><div class="line">  &#123;</div><div class="line">    user: &quot;buru&quot;,</div><div class="line">    pwd: &quot;12345678&quot;,</div><div class="line">    roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</div><div class="line">  &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
     
   </div>
   <footer class="end-sep">
@@ -233,7 +233,7 @@ var _hmt = _hmt || [];
     
       <p>系统越来越大后切分出的模块越来越多，一些模块还部署了双机。配置文件混乱，更新部署极易出错，准备上 <a href="http://zookeeper.apache.org">zookeeper</a>。</p>
 <p>下载当前稳定版的 <a href="http://zookeeper.apache.org/releases.html">zookeeper</a>，解压并拷贝 conf/zoo_sample.cfg 为 zoo.cfg，配置所需要的项目。最少配是只指定其中的 dataDir 项，其他项则使用默认值。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">tickTime=2000        # 心跳基本时间单位，毫秒级，zk基本上所有时间都是这个时间的整数倍</span><br><span class="line">clientPort=2181      # 监听客户端连接的端口</span><br><span class="line">dataDir=/zookeeper/server0/data         # 内存数据库快照存放地址</span><br><span class="line">dataLogDir=/zookeeper/server0/dataLog   # 事务日志存放地址，未指定则同dataDir项，建议分开</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">tickTime=2000        # 心跳基本时间单位，毫秒级，zk基本上所有时间都是这个时间的整数倍</div><div class="line">clientPort=2181      # 监听客户端连接的端口</div><div class="line">dataDir=/zookeeper/server0/data         # 内存数据库快照存放地址</div><div class="line">dataLogDir=/zookeeper/server0/dataLog   # 事务日志存放地址，未指定则同dataDir项，建议分开</div></pre></td></tr></table></figure>
     
   </div>
   <footer class="end-sep">
@@ -267,9 +267,9 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>Akka的优点太多，高性能、高可靠、高并发、分布式、可容错、可扩展、事件驱动，不一一叙述。不同版本的API差异很大，本文代码运行在 <a href="http://www.scala-lang.org">Scala 2.10.3</a> 和 <a href="http://akka.io">Akka 2.3.2</a> 之上。<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.typesafe.akka<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>akka-actor_2.10<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.3.2<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.scala-lang<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>scala-library<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.10.3<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+      <p>Akka的优点太多，高性能、高可靠、高并发、分布式、可容错、可扩展、事件驱动，不一一叙述。不同版本的API差异很大，本文代码运行在 <a href="http://www.scala-lang.org">Scala 2.10.3</a> 和 <a href="http://akka.io">Akka 2.3.2</a> 之上。<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.typesafe.akka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>akka-actor_2.10<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.scala-lang<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>scala-library<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h1 id="定义">定义</h1><p>定义Actor很简单，继承 akka.actor.Actor ，实现receive方法即可。</p>
-<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Actor</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> =</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> msg: <span class="type">String</span> =&gt; println(<span class="string">"hello "</span> + msg)</span><br><span class="line">    <span class="keyword">case</span> _ =&gt; println(<span class="string">"unexpected message."</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> <span class="keyword">extends</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> msg: <span class="type">String</span> =&gt; println(<span class="string">"hello "</span> + msg)</div><div class="line">    <span class="keyword">case</span> _ =&gt; println(<span class="string">"unexpected message."</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
     
   </div>
   <footer class="end-sep">
@@ -349,7 +349,7 @@ var _hmt = _hmt || [];
 <p>使用Scala系的工具，无论是体重上（包的大小）还是身高上（代码的长度），都能极大的减负，同时提升逼格和优雅度。下面介绍一个简单的Restful Http Server的开发示例。</p>
 <p>首先安装 <a href="http://www.scala-sbt.org">SBT</a>（简单理解为scala下的maven），安装方法参考 <a href="http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html">sbt documentation - setup</a>。</p>
 <p>win7环境下，直接下载 <a href="http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.1/sbt.zip">0.13.1-zip包</a> 解压到c:\sbt，配置SBT_HOME到path，cmd中敲入sbt检查有无成功，%SBT_HOME%\conf\sbtconfig.txt中可以配置启动参数。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Set the java args to high&#10;-Xmx1024M&#10;-XX:MaxPermSize=512m&#10;-XX:ReservedCodeCacheSize=256m&#10;&#10;# Set the extra SBT options&#10;-Dsbt.log.format=true&#10;-Dfile.encoding=ISO-8859-1&#10;-Dsbt.boot.directory=H:/sbt/boot/ &#10;-Dsbt.ivy.home=H:/sbt/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># Set the java args to high</div><div class="line">-Xmx1024M</div><div class="line">-XX:MaxPermSize=512m</div><div class="line">-XX:ReservedCodeCacheSize=256m</div><div class="line"></div><div class="line"># Set the extra SBT options</div><div class="line">-Dsbt.log.format=true</div><div class="line">-Dfile.encoding=ISO-8859-1</div><div class="line">-Dsbt.boot.directory=H:/sbt/boot/ </div><div class="line">-Dsbt.ivy.home=H:/sbt/</div></pre></td></tr></table></figure>
     
   </div>
   <footer class="end-sep">
@@ -603,7 +603,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2016 <a href="/">bruce</a>
+ &copy; 2013 - 2017 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -617,7 +617,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2016 <a href="/">bruce</a>
+  &copy; 2013-2017 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

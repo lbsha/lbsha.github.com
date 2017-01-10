@@ -145,7 +145,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>如果你有洁癖，可以自己下载<a href="http://www.eclipse.org/downloads">Eclipse</a>，然后安装各种插件。但是可能会遇到插件依赖包版本冲突之类的问题，为了速度，我直接下载官方打包好的 <a href="http://scala-ide.org/download/sdk.html">Scala-IDE</a>，有各种平台可供选择。</p>
 <p>使用 <a href="http://git-scm.com">Git</a> 管理项目源代码，需要安装 <a href="http://www.eclipse.org/egit">EGit</a> 插件，Eclipse插件更新地址 <a href="http://download.eclipse.org/egit/updates">EGit Updates</a>。</p>
-<p>假设项目名称为 <strong>feeling</strong>，使用 JDK 1.7，Servlet 3.0，最终目录结构如下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; .settings                    #eclipse&#24037;&#31243;&#30446;&#24405;&#10;&#9500;&#9472;&#9472; .classpath                   #eclipse classpath&#25991;&#20214;&#10;&#9500;&#9472;&#9472; .project                     #eclipse project&#25991;&#20214;&#10;&#9500;&#9472;&#9472; src                          #&#28304;&#20195;&#30721;&#10;|   &#9500;&#9472;&#9472; main                     #&#28304;&#20195;&#30721;&#20027;&#30446;&#24405;&#10;|   |   &#9500;&#9472;&#9472; java                 #java&#20195;&#30721;&#10;|   |   &#9500;&#9472;&#9472; scala                #scala&#20195;&#30721;&#10;|   |   &#9500;&#9472;&#9472; resources            #&#36164;&#28304;&#25991;&#20214;&#10;|   |   &#9492;&#9472;&#9472; webapp               #web&#20027;&#30446;&#24405;&#10;|   |       &#9500;&#9472;&#9472; WEB-INF          #WEB-INF&#30446;&#24405;&#10;|   |       |   &#9492;&#9472;&#9472; web.xml      #web.xml&#25991;&#20214;&#10;|   |       &#9492;&#9472;&#9472; index.jsp        #&#20027;&#39029;&#38754;&#10;|   &#9492;&#9472;&#9472; test                     #&#27979;&#35797;&#20195;&#30721;&#10;|       &#9500;&#9472;&#9472; java                 #java&#27979;&#35797;&#20195;&#30721;&#10;|       &#9500;&#9472;&#9472; scala                #scala&#27979;&#35797;&#20195;&#30721;&#10;|       &#9492;&#9472;&#9472; resources            #&#27979;&#35797;&#36164;&#28304;&#25991;&#20214;&#10;&#9500;&#9472;&#9472; .gitignore                   #git&#24573;&#30053;&#37197;&#32622;&#10;&#9500;&#9472;&#9472; target                       #&#32534;&#35793;&#36755;&#20986;&#30446;&#24405;&#10;&#9500;&#9472;&#9472; README.md                    #markdown&#26684;&#24335;&#30340;&#35828;&#26126;&#25991;&#20214;&#10;&#9492;&#9472;&#9472; pom.xml                      #maven&#30340;pom&#25991;&#20214;</span><br></pre></td></tr></table></figure></p>
+<p>假设项目名称为 <strong>feeling</strong>，使用 JDK 1.7，Servlet 3.0，最终目录结构如下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── .settings                    #eclipse工程目录</div><div class="line">├── .classpath                   #eclipse classpath文件</div><div class="line">├── .project                     #eclipse project文件</div><div class="line">├── src                          #源代码</div><div class="line">|   ├── main                     #源代码主目录</div><div class="line">|   |   ├── java                 #java代码</div><div class="line">|   |   ├── scala                #scala代码</div><div class="line">|   |   ├── resources            #资源文件</div><div class="line">|   |   └── webapp               #web主目录</div><div class="line">|   |       ├── WEB-INF          #WEB-INF目录</div><div class="line">|   |       |   └── web.xml      #web.xml文件</div><div class="line">|   |       └── index.jsp        #主页面</div><div class="line">|   └── test                     #测试代码</div><div class="line">|       ├── java                 #java测试代码</div><div class="line">|       ├── scala                #scala测试代码</div><div class="line">|       └── resources            #测试资源文件</div><div class="line">├── .gitignore                   #git忽略配置</div><div class="line">├── target                       #编译输出目录</div><div class="line">├── README.md                    #markdown格式的说明文件</div><div class="line">└── pom.xml                      #maven的pom文件</div></pre></td></tr></table></figure></p>
     
   </div>
   <footer class="end-sep">
@@ -180,7 +180,7 @@ var _hmt = _hmt || [];
   <div class="entry">
     
       <p>如何在Amazon AWS上申请EC2不再多说，很多前辈给出了教程，本文只说如何挂载那免费的30G EBS。我申请的一年的免费的32位Red Hat Enterprise Linux，详细参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Red Hat Enterprise Linux 6.4 - ami-80bbf3d2 (64-bit) / ami-9cbbf3ce (32-bit)&#10;Red Hat Enterprise Linux version 6.4, EBS-boot.&#10;Root device type: ebs Virtualization type: paravirtual</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Red Hat Enterprise Linux 6.4 - ami-80bbf3d2 (64-bit) / ami-9cbbf3ce (32-bit)</div><div class="line">Red Hat Enterprise Linux version 6.4, EBS-boot.</div><div class="line">Root device type: ebs Virtualization type: paravirtual</div></pre></td></tr></table></figure>
     
   </div>
   <footer class="end-sep">
@@ -402,7 +402,7 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>为便于在各种机器和工作地点之间方便的迁移，我喜欢打造自己的绿色工作台，可谓有绿癖。<br>我的eclipse空间一般弄成如下目录结构（其它开发工具我也喜欢这么弄）：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#10;&#9500;&#9472;&#9472; eclipse.bat                   #&#19968;&#38190;&#21551;&#21160;&#10;&#9500;&#9472;&#9472; workspace                     #&#24037;&#20316;&#31354;&#38388;&#10;&#9500;&#9472;&#9472; ...                           #&#20854;&#20182;&#24517;&#35201;&#25991;&#20214;&#65292;&#22914;jdk&#65292;maven&#31561;&#10;&#9492;&#9472;&#9472; eclipse-jee-kepler-SR1-win32  #eclipse&#30446;&#24405;&#10;    &#9492;&#9472;&#9472; eclipse.exe               #eclipse&#21551;&#21160;&#25991;&#20214;</span><br></pre></td></tr></table></figure></p>
+      <p>为便于在各种机器和工作地点之间方便的迁移，我喜欢打造自己的绿色工作台，可谓有绿癖。<br>我的eclipse空间一般弄成如下目录结构（其它开发工具我也喜欢这么弄）：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── eclipse.bat                   #一键启动</div><div class="line">├── workspace                     #工作空间</div><div class="line">├── ...                           #其他必要文件，如jdk，maven等</div><div class="line">└── eclipse-jee-kepler-SR1-win32  #eclipse目录</div><div class="line">    └── eclipse.exe               #eclipse启动文件</div></pre></td></tr></table></figure></p>
     
   </div>
   <footer class="end-sep">
@@ -575,7 +575,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2016 <a href="/">bruce</a>
+ &copy; 2013 - 2017 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -589,7 +589,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2016 <a href="/">bruce</a>
+  &copy; 2013-2017 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

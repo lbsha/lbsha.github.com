@@ -106,12 +106,12 @@ var _hmt = _hmt || [];
 <li>安装 <a href="http://git-scm.com/book/zh/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git" target="_blank" rel="external">Git客户端</a> </li>
 <li><a href="https://db.tt/ALifTz8G" target="_blank" rel="external">注册</a>并安装 <a href="http://www.dropbox.com/downloading?src=index" target="_blank" rel="external">Dropbox客户端</a></li>
 </ul>
-<h3 id="建立_Git_Server">建立 Git Server</h3><p>到你Dropbox中私有仓库的目标目录repository下，执行git init命令，注意加上bare参数，bare参数不会生成.git目录，而是把.git中的内容开放出来，你不会直接看到项目的源代码。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~/Dropbox         #&#20999;&#25442;&#21040;Dropbox&#30446;&#24405;&#10;nkdir repository     #&#24314;&#31435;&#20179;&#24211;&#26681;&#30446;&#24405;&#10;cd repository        #&#20999;&#25442;&#21040;&#20179;&#24211;&#30446;&#24405;&#10;mkdir $&#123;PROJECT&#125;.git #&#24314;&#31435;&#39033;&#30446;&#20179;&#24211;&#65292;$&#123;PROJECT&#125;&#26367;&#25442;&#20026;&#20320;&#30340;&#39033;&#30446;&#21517;&#31216;&#10;cd $&#123;PROJECT&#125;.git    #&#20999;&#25442;&#21040;&#39033;&#30446;&#30446;&#24405;&#10;git init --bare      #&#21021;&#22987;&#21270;&#20026;git repository&#65292;&#21363;git server&#31471;&#30340;&#36164;&#26009;</span><br></pre></td></tr></table></figure></p>
+<h3 id="建立_Git_Server">建立 Git Server</h3><p>到你Dropbox中私有仓库的目标目录repository下，执行git init命令，注意加上bare参数，bare参数不会生成.git目录，而是把.git中的内容开放出来，你不会直接看到项目的源代码。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd ~/Dropbox         #切换到Dropbox目录</div><div class="line">nkdir repository     #建立仓库根目录</div><div class="line">cd repository        #切换到仓库目录</div><div class="line">mkdir $&#123;PROJECT&#125;.git #建立项目仓库，$&#123;PROJECT&#125;替换为你的项目名称</div><div class="line">cd $&#123;PROJECT&#125;.git    #切换到项目目录</div><div class="line">git init --bare      #初始化为git repository，即git server端的资料</div></pre></td></tr></table></figure></p>
 <p>至此，仓库建立完毕。你可以使用eclipse连接git仓库，share你的project，进行代码开发。下面介绍通过命令行如何使用：</p>
-<h3 id="建立本地仓库">建立本地仓库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~/workspace    #&#20999;&#25442;&#21040;&#24037;&#20316;&#31354;&#38388;&#10;mkdir &#123;PROJECT&#125;   #&#24314;&#31435;&#39033;&#30446;&#30446;&#24405;&#10;cd $&#123;PROJECT&#125;     #&#20999;&#25442;&#21040;&#39033;&#30446;&#30446;&#24405;&#10;git init          #&#21021;&#22987;&#21270;</span><br></pre></td></tr></table></figure>
-<h3 id="链接到Git_Server">链接到Git Server</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add&#10;touch READM.md&#10;git commit --all -m &#34;Initial commit&#34;&#10;git remote add origin ~/Dropbox/repository/$&#123;PROJECT&#125;.git/&#10;git push origin master</span><br></pre></td></tr></table></figure>
-<p>OK。提交本地代码，执行：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
-<p>需要获取原创更新，执行：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
+<h3 id="建立本地仓库">建立本地仓库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd ~/workspace    #切换到工作空间</div><div class="line">mkdir &#123;PROJECT&#125;   #建立项目目录</div><div class="line">cd $&#123;PROJECT&#125;     #切换到项目目录</div><div class="line">git init          #初始化</div></pre></td></tr></table></figure>
+<h3 id="链接到Git_Server">链接到Git Server</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git add</div><div class="line">touch READM.md</div><div class="line">git commit --all -m &quot;Initial commit&quot;</div><div class="line">git remote add origin ~/Dropbox/repository/$&#123;PROJECT&#125;.git/</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p>OK。提交本地代码，执行：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
+<p>需要获取原创更新，执行：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git pull origin master</div></pre></td></tr></table></figure></p>
 <p>另外，如果在push时中遇到如下错误，是因为Git默认http post的缓存为1M，具体可以<a href="http://blog.chengyunfeng.com/?p=488" target="_blank" rel="external">参考</a>。</p>
 <blockquote>
 <p>Error writing request body to server</p>
@@ -282,7 +282,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2016 <a href="/">bruce</a>
+ &copy; 2013 - 2017 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -296,7 +296,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2016 <a href="/">bruce</a>
+  &copy; 2013-2017 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">
