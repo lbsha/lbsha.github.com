@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ibruce.info/"/>
-  <updated>2017-02-07T02:40:56.000Z</updated>
+  <updated>2017-02-07T02:42:56.000Z</updated>
   <id>http://ibruce.info/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ibruce.info/2015/04/04/busuanzi/"/>
     <id>http://ibruce.info/2015/04/04/busuanzi/</id>
     <published>2015-04-04T01:12:45.000Z</published>
-    <updated>2017-02-07T02:40:56.000Z</updated>
+    <updated>2017-02-07T02:42:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>静态网站建站现在有很多快速的技术和平台，但静态是优点也有缺点，由于是静态的，一些动态的内容如评论、计数等等模块就需要借助外来平台，评论有<a href="http://duoshuo.com" target="_blank" rel="external">“多说”</a>，计数有<a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜”</a>！</p>
 <blockquote>
@@ -109,7 +109,7 @@
 <blockquote>
 <p>如果您愿意捐助其他金额请戳 <a href="http://ibruce.info/about">http://ibruce.info/about</a>，扫描支付宝/微信二维码。</p>
 </blockquote>
-<p><strong>声明</strong>：经用户建议，新增不蒜子交流QQ群：<code>419260983</code>，欢迎大家加入。—— 不如，2017年2月</p>
+<p><strong>声明</strong>：经用户建议，新增不蒜子交流QQ群：<code>419260983</code>，欢迎大家加入。—— 不如，2017.02</p>
 ]]></content>
     
     <summary type="html">
@@ -239,9 +239,9 @@
     
       <category term="scala" scheme="http://ibruce.info/tags/scala/"/>
     
-      <category term="microservice" scheme="http://ibruce.info/tags/microservice/"/>
-    
       <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
+    
+      <category term="microservice" scheme="http://ibruce.info/tags/microservice/"/>
     
       <category term="actor" scheme="http://ibruce.info/tags/actor/"/>
     
