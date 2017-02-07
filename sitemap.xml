@@ -4,14 +4,7 @@
   <url>
     <loc>http://ibruce.info/2015/04/04/busuanzi/</loc>
     
-    <lastmod>2017-02-07T02:04:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/2017/01/17/some-confusing-concepts/</loc>
-    
-    <lastmod>2017-01-18T06:37:43.000Z</lastmod>
+    <lastmod>2017-02-07T02:06:02.000Z</lastmod>
     
   </url>
   
@@ -114,7 +107,7 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/standby/screen/screen-display.html</loc>
+    <loc>http://ibruce.info/standby/screen/screen.html</loc>
     
     <lastmod>2015-12-03T14:03:08.000Z</lastmod>
     
@@ -122,13 +115,6 @@
   
   <url>
     <loc>http://ibruce.info/standby/screen/screen-line.html</loc>
-    
-    <lastmod>2015-12-03T14:03:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/standby/screen/screen.html</loc>
     
     <lastmod>2015-12-03T14:03:08.000Z</lastmod>
     
@@ -149,7 +135,14 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/2013/01/29/sort-one-hundred-million-integers/</loc>
+    <loc>http://ibruce.info/standby/screen/screen-display.html</loc>
+    
+    <lastmod>2015-12-03T14:03:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ibruce.info/2013/01/30/system-currenttimemillis-performance-in-high-concurrency/</loc>
     
     <lastmod>2015-12-03T14:02:26.000Z</lastmod>
     
@@ -163,7 +156,14 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/2013/01/30/system-currenttimemillis-performance-in-high-concurrency/</loc>
+    <loc>http://ibruce.info/2013/01/29/sort-one-hundred-million-integers/</loc>
+    
+    <lastmod>2015-12-03T14:02:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ibruce.info/2014/02/28/turning-point-2014/</loc>
     
     <lastmod>2015-12-03T14:02:26.000Z</lastmod>
     
@@ -191,9 +191,9 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/2014/02/28/turning-point-2014/</loc>
+    <loc>http://ibruce.info/2015/03/03/mongodb3-auth/</loc>
     
-    <lastmod>2015-12-03T14:02:26.000Z</lastmod>
+    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
     
   </url>
   
@@ -206,13 +206,6 @@
   
   <url>
     <loc>http://ibruce.info/2014/01/27/pa-pa-wang/</loc>
-    
-    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/2013/08/21/python-cubes-intro/</loc>
     
     <lastmod>2015-12-03T14:02:24.000Z</lastmod>
     
@@ -233,6 +226,13 @@
   </url>
   
   <url>
+    <loc>http://ibruce.info/2013/08/21/python-cubes-intro/</loc>
+    
+    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ibruce.info/2014/01/15/scala-web-environment-with-eclipse-maven-scala-ide/</loc>
     
     <lastmod>2015-12-03T14:02:24.000Z</lastmod>
@@ -241,13 +241,6 @@
   
   <url>
     <loc>http://ibruce.info/2013/09/24/scala-design-pattern-singleton/</loc>
-    
-    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/2015/03/03/mongodb3-auth/</loc>
     
     <lastmod>2015-12-03T14:02:24.000Z</lastmod>
     

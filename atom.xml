@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ibruce.info/"/>
-  <updated>2017-01-18T06:37:43.000Z</updated>
+  <updated>2017-02-07T02:06:02.000Z</updated>
   <id>http://ibruce.info/</id>
   
   <author>
@@ -16,35 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>一些混淆不清的概念</title>
-    <link href="http://ibruce.info/2017/01/17/some-confusing-concepts/"/>
-    <id>http://ibruce.info/2017/01/17/some-confusing-concepts/</id>
-    <published>2017-01-17T01:37:31.000Z</published>
-    <updated>2017-01-18T06:37:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>同步/异步和阻塞/非阻塞没有任何关系。<br>讨论一个概念首先明确上下文，我们的上下文就限定在I/O模型。</p>
-<h3 id="同步/异步">同步/异步</h3><h3 id="阻塞/非阻塞">阻塞/非阻塞</h3><h3 id="并行/并发">并行/并发</h3><p>什么是并行，并发？</p>
-]]></content>
-    
-    <summary type="html">
-    
-      阻塞 非阻塞 同步 异步 并行 并发
-    
-    </summary>
-    
-      <category term="default" scheme="http://ibruce.info/categories/default/"/>
-    
-    
-      <category term="theory" scheme="http://ibruce.info/tags/theory/"/>
-    
-  </entry>
-  
-  <entry>
     <title>不蒜子</title>
     <link href="http://ibruce.info/2015/04/04/busuanzi/"/>
     <id>http://ibruce.info/2015/04/04/busuanzi/</id>
     <published>2015-04-04T01:12:45.000Z</published>
-    <updated>2017-02-07T02:04:10.000Z</updated>
+    <updated>2017-02-07T02:06:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>静态网站建站现在有很多快速的技术和平台，但静态是优点也有缺点，由于是静态的，一些动态的内容如评论、计数等等模块就需要借助外来平台，评论有<a href="http://duoshuo.com" target="_blank" rel="external">“多说”</a>，计数有<a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜”</a>！</p>
 <blockquote>
@@ -133,7 +109,7 @@
 <blockquote>
 <p>如果您愿意捐助其他金额请戳 <a href="http://ibruce.info/about">http://ibruce.info/about</a>，扫描支付宝/微信二维码。</p>
 </blockquote>
-<p><strong>声明</strong>：经用户建议，新增不蒜子交流QQ群：<code>419260983</code> ，欢迎大家加入。</p>
+<p><strong>声明</strong>：经用户建议，新增不蒜子交流QQ群：<code>419260983</code> ，欢迎大家加入。———— 不如，2017年2月</p>
 ]]></content>
     
     <summary type="html">
@@ -1144,6 +1120,42 @@ bruce.u.qiniudn.com/2013/12/17/thread.jpg
       <category term="green" scheme="http://ibruce.info/tags/green/"/>
     
       <category term="eclipse" scheme="http://ibruce.info/tags/eclipse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iPhone、iPad mini、iPad Air 屏幕在线检测</title>
+    <link href="http://ibruce.info/2013/12/15/ipad-air-ipad-mini-with-retina-screen-problem/"/>
+    <id>http://ibruce.info/2013/12/15/ipad-air-ipad-mini-with-retina-screen-problem/</id>
+    <published>2013-12-15T03:19:32.000Z</published>
+    <updated>2016-01-03T09:37:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://bruce.u.qiniudn.com/2013/12/15/screen-problem.jpg" alt="屏幕测试"></p>
+<p>昨天去香港九龙塘又一城 <a href="http://www.apple.com/hk/retail/festivalwalk" target="_blank" rel="external">Apple Retail Store</a>，买到心仪已久的iPad mini with Retina display，视网膜屏幕就是爽啊。网友们说夏普屏问题较多，可用如下方法测试，很幸运，我的是完美屏。</p>
+<a id="more"></a>
+<h3 id="点击进入屏幕亮点测试"><a href="/standby/screen/screen.html">点击进入屏幕亮点测试</a></h3><h3 id="点击进入屏幕残影测试"><a href="/standby/screen/screen-ghost.html">点击进入屏幕残影测试</a></h3><h3 id="点击进入屏幕竖纹测试"><a href="/standby/screen/screen-line.html">点击进入屏幕竖纹测试</a></h3><h3 id="点击进入屏幕显示能力"><a href="/standby/screen/screen-display.html">点击进入屏幕显示能力</a></h3><!--
+参考文献
+www.bbgxzx.com/screentest.html
+-->
+<!--
+序列号查询
+
+序列号查询方法：设置-通用-关于本机-序列号
+selfsolve.apple.com/agreementWarrantyDynamic.do
+ipadx.in
+act.weiphone.com/wetools/index.php
+-->]]></content>
+    
+    <summary type="html">
+    
+      iPhone，iPhone6，iPhone 6 plus，iPad，iPad Air，iPad Air 2，iPad mini2，iPad mini3，iPad mini with Retina display，手机，平板，屏幕，阴阳屏，冷暖屏，坏点，亮点，残影，屏幕测试，在线测试，在线检测页面，屏幕问题，阴阳屏怎么检测，陰陽屏
+    
+    </summary>
+    
+      <category term="default" scheme="http://ibruce.info/categories/default/"/>
+    
+    
+      <category term="ipad" scheme="http://ibruce.info/tags/ipad/"/>
     
   </entry>
   
