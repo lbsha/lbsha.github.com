@@ -107,6 +107,13 @@
   </url>
   
   <url>
+    <loc>http://ibruce.info/standby/screen/screen.html</loc>
+    
+    <lastmod>2015-12-03T14:03:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ibruce.info/standby/screen/screen-back.html</loc>
     
     <lastmod>2015-12-03T14:03:08.000Z</lastmod>
@@ -115,13 +122,6 @@
   
   <url>
     <loc>http://ibruce.info/standby/screen/screen-line.html</loc>
-    
-    <lastmod>2015-12-03T14:03:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/standby/screen/screen.html</loc>
     
     <lastmod>2015-12-03T14:03:08.000Z</lastmod>
     
@@ -142,21 +142,7 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/2013/01/25/sha-says-google-guava-intro/</loc>
-    
-    <lastmod>2015-12-03T14:02:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://ibruce.info/2013/01/30/system-currenttimemillis-performance-in-high-concurrency/</loc>
-    
-    <lastmod>2015-12-03T14:02:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/2013/12/31/thinking-of-bi/</loc>
     
     <lastmod>2015-12-03T14:02:26.000Z</lastmod>
     
@@ -170,7 +156,14 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/2014/02/28/turning-point-2014/</loc>
+    <loc>http://ibruce.info/2014/02/10/the-most-beautiful-word-cloud/</loc>
+    
+    <lastmod>2015-12-03T14:02:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ibruce.info/2013/01/25/sha-says-google-guava-intro/</loc>
     
     <lastmod>2015-12-03T14:02:26.000Z</lastmod>
     
@@ -184,7 +177,14 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/2014/02/10/the-most-beautiful-word-cloud/</loc>
+    <loc>http://ibruce.info/2014/02/28/turning-point-2014/</loc>
+    
+    <lastmod>2015-12-03T14:02:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ibruce.info/2013/12/31/thinking-of-bi/</loc>
     
     <lastmod>2015-12-03T14:02:26.000Z</lastmod>
     
@@ -198,35 +198,7 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/2014/01/15/scala-web-environment-with-eclipse-maven-scala-ide/</loc>
-    
-    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/2015/03/03/mongodb3-auth/</loc>
-    
-    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/2013/05/19/leb-eventbus/</loc>
-    
-    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://ibruce.info/2013/08/21/python-cubes-intro/</loc>
-    
-    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ibruce.info/2013/09/24/scala-design-pattern-singleton/</loc>
     
     <lastmod>2015-12-03T14:02:24.000Z</lastmod>
     
@@ -240,7 +212,35 @@
   </url>
   
   <url>
+    <loc>http://ibruce.info/2014/01/15/scala-web-environment-with-eclipse-maven-scala-ide/</loc>
+    
+    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ibruce.info/2013/05/19/leb-eventbus/</loc>
+    
+    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ibruce.info/2014/01/27/pa-pa-wang/</loc>
+    
+    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ibruce.info/2015/03/03/mongodb3-auth/</loc>
+    
+    <lastmod>2015-12-03T14:02:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ibruce.info/2013/09/24/scala-design-pattern-singleton/</loc>
     
     <lastmod>2015-12-03T14:02:24.000Z</lastmod>
     
@@ -275,13 +275,6 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/2013/12/12/aix-nohup-awt-x11-error/</loc>
-    
-    <lastmod>2015-12-03T14:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://ibruce.info/2014/04/16/a-small-point-of-interface-design/</loc>
     
     <lastmod>2015-12-03T14:02:20.000Z</lastmod>
@@ -289,7 +282,14 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/hidden/java-lang-illegalstateexception-of-servletresponse.html</loc>
+    <loc>http://ibruce.info/2013/12/12/aix-nohup-awt-x11-error/</loc>
+    
+    <lastmod>2015-12-03T14:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ibruce.info/hidden/memo.html</loc>
     
     <lastmod>2015-12-03T14:02:16.000Z</lastmod>
     
@@ -303,7 +303,7 @@
   </url>
   
   <url>
-    <loc>http://ibruce.info/hidden/memo.html</loc>
+    <loc>http://ibruce.info/hidden/java-lang-illegalstateexception-of-servletresponse.html</loc>
     
     <lastmod>2015-12-03T14:02:16.000Z</lastmod>
     

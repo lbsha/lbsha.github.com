@@ -98,14 +98,14 @@ var _hmt = _hmt || [];
   <div class="entry">
     
       <p>此乃经典一问，如果非要给出回答的话，我认为最准确的说法是：<strong>有且只有一种方法</strong>。</p>
-<p>理由听我慢慢道来。官方权威文档『<a href="http://docs.oracle.com/javase/specs/" target="_blank" rel="external">The Java Language Specification</a>』，<a href="http://docs.oracle.com/javase/specs/jls/se7/jls7.pdf" target="_blank" rel="external">JLS7</a>，Chapter 17 Threads and Locks （p563），开篇第二段明确指出：</p>
+<p>理由听我慢慢道来。官方权威文档『<a href="http://docs.oracle.com/javase/specs/" target="_blank" rel="noopener">The Java Language Specification</a>』，<a href="http://docs.oracle.com/javase/specs/jls/se7/jls7.pdf" target="_blank" rel="noopener">JLS7</a>，Chapter 17 Threads and Locks （p563），开篇第二段明确指出：</p>
 <blockquote>
 <p>Threads are represented by the <em>Thread.class</em>. <strong>The only way for a user to create a thread is to create an object of this class</strong>; each thread is associated with such an object. A thread will start when the start() method is invoked on the corresponding Thread object.</p>
 </blockquote>
 <a id="more"></a>
 <p>因此，创建一个线程的唯一方法是实例化<em>java.lang.Thread</em>类(或其子类)，并调用其<em>start()</em>方法，这是权威回答。</p>
 <p>下面看下其它三本比较流行的书籍是怎么说的。</p>
-<p><strong>第一本：『<a href="http://book.douban.com/subject/5980062/" target="_blank" rel="external">Java Performance</a>』</strong>，Chapter 3 JVM Overview，HotSpot VM Runtime，Thread Creation and Destruction (p73) 指出。</p>
+<p><strong>第一本：『<a href="http://book.douban.com/subject/5980062/" target="_blank" rel="noopener">Java Performance</a>』</strong>，Chapter 3 JVM Overview，HotSpot VM Runtime，Thread Creation and Destruction (p73) 指出。</p>
 <blockquote>
 <p>There are two ways for a thread to be introduced in the HotSpot VM; either by exe-cuting Java code that calls the <em>start()</em> method on a <em>java.lang.Thread</em> object, or by attaching an existing native thread to the HotSpot VM using JNI. </p>
 </blockquote>
@@ -114,7 +114,7 @@ var _hmt = _hmt || [];
 <li>创建一个java.lang.Thread对象，并调用其start()方法</li>
 <li>通过本地方法（如JNI）创建本地线程并加入的HotSpot VM中</li>
 </ol>
-<p><strong>第二本：『<a href="http://book.douban.com/subject/20142617/" target="_blank" rel="external">Java 7 Concurrency Cookbook</a>』</strong>，Chapter 1 Thread Management，Creating and running a thread 则这么说。</p>
+<p><strong>第二本：『<a href="http://book.douban.com/subject/20142617/" target="_blank" rel="noopener">Java 7 Concurrency Cookbook</a>』</strong>，Chapter 1 Thread Management，Creating and running a thread 则这么说。</p>
 <blockquote>
 <p>As with every element in the Java language, threads are objects. We have two ways of creating a thread in Java:</p>
 <ul>
@@ -122,15 +122,15 @@ var _hmt = _hmt || [];
 <li>Building a class that implements the <em>Runnable</em> interface and then creating an object of the Thread class passing the Runnable object as a parameter</li>
 </ul>
 </blockquote>
-<p><strong>第三本：『<a href="http://docs.oracle.com/javase/tutorial/" target="_blank" rel="external">The Java Tutorials</a>』</strong>，<a href="http://docs.oracle.com/javase/tutorial/essential/index.html" target="_blank" rel="external">Essential Java Classes</a>，<a href="http://docs.oracle.com/javase/tutorial/essential/concurrency/index.html" target="_blank" rel="external">Concurrency</a>，<a href="http://docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html" target="_blank" rel="external">Defining and Starting a Thread</a>中。</p>
+<p><strong>第三本：『<a href="http://docs.oracle.com/javase/tutorial/" target="_blank" rel="noopener">The Java Tutorials</a>』</strong>，<a href="http://docs.oracle.com/javase/tutorial/essential/index.html" target="_blank" rel="noopener">Essential Java Classes</a>，<a href="http://docs.oracle.com/javase/tutorial/essential/concurrency/index.html" target="_blank" rel="noopener">Concurrency</a>，<a href="http://docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html" target="_blank" rel="noopener">Defining and Starting a Thread</a>中。</p>
 <blockquote>
 <p>An application that creates an instance of Thread must provide the code that will run in that thread. There are two ways to do this:</p>
 <ul>
 <li><p>Provide a Runnable object. The Runnable interface defines a single method, run, meant to contain the code executed in the thread. The Runnable object is passed to the Thread constructor, as in the HelloRunnable example:</p>
-  <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello from a thread!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">        (<span class="keyword">new</span> Thread(<span class="keyword">new</span> HelloRunnable())).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from a thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        (<span class="keyword">new</span> Thread(<span class="keyword">new</span> HelloRunnable())).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Subclass Thread. The Thread class itself implements Runnable, though its run method does nothing. An application can subclass Thread, providing its own implementation of run, as in the HelloThread example:</p>
-  <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello from a thread!"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">        (<span class="keyword">new</span> HelloThread()).start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello from a thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        (<span class="keyword">new</span> HelloThread()).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>Notice that both examples invoke Thread.start in order to start the new thread.</p>
@@ -138,9 +138,9 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>如上两本书的说法应该是大多说人一致认为的正确答案：继承Thread类或实现Runnable接口。同时The Java Tutorials还指出了使用哪种方式创建线程更好。</p>
 <p><strong>总结：</strong><br>我认为后两本书的说法只能算是创建线程的两种写法，归根结底都必须create Thread object。我更认可JLS的说法，它是无可争辩的权威。另外还有一些更乱七八糟的说法如executor framework也算一种方法，这样算起来就太多了。在目前的Hotspot JDK 7中，<em>java.lang.Thread</em>有8个public构造函数：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread()</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(Runnable)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(String)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, String)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(Runnable, String)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable, String)</div><div class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable, String, <span class="keyword">long</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> java.lang.Thread.Thread()</span><br><span class="line"><span class="keyword">public</span> java.lang.Thread.Thread(Runnable)</span><br><span class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable)</span><br><span class="line"><span class="keyword">public</span> java.lang.Thread.Thread(String)</span><br><span class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, String)</span><br><span class="line"><span class="keyword">public</span> java.lang.Thread.Thread(Runnable, String)</span><br><span class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable, String)</span><br><span class="line"><span class="keyword">public</span> java.lang.Thread.Thread(ThreadGroup, Runnable, String, <span class="keyword">long</span>)</span><br></pre></td></tr></table></figure>
 <p>此外，还有一个非public的构造函数：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">java.lang.Thread.Thread(Runnable, AccessControlContext)</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java.lang.Thread.Thread(Runnable, AccessControlContext)</span><br></pre></td></tr></table></figure>
 <!--
 bruce.u.qiniudn.com/2013/12/17/thread.jpg
 -->
@@ -318,7 +318,7 @@ bruce.u.qiniudn.com/2013/12/17/thread.jpg
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2017 <a href="/">bruce</a>
+ &copy; 2013 - 2018 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -332,7 +332,7 @@ bruce.u.qiniudn.com/2013/12/17/thread.jpg
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2017 <a href="/">bruce</a>
+  &copy; 2013-2018 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

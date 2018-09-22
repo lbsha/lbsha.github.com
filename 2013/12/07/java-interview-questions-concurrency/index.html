@@ -119,15 +119,15 @@ var _hmt = _hmt || [];
 <hr>
 <h2 id="第一部分：理论篇">第一部分：理论篇</h2><hr>
 <h1 id="多线程">多线程</h1><hr>
-<h3 id="Q：java中有几种方法可以创建一个线程？">Q：java中有几种方法可以创建一个线程？</h3><p><strong><a href="http://bruce-sha.github.io/2013/12/17/how-many-ways-to-create-a-thread-in-java/" target="_blank" rel="external">how many ways to create a thread in java</a></strong></p>
-<h3 id="Q：如何停止一个正在运行的线程？">Q：如何停止一个正在运行的线程？</h3><p><strong><a href="http://bruce-sha.github.io/2013/12/19/how-to-stop-a-java-thread/" target="_blank" rel="external">how to stop a java thread</a></strong></p>
+<h3 id="Q：java中有几种方法可以创建一个线程？">Q：java中有几种方法可以创建一个线程？</h3><p><strong><a href="http://bruce-sha.github.io/2013/12/17/how-many-ways-to-create-a-thread-in-java/" target="_blank" rel="noopener">how many ways to create a thread in java</a></strong></p>
+<h3 id="Q：如何停止一个正在运行的线程？">Q：如何停止一个正在运行的线程？</h3><p><strong><a href="http://bruce-sha.github.io/2013/12/19/how-to-stop-a-java-thread/" target="_blank" rel="noopener">how to stop a java thread</a></strong></p>
 <h3 id="Q：notify()和notifyAll()有什么区别？">Q：notify()和notifyAll()有什么区别？</h3><p>notify()是唤醒一个线程。只唤醒一个。</p>
 <p>notifyAll()是唤醒全部线程，但是注意是一个个唤醒，唤醒一个再唤下一个。</p>
 <p>随机唤醒和唤醒全部。</p>
 <h3 id="Q：sleep()和_wait()有什么区别？">Q：sleep()和 wait()有什么区别？</h3><p>定时等待和在监视器上等待，不同范畴。</p>
 <h3 id="Q：什么是Daemon线程？它有什么意义？">Q：什么是Daemon线程？它有什么意义？</h3><p>守护线程，不需要上层逻辑介入的后台线程 ，比如GC。</p>
 <h3 id="Q：java如何实现多线程之间的通讯和协作？">Q：java如何实现多线程之间的通讯和协作？</h3><p>中断和 直接或间接访问对方实例。</p>
-<p><a href="http://android.group.iteye.com/group/wiki/3083-java-sync-communication" target="_blank" rel="external">线程同步(使用了synchronized)和线程通讯(使用了wait,notify)</a></p>
+<p><a href="http://android.group.iteye.com/group/wiki/3083-java-sync-communication" target="_blank" rel="noopener">线程同步(使用了synchronized)和线程通讯(使用了wait,notify)</a></p>
 <h1 id="锁">锁</h1><hr>
 <h3 id="Q：什么是可重入锁（ReentrantLock）？">Q：什么是可重入锁（ReentrantLock）？</h3><p>更高级的锁，附加更多特性。</p>
 <h3 id="Q：当一个线程进入某个对象的一个synchronized的实例方法后，其它线程是否可进入此对象的其它方法？">Q：当一个线程进入某个对象的一个synchronized的实例方法后，其它线程是否可进入此对象的其它方法？</h3><p>可进入非synchronized方法。</p>
@@ -191,7 +191,7 @@ var _hmt = _hmt || [];
 <h3 id="Q：如何实现一个流控程序，用于控制请求的调用次数？">Q：如何实现一个流控程序，用于控制请求的调用次数？</h3><p>1 fixed的线程池</p>
 <hr>
 <h2 id="第二部分：实战篇">第二部分：实战篇</h2><hr>
-<p><a href="http://www.importnew.com/1428.html" target="_blank" rel="external">Java多线程面试问题集锦</a></p>
+<p><a href="http://www.importnew.com/1428.html" target="_blank" rel="noopener">Java多线程面试问题集锦</a></p>
 <p>几个创建线程的写法：</p>
 <ul>
 <li>继承Thread类</li>
@@ -199,10 +199,10 @@ var _hmt = _hmt || [];
 <li>使用Executor framework (这会创建一个线程池)</li>
 </ul>
 <p>问题：列举几种不同的创建线程的方法.<br>问题：推荐通过哪种方式创建线程，为什么?<br>问题：简要的说明一下高级线程状态.<br>问题：yield和sleeping有何区别，sleep()和wait()有何区别？<br>问题：为什么为了线程安全而锁定一个方法或者一个代码块称为“同步”而不是“锁定”或者“被锁定”<br>问题：线程如何进行的同步处理？你可以列举出那些同步级别？同步方法和代码块如何区别？</p>
-<p><a href="http://www.jfox.info/tag/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%9D%A2%E8%AF%95" target="_blank" rel="external">Java多线程面试</a><br><a href="http://blog.sina.com.cn/s/blog_5f597b690101cfej.html" target="_blank" rel="external">java多线程面试题</a><br><a href="http://mouselearnjava.iteye.com/blog/1956682" target="_blank" rel="external">http://mouselearnjava.iteye.com/blog/1956682</a><br><a href="http://my.oschina.net/u/176507/blog/137880" target="_blank" rel="external">http://my.oschina.net/u/176507/blog/137880</a><br><a href="http://yueyemaitian.iteye.com/blog/1387901" target="_blank" rel="external">http://yueyemaitian.iteye.com/blog/1387901</a></p>
-<p><a href="http://tutorials.jenkov.com/java-concurrency/blocking-queues.html" target="_blank" rel="external">http://tutorials.jenkov.com/java-concurrency/blocking-queues.html</a></p>
-<p><strong>参考文献：</strong><br><a href="http://ifeve.com/javaconcurrency-interview-Q-base" target="_blank" rel="external">Java并发面试题(一)基础</a><br><a href="http://ifeve.com/javaconcurrency-interview-Q-combat" target="_blank" rel="external">Java并发面试题(二)实战</a></p>
-<p><a href="http://ifeve.com/java-threadpool/" target="_blank" rel="external">Java线程池的分析和使用</a><br><a href="http://ifeve.com/thread-pools/" target="_blank" rel="external">Java线程池</a>（第二题）<br><a href="http://ifeve.com/atomic-operation/" target="_blank" rel="external">原子操作的实现原理</a>  （锁 第一题）<br><a href="http://ifeve.com/read-write-locks/" target="_blank" rel="external">Java中的读写锁</a>（锁 第二题）<br><a href="http://ifeve.com/concurrency-practice-1/" target="_blank" rel="external">如何设计客户端流控程序</a> （并发工具 第一题）</p>
+<p><a href="http://www.jfox.info/tag/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%9D%A2%E8%AF%95" target="_blank" rel="noopener">Java多线程面试</a><br><a href="http://blog.sina.com.cn/s/blog_5f597b690101cfej.html" target="_blank" rel="noopener">java多线程面试题</a><br><a href="http://mouselearnjava.iteye.com/blog/1956682" target="_blank" rel="noopener">http://mouselearnjava.iteye.com/blog/1956682</a><br><a href="http://my.oschina.net/u/176507/blog/137880" target="_blank" rel="noopener">http://my.oschina.net/u/176507/blog/137880</a><br><a href="http://yueyemaitian.iteye.com/blog/1387901" target="_blank" rel="noopener">http://yueyemaitian.iteye.com/blog/1387901</a></p>
+<p><a href="http://tutorials.jenkov.com/java-concurrency/blocking-queues.html" target="_blank" rel="noopener">http://tutorials.jenkov.com/java-concurrency/blocking-queues.html</a></p>
+<p><strong>参考文献：</strong><br><a href="http://ifeve.com/javaconcurrency-interview-Q-base" target="_blank" rel="noopener">Java并发面试题(一)基础</a><br><a href="http://ifeve.com/javaconcurrency-interview-Q-combat" target="_blank" rel="noopener">Java并发面试题(二)实战</a></p>
+<p><a href="http://ifeve.com/java-threadpool/" target="_blank" rel="noopener">Java线程池的分析和使用</a><br><a href="http://ifeve.com/thread-pools/" target="_blank" rel="noopener">Java线程池</a>（第二题）<br><a href="http://ifeve.com/atomic-operation/" target="_blank" rel="noopener">原子操作的实现原理</a>  （锁 第一题）<br><a href="http://ifeve.com/read-write-locks/" target="_blank" rel="noopener">Java中的读写锁</a>（锁 第二题）<br><a href="http://ifeve.com/concurrency-practice-1/" target="_blank" rel="noopener">如何设计客户端流控程序</a> （并发工具 第一题）</p>
 
     
   </div>
@@ -217,7 +217,7 @@ var _hmt = _hmt || [];
       
   
   <div class="tags">
-    <a href="/tags/interview/">interview</a>, <a href="/tags/concurrency/">concurrency</a>
+    <a href="/tags/concurrency/">concurrency</a>, <a href="/tags/interview/">interview</a>
   </div>
 
     
@@ -236,7 +236,7 @@ var _hmt = _hmt || [];
 	<script type="text/javascript">
 	    var wumiiPermaLink = "http://ibruce.info/2013/12/07/java-interview-questions-concurrency/"; //请用代码生成文章永久的链接
 	    var wumiiTitle = "Java并发编程经典题目"; //请用代码生成文章标题
-	    var wumiiTags = "interview, concurrency"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiTags = "concurrency, interview"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
 	    var wumiiCategories = ["java"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
 	    var wumiiSitePrefix = "http://ibruce.info/";
 	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
@@ -378,7 +378,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2017 <a href="/">bruce</a>
+ &copy; 2013 - 2018 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -392,7 +392,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2017 <a href="/">bruce</a>
+  &copy; 2013-2018 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

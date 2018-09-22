@@ -106,7 +106,7 @@ var _hmt = _hmt || [];
 <p>经测试，别说亿级，即使样本规模缩小到百万级，此解法的效率也是极其低下，当然这不是Map/Reduce擅长的场景，不是他的菜，我们只是玩玩，切磋切磋而已。 </p>
 <p>后来我想到一个自以为比较不错的方法，记录下来以备用。当然此法也是有缺陷的，稍后再说，思路如下：不好意思，拿铁道部举个例子，假设样本数组中的数值表示的是某人回家的火车的车次编码，比如第一个元素是302，其代表这个人要坐302次列车回家见妈，这一亿个样本数据就是一亿个人，每个人背上写着回家要坐的火车车次号码编码（不是座位号，仅仅是哪趟车），比如你是1404次列车，他是302次列车，我也是1404次，首先请铁道部车准备好一亿辆从小到大编好号码的火车（艾玛，铁道部赚大了），1次，2次。。302次。。。1404次一字排开，然后大家按队伍先后一个个上火车（当然也可以一股脑往上挤，那就是并发啦），最后铁道部按照火车次序挨个说，你们都是使用插件抢的票，统统下车，这按照火车次序挨个清理出来的人即是排序结果。</p>
 <p>大家都是码农，就直接上代码： </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">final</span> <span class="keyword">byte</span>[] tmp = <span class="keyword">new</span> <span class="keyword">byte</span>[SIZE];<span class="comment">// 用byte省点空间</span></div><div class="line">  <span class="keyword">int</span> index = SIZE;</div><div class="line">  <span class="keyword">while</span> (--index &gt;= <span class="number">0</span>) &#123;</div><div class="line">    tmp[datas[index]] += <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">byte</span> t;</div><div class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">  index = SIZE;</div><div class="line">  <span class="keyword">while</span> (--index &gt;= <span class="number">0</span>) &#123;</div><div class="line">    t = tmp[index];</div><div class="line">    <span class="keyword">while</span> (t-- &gt; <span class="number">0</span>)</div><div class="line">      datas[i++] = index;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">byte</span>[] tmp = <span class="keyword">new</span> <span class="keyword">byte</span>[SIZE];<span class="comment">// 用byte省点空间</span></span><br><span class="line">  <span class="keyword">int</span> index = SIZE;</span><br><span class="line">  <span class="keyword">while</span> (--index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    tmp[datas[index]] += <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">byte</span> t;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  index = SIZE;</span><br><span class="line">  <span class="keyword">while</span> (--index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    t = tmp[index];</span><br><span class="line">    <span class="keyword">while</span> (t-- &gt; <span class="number">0</span>)</span><br><span class="line">      datas[i++] = index;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述代码算头算尾一共15行，没错吧，我不是标题党！我在公司机器上（32位 win server 2003 3G内存 2核CPU）跑基本在5.5秒左右即可完成排序，回家在自己机器上（64位win7旗舰版 4核CPU 4G内存）试了很多遍，基本都是在4.5秒左右便可以完成。</p>
 <p>当然，这算法是有缺陷的，辅助数组byte[] tmp的初始程度应该是样本数据中的绝对值的最大值，你必须先想办法弄到最大值，额。。。如果你是高富帅可以new个Integer.MAX_VALUE的辅助数组。另外，有同事说你这个算法要求样本必须是正数才行，我觉得包含负数也OK啊，再弄个byte[] tmp2，针对负数取绝对值反着排，分而治之再合并。代码见附件，欢迎拍砖。</p>
 <p><img src="http://bruce.u.qiniudn.com/2013/01/29/sort-one-hundred-million-integers/unit-test.jpg" alt="unit test"></p>
@@ -125,7 +125,7 @@ var _hmt = _hmt || [];
       
   
   <div class="tags">
-    <a href="/tags/algorithm/">algorithm</a>, <a href="/tags/big-data/">big data</a>
+    <a href="/tags/big-data/">big data</a>, <a href="/tags/algorithm/">algorithm</a>
   </div>
 
     
@@ -144,7 +144,7 @@ var _hmt = _hmt || [];
 	<script type="text/javascript">
 	    var wumiiPermaLink = "http://ibruce.info/2013/01/29/sort-one-hundred-million-integers/"; //请用代码生成文章永久的链接
 	    var wumiiTitle = "15行代码5秒搞定上亿规模整数排序"; //请用代码生成文章标题
-	    var wumiiTags = "algorithm, big data"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+	    var wumiiTags = "big data, algorithm"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
 	    var wumiiCategories = ["algorithm"]; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
 	    var wumiiSitePrefix = "http://ibruce.info/";
 	    var wumiiParams = "&num=5&mode=3&pf=JAVASCRIPT";
@@ -286,7 +286,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2017 <a href="/">bruce</a>
+ &copy; 2013 - 2018 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -300,7 +300,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2017 <a href="/">bruce</a>
+  &copy; 2013-2018 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

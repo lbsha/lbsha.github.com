@@ -134,8 +134,8 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>江湖传闻，scala开发的最佳利器乃 <a href="http://www.jetbrains.com">JetBrains</a> 的神作 <a href="http://www.jetbrains.com/idea">IntelliJ IDEA</a>，外加构建工具 <a href="http://www.scala-sbt.org">sbt</a> 是也。</p>
-<p>但因历史原因，项目组成员对 <a href="http://www.eclipse.org/downloads">Eclipse</a>+<a href="http://maven.apache.org">Maven</a>组合更为熟悉，为了快速实现项目原型，不增加不确定因素带来的风险，搭建一套 <a href="http://www.eclipse.org/downloads">Eclipse</a>+<a href="http://maven.apache.org">Maven</a>+<a href="http://scala-ide.org">Scala-IDE</a> 的开发环境。</p>
+      <p>江湖传闻，scala开发的最佳利器乃 <a href="http://www.jetbrains.com" target="_blank" rel="noopener">JetBrains</a> 的神作 <a href="http://www.jetbrains.com/idea" target="_blank" rel="noopener">IntelliJ IDEA</a>，外加构建工具 <a href="http://www.scala-sbt.org" target="_blank" rel="noopener">sbt</a> 是也。</p>
+<p>但因历史原因，项目组成员对 <a href="http://www.eclipse.org/downloads" target="_blank" rel="noopener">Eclipse</a>+<a href="http://maven.apache.org" target="_blank" rel="noopener">Maven</a>组合更为熟悉，为了快速实现项目原型，不增加不确定因素带来的风险，搭建一套 <a href="http://www.eclipse.org/downloads" target="_blank" rel="noopener">Eclipse</a>+<a href="http://maven.apache.org" target="_blank" rel="noopener">Maven</a>+<a href="http://scala-ide.org" target="_blank" rel="noopener">Scala-IDE</a> 的开发环境。</p>
 <p>基本原则是，必须完全满足但不限于以下几点内容：</p>
 <ul>
 <li>方便重构，方便调试，支持热部署。</li>
@@ -143,9 +143,9 @@ var _hmt = _hmt || [];
 <li>可以无束缚的只用自己熟悉的语言编写代码。</li>
 <li>可以快速混合编译scala+java代码，包括交叉引用的文件。</li>
 </ul>
-<p>如果你有洁癖，可以自己下载<a href="http://www.eclipse.org/downloads">Eclipse</a>，然后安装各种插件。但是可能会遇到插件依赖包版本冲突之类的问题，为了速度，我直接下载官方打包好的 <a href="http://scala-ide.org/download/sdk.html">Scala-IDE</a>，有各种平台可供选择。</p>
-<p>使用 <a href="http://git-scm.com">Git</a> 管理项目源代码，需要安装 <a href="http://www.eclipse.org/egit">EGit</a> 插件，Eclipse插件更新地址 <a href="http://download.eclipse.org/egit/updates">EGit Updates</a>。</p>
-<p>假设项目名称为 <strong>feeling</strong>，使用 JDK 1.7，Servlet 3.0，最终目录结构如下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── .settings                    #eclipse工程目录</div><div class="line">├── .classpath                   #eclipse classpath文件</div><div class="line">├── .project                     #eclipse project文件</div><div class="line">├── src                          #源代码</div><div class="line">|   ├── main                     #源代码主目录</div><div class="line">|   |   ├── java                 #java代码</div><div class="line">|   |   ├── scala                #scala代码</div><div class="line">|   |   ├── resources            #资源文件</div><div class="line">|   |   └── webapp               #web主目录</div><div class="line">|   |       ├── WEB-INF          #WEB-INF目录</div><div class="line">|   |       |   └── web.xml      #web.xml文件</div><div class="line">|   |       └── index.jsp        #主页面</div><div class="line">|   └── test                     #测试代码</div><div class="line">|       ├── java                 #java测试代码</div><div class="line">|       ├── scala                #scala测试代码</div><div class="line">|       └── resources            #测试资源文件</div><div class="line">├── .gitignore                   #git忽略配置</div><div class="line">├── target                       #编译输出目录</div><div class="line">├── README.md                    #markdown格式的说明文件</div><div class="line">└── pom.xml                      #maven的pom文件</div></pre></td></tr></table></figure></p>
+<p>如果你有洁癖，可以自己下载<a href="http://www.eclipse.org/downloads" target="_blank" rel="noopener">Eclipse</a>，然后安装各种插件。但是可能会遇到插件依赖包版本冲突之类的问题，为了速度，我直接下载官方打包好的 <a href="http://scala-ide.org/download/sdk.html" target="_blank" rel="noopener">Scala-IDE</a>，有各种平台可供选择。</p>
+<p>使用 <a href="http://git-scm.com" target="_blank" rel="noopener">Git</a> 管理项目源代码，需要安装 <a href="http://www.eclipse.org/egit" target="_blank" rel="noopener">EGit</a> 插件，Eclipse插件更新地址 <a href="http://download.eclipse.org/egit/updates" target="_blank" rel="noopener">EGit Updates</a>。</p>
+<p>假设项目名称为 <strong>feeling</strong>，使用 JDK 1.7，Servlet 3.0，最终目录结构如下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── .settings                    #eclipse工程目录</span><br><span class="line">├── .classpath                   #eclipse classpath文件</span><br><span class="line">├── .project                     #eclipse project文件</span><br><span class="line">├── src                          #源代码</span><br><span class="line">|   ├── main                     #源代码主目录</span><br><span class="line">|   |   ├── java                 #java代码</span><br><span class="line">|   |   ├── scala                #scala代码</span><br><span class="line">|   |   ├── resources            #资源文件</span><br><span class="line">|   |   └── webapp               #web主目录</span><br><span class="line">|   |       ├── WEB-INF          #WEB-INF目录</span><br><span class="line">|   |       |   └── web.xml      #web.xml文件</span><br><span class="line">|   |       └── index.jsp        #主页面</span><br><span class="line">|   └── test                     #测试代码</span><br><span class="line">|       ├── java                 #java测试代码</span><br><span class="line">|       ├── scala                #scala测试代码</span><br><span class="line">|       └── resources            #测试资源文件</span><br><span class="line">├── .gitignore                   #git忽略配置</span><br><span class="line">├── target                       #编译输出目录</span><br><span class="line">├── README.md                    #markdown格式的说明文件</span><br><span class="line">└── pom.xml                      #maven的pom文件</span><br></pre></td></tr></table></figure></p>
     
   </div>
   <footer class="end-sep">
@@ -180,7 +180,7 @@ var _hmt = _hmt || [];
   <div class="entry">
     
       <p>如何在Amazon AWS上申请EC2不再多说，很多前辈给出了教程，本文只说如何挂载那免费的30G EBS。我申请的一年的免费的32位Red Hat Enterprise Linux，详细参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Red Hat Enterprise Linux 6.4 - ami-80bbf3d2 (64-bit) / ami-9cbbf3ce (32-bit)</div><div class="line">Red Hat Enterprise Linux version 6.4, EBS-boot.</div><div class="line">Root device type: ebs Virtualization type: paravirtual</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Red Hat Enterprise Linux 6.4 - ami-80bbf3d2 (64-bit) / ami-9cbbf3ce (32-bit)</span><br><span class="line">Red Hat Enterprise Linux version 6.4, EBS-boot.</span><br><span class="line">Root device type: ebs Virtualization type: paravirtual</span><br></pre></td></tr></table></figure>
     
   </div>
   <footer class="end-sep">
@@ -252,9 +252,9 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>无论是小型的团队或是个人都有协同开发的需要，<a href="http://github.com">GitHub</a>上提供了仓库但是必须是public的，对于暂不公开的代码，或自己的小实验室，怎么玩呢？<br>用 <a href="http://www.dropbox.com">Dropbox</a> 是个很好的选择，我之前是直接同步workspace，但是换台机器直接打开经常会报错。还是用 <a href="http://git-scm.com">Git</a> 管理吧，满足个人多台机器工作，同时也满足多人协同办公。</p>
+      <p>无论是小型的团队或是个人都有协同开发的需要，<a href="http://github.com" target="_blank" rel="noopener">GitHub</a>上提供了仓库但是必须是public的，对于暂不公开的代码，或自己的小实验室，怎么玩呢？<br>用 <a href="http://www.dropbox.com" target="_blank" rel="noopener">Dropbox</a> 是个很好的选择，我之前是直接同步workspace，但是换台机器直接打开经常会报错。还是用 <a href="http://git-scm.com" target="_blank" rel="noopener">Git</a> 管理吧，满足个人多台机器工作，同时也满足多人协同办公。</p>
 <blockquote>
-<p>本文主要介绍 <a href="http://www.dropbox.com">Dropbox</a> 作为 <a href="http://git-scm.com/book/zh">Git</a> 私有仓库。你也可以使用其它云存储工具，如 <a href="http://skydrive.live.com">SkyDrive</a>， <a href="http://drive.google.com">Google Drive</a>等，或国内的<a href="http://www.kuaipan.cn/">金山快盘</a>，<a href="http://pan.baidu.com">百度云盘</a>，<a href="http://yunpan.360.cn">360云盘</a>。对于源代码这些重要资料，我强烈推荐大家使用国外的云产品，百度云曾经丢过我的文件，实在信不过，只作为电影备份盘。</p>
+<p>本文主要介绍 <a href="http://www.dropbox.com" target="_blank" rel="noopener">Dropbox</a> 作为 <a href="http://git-scm.com/book/zh" target="_blank" rel="noopener">Git</a> 私有仓库。你也可以使用其它云存储工具，如 <a href="http://skydrive.live.com" target="_blank" rel="noopener">SkyDrive</a>， <a href="http://drive.google.com" target="_blank" rel="noopener">Google Drive</a>等，或国内的<a href="http://www.kuaipan.cn/" target="_blank" rel="noopener">金山快盘</a>，<a href="http://pan.baidu.com" target="_blank" rel="noopener">百度云盘</a>，<a href="http://yunpan.360.cn" target="_blank" rel="noopener">360云盘</a>。对于源代码这些重要资料，我强烈推荐大家使用国外的云产品，百度云曾经丢过我的文件，实在信不过，只作为电影备份盘。</p>
 </blockquote>
     
   </div>
@@ -292,9 +292,9 @@ var _hmt = _hmt || [];
       <blockquote>
 <p>最新的统计服务已经开放，两行代码轻松搞定，你可以直接使用：<a href="http://ibruce.info/2015/04/04/busuanzi">不蒜子</a> 微服务。</p>
 </blockquote>
-<h1 id="方法一：自搭服务">方法一：自搭服务</h1><p>hexo是静态博客，虽有速度快的优点，但无法存储动态数据是不可否认的劣势之一。没有出路就要思考出路，没人阻止你借助第三方系统实现动态数据处理，比如评论功能借助<a href="http://disqus.com">Disqus</a>或<a href="http://duoshuo.com">多说</a>。统计功能也可以这样处理，我们借助<a href="http://developer.baidu.com/bae">BAE</a>或<a href="http://sae.sina.com.cn">SAE</a>平台搭建自己的统计服务。</p>
+<h1 id="方法一：自搭服务">方法一：自搭服务</h1><p>hexo是静态博客，虽有速度快的优点，但无法存储动态数据是不可否认的劣势之一。没有出路就要思考出路，没人阻止你借助第三方系统实现动态数据处理，比如评论功能借助<a href="http://disqus.com" target="_blank" rel="noopener">Disqus</a>或<a href="http://duoshuo.com" target="_blank" rel="noopener">多说</a>。统计功能也可以这样处理，我们借助<a href="http://developer.baidu.com/bae" target="_blank" rel="noopener">BAE</a>或<a href="http://sae.sina.com.cn" target="_blank" rel="noopener">SAE</a>平台搭建自己的统计服务。</p>
 <blockquote>
-<p><a href="http://sae.sina.com.cn">SAE</a>已经提供<a href="http://sae.sina.com.cn/?m=devcenter&amp;catId=194">Counter</a>服务，但是貌似只支持php语言，这里是<a href="http://static.sae.sina.com.cn/flash/video/counter">SAE计数器服务示例</a>。在<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/rt">BAE2.0</a>中也有专门的<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/rt/counter">Counter（计数器）</a>服务，但是BAE3.0中尚未提供，应该是还未迁移过来。</p>
+<p><a href="http://sae.sina.com.cn" target="_blank" rel="noopener">SAE</a>已经提供<a href="http://sae.sina.com.cn/?m=devcenter&amp;catId=194" target="_blank" rel="noopener">Counter</a>服务，但是貌似只支持php语言，这里是<a href="http://static.sae.sina.com.cn/flash/video/counter" target="_blank" rel="noopener">SAE计数器服务示例</a>。在<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/rt" target="_blank" rel="noopener">BAE2.0</a>中也有专门的<a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/rt/counter" target="_blank" rel="noopener">Counter（计数器）</a>服务，但是BAE3.0中尚未提供，应该是还未迁移过来。</p>
 </blockquote>
     
   </div>
@@ -365,7 +365,7 @@ var _hmt = _hmt || [];
   <div class="entry">
     
       <p>此乃经典一问，如果非要给出回答的话，我认为最准确的说法是：<strong>有且只有一种方法</strong>。</p>
-<p>理由听我慢慢道来。官方权威文档『<a href="http://docs.oracle.com/javase/specs/">The Java Language Specification</a>』，<a href="http://docs.oracle.com/javase/specs/jls/se7/jls7.pdf">JLS7</a>，Chapter 17 Threads and Locks （p563），开篇第二段明确指出：</p>
+<p>理由听我慢慢道来。官方权威文档『<a href="http://docs.oracle.com/javase/specs/" target="_blank" rel="noopener">The Java Language Specification</a>』，<a href="http://docs.oracle.com/javase/specs/jls/se7/jls7.pdf" target="_blank" rel="noopener">JLS7</a>，Chapter 17 Threads and Locks （p563），开篇第二段明确指出：</p>
 <blockquote>
 <p>Threads are represented by the <em>Thread.class</em>. <strong>The only way for a user to create a thread is to create an object of this class</strong>; each thread is associated with such an object. A thread will start when the start() method is invoked on the corresponding Thread object.</p>
 </blockquote>
@@ -402,7 +402,7 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>为便于在各种机器和工作地点之间方便的迁移，我喜欢打造自己的绿色工作台，可谓有绿癖。<br>我的eclipse空间一般弄成如下目录结构（其它开发工具我也喜欢这么弄）：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── eclipse.bat                   #一键启动</div><div class="line">├── workspace                     #工作空间</div><div class="line">├── ...                           #其他必要文件，如jdk，maven等</div><div class="line">└── eclipse-jee-kepler-SR1-win32  #eclipse目录</div><div class="line">    └── eclipse.exe               #eclipse启动文件</div></pre></td></tr></table></figure></p>
+      <p>为便于在各种机器和工作地点之间方便的迁移，我喜欢打造自己的绿色工作台，可谓有绿癖。<br>我的eclipse空间一般弄成如下目录结构（其它开发工具我也喜欢这么弄）：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── eclipse.bat                   #一键启动</span><br><span class="line">├── workspace                     #工作空间</span><br><span class="line">├── ...                           #其他必要文件，如jdk，maven等</span><br><span class="line">└── eclipse-jee-kepler-SR1-win32  #eclipse目录</span><br><span class="line">    └── eclipse.exe               #eclipse启动文件</span><br></pre></td></tr></table></figure></p>
     
   </div>
   <footer class="end-sep">
@@ -437,7 +437,7 @@ var _hmt = _hmt || [];
   <div class="entry">
     
       <p><img src="http://bruce.u.qiniudn.com/2013/12/15/screen-problem.jpg" alt="屏幕测试"></p>
-<p>昨天去香港九龙塘又一城 <a href="http://www.apple.com/hk/retail/festivalwalk">Apple Retail Store</a>，买到心仪已久的iPad mini with Retina display，视网膜屏幕就是爽啊。网友们说夏普屏问题较多，可用如下方法测试，很幸运，我的是完美屏。</p>
+<p>昨天去香港九龙塘又一城 <a href="http://www.apple.com/hk/retail/festivalwalk" target="_blank" rel="noopener">Apple Retail Store</a>，买到心仪已久的iPad mini with Retina display，视网膜屏幕就是爽啊。网友们说夏普屏问题较多，可用如下方法测试，很幸运，我的是完美屏。</p>
     
   </div>
   <footer class="end-sep">
@@ -575,7 +575,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2017 <a href="/">bruce</a>
+ &copy; 2013 - 2018 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -589,7 +589,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2017 <a href="/">bruce</a>
+  &copy; 2013-2018 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

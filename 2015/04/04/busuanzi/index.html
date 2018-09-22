@@ -111,16 +111,16 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>静态网站建站现在有很多快速的技术和平台，但静态是优点也有缺点，由于是静态的，一些动态的内容如评论、计数等等模块就需要借助外来平台，评论有<a href="http://duoshuo.com" target="_blank" rel="external">“多说”</a>，计数有<a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜”</a>！<strong>（多说即将关闭，不蒜子还活着涅，这是程序员对程序员的承诺。）</strong></p>
+      <p>静态网站建站现在有很多快速的技术和平台，但静态是优点也有缺点，由于是静态的，一些动态的内容如评论、计数等等模块就需要借助外来平台，评论有<a href="http://duoshuo.com" target="_blank" rel="noopener">“多说”</a>，计数有<a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜”</a>！<strong>（多说即将关闭，不蒜子还活着涅，这是程序员对程序员的承诺。）</strong></p>
 <blockquote>
-<p><strong><a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜子”</a>与百度统计谷歌分析等有区别：<a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜子”</a>可直接将访问次数显示在您在网页上（也可不显示）；对于已经上线一段时间的网站，<a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“不蒜子”</a>允许您初始化首次数据。。</strong></p>
+<p><strong><a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜子”</a>与百度统计谷歌分析等有区别：<a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜子”</a>可直接将访问次数显示在您在网页上（也可不显示）；对于已经上线一段时间的网站，<a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜子”</a>允许您初始化首次数据。。</strong></p>
 </blockquote>
 <p>普通用户只需两步走：<strong>一行脚本+一行标签</strong>，搞定一切。追求极致的用户可以进行任意DIY。</p>
 <a id="more"></a>
 <h1 id="一、安装脚本（必选）">一、安装脚本（必选）</h1><hr>
 
 <p>要使用不蒜子必须在页面中引入busuanzi.js，目前最新版如下。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>不蒜子可以给任何类型的个人站点使用，如果你是用的hexo，打开<strong>themes/你的主题/layout/_partial/footer.ejs</strong>添加上述脚本即可，当然你也可以添加到 header 中。</p>
 </blockquote>
@@ -128,33 +128,33 @@ var _hmt = _hmt || [];
 
 <p>只需要复制相应的html标签到你的网站要显示访问量的位置即可。您可以随意更改不蒜子标签为自己喜欢的显示效果，内容参考第三部分<strong>扩展开发</strong>。根据你要显示内容的不同，这分几种情况。</p>
 <h2 id="1、显示站点总访问量">1、显示站点总访问量</h2><p>要显示站点总访问量，复制以下代码添加到你需要显示的位置。有两种算法可选：</p>
-<p>算法a：pv的方式，单个用户连续点击n篇文章，记录n次访问量。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;</div><div class="line">    本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
-<p>算法b：uv的方式，单个用户连续点击n篇文章，只记录1次访客数。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;</div><div class="line">  本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<p>算法a：pv的方式，单个用户连续点击n篇文章，记录n次访问量。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;</span><br><span class="line">    本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<p>算法b：uv的方式，单个用户连续点击n篇文章，只记录1次访客数。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;</span><br><span class="line">  本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>如果你是用的hexo，打开<strong>themes/你的主题/layout/_partial/footer.ejs</strong>添加即可。</p>
 </blockquote>
 <p><strong>实例效果参考：</strong></p>
 <ul>
-<li><a href="http://liam0205.me" target="_blank" rel="external">http://liam0205.me</a></li>
-<li><a href="http://gameknife.github.io" target="_blank" rel="external">http://gameknife.github.io</a></li>
-<li><a href="http://read.mobi" target="_blank" rel="external">http://read.mobi</a></li>
-<li><a href="http://pgqlife.info" target="_blank" rel="external">http://pgqlife.info</a></li>
-<li><a href="http://sdxy0506.github.io" target="_blank" rel="external">http://sdxy0506.github.io</a></li>
-<li><a href="http://www.gcrimson.com" target="_blank" rel="external">http://www.gcrimson.com</a></li>
-<li><a href="http://libk.net" target="_blank" rel="external">http://libk.net</a></li>
-<li><a href="http://ztyoung.me" target="_blank" rel="external">http://ztyoung.me</a></li>
-<li><a href="http://blog.itmyhome.com" target="_blank" rel="external">http://blog.itmyhome.com</a></li>
+<li><a href="http://liam0205.me" target="_blank" rel="noopener">http://liam0205.me</a></li>
+<li><a href="http://gameknife.github.io" target="_blank" rel="noopener">http://gameknife.github.io</a></li>
+<li><a href="http://read.mobi" target="_blank" rel="noopener">http://read.mobi</a></li>
+<li><a href="http://pgqlife.info" target="_blank" rel="noopener">http://pgqlife.info</a></li>
+<li><a href="http://sdxy0506.github.io" target="_blank" rel="noopener">http://sdxy0506.github.io</a></li>
+<li><a href="http://www.gcrimson.com" target="_blank" rel="noopener">http://www.gcrimson.com</a></li>
+<li><a href="http://libk.net" target="_blank" rel="noopener">http://libk.net</a></li>
+<li><a href="http://ztyoung.me" target="_blank" rel="noopener">http://ztyoung.me</a></li>
+<li><a href="http://blog.itmyhome.com" target="_blank" rel="noopener">http://blog.itmyhome.com</a></li>
 </ul>
 <h2 id="2、显示单页面访问量">2、显示单页面访问量</h2><p>要显示每篇文章的访问量，复制以下代码添加到你需要显示的位置。</p>
-<p>算法：pv的方式，单个用户点击1篇文章，本篇文章记录1次阅读量。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_container_page_pv&quot;&gt;</div><div class="line">  本文总阅读量&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<p>算法：pv的方式，单个用户点击1篇文章，本篇文章记录1次阅读量。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;busuanzi_container_page_pv&quot;&gt;</span><br><span class="line">  本文总阅读量&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>代码中文字是可以修改的，只要保留id正确即可。</p>
 </blockquote>
 <p><strong>实例效果参考：</strong></p>
 <ul>
-<li><a href="http://dbarobin.com/2015/04/14/operation-and-maintenance-engineer-tips" target="_blank" rel="external">http://dbarobin.com/2015/04/14/operation-and-maintenance-engineer-tips</a></li>
-<li><a href="http://blog.jamespan.me/2015/05/06/mvn-incremental-compilation" target="_blank" rel="external">http://blog.jamespan.me/2015/05/06/mvn-incremental-compilation</a></li>
-<li><a href="http://cubernet.cn/blog/optimization-3" target="_blank" rel="external">http://cubernet.cn/blog/optimization-3</a></li>
+<li><a href="http://dbarobin.com/2015/04/14/operation-and-maintenance-engineer-tips" target="_blank" rel="noopener">http://dbarobin.com/2015/04/14/operation-and-maintenance-engineer-tips</a></li>
+<li><a href="http://blog.jamespan.me/2015/05/06/mvn-incremental-compilation" target="_blank" rel="noopener">http://blog.jamespan.me/2015/05/06/mvn-incremental-compilation</a></li>
+<li><a href="http://cubernet.cn/blog/optimization-3" target="_blank" rel="noopener">http://cubernet.cn/blog/optimization-3</a></li>
 </ul>
 <blockquote>
 <p>注意：不蒜子为保持极简，暂不支持在站点文章摘要列表中（如首页）逐个显示每篇文章的阅读次数，如果您非常需要这一功能，可以留言。根据需要程度再考虑开发相应的功能。</p>
@@ -162,9 +162,9 @@ var _hmt = _hmt || [];
 <h2 id="3、显示站点总访问量和单页面访问量">3、显示站点总访问量和单页面访问量</h2><p>你懂的吧，上面两种标签代码都安装。</p>
 <p><strong>实例效果参考：</strong></p>
 <ul>
-<li><a href="http://cubernet.cn/blog/swift-1" target="_blank" rel="external">http://cubernet.cn/blog/swift-1</a></li>
-<li><a href="http://lvzejun.cn/2015/03/31/ubuntu-software" target="_blank" rel="external">http://lvzejun.cn/2015/03/31/ubuntu-software</a></li>
-<li><a href="http://www.lvzejun.cn/2015/04/13/libvirt1md" target="_blank" rel="external">http://www.lvzejun.cn/2015/04/13/libvirt1md</a></li>
+<li><a href="http://cubernet.cn/blog/swift-1" target="_blank" rel="noopener">http://cubernet.cn/blog/swift-1</a></li>
+<li><a href="http://lvzejun.cn/2015/03/31/ubuntu-software" target="_blank" rel="noopener">http://lvzejun.cn/2015/03/31/ubuntu-software</a></li>
+<li><a href="http://www.lvzejun.cn/2015/04/13/libvirt1md" target="_blank" rel="noopener">http://www.lvzejun.cn/2015/04/13/libvirt1md</a></li>
 </ul>
 <h2 id="4、只计数不显示">4、只计数不显示</h2><p>只安装脚本代码，不安装标签代码。</p>
 <blockquote>
@@ -178,21 +178,21 @@ var _hmt = _hmt || [];
 <li><strong>busuanzi_container_site_pv</strong>的作用是为防止计数服务访问出错或超时（3秒）的情况下，使整个标签自动隐藏显示，带来更好的体验。这个id可以省略。</li>
 </ul>
 <p>因此，你也可以使用极简模式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</div><div class="line">本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次</div><div class="line">本文总阅读量&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</span><br><span class="line">本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次</span><br><span class="line">本文总阅读量&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次</span><br></pre></td></tr></table></figure>
 <p>或者个性化一下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Total &lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt; views.</div><div class="line">您是xxx的第&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;个小伙伴</div><div class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt; Hits</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Total &lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt; views.</span><br><span class="line">您是xxx的第&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;个小伙伴</span><br><span class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt; Hits</span><br></pre></td></tr></table></figure>
 <p>1、我只要统计不显示？<br>只引入busuanzi.js，不引入显示标签即可。</p>
 <p>2、你的标签太丑了，我想美化一下可以么？<br>可以的，您可以用自己站点的css进行控制，只要内层span的id正确以便回填访问次数即可，甚至标签都可以不是span。</p>
 <p>3、中文字体太丑了，我的主题不适合？<br>您可以将<strong>本站总访问量xxx次</strong>改成<strong>view xxx times</strong>等英文以获得更和谐的显示效果。</p>
-<p>4、在访问量数据未取回来之前，我不想让页面显示为诸如“本站总访问量 次”，显得太low，怎么办？<br>只需要如下css，不蒜子执行完毕会自动将标签显示出来，其他以此类推：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_container_site_pv&quot; style=&apos;display:none&apos;&gt;</div><div class="line">    本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</div><div class="line">&lt;/span&gt;</div></pre></td></tr></table></figure></p>
-<p>上面的做法还是很low？！欣赏一下这位小伙伴的做法，请戳看效果：<a href="http://blog.jamespan.me/2015/05/13/the-jump-guide" target="_blank" rel="external">http://blog.jamespan.me/2015/05/13/the-jump-guide</a><br>右键看下源码，没加载出来前就显示个菊花转转转:<br>首先，你要引入<strong>font-awesome</strong>字体：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;&gt;</div><div class="line">或</div><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;&gt;</div></pre></td></tr></table></figure></p>
-<p>其次，修改不蒜子标签：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;i class=&quot;fa fa-spinner&quot;&gt;&lt;/i&gt;&lt;/span&gt; Hits</div><div class="line">或（旋转效果）</div><div class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;i class=&quot;fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt;&lt;/span&gt; Hits</div></pre></td></tr></table></figure></p>
+<p>4、在访问量数据未取回来之前，我不想让页面显示为诸如“本站总访问量 次”，显得太low，怎么办？<br>只需要如下css，不蒜子执行完毕会自动将标签显示出来，其他以此类推：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;busuanzi_container_site_pv&quot; style=&apos;display:none&apos;&gt;</span><br><span class="line">    本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面的做法还是很low？！欣赏一下这位小伙伴的做法，请戳看效果：<a href="http://blog.jamespan.me/2015/05/13/the-jump-guide" target="_blank" rel="noopener">http://blog.jamespan.me/2015/05/13/the-jump-guide</a><br>右键看下源码，没加载出来前就显示个菊花转转转:<br>首先，你要引入<strong>font-awesome</strong>字体：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;&gt;</span><br><span class="line">或</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其次，修改不蒜子标签：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;i class=&quot;fa fa-spinner&quot;&gt;&lt;/i&gt;&lt;/span&gt; Hits</span><br><span class="line">或（旋转效果）</span><br><span class="line">&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;i class=&quot;fa fa-spinner fa-spin&quot;&gt;&lt;/i&gt;&lt;/span&gt; Hits</span><br></pre></td></tr></table></figure></p>
 <p>和谐多了！</p>
 <p>5、我的网站已经运行一段时间了，想初始化访问次数怎么办？<br>请先注册登录，自行修改阅读次数。</p>
 <p>有任何其他问题或疑问可以留言。</p>
 <p>更新日志：</p>
 <blockquote>
-<p>1). 2015-04-04：不蒜子1.0 正式发布，极简的网站计数器服务。<br>2). 2015-04-24：不蒜子2.0 正式发布，区分pv/uv的统计方式，统计更精准，满足更多需求。<br>3). 2015-05-18：不蒜子2.3 正式发布，去掉对jQuery的依赖，异步化执行，速度更快。<br>4). 2016-01-01：不蒜子2.4 正式发布，同时支持http和https访问，启用 <a href="http://busuanzi.ibruce.info" target="_blank" rel="external">“新主页”</a> 。</p>
+<p>1). 2015-04-04：不蒜子1.0 正式发布，极简的网站计数器服务。<br>2). 2015-04-24：不蒜子2.0 正式发布，区分pv/uv的统计方式，统计更精准，满足更多需求。<br>3). 2015-05-18：不蒜子2.3 正式发布，去掉对jQuery的依赖，异步化执行，速度更快。<br>4). 2016-01-01：不蒜子2.4 正式发布，同时支持http和https访问，启用 <a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“新主页”</a> 。</p>
 </blockquote>
 <p><img src="http://dn-bruce.qbox.me/pay.jpg" alt="微信扫码打赏：不蒜子的服务器是收费的，感谢您的捐助。"></p>
 <blockquote>
@@ -374,7 +374,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2017 <a href="/">bruce</a>
+ &copy; 2013 - 2018 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -388,7 +388,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2017 <a href="/">bruce</a>
+  &copy; 2013-2018 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

@@ -97,9 +97,9 @@ var _hmt = _hmt || [];
   
   <div class="entry">
     
-      <p>系统越来越大后切分出的模块越来越多，一些模块还部署了双机。配置文件混乱，更新部署极易出错，准备上 <a href="http://zookeeper.apache.org" target="_blank" rel="external">zookeeper</a>。</p>
-<p>下载当前稳定版的 <a href="http://zookeeper.apache.org/releases.html" target="_blank" rel="external">zookeeper</a>，解压并拷贝 conf/zoo_sample.cfg 为 zoo.cfg，配置所需要的项目。最少配是只指定其中的 dataDir 项，其他项则使用默认值。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">tickTime=2000        # 心跳基本时间单位，毫秒级，zk基本上所有时间都是这个时间的整数倍</div><div class="line">clientPort=2181      # 监听客户端连接的端口</div><div class="line">dataDir=/zookeeper/server0/data         # 内存数据库快照存放地址</div><div class="line">dataLogDir=/zookeeper/server0/dataLog   # 事务日志存放地址，未指定则同dataDir项，建议分开</div></pre></td></tr></table></figure>
+      <p>系统越来越大后切分出的模块越来越多，一些模块还部署了双机。配置文件混乱，更新部署极易出错，准备上 <a href="http://zookeeper.apache.org" target="_blank" rel="noopener">zookeeper</a>。</p>
+<p>下载当前稳定版的 <a href="http://zookeeper.apache.org/releases.html" target="_blank" rel="noopener">zookeeper</a>，解压并拷贝 conf/zoo_sample.cfg 为 zoo.cfg，配置所需要的项目。最少配是只指定其中的 dataDir 项，其他项则使用默认值。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">tickTime=2000        # 心跳基本时间单位，毫秒级，zk基本上所有时间都是这个时间的整数倍</span><br><span class="line">clientPort=2181      # 监听客户端连接的端口</span><br><span class="line">dataDir=/zookeeper/server0/data         # 内存数据库快照存放地址</span><br><span class="line">dataLogDir=/zookeeper/server0/dataLog   # 事务日志存放地址，未指定则同dataDir项，建议分开</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="主要配置项说明">主要配置项说明</h2><h3 id="最小配置">最小配置</h3><p>最小配是保证zk正常运行必不可少的配置项。</p>
 <ul>
@@ -128,18 +128,18 @@ var _hmt = _hmt || [];
 <li><strong>syncLimit</strong>：tickTime的倍数，表示follower和observer与leader交互时的最大等待时间，只不过是在与leader同步完毕之后，正常请求转发或ping等消息交互时的超时时间。(No Java system property)</li>
 <li><strong>server.x</strong>=[hostname]:nnnnn[:nnnnn], etc<br>集群配置中，在dataDir目录下必须有一个myid文件，其中的值就是数字x，范围是1-255。第一个nnnnn是与leader通讯使用，第二个nnnnn是选举leader使用，electionAlg等于0时不需要此参数。(No Java system property)</li>
 </ul>
-<p>集群配置的例子<br>conf下的zoo.cfg文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">server.1=127.0.0.1:12888:13888</div><div class="line">server.2=127.0.0.1:22888:23888</div><div class="line">server.3=127.0.0.1:32888:33888</div></pre></td></tr></table></figure></p>
-<p>dataDir下的myid文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">1</div></pre></td></tr></table></figure></p>
+<p>集群配置的例子<br>conf下的zoo.cfg文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server.1=127.0.0.1:12888:13888</span><br><span class="line">server.2=127.0.0.1:22888:23888</span><br><span class="line">server.3=127.0.0.1:32888:33888</span><br></pre></td></tr></table></figure></p>
+<p>dataDir下的myid文件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>更多参数参考 <a href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html" target="_blank" rel="external">ZK Administrator’s Guide</a>、<a href="http://blog.csdn.net/lovingprince/article/details/6853753" target="_blank" rel="external">ZK 配置项详解</a>、<a href="http://www.udpwork.com/item/2002.html" target="_blank" rel="external">ZK 配置文件</a> 或 <a href="http://nileader.blog.51cto.com/1381108/1032157" target="_blank" rel="external">ZK 管理员指南</a>。</p>
+<p>更多参数参考 <a href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html" target="_blank" rel="noopener">ZK Administrator’s Guide</a>、<a href="http://blog.csdn.net/lovingprince/article/details/6853753" target="_blank" rel="noopener">ZK 配置项详解</a>、<a href="http://www.udpwork.com/item/2002.html" target="_blank" rel="noopener">ZK 配置文件</a> 或 <a href="http://nileader.blog.51cto.com/1381108/1032157" target="_blank" rel="noopener">ZK 管理员指南</a>。</p>
 </blockquote>
 <h2 id="Java_API">Java API</h2><p>zk 官方的Java API是非常难用的，建议使用第三方基于官方API封装的工具包。</p>
 <ul>
-<li>Netflix curator：<a href="http://github.com/Netflix/curator" target="_blank" rel="external">http://github.com/Netflix/curator</a>（强大）</li>
-<li>sgroschupf zkclient：<a href="http://github.com/sgroschupf/zkclient" target="_blank" rel="external">http://github.com/sgroschupf/zkclient</a>（简单）</li>
-<li>adyliu zkclient：<a href="http://github.com/adyliu/zkclient" target="_blank" rel="external">http://github.com/adyliu/zkclient</a>（极简）</li>
+<li>Netflix curator：<a href="http://github.com/Netflix/curator" target="_blank" rel="noopener">http://github.com/Netflix/curator</a>（强大）</li>
+<li>sgroschupf zkclient：<a href="http://github.com/sgroschupf/zkclient" target="_blank" rel="noopener">http://github.com/sgroschupf/zkclient</a>（简单）</li>
+<li>adyliu zkclient：<a href="http://github.com/adyliu/zkclient" target="_blank" rel="noopener">http://github.com/adyliu/zkclient</a>（极简）</li>
 </ul>
-<p>看一下官方API的主要接口：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ZooKeeper</span><span class="params">(String connectString, <span class="keyword">int</span> sessionTimeout, Watcher watcher)</span> </span></div><div class="line">   <span class="keyword">throws</span> IOException</div></pre></td></tr></table></figure></p>
+<p>看一下官方API的主要接口：<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ZooKeeper</span><span class="params">(String connectString, <span class="keyword">int</span> sessionTimeout, Watcher watcher)</span> </span></span><br><span class="line"><span class="function">   <span class="keyword">throws</span> IOException</span></span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>connectString：逗号分隔，如localhost:2181,127.0.0.1:2181，zk会选出一个建立连接</li>
 <li>sessionTimeout：session超时时间</li>
@@ -148,7 +148,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>该方法是非阻塞的，如果需要阻塞，可以在Watcher中自己处理。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">create</span><span class="params">(String path, <span class="keyword">byte</span> data[], List&lt;ACL&gt; acl, CreateMode createMode)</span></span></div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div><div class="line">```        </div><div class="line">- path：znode路径</div><div class="line">- data：znode上的数据</div><div class="line">- acl：权限信息, 如果不想指定权限, 可传入org.*.ZooDefs.Ids.OPEN_ACL_UNSAFE。</div><div class="line">- createMode：枚举类CreateMode，PERSISTENT / PERSISTENT_SEQUENTIAL / EPHEMERAL / EPHEMERAL_SEQUENTIAL</div><div class="line"></div><div class="line">```java</div><div class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getChildren</span><span class="params">(<span class="keyword">final</span> String path, Watcher watcher)</span></div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">create</span><span class="params">(String path, <span class="keyword">byte</span> data[], List&lt;ACL&gt; acl, CreateMode createMode)</span></span></span><br><span class="line"><span class="function">   <span class="keyword">throws</span> KeeperException, InterruptedException</span></span><br><span class="line"><span class="function">```        </span></span><br><span class="line"><span class="function">- path：znode路径</span></span><br><span class="line"><span class="function">- data：znode上的数据</span></span><br><span class="line"><span class="function">- acl：权限信息, 如果不想指定权限, 可传入org.*.ZooDefs.Ids.OPEN_ACL_UNSAFE。</span></span><br><span class="line"><span class="function">- createMode：枚举类CreateMode，PERSISTENT / PERSISTENT_SEQUENTIAL / EPHEMERAL / EPHEMERAL_SEQUENTIAL</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">```java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getChildren</span><span class="params">(<span class="keyword">final</span> String path, Watcher watcher)</span></span></span><br><span class="line"><span class="function">   <span class="keyword">throws</span> KeeperException, InterruptedException</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>path：znode路径</li>
 <li>watcher：回调函数</li>
@@ -156,33 +156,33 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>监听 path node 自身的删除事件，以及 children nodes 的创建/删除事件。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Stat <span class="title">exists</span><span class="params">(<span class="keyword">final</span> String path, Watcher watcher)</span></span></div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Stat <span class="title">exists</span><span class="params">(<span class="keyword">final</span> String path, Watcher watcher)</span></span></span><br><span class="line"><span class="function">   <span class="keyword">throws</span> KeeperException, InterruptedException</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>监听 path node 自身的创建/删除/数据更新事件，path 不存在返回 null。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">byte</span>[] getData(<span class="keyword">final</span> String path, Watcher watcher, Stat stat)</div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">byte</span>[] getData(<span class="keyword">final</span> String path, Watcher watcher, Stat stat)</span><br><span class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>监听 path node 的删除/数据更新事件, 注意, 不监听 path node 的创建事件。stat 是传出参数，返回当前节点状态。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Stat <span class="title">setData</span><span class="params">(<span class="keyword">final</span> String path, <span class="keyword">byte</span> data[], <span class="keyword">int</span> version)</span></span></div><div class="line">   <span class="keyword">throws</span> KeeperException, InterruptedException</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Stat <span class="title">setData</span><span class="params">(<span class="keyword">final</span> String path, <span class="keyword">byte</span> data[], <span class="keyword">int</span> version)</span></span></span><br><span class="line"><span class="function">   <span class="keyword">throws</span> KeeperException, InterruptedException</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>version 参数指定要更新数据的当前版本, 就是stats中的 version 值，如果和现有版本不匹配, 更新操作将失败。指定 version 为-1则忽略版本检查。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">final</span> String path, <span class="keyword">int</span> version)</span></span></div><div class="line">   <span class="keyword">throws</span> InterruptedException, KeeperException</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">final</span> String path, <span class="keyword">int</span> version)</span></span></span><br><span class="line"><span class="function">   <span class="keyword">throws</span> InterruptedException, KeeperException</span></span><br></pre></td></tr></table></figure>
 <p>总结：</p>
 <blockquote>
 <p>getChildren， getData， exists 方法可指定是否监听相应的事件；而create，delete，setData 方法则会触发相应的事件。</p>
 </blockquote>
-<h2 id="权限设置">权限设置</h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// new一个acl</span></div><div class="line">List&lt;ACL&gt; acls = <span class="keyword">new</span> ArrayList&lt;ACL&gt;();</div><div class="line"><span class="comment">// 添加第一个id，采用用户名密码形式</span></div><div class="line">Id id1 = <span class="keyword">new</span> Id(<span class="string">"digest"</span>, DigestAuthenticationProvider.generateDigest(<span class="string">"admin:admin"</span>));</div><div class="line">ACL acl1 = <span class="keyword">new</span> ACL(ZooDefs.Perms.ALL, id1);</div><div class="line">acls.add(acl1);</div><div class="line"><span class="comment">// 添加第二个id，所有用户可读权限</span></div><div class="line">Id id2 = <span class="keyword">new</span> Id(<span class="string">"world"</span>, <span class="string">"anyone"</span>);</div><div class="line">ACL acl2 = <span class="keyword">new</span> ACL(ZooDefs.Perms.READ, id2);</div><div class="line">acls.add(acl2);</div><div class="line"></div><div class="line"><span class="comment">// zk用admin认证，创建/buru ZNode。</span></div><div class="line"><span class="keyword">final</span> ZooKeeper zk = <span class="keyword">new</span> ZooKeeper(<span class="string">"localhost:2181,127.0.0.1:2181"</span>, <span class="number">2000</span>, <span class="keyword">null</span>);</div><div class="line">zk.addAuthInfo(<span class="string">"digest"</span>, <span class="string">"admin:admin"</span>.getBytes());</div><div class="line"></div><div class="line">Stat exists = zk.exists(<span class="string">"/buru"</span>, <span class="keyword">true</span>);</div><div class="line"><span class="keyword">if</span> (exists != <span class="keyword">null</span>)</div><div class="line">   zk.setData(<span class="string">"/buru"</span>, <span class="string">"2323"</span>.getBytes(), -<span class="number">1</span>);</div><div class="line"><span class="keyword">else</span></div><div class="line">   zk.create(<span class="string">"/buru"</span>, <span class="string">"data112"</span>.getBytes(), acls, CreateMode.PERSISTENT);</div></pre></td></tr></table></figure>
-<p>更多内容参考文章， <a href="http://nettm.iteye.com/blog/1721778" target="_blank" rel="external">ZK 权限配置</a>、<a href="http://www.cnblogs.com/wangxiaowei/p/3315137.html" target="_blank" rel="external">ZK ACL使用</a>、<a href="http://nileader.blog.51cto.com/1381108/795525" target="_blank" rel="external">ZK 权限控制</a> 或 <a href="http://www.wuzesheng.com/?p=2438" target="_blank" rel="external">说说Zookeeper中的ACL</a>。</p>
+<h2 id="权限设置">权限设置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// new一个acl</span></span><br><span class="line">List&lt;ACL&gt; acls = <span class="keyword">new</span> ArrayList&lt;ACL&gt;();</span><br><span class="line"><span class="comment">// 添加第一个id，采用用户名密码形式</span></span><br><span class="line">Id id1 = <span class="keyword">new</span> Id(<span class="string">"digest"</span>, DigestAuthenticationProvider.generateDigest(<span class="string">"admin:admin"</span>));</span><br><span class="line">ACL acl1 = <span class="keyword">new</span> ACL(ZooDefs.Perms.ALL, id1);</span><br><span class="line">acls.add(acl1);</span><br><span class="line"><span class="comment">// 添加第二个id，所有用户可读权限</span></span><br><span class="line">Id id2 = <span class="keyword">new</span> Id(<span class="string">"world"</span>, <span class="string">"anyone"</span>);</span><br><span class="line">ACL acl2 = <span class="keyword">new</span> ACL(ZooDefs.Perms.READ, id2);</span><br><span class="line">acls.add(acl2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// zk用admin认证，创建/buru ZNode。</span></span><br><span class="line"><span class="keyword">final</span> ZooKeeper zk = <span class="keyword">new</span> ZooKeeper(<span class="string">"localhost:2181,127.0.0.1:2181"</span>, <span class="number">2000</span>, <span class="keyword">null</span>);</span><br><span class="line">zk.addAuthInfo(<span class="string">"digest"</span>, <span class="string">"admin:admin"</span>.getBytes());</span><br><span class="line"></span><br><span class="line">Stat exists = zk.exists(<span class="string">"/buru"</span>, <span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">if</span> (exists != <span class="keyword">null</span>)</span><br><span class="line">   zk.setData(<span class="string">"/buru"</span>, <span class="string">"2323"</span>.getBytes(), -<span class="number">1</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   zk.create(<span class="string">"/buru"</span>, <span class="string">"data112"</span>.getBytes(), acls, CreateMode.PERSISTENT);</span><br></pre></td></tr></table></figure>
+<p>更多内容参考文章， <a href="http://nettm.iteye.com/blog/1721778" target="_blank" rel="noopener">ZK 权限配置</a>、<a href="http://www.cnblogs.com/wangxiaowei/p/3315137.html" target="_blank" rel="noopener">ZK ACL使用</a>、<a href="http://nileader.blog.51cto.com/1381108/795525" target="_blank" rel="noopener">ZK 权限控制</a> 或 <a href="http://www.wuzesheng.com/?p=2438" target="_blank" rel="noopener">说说Zookeeper中的ACL</a>。</p>
 <h2 id="管理工具">管理工具</h2><p>很可惜，没有顺手的，试试下面几个吧！</p>
 <ul>
-<li><a href="http://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip" target="_blank" rel="external">ZooInspector</a> </li>
-<li><a href="http://github.com/nettm/ZooInspector" target="_blank" rel="external">ZooInspector 改进版</a></li>
-<li><a href="http://github.com/killme2008/node-zk-browser" target="_blank" rel="external">node-zk-browser</a></li>
-<li><a href="http://git.oschina.net/gznofeng/Node_Zookeeper_Admin" target="_blank" rel="external">Node_Zookeeper_Admin</a></li>
-<li><a href="http://jm-blog.aliapp.com/?p=1450" target="_blank" rel="external">taokeeper</a></li>
-<li><a href="http://github.com/ryuubaishi/zookeepercontroller" target="_blank" rel="external">zookeepercontroller</a></li>
+<li><a href="http://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip" target="_blank" rel="noopener">ZooInspector</a> </li>
+<li><a href="http://github.com/nettm/ZooInspector" target="_blank" rel="noopener">ZooInspector 改进版</a></li>
+<li><a href="http://github.com/killme2008/node-zk-browser" target="_blank" rel="noopener">node-zk-browser</a></li>
+<li><a href="http://git.oschina.net/gznofeng/Node_Zookeeper_Admin" target="_blank" rel="noopener">Node_Zookeeper_Admin</a></li>
+<li><a href="http://jm-blog.aliapp.com/?p=1450" target="_blank" rel="noopener">taokeeper</a></li>
+<li><a href="http://github.com/ryuubaishi/zookeepercontroller" target="_blank" rel="noopener">zookeepercontroller</a></li>
 </ul>
 
     
@@ -359,7 +359,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2017 <a href="/">bruce</a>
+ &copy; 2013 - 2018 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -373,7 +373,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2017 <a href="/">bruce</a>
+  &copy; 2013-2018 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">

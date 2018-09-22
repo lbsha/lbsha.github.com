@@ -99,14 +99,14 @@ var _hmt = _hmt || [];
     
       <p>这几天不停地调试折腾hexo，发现页面偶尔加载巨慢，用HttpWatch监控了下。</p>
 <p><img src="http://bruce.u.qiniudn.com/2013/12/03/fonts-googleapis-lead-to-slow/google-fonts-time-consuming.jpg" alt="google-fonts-time-consuming"></p>
-<p>找到了这句：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://fonts.googleapis.com/css?family=Droid+Serif:400italic,700italic,400,700</div></pre></td></tr></table></figure></p>
+<p>找到了这句：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://fonts.googleapis.com/css?family=Droid+Serif:400italic,700italic,400,700</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>引起请求如下结构的地址，耗时巨大：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://themes.googleusercontent.com/static/fonts/droidserif/v3/0AKsP294HTD-nvJgucYTaGfQcKutQXcIrRfyR5jdjY8.eot</div><div class="line">https://themes.googleusercontent.com/static/fonts/droidserif/v3/QQt14e8dY39u-eYBZmppwbFt29aCHKT7otDW9l62Aag.eot</div><div class="line">https://themes.googleusercontent.com/static/fonts/droidserif/v3/cj2hUnSRBh-wmSPr9kS5896SxSvC1lIsK_unZDHWqTBg.eot</div><div class="line">https://themes.googleusercontent.com/static/fonts/droidserif/v3/c92rD_x0V1LslSFt3-QEptmkQI_kos-lIOeNt19QAas.eot</div></pre></td></tr></table></figure>
-<p>查了一下，是css引入的，在<em>hexo\themes\modernist\source\css\_base\variable.styl</em>中，注释掉这句：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//@import url(&quot;https://fonts.googleapis.com/css?family=Droid+Serif:400italic,700italic,400,700&quot;)</div></pre></td></tr></table></figure></p>
-<p>之后页面会直接加载网站下的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">http://ibruce.info/css/fonts/fontawesome-webfont.eot?</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://themes.googleusercontent.com/static/fonts/droidserif/v3/0AKsP294HTD-nvJgucYTaGfQcKutQXcIrRfyR5jdjY8.eot</span><br><span class="line">https://themes.googleusercontent.com/static/fonts/droidserif/v3/QQt14e8dY39u-eYBZmppwbFt29aCHKT7otDW9l62Aag.eot</span><br><span class="line">https://themes.googleusercontent.com/static/fonts/droidserif/v3/cj2hUnSRBh-wmSPr9kS5896SxSvC1lIsK_unZDHWqTBg.eot</span><br><span class="line">https://themes.googleusercontent.com/static/fonts/droidserif/v3/c92rD_x0V1LslSFt3-QEptmkQI_kos-lIOeNt19QAas.eot</span><br></pre></td></tr></table></figure>
+<p>查了一下，是css引入的，在<em>hexo\themes\modernist\source\css\_base\variable.styl</em>中，注释掉这句：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//@import url(&quot;https://fonts.googleapis.com/css?family=Droid+Serif:400italic,700italic,400,700&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>之后页面会直接加载网站下的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http://ibruce.info/css/fonts/fontawesome-webfont.eot?</span><br></pre></td></tr></table></figure></p>
 <p>再次HttpWatch监控，速度很明显上来了，基本秒开。观察几天，如果再慢就把全部字库弄到七牛去。</p>
-<p>查了下，有其他人也遇到类似的问题，<a href="http://www.izhangheng.com/font-googleapis-themes-googleusercontent-com-slow/" target="_blank" rel="external">Google字体库引起的首页加载缓慢的解决方法</a>。</p>
+<p>查了下，有其他人也遇到类似的问题，<a href="http://www.izhangheng.com/font-googleapis-themes-googleusercontent-com-slow/" target="_blank" rel="noopener">Google字体库引起的首页加载缓慢的解决方法</a>。</p>
 
     
   </div>
@@ -282,7 +282,7 @@ var _hmt = _hmt || [];
 <div class="clearfix"></div>
   </div>
   <footer id="footer"><div class="theme-copyright">
- &copy; 2013 - 2017 <a href="/">bruce</a>
+ &copy; 2013 - 2018 <a href="/">bruce</a>
  | 
  produce by <a href="http://bruce-sha.github.io" target="_blank">sha</a>	
  | 
@@ -296,7 +296,7 @@ var _hmt = _hmt || [];
  <font id="counter"></font>
  版权所有
   
-  &copy; 2013-2017 <a href="/">bruce</a>
+  &copy; 2013-2018 <a href="/">bruce</a>
   
 </div>
 <div class="theme-copyright">
