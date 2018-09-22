@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ibruce.info/"/>
-  <updated>2017-03-23T07:40:26.000Z</updated>
+  <updated>2018-09-22T14:00:16.923Z</updated>
   <id>http://ibruce.info/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://ibruce.info/2015/04/04/busuanzi/"/>
     <id>http://ibruce.info/2015/04/04/busuanzi/</id>
     <published>2015-04-04T01:12:45.000Z</published>
-    <updated>2017-03-23T07:40:26.000Z</updated>
+    <updated>2018-09-22T14:00:16.923Z</updated>
     
-    <content type="html"><![CDATA[<p>静态网站建站现在有很多快速的技术和平台，但静态是优点也有缺点，由于是静态的，一些动态的内容如评论、计数等等模块就需要借助外来平台，评论有<a href="http://duoshuo.com" target="_blank" rel="noopener">“多说”</a>，计数有<a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜”</a>！<strong>（多说即将关闭，不蒜子还活着涅，这是程序员对程序员的承诺。）</strong></p>
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大家好，因七牛强制过期原有的『dn-lbstatics.qbox.me』域名（预计10月初），与客服沟通数次无果，只能更换域名到『busuanzi.ibruce.info』！</span><br><span class="line">各位只需要把原有的：</span><br><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">域名改一下即可：</span><br><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">只需要修改该js引入的域名，其他均为改变，对您带来的不便，非常抱歉！！！</span><br></pre></td></tr></table></figure>
+<p>静态网站建站现在有很多快速的技术和平台，但静态是优点也有缺点，由于是静态的，一些动态的内容如评论、计数等等模块就需要借助外来平台，评论有<a href="http://duoshuo.com" target="_blank" rel="noopener">“多说”</a>，计数有<a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜”</a>！<strong>（多说即将关闭，不蒜子还活着涅，这是程序员对程序员的承诺。）</strong></p>
 <blockquote>
 <p><strong><a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜子”</a>与百度统计谷歌分析等有区别：<a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜子”</a>可直接将访问次数显示在您在网页上（也可不显示）；对于已经上线一段时间的网站，<a href="http://busuanzi.ibruce.info" target="_blank" rel="noopener">“不蒜子”</a>允许您初始化首次数据。。</strong></p>
 </blockquote>
@@ -31,7 +32,7 @@
 <h1 id="一、安装脚本（必选）">一、安装脚本（必选）</h1><hr>
 
 <p>要使用不蒜子必须在页面中引入busuanzi.js，目前最新版如下。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>不蒜子可以给任何类型的个人站点使用，如果你是用的hexo，打开<strong>themes/你的主题/layout/_partial/footer.ejs</strong>添加上述脚本即可，当然你也可以添加到 header 中。</p>
 </blockquote>
