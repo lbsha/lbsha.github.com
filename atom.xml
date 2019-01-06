@@ -238,11 +238,11 @@
       <category term="scala" scheme="http://ibruce.info/categories/scala/"/>
     
     
-      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
-    
       <category term="scala" scheme="http://ibruce.info/tags/scala/"/>
     
       <category term="microservice" scheme="http://ibruce.info/tags/microservice/"/>
+    
+      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
     
       <category term="actor" scheme="http://ibruce.info/tags/actor/"/>
     
@@ -412,9 +412,9 @@
       <category term="scala" scheme="http://ibruce.info/categories/scala/"/>
     
     
-      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
-    
       <category term="scala" scheme="http://ibruce.info/tags/scala/"/>
+    
+      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
     
   </entry>
   
@@ -526,9 +526,9 @@
       <category term="scala" scheme="http://ibruce.info/categories/scala/"/>
     
     
-      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
-    
       <category term="scala" scheme="http://ibruce.info/tags/scala/"/>
+    
+      <category term="akka" scheme="http://ibruce.info/tags/akka/"/>
     
       <category term="spray" scheme="http://ibruce.info/tags/spray/"/>
     
